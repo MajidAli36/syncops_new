@@ -1,0 +1,77 @@
+"use client";
+import { ParallaxProvider } from 'react-scroll-parallax';
+import { motion } from 'framer-motion';
+import { stagger, viewport } from '../../../lib/motionConfig';
+import ProductsHero from './ProductsHero';
+import ProductUseCases from './ProductUseCases';
+import ProductIntegrations from './ProductIntegrations';
+import ProductComparison from './ProductComparison';
+import ProductSocialProof from './ProductSocialProof';
+import MetricsBar from '../../components/MetricsBar';
+import FinalCTA from '../../components/FinalCTA';
+import TechnologyStackCards from '../../components/TechnologyStackCards';
+export default function ProductsClient() {
+  return (
+    <ParallaxProvider>
+      <main className="min-h-screen">
+        {/* Hero */}
+        <section className="bg-brand-navy text-white">
+          <motion.div {...stagger.container(0.06)}>
+            <ProductsHero />
+          </motion.div>
+        </section>
+
+        {/* Metrics (light) */}
+        <section className="bg-white py-16">
+          <motion.div initial="initial" whileInView="animate" viewport={viewport} variants={stagger.container(0.08)}>
+            <MetricsBar />
+          </motion.div>
+        </section>
+
+        {/* Use Cases (light) */}
+        <section className="bg-white py-20">
+          <motion.div initial="initial" whileInView="animate" viewport={viewport} variants={stagger.container(0.08)}>
+            <ProductUseCases />
+          </motion.div>
+        </section>
+
+        {/* Integrations (light gray) */}
+        <section className="bg-gray-50 py-20">
+          <motion.div initial="initial" whileInView="animate" viewport={viewport} variants={stagger.container(0.08)}>
+            <ProductIntegrations />
+          </motion.div>
+        </section>
+
+        {/* Comparison (dark) */}
+        <section className="bg-brand-navy text-white py-20">
+          <motion.div initial="initial" whileInView="animate" viewport={viewport} variants={stagger.container(0.08)}>
+            <ProductComparison />
+          </motion.div>
+        </section>
+
+        {/* Social Proof (light) */}
+        <section className="bg-white py-20">
+          <motion.div initial="initial" whileInView="animate" viewport={viewport} variants={stagger.container(0.08)}>
+            <ProductSocialProof />
+          </motion.div>
+        </section>
+
+        {/* Technologies (light) */}
+        <section>
+          <motion.div initial="initial" whileInView="animate" viewport={viewport} variants={stagger.container(0.08)}>
+            <TechnologyStackCards />
+          </motion.div>
+        </section>
+
+        {/* Final CTA (brand gradient) */}
+        <section>
+          <motion.div initial="initial" whileInView="animate" viewport={viewport} variants={stagger.container(0.08)}>
+            <FinalCTA />
+          </motion.div>
+        </section>
+      </main>
+    </ParallaxProvider>
+  );
+}
+
+
