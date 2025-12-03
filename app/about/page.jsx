@@ -3,7 +3,6 @@ import AboutHero from "./_components/AboutHero";
 import MissionVision from "./_components/MissionVision";
 import WhatWeStandFor from "./_components/WhatWeStandFor";
 import LeadershipTeam from "./_components/LeadershipTeam";
-import HowWeWork from "./_components/HowWeWork";
 import WhatDrivesUs from "./_components/WhatDrivesUs";
 import TrustedMetrics from "./_components/TrustedMetrics";
 
@@ -89,19 +88,14 @@ const AboutPage = () => {
         <LeadershipTeam />
       </section>
       
-      {/* 5. How We Work - Light */}
-      <section className="bg-gradient-to-br from-[#FAFAFF] to-white py-20" id="how-we-work">
-        <HowWeWork />
+      {/* 5. Trusted Metrics - Light */}
+      <section className="bg-gradient-to-br from-[#FAFAFF] to-white py-20" id="trusted-metrics">
+        <TrustedMetrics />
       </section>
       
       {/* 6. What Drives Us - Light */}
       <section className="bg-gradient-to-br from-white to-[#FAFAFF] py-20" id="what-drives-us">
         <WhatDrivesUs />
-      </section>
-      
-      {/* 7. Trusted Metrics - Light */}
-      <section className="bg-gradient-to-br from-white to-[#FAFAFF] py-20" id="trusted-metrics">
-        <TrustedMetrics />
       </section>
       
     </main>

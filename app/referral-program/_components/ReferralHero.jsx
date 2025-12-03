@@ -11,7 +11,7 @@ export default function ReferralHero() {
       <div className="absolute inset-0 bg-[url('/images/grid-pattern.svg')] opacity-5" aria-hidden="true"></div>
       <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[800px] h-[800px] bg-gradient-brand rounded-full blur-3xl opacity-20" aria-hidden="true"></div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-16 lg:py-20">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-8 lg:py-12">
         <motion.div 
           className="grid lg:grid-cols-[1.1fr_1fr] gap-12 items-center"
           {...stagger.container(0.08)}

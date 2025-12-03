@@ -16,6 +16,7 @@ import CaseStudies from './components/CaseStudies';
 import MobileStickyCTA from './components/MobileStickyCTA';
 import ScrollToTop from './components/ScrollToTop';
 import TechnologyStackCards from './components/TechnologyStackCards';
+import PartnerLogos from './components/PartnerLogos';
 
 // Homepage structured data for SEO
 const homepageStructuredData = {
@@ -151,6 +152,12 @@ export default function Home() {
         <ClientFloatingCTA />
         <section className="bg-brand-navy text-white">
           <Hero />
+        </section>
+
+        <section data-gsap-section className="bg-white py-8">
+          <div data-gsap-stagger className="max-w-6xl mx-auto">
+            <PartnerLogos />
+          </div>
         </section>
 
         <section data-gsap-section className="bg-white py-8">

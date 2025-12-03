@@ -18,7 +18,7 @@ export default function ProductsHero() {
       {/* Ambient glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-gradient-to-br from-brand-aqua/20 via-brand-teal/10 to-transparent rounded-full blur-3xl" aria-hidden="true"></div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-20 lg:py-24">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-8 lg:py-12">
         <motion.div className="grid lg:grid-cols-[1.1fr_1fr] gap-12 items-center" {...stagger.container(0.08)}>
           <div className="text-white">
             <motion.h1 className="text-display font-bold leading-tight mb-6 text-balance" variants={fadeUp(20)}>

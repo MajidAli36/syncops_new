@@ -4,7 +4,7 @@ import SafeLink from "../../components/ui/SafeLink";
 
 const CareersHero = () => {
   return (
-    <section className="relative overflow-hidden bg-[#0B0A1C] py-12 lg:py-16">
+    <section className="relative overflow-hidden bg-[#0B0A1C] py-8 lg:py-12">
       {/* Background Effects */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#00B894]/10 to-[#00C4FF]/10 opacity-30"></div>
       <div className="absolute top-20 left-20 w-72 h-72 bg-gradient-to-r from-[#00B894] to-[#00C4FF] rounded-full filter blur-3xl opacity-20 animate-pulse"></div>
@@ -15,13 +15,13 @@ const CareersHero = () => {
           {/* Left Content */}
           <div className="text-center lg:text-left">
             <h1 className="text-4xl lg:text-6xl font-bold leading-snug mb-4">
-              <span className="bg-gradient-to-r from-[#00B894] to-[#00C4FF] bg-clip-text text-transparent">
+              <span className="text-white bg-clip-text text-transparent">
                 Join the Minds Behind
               </span>
               <br />
-              <span className="text-white">Tomorrow's AI-Powered</span>
+              <span className="bg-gradient-to-r from-[#00B894] to-[#00C4FF] bg-clip-text text-transparent">Tomorrow's AI-Powered</span>
               <br />
-              <span className="text-white">Innovations</span>
+              <span className="bg-gradient-to-r from-[#00B894] to-[#00C4FF] bg-clip-text text-transparent">Innovations</span>
             </h1>
             
             <p className="text-lg text-gray-300 mb-6 max-w-2xl mx-auto lg:mx-0 leading-relaxed">

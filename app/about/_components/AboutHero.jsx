@@ -4,7 +4,7 @@ import SafeLink from "../../components/ui/SafeLink";
 
 const AboutHero = () => {
   return (
-    <section className="relative overflow-hidden bg-[#0B0A1C] py-8 sm:py-10 md:py-12 lg:py-16">
+    <section className="relative overflow-hidden bg-[#0B0A1C] py-8  lg:py-12">
       {/* Background Effects */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#00B894]/10 to-[#00C4FF]/10 opacity-30"></div>
       <div className="absolute top-10 left-5 sm:top-16 sm:left-10 md:top-20 md:left-20 w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 bg-gradient-to-r from-[#00B894] to-[#00C4FF] rounded-full filter blur-3xl opacity-20 animate-pulse"></div>
@@ -13,15 +13,15 @@ const AboutHero = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 relative z-10 py-6 sm:py-8">
         <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12 items-center">
           {/* Left Content */}
-          <div className="text-center lg:text-left order-2 lg:order-1">
+          <div className="text-center lg:text-left order-1">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight sm:leading-snug mb-3 sm:mb-4 md:mb-5">
-              <span className="bg-gradient-to-r from-[#00B894] to-[#00C4FF] bg-clip-text text-transparent">
+              <span className="text-white bg-clip-text text-transparent">
                 Empowering the Future
               </span>
               <br />
-              <span className="text-white">with Purpose-Driven</span>
+              <span className="bg-gradient-to-r from-[#00B894] to-[#00C4FF] bg-clip-text text-transparent">with Purpose-Driven</span>
               <br />
-              <span className="text-white">Innovation</span>
+              <span className="bg-gradient-to-r from-[#00B894] to-[#00C4FF] bg-clip-text text-transparent">Innovation</span>
             </h1>
             
             <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-5 sm:mb-6 md:mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed px-2 sm:px-0">
@@ -55,7 +55,7 @@ const AboutHero = () => {
           </div>
           
           {/* Right Side - Futuristic Icon Cluster */}
-          <div className="relative order-1 lg:order-2">
+          <div className="relative order-2">
             <div className="bg-[#1A1A2E]/90 backdrop-blur-xl rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 border border-white/10 shadow-2xl max-h-[400px] sm:max-h-[450px] md:max-h-[500px] w-full">
               {/* Icon Grid */}
               <div className="grid grid-cols-3 gap-3 sm:gap-4 md:gap-6">
