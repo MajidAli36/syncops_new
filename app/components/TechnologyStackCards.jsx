@@ -214,7 +214,7 @@ const TechnologyStackCards = () => {
         {/* Bottom Stats */}
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8">
           <div className="text-center">
-            <div className="text-3xl font-bold text-[#00B894] mb-2">17+</div>
+            <div className="text-3xl font-bold text-[#00B894] mb-2">50+</div>
             <div className="text-gray-600">Technologies</div>
           </div>
           <div className="text-center">

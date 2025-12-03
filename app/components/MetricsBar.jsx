@@ -6,25 +6,29 @@ const metrics = [
     value: "50+",
     label: "Projects",
     icon: Rocket,
-    color: "from-brand-aqua to-brand-teal"
+    color: "from-brand-aqua to-brand-teal",
+    textColor: "text-brand-aqua"
   },
   {
     value: "99.5%",
     label: "Uptime",
     icon: Shield,
-    color: "from-brand-teal to-brand-aqua"
+    color: "from-brand-teal to-brand-aqua",
+    textColor: "text-brand-teal"
   },
   {
     value: "25+",
     label: "Integrations",
     icon: Zap,
-    color: "from-brand-aqua to-brand-teal"
+    color: "from-brand-aqua to-brand-teal",
+    textColor: "text-brand-aqua"
   },
   {
     value: "9.8/10",
     label: "Client Rating",
     icon: Star,
-    color: "from-brand-teal to-brand-aqua"
+    color: "from-brand-teal to-brand-aqua",
+    textColor: "text-brand-teal"
   }
 ];
 
@@ -44,7 +48,7 @@ export default function MetricsBar() {
                   {IconComponent && <IconComponent size={24} className="text-white" />}
                 </div>
                 
-                <div className="text-3xl font-bold text-gray-900 mb-2 group-hover:text-brand-teal transition-colors duration-300">
+                <div className={`text-3xl font-bold ${metric.textColor} mb-2 group-hover:opacity-80 transition-opacity duration-300`}>
                   {metric.value}
                 </div>
                 
