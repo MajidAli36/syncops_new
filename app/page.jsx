@@ -123,8 +123,56 @@ const homepageStructuredData = {
           "name": "SyncIQ: AI-Powered Operational Intelligence",
           "url": "https://syncops.tech/case-studies/synciq"
         }
+      },
+      {
+        "@type": "ListItem",
+        "position": 5,
+        "item": {
+          "@type": "CreativeWork",
+          "name": "SmartProperty AI: Real Estate Intelligence Platform",
+          "url": "https://syncops.tech/case-studies/smartproperty"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 6,
+        "item": {
+          "@type": "CreativeWork",
+          "name": "FitResume AI: Intelligent Resume Builder",
+          "url": "https://syncops.tech/case-studies/resume-ai"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 7,
+        "item": {
+          "@type": "CreativeWork",
+          "name": "Warehouse Visualization Dashboard",
+          "url": "https://syncops.tech/case-studies/wvd"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 8,
+        "item": {
+          "@type": "CreativeWork",
+          "name": "StudyMate AI: Homework Help Platform",
+          "url": "https://syncops.tech/case-studies/studymoto"
+        }
       }
     ]
+  },
+  "about": {
+    "@type": "Organization",
+    "name": "SyncOps",
+    "url": "https://syncops.tech",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "50",
+      "bestRating": "5",
+      "worstRating": "1"
+    }
   }
 };
 

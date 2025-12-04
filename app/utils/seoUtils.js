@@ -206,3 +206,88 @@ export function generateWebPageSchema({
   return schema;
 }
 
+/**
+ * Generate AggregateRating structured data
+ */
+export function generateAggregateRatingSchema({
+  ratingValue = "4.9",
+  reviewCount = "50",
+  bestRating = "5",
+  worstRating = "1"
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "AggregateRating",
+    "ratingValue": ratingValue,
+    "reviewCount": reviewCount,
+    "bestRating": bestRating,
+    "worstRating": worstRating
+  };
+}
+
+/**
+ * Generate LocalBusiness structured data
+ */
+export function generateLocalBusinessSchema({
+  name = "SyncOps",
+  description,
+  address,
+  telephone,
+  email,
+  url = BASE_URL,
+  priceRange = "$$",
+  openingHours = "Mo-Fr 09:00-18:00"
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": name,
+    "description": description || "Enterprise-grade AI-powered software solutions, development, and consulting.",
+    "url": url,
+    "telephone": telephone,
+    "email": email,
+    "address": address || {
+      "@type": "PostalAddress",
+      "addressLocality": "Gujranwala",
+      "addressRegion": "Punjab",
+      "addressCountry": "PK",
+      "streetAddress": "Mumtaz Market"
+    },
+    "priceRange": priceRange,
+    "openingHours": openingHours,
+    "areaServed": "Worldwide",
+    "sameAs": [
+      "https://www.linkedin.com/company/syncops",
+      "https://clutch.co/profile/syncops",
+      "https://techbehemoths.com/company/syncops"
+    ]
+  };
+}
+
+/**
+ * Generate SoftwareApplication structured data
+ */
+export function generateSoftwareApplicationSchema({
+  name,
+  description,
+  applicationCategory = "BusinessApplication",
+  operatingSystem = "Web",
+  offers,
+  aggregateRating
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": name,
+    "description": description,
+    "applicationCategory": applicationCategory,
+    "operatingSystem": operatingSystem,
+    "offers": offers || {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    ...(aggregateRating && { "aggregateRating": aggregateRating })
+  };
+}
+

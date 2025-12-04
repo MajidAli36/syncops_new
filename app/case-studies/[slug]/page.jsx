@@ -123,6 +123,16 @@ function generateStructuredData(caseStudyData, slug) {
       "@type": "Thing",
       "name": caseStudyData.industry,
     },
+    "keywords": [
+      caseStudyData.industry,
+      "case study",
+      "software development",
+      "AI solutions",
+      "SyncOps",
+      ...(caseStudyData.solutions?.flatMap(s => s.features || []) || [])
+    ].filter(Boolean).join(", "),
+    "inLanguage": "en-US",
+    "isAccessibleForFree": true,
   };
 
   // Add duration if available
@@ -167,6 +177,24 @@ function generateStructuredData(caseStudyData, slug) {
         "ratingValue": caseStudyData.testimonial.rating,
         "bestRating": 5,
       },
+      "itemReviewed": {
+        "@type": "Service",
+        "name": caseStudyData.title,
+        "provider": {
+          "@type": "Organization",
+          "name": "SyncOps",
+          "url": "https://syncops.tech"
+        }
+      }
+    };
+    
+    // Add aggregate rating
+    structuredData.aggregateRating = {
+      "@type": "AggregateRating",
+      "ratingValue": caseStudyData.testimonial.rating.toString(),
+      "reviewCount": "1",
+      "bestRating": "5",
+      "worstRating": "1"
     };
   }
 

@@ -96,9 +96,9 @@ export default function sitemap() {
     'medimind',
     'synciq',
     'smartproperty',
-    'warehouse',
-    'fitwork',
-    'studymate',
+    'wvd',
+    'resume-ai',
+    'studymoto',
   ];
 
   const caseStudyRoutes = caseStudies.map((slug) => ({

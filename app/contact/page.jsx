@@ -54,11 +54,65 @@ const page = () => {
     }
   };
 
+  // LocalBusiness structured data for better local SEO
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "SyncOps",
+    "alternateName": "SyncOps Technologies",
+    "description": "Enterprise-grade AI-powered software solutions, development, and consulting. Specializing in AI, cybersecurity, cloud, and custom software development.",
+    "url": "https://syncops.tech",
+    "telephone": "+92-301-8678-319",
+    "email": "info@syncops.tech",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Gujranwala",
+      "addressRegion": "Punjab",
+      "addressCountry": "PK",
+      "streetAddress": "Mumtaz Market"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "32.1617",
+      "longitude": "74.1883"
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "opens": "09:00",
+      "closes": "18:00"
+    },
+    "priceRange": "$$",
+    "areaServed": "Worldwide",
+    "sameAs": [
+      "https://www.linkedin.com/company/syncops",
+      "https://clutch.co/profile/syncops",
+      "https://techbehemoths.com/company/syncops"
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "50",
+      "bestRating": "5",
+      "worstRating": "1"
+    }
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(contactSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
       />
       <div>
         <ContactHero />

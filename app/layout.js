@@ -79,8 +79,21 @@ const organizationSchema = {
   "sameAs": [
     "https://www.linkedin.com/company/syncops",
     "https://twitter.com/syncops",
-    "https://github.com/syncopstech"
+    "https://github.com/syncopstech",
+    "https://clutch.co/profile/syncops",
+    "https://techbehemoths.com/company/syncops",
+    "https://rocketreach.co/syncops-profile_b6e4db2fc708a182",
+    "https://www.trustpilot.com/review/syncops.tech",
+    "https://tracxn.com/d/companies/syncops/__vXEaZ6f2kBDQ2cqCCZmYfSCy6Wqxpu2TXiTaJmWn-IA",
+    "https://www.crunchbase.com/organization/syncops"
   ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "50",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
   "founder": {
     "@type": "Person",
     "name": "Majid Ali",
@@ -125,6 +138,23 @@ const organizationSchema = {
     "@type": "Offer",
     "category": "Software Development Services",
     "description": "AI-powered software solutions, enterprise development, and consulting"
+  },
+  "knowsAbout": [
+    "Artificial Intelligence",
+    "Machine Learning",
+    "Software Development",
+    "Web Development",
+    "Mobile App Development",
+    "Cloud Computing",
+    "Cybersecurity",
+    "Data Analytics",
+    "Enterprise Software",
+    "SaaS Development"
+  ],
+  "award": "Top Software Development Company",
+  "numberOfEmployees": {
+    "@type": "QuantitativeValue",
+    "value": "50+"
   }
 };
 
