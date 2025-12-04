@@ -1,6 +1,8 @@
 "use client";
-import { CheckCircle, ArrowRight, ArrowDownCircle, TrendingUp, Zap, Rocket } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
+import { CheckCircle, ArrowRight, ArrowDownCircle, TrendingUp, Zap, Rocket, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { stagger, fadeUp, springSoft, slideFromLeft, slideFromRight } from '../../lib/motionConfig';
 
 const serviceGroups = [
@@ -80,10 +82,249 @@ const serviceGroups = [
 
 const mobileFirstViewport = { once: true, amount: 0.1 };
 
+// Detailed service information
+const serviceDetails = {
+  "Custom Development": {
+    title: "Custom Development",
+    description: "Tailored software solutions built with modern technologies",
+    fullDescription: "We create bespoke software solutions designed specifically for your business needs. Our custom development services leverage cutting-edge technologies to build scalable, maintainable, and high-performance applications.",
+    features: [
+      "Full-stack web and mobile applications",
+      "Modern tech stack (React, Next.js, Node.js, Python)",
+      "Scalable architecture design",
+      "API development and integration",
+      "Database design and optimization",
+      "Code quality and best practices"
+    ],
+    benefits: [
+      "Tailored to your specific requirements",
+      "Future-proof technology choices",
+      "Scalable and maintainable codebase",
+      "Comprehensive documentation"
+    ],
+    timeline: "4-12 weeks",
+    technologies: ["React", "Next.js", "Node.js", "Python", "TypeScript", "PostgreSQL"]
+  },
+  "MVP Development": {
+    title: "MVP Development",
+    description: "Rapid prototyping and minimum viable product creation",
+    fullDescription: "Get your product to market faster with our MVP development services. We focus on building core features that validate your business idea while maintaining high code quality.",
+    features: [
+      "Rapid prototyping and validation",
+      "Core feature development",
+      "User feedback integration",
+      "Iterative development approach",
+      "Cost-effective solutions",
+      "Quick time-to-market"
+    ],
+    benefits: [
+      "Validate ideas quickly",
+      "Reduce development costs",
+      "Faster market entry",
+      "User-driven improvements"
+    ],
+    timeline: "4-6 weeks",
+    technologies: ["React", "Next.js", "Node.js", "MongoDB", "AWS"]
+  },
+  "API Development": {
+    title: "API Development",
+    description: "Robust backend APIs and microservices architecture",
+    fullDescription: "Build powerful, secure, and scalable APIs that power your applications. We design RESTful and GraphQL APIs with microservices architecture for optimal performance.",
+    features: [
+      "RESTful and GraphQL APIs",
+      "Microservices architecture",
+      "API documentation and testing",
+      "Authentication and authorization",
+      "Rate limiting and security",
+      "Performance optimization"
+    ],
+    benefits: [
+      "Scalable architecture",
+      "Secure and reliable",
+      "Well-documented APIs",
+      "Easy integration"
+    ],
+    timeline: "2-6 weeks",
+    technologies: ["Node.js", "Express", "FastAPI", "GraphQL", "PostgreSQL", "Redis"]
+  },
+  "Process Automation": {
+    title: "Process Automation",
+    description: "Workflow automation and business process optimization",
+    fullDescription: "Streamline your business operations with intelligent automation solutions. We identify repetitive tasks and automate them to improve efficiency and reduce errors.",
+    features: [
+      "Workflow automation",
+      "Business process optimization",
+      "Integration with existing systems",
+      "Error reduction and consistency",
+      "Time and cost savings",
+      "Custom automation scripts"
+    ],
+    benefits: [
+      "Increased efficiency",
+      "Reduced manual errors",
+      "Cost savings",
+      "Improved productivity"
+    ],
+    timeline: "2-4 weeks",
+    technologies: ["Python", "Node.js", "Zapier", "Microsoft Power Automate"]
+  },
+  "AI Integration": {
+    title: "AI Integration",
+    description: "Machine learning and AI-powered automation solutions",
+    fullDescription: "Leverage the power of artificial intelligence to enhance your applications. We integrate machine learning models, natural language processing, and AI automation into your existing systems.",
+    features: [
+      "Machine learning model integration",
+      "Natural language processing",
+      "Computer vision solutions",
+      "Predictive analytics",
+      "Chatbot and virtual assistants",
+      "AI-powered automation"
+    ],
+    benefits: [
+      "Enhanced user experience",
+      "Data-driven insights",
+      "Automated decision making",
+      "Competitive advantage"
+    ],
+    timeline: "4-8 weeks",
+    technologies: ["Python", "TensorFlow", "PyTorch", "OpenAI", "LangChain", "AWS SageMaker"]
+  },
+  "DevOps Automation": {
+    title: "DevOps Automation",
+    description: "CI/CD pipelines and infrastructure automation",
+    fullDescription: "Implement DevOps best practices with automated CI/CD pipelines, infrastructure as code, and comprehensive monitoring solutions for seamless deployments.",
+    features: [
+      "CI/CD pipeline setup",
+      "Infrastructure as Code (IaC)",
+      "Automated testing and deployment",
+      "Container orchestration",
+      "Monitoring and logging",
+      "Security scanning"
+    ],
+    benefits: [
+      "Faster deployments",
+      "Reduced errors",
+      "Improved reliability",
+      "Better collaboration"
+    ],
+    timeline: "2-4 weeks",
+    technologies: ["Docker", "Kubernetes", "GitHub Actions", "Terraform", "AWS", "Jenkins"]
+  },
+  "Cloud Migration": {
+    title: "Cloud Migration",
+    description: "Seamless migration to cloud-native architectures",
+    fullDescription: "Move your applications to the cloud with minimal downtime. We handle the entire migration process, from planning to execution, ensuring a smooth transition.",
+    features: [
+      "Cloud architecture design",
+      "Data migration strategies",
+      "Application refactoring",
+      "Security and compliance",
+      "Performance optimization",
+      "Cost optimization"
+    ],
+    benefits: [
+      "Scalability and flexibility",
+      "Reduced infrastructure costs",
+      "Improved reliability",
+      "Enhanced security"
+    ],
+    timeline: "4-12 weeks",
+    technologies: ["AWS", "Azure", "Google Cloud", "Docker", "Kubernetes"]
+  },
+  "Performance Optimization": {
+    title: "Performance Optimization",
+    description: "Application and database performance tuning",
+    fullDescription: "Optimize your applications and databases for peak performance. We analyze bottlenecks, implement caching strategies, and fine-tune queries for maximum efficiency.",
+    features: [
+      "Application performance analysis",
+      "Database query optimization",
+      "Caching strategies",
+      "Code optimization",
+      "Load testing and tuning",
+      "Performance monitoring"
+    ],
+    benefits: [
+      "Faster response times",
+      "Better user experience",
+      "Reduced server costs",
+      "Improved scalability"
+    ],
+    timeline: "2-6 weeks",
+    technologies: ["Redis", "PostgreSQL", "MongoDB", "CDN", "Load Balancers"]
+  },
+  "Monitoring & Analytics": {
+    title: "Monitoring & Analytics",
+    description: "Real-time monitoring and actionable insights",
+    fullDescription: "Gain visibility into your applications with comprehensive monitoring and analytics solutions. Track performance, errors, and user behavior in real-time.",
+    features: [
+      "Real-time application monitoring",
+      "Error tracking and alerting",
+      "Performance metrics",
+      "User analytics",
+      "Custom dashboards",
+      "Automated reporting"
+    ],
+    benefits: [
+      "Proactive issue detection",
+      "Data-driven decisions",
+      "Improved reliability",
+      "Better user insights"
+    ],
+    timeline: "2-4 weeks",
+    technologies: ["Datadog", "New Relic", "Sentry", "Google Analytics", "Mixpanel"]
+  }
+};
+
 export default function Services() {
+  const [selectedService, setSelectedService] = useState(null);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  // Prevent background scroll when this drawer is open
+  useEffect(() => {
+    if (!isMounted) return;
+
+    const originalOverflow = document.body.style.overflow;
+
+    if (isDrawerOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = originalOverflow || "";
+    }
+
+    return () => {
+      document.body.style.overflow = originalOverflow || "";
+    };
+  }, [isDrawerOpen, isMounted]);
+
+  const handleServiceClick = (serviceTitle) => {
+    setSelectedService(serviceDetails[serviceTitle] || null);
+    setIsDrawerOpen(true);
+    // Dispatch event to hide "Let's Talk Business" button
+    window.dispatchEvent(new CustomEvent('serviceDrawerOpen'));
+  };
+
+  const closeDrawer = () => {
+    setIsDrawerOpen(false);
+    // Dispatch event to show "Let's Talk Business" button
+    window.dispatchEvent(new CustomEvent('serviceDrawerClose'));
+    setTimeout(() => setSelectedService(null), 300);
+  };
+
   return (
-    <div className="max-w-7xl mx-auto px-6 relative z-10">
-      <motion.div className="text-center mb-16" initial="initial" whileInView="animate" viewport={mobileFirstViewport} variants={stagger.container(0.06)}>
+    <div className="relative">
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <motion.div
+          className="text-center mb-16"
+          initial="initial"
+          whileInView="animate"
+          viewport={mobileFirstViewport}
+          variants={stagger.container(0.06)}
+        >
         <motion.h2 className="text-display-sm font-bold text-gray-900 mb-6" variants={fadeUp(16)}>
           From <span className="gradient-text">Build</span> to <span className="gradient-text-reverse">Scale</span>
         </motion.h2>
@@ -227,7 +468,10 @@ export default function Services() {
                           viewport={{ once: true }}
                           transition={{ delay: groupIndex * 0.2 + serviceIndex * 0.1 }}
                         >
-                          <div className="p-4 bg-white/80 backdrop-blur-sm rounded-lg border border-gray-200 hover:border-[#00B894] hover:shadow-lg transition-all duration-300 group-hover:scale-105">
+                          <div 
+                            onClick={() => handleServiceClick(service.title)}
+                            className="p-4 bg-white/80 backdrop-blur-sm rounded-lg border border-gray-200 hover:border-[#00B894] hover:shadow-lg transition-all duration-300 group-hover:scale-105 cursor-pointer"
+                          >
                             <div className="flex items-start gap-3">
                               <div className="w-8 h-8 bg-gradient-to-br from-[#00B894] to-[#00C4FF] rounded-lg flex items-center justify-center flex-shrink-0 group-hover:rotate-12 transition-transform duration-300">
                                 <CheckCircle className="w-4 h-4 text-white" />
@@ -254,6 +498,125 @@ export default function Services() {
           </div>
         </div>
       </div>
+      </div>
+
+      {/* Side Drawer rendered via portal to <body>, completely outside this section */}
+      {isMounted &&
+        createPortal(
+          <AnimatePresence>
+            {isDrawerOpen && selectedService && (
+              <>
+                {/* Backdrop */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  onClick={closeDrawer}
+                  className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50"
+                />
+
+                {/* Drawer */}
+                <motion.div
+                  initial={{ x: "100%" }}
+                  animate={{ x: 0 }}
+                  exit={{ x: "100%" }}
+                  transition={{ type: "spring", damping: 30, stiffness: 300 }}
+                  className="fixed right-0 top-0 h-full w-full max-w-2xl bg-white shadow-2xl z-50"
+                >
+                  <div className="flex flex-col h-full">
+                    {/* Header */}
+                    <div className="sticky top-0 bg-white border-b border-gray-200 z-10 p-6 flex items-center justify-between">
+                      <h2 className="text-2xl font-bold text-gray-900">{selectedService.title}</h2>
+                      <button
+                        onClick={closeDrawer}
+                        className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+                        aria-label="Close drawer"
+                      >
+                        <X className="w-6 h-6 text-gray-600" />
+                      </button>
+                    </div>
+
+                    {/* Scrollable content */}
+                    <div className="flex-1 overflow-y-auto p-6 space-y-6">
+                    {/* Description */}
+                    <div>
+                      <p className="text-gray-700 leading-relaxed">{selectedService.fullDescription}</p>
+                    </div>
+
+                    {/* Features */}
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-900 mb-4">Key Features</h3>
+                      <ul className="space-y-2">
+                        {selectedService.features.map((feature, index) => (
+                          <li key={index} className="flex items-start gap-3">
+                            <CheckCircle className="w-5 h-5 text-[#00B894] flex-shrink-0 mt-0.5" />
+                            <span className="text-gray-700">{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Benefits */}
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-900 mb-4">Benefits</h3>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        {selectedService.benefits.map((benefit, index) => (
+                          <div
+                            key={index}
+                            className="flex items-start gap-2 p-3 bg-gradient-to-r from-[#00B894]/10 to-[#00C4FF]/10 rounded-lg"
+                          >
+                            <div className="w-2 h-2 bg-[#00B894] rounded-full mt-2 flex-shrink-0" />
+                            <span className="text-gray-700">{benefit}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Timeline & Technologies */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="p-4 bg-gray-50 rounded-lg">
+                        <h4 className="text-sm font-semibold text-gray-600 mb-2">Timeline</h4>
+                        <p className="text-xl font-bold text-[#00B894]">{selectedService.timeline}</p>
+                      </div>
+                      <div className="p-4 bg-gray-50 rounded-lg">
+                        <h4 className="text-sm font-semibold text-gray-600 mb-3">Technologies</h4>
+                        <div className="flex flex-wrap gap-2">
+                          {selectedService.technologies.map((tech, index) => (
+                            <span
+                              key={index}
+                              className="px-3 py-1 bg-gradient-to-r from-[#00B894] to-[#00C4FF] text-white text-sm font-medium rounded-full"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+
+                    {/* Fixed bottom CTA Button */}
+                    <div className="border-t border-gray-200 p-6">
+                      <button
+                    onClick={() => {
+                      // Close the service drawer
+                      closeDrawer();
+                      // Dispatch custom event to open FloatingCTA with service pre-filled
+                      window.dispatchEvent(new CustomEvent('openContactForm', {
+                        detail: { service: selectedService.title }
+                      }));
+                    }}
+                    className="w-full py-3 px-6 bg-gradient-to-r from-[#00B894] to-[#00C4FF] text-white font-semibold rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105"
+                  >
+                    Get Started with {selectedService.title}
+                  </button>
+                    </div>
+                  </div>
+                </motion.div>
+              </>
+            )}
+          </AnimatePresence>,
+          document.body
+        )}
     </div>
   );
 }

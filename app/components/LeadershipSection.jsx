@@ -69,6 +69,17 @@ const cSuite = [
     blurb: "Manages brand strategy, marketing campaigns, and global visibility.",
     photo: "/images/leadership/Abu-Sufian.jpg",
   },
+  {
+    name: "Faizan Zia",
+    role: "Business Development Manager (BDM)",
+    experienceBadge: "5+ years' experience",
+    blurb: "Leads client relationships, discovers new growth opportunities, and supports strategic business expansion.",
+    photo: "/images/leadership/FaizanZiaBDM.jpeg",
+    website: "#",
+    linkedin: "#",
+    twitter: "#",
+    email: "#",
+  },
 ];
 
 // Combine all leadership members for coverflow

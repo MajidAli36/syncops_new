@@ -4,6 +4,7 @@ import { X, Phone, Mail, User, MapPin } from "lucide-react";
 
 const FloatingCTA = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isServiceDrawerOpen, setIsServiceDrawerOpen] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -12,6 +13,60 @@ const FloatingCTA = () => {
     region: "",
     services: []
   });
+
+  // Map service names from Services component to FloatingCTA service values
+  const serviceNameMap = {
+    "Custom Development": "custom-software",
+    "MVP Development": "custom-software",
+    "API Development": "web-development",
+    "Process Automation": "devops",
+    "AI Integration": "ai-ml",
+    "DevOps Automation": "devops",
+    "Cloud Migration": "cloud-solutions",
+    "Performance Optimization": "devops",
+    "Monitoring & Analytics": "devops"
+  };
+
+  // Listen for custom event to open form with pre-filled service
+  useEffect(() => {
+    const handleOpenContactForm = (event) => {
+      const { service } = event.detail || {};
+      if (service) {
+        const serviceValue = serviceNameMap[service];
+        if (serviceValue) {
+          setFormData(prev => ({
+            ...prev,
+            services: prev.services.includes(serviceValue) 
+              ? prev.services 
+              : [...prev.services, serviceValue]
+          }));
+        }
+        setIsOpen(true);
+      }
+    };
+
+    window.addEventListener('openContactForm', handleOpenContactForm);
+    return () => {
+      window.removeEventListener('openContactForm', handleOpenContactForm);
+    };
+  }, []);
+
+  // Listen for service drawer open/close events
+  useEffect(() => {
+    const handleServiceDrawerOpen = () => {
+      setIsServiceDrawerOpen(true);
+    };
+    const handleServiceDrawerClose = () => {
+      setIsServiceDrawerOpen(false);
+    };
+
+    window.addEventListener('serviceDrawerOpen', handleServiceDrawerOpen);
+    window.addEventListener('serviceDrawerClose', handleServiceDrawerClose);
+    return () => {
+      window.removeEventListener('serviceDrawerOpen', handleServiceDrawerOpen);
+      window.removeEventListener('serviceDrawerClose', handleServiceDrawerClose);
+    };
+  }, []);
 
 
   const regionOptions = [
@@ -97,15 +152,27 @@ const FloatingCTA = () => {
 
   return (
     <>
-      {/* Floating CTA Button */}
-      {!isOpen && (
+      {/* Mobile: Circular button at bottom */}
+      {!isOpen && !isServiceDrawerOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed top-1/3 right-0 z-[9999] w-[56px] h-[160px] bg-gradient-to-b from-teal-400 to-cyan-500 rounded-l-xl shadow-lg cursor-pointer hover:brightness-110 transition duration-300 ease-in-out flex items-center justify-center"
+          className="fixed bottom-6 right-6 sm:hidden z-[9999] w-14 h-14 bg-gradient-to-br from-teal-400 to-cyan-500 rounded-full shadow-lg cursor-pointer hover:brightness-110 transition duration-300 ease-in-out flex items-center justify-center"
           aria-label="Open Contact Form"
           style={{ transform: 'translateZ(0)' }}
         >
-          <span className="block rotate-90 text-white font-semibold text-sm tracking-wide whitespace-nowrap pointer-events-none select-none">
+          <Phone className="w-6 h-6 text-white" />
+        </button>
+      )}
+
+      {/* Desktop: Vertical side button */}
+      {!isOpen && !isServiceDrawerOpen && (
+        <button
+          onClick={() => setIsOpen(true)}
+          className="hidden sm:flex fixed top-1/3 right-0 z-[9999] w-[56px] h-[160px] bg-gradient-to-b from-teal-400 to-cyan-500 rounded-l-xl shadow-lg cursor-pointer hover:brightness-110 transition duration-300 ease-in-out items-center justify-center"
+          aria-label="Open Contact Form"
+          style={{ transform: 'translateZ(0)' }}
+        >
+          <span className="rotate-90 text-white font-semibold text-sm tracking-wide whitespace-nowrap pointer-events-none select-none">
             Let&apos;s Talk Business
           </span>
         </button>

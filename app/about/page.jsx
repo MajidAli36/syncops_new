@@ -4,7 +4,7 @@ import MissionVision from "./_components/MissionVision";
 import WhatWeStandFor from "./_components/WhatWeStandFor";
 import LeadershipTeam from "./_components/LeadershipTeam";
 import WhatDrivesUs from "./_components/WhatDrivesUs";
-import TrustedMetrics from "./_components/TrustedMetrics";
+import HowWeWork from "./_components/HowWeWork";
 
 export const metadata = {
   title: "About SyncOps - Empowering the Future with Purpose-Driven Innovation",
@@ -88,9 +88,9 @@ const AboutPage = () => {
         <LeadershipTeam />
       </section>
       
-      {/* 5. Trusted Metrics - Light */}
+     
       <section className="bg-gradient-to-br from-[#FAFAFF] to-white py-20" id="trusted-metrics">
-        <TrustedMetrics />
+       <HowWeWork />
       </section>
       
       {/* 6. What Drives Us - Light */}

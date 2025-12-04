@@ -189,23 +189,43 @@ const TechnologyStackCards = () => {
               className="group bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-100 relative overflow-hidden"
             >
               {/* Hover Glow Effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-[#00B894]/5 to-[#00C4FF]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-[#00B894]/5 to-[#00C4FF]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl" />
               
               <div className="relative z-10">
-                {/* Icon */}
-                <div className={`${tech.color} mb-4 origin-left transition-transform duration-300 group-hover:scale-105`}>
-                  {tech.icon}
+                {/* Icon + Category pill */}
+                <div className="flex items-start justify-between mb-4">
+                  <div className={`${tech.color} origin-left transition-transform duration-300 group-hover:scale-105`}>
+                    {tech.icon}
+                  </div>
+                  <span className="ml-3 px-3 py-1 rounded-full bg-gray-100 text-gray-600 text-xs font-medium capitalize">
+                    {tech.category}
+                  </span>
                 </div>
                 
                 {/* Title */}
-                <h3 className="text-xl font-bold text-[#2D2D2D] mb-3 group-hover:text-[#00B894] transition-colors duration-300">
+                <h3 className="text-xl font-bold text-[#2D2D2D] mb-2 group-hover:text-[#00B894] transition-colors duration-300">
                   {tech.name}
                 </h3>
                 
                 {/* Description */}
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-600 leading-relaxed text-sm mb-4">
                   {tech.description}
                 </p>
+
+                {/* Simple capability graph for a more \"diagram\" feel */}
+                <div className="bg-gray-50 rounded-lg p-3">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-xs font-semibold text-gray-600">
+                      Capability coverage
+                    </span>
+                    <span className="text-xs font-bold text-[#00B894]">
+                      100%
+                    </span>
+                  </div>
+                  <div className="h-1.5 w-full bg-gray-200 rounded-full overflow-hidden">
+                    <div className="h-full w-full bg-gradient-to-r from-[#00B894] to-[#00C4FF] rounded-full" />
+                  </div>
+                </div>
               </div>
             </div>
           ))}

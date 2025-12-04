@@ -69,6 +69,17 @@ const getInitials = (full) => {
       twitter: "#",
     email: "#",
   },
+  {
+    name: "Faizan Zia",
+    role: "Business Development Manager (BDM)",
+    experienceBadge: "5+ years' experience",
+    blurb: "Drives sales pipeline growth, nurtures client partnerships, and supports revenue-focused initiatives at SyncOps.",
+    photo: "/images/leadership/FaizanZiaBDM.jpeg",
+    website: "#",
+    linkedin: "#",
+    twitter: "#",
+    email: "#",
+  },
 ];
 
 // Coverflow Card Component

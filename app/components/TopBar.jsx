@@ -22,7 +22,7 @@ export const MobileMenuContext = createContext({ isMobileMenuOpen: false, setIsM
 
 const socialLinks = [
   { href: "https://www.linkedin.com/company/syncops", icon: Linkedin, label: "LinkedIn", tooltip: "Follow us on LinkedIn" },
-  { href: "https://www.facebook.com/people/SyncOps/61560935900877/?mibextid=kFxxJD", icon: Facebook, label: "Facebook", tooltip: "Follow us on Facebook" },
+  { href: "https://www.facebook.com/SyncOpsTech", icon: Facebook, label: "Facebook", tooltip: "Follow us on Facebook" },
   { href: "https://www.youtube.com/@syncops-tech", icon: Youtube, label: "YouTube", tooltip: "Subscribe to our YouTube" },
   { href: "https://www.instagram.com/syncops_tech/", icon: Instagram, label: "Instagram", tooltip: "Follow us on Instagram" },
 ];

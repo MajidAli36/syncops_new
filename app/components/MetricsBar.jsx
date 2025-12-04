@@ -6,29 +6,29 @@ const metrics = [
     value: "50+",
     label: "Projects",
     icon: Rocket,
-    color: "from-brand-aqua to-brand-teal",
-    textColor: "text-brand-aqua"
+    color: "from-green-500 to-teal-500",
+    textColor: "text-green-600"
   },
   {
     value: "99.5%",
     label: "Uptime",
     icon: Shield,
-    color: "from-brand-teal to-brand-aqua",
-    textColor: "text-brand-teal"
+    color: "from-blue-500 to-cyan-400",
+    textColor: "text-blue-600"
   },
   {
     value: "25+",
     label: "Integrations",
     icon: Zap,
-    color: "from-brand-aqua to-brand-teal",
-    textColor: "text-brand-aqua"
+    color: "from-purple-600 to-pink-500",
+    textColor: "text-purple-600"
   },
   {
     value: "9.8/10",
     label: "Client Rating",
     icon: Star,
-    color: "from-brand-teal to-brand-aqua",
-    textColor: "text-brand-teal"
+    color: "from-orange-500 to-red-600",
+    textColor: "text-orange-600"
   }
 ];
 
