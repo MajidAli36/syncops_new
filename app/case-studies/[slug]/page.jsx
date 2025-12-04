@@ -199,6 +199,7 @@ export default async function CaseStudyPage({ params }) {
           industry={caseStudyData.industry}
           duration={caseStudyData.duration}
           team={caseStudyData.team}
+          demoLink={caseStudyData.demoLink}
         />
         <ChallengeSection challenges={caseStudyData.challenges} />
         <SolutionSection solutions={caseStudyData.solutions} />

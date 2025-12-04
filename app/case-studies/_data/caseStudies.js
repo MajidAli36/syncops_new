@@ -8,6 +8,7 @@ export const caseStudiesData = {
     industry: "Community Intelligence",
     duration: "8 months",
     team: "12 specialists",
+    demoLink: "https://geopulse.syncops.tech/",
     challenges: [
       {
         title: "Data Collection in Remote Areas",
@@ -99,6 +100,7 @@ export const caseStudiesData = {
     industry: "HR Management",
     duration: "10 months",
     team: "15 specialists",
+    demoLink: "https://hr.syncops.tech/",
     challenges: [
       {
         title: "Manual HR Processes and Spreadsheet Chaos",
@@ -190,6 +192,7 @@ export const caseStudiesData = {
     industry: "Healthcare",
     duration: "12 months",
     team: "18 specialists",
+    demoLink: "https://medicalai.syncops.tech/",
     challenges: [
       {
         title: "Time-Consuming Manual Charting and Documentation",
@@ -281,6 +284,7 @@ export const caseStudiesData = {
     industry: "Operational Intelligence",
     duration: "14 months",
     team: "20 specialists",
+    demoLink: "https://synciq.syncops.tech/",
     challenges: [
       {
         title: "Manual Audit Processes and Compliance Monitoring",
@@ -372,6 +376,7 @@ export const caseStudiesData = {
     industry: "Real Estate",
     duration: "11 months",
     team: "16 specialists",
+    demoLink: "https://smartproperty.syncops.tech/",
     challenges: [
       {
         title: "Inefficient Property Search and Lack of AI Insights",
@@ -463,6 +468,7 @@ export const caseStudiesData = {
     industry: "Career & Recruitment",
     duration: "9 months",
     team: "14 specialists",
+    demoLink: "https://fitresume.syncops.tech/",
     challenges: [
       {
         title: "Manual Formatting and ATS Rejections",
@@ -554,6 +560,7 @@ export const caseStudiesData = {
     industry: "Warehouse & Logistics",
     duration: "13 months",
     team: "17 specialists",
+    demoLink: "https://warehouse.syncops.tech/",
     challenges: [
       {
         title: "Lack of Real-Time Warehouse Visibility and Manual Monitoring",
@@ -645,6 +652,7 @@ export const caseStudiesData = {
     industry: "Education Technology",
     duration: "10 months",
     team: "15 specialists",
+    demoLink: "https://studymate.syncops.tech/",
     challenges: [
       {
         title: "Limited Access to Quality Tutoring and Homework Help",

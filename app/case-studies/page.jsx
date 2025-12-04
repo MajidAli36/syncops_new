@@ -378,14 +378,13 @@ export default function CaseStudiesPage() {
                     <div className="relative bg-white/5 backdrop-blur-xl rounded-3xl overflow-hidden transition-all duration-700 transform group-hover:scale-[1.03] group-hover:shadow-glow-xl border border-white/10 h-full flex flex-col hover:border-brand-aqua/30">
                       
                       {/* Image Section */}
-                      <div className="relative h-72 overflow-hidden flex-shrink-0">
+                      <div className="relative h-72 overflow-hidden flex-shrink-0 bg-gray-900 flex items-center justify-center">
                         <Image
                           src={study.image}
                           alt={`${study.title} - ${study.industry} case study by SyncOps. ${study.description}`}
                           width={400}
                           height={288}
-                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                          style={{ objectPosition: 'center 20%' }}
+                          className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
                           loading={index < 6 ? "eager" : "lazy"}
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         />

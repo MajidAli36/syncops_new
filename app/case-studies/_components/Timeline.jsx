@@ -45,26 +45,26 @@ const TimelineSection = ({ duration, team }) => {
   ];
 
   return (
-    <section className="relative py-16 lg:py-20 bg-gradient-to-b from-white via-gray-50/50 to-white overflow-hidden" aria-labelledby="timeline-heading">
+    <section className="relative py-12 sm:py-16 lg:py-20 bg-gradient-to-b from-white via-gray-50/50 to-white overflow-hidden" aria-labelledby="timeline-heading">
       {/* Background decoration */}
       <div className="absolute inset-0">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-brand-teal/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-80 h-80 bg-brand-aqua/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-0 right-0 w-64 h-64 sm:w-96 sm:h-96 bg-brand-teal/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-56 h-56 sm:w-80 sm:h-80 bg-brand-aqua/5 rounded-full blur-3xl"></div>
       </div>
       
-      <div className="container mx-auto px-6 md:px-12 relative z-10">
-        <InViewWrapper animation="fadeUp" className="text-center mb-12">
-          <h2 id="timeline-heading" className="text-4xl md:text-5xl font-bold text-brand-navy mb-4">
+      <div className="container mx-auto px-4 sm:px-6 md:px-12 relative z-10">
+        <InViewWrapper animation="fadeUp" className="text-center mb-8 sm:mb-12">
+          <h2 id="timeline-heading" className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-brand-navy mb-3 sm:mb-4">
             Implementation Journey
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed px-4">
             A structured approach to delivering exceptional results
           </p>
           <div className="w-24 h-1 bg-gradient-brand mx-auto mt-6 rounded-full"></div>
         </InViewWrapper>
 
         <div className="max-w-5xl mx-auto">
-          <StaggerWrapper className="space-y-6" stagger={0.15}>
+          <StaggerWrapper className="space-y-4 sm:space-y-6" stagger={0.15}>
             {phases.map((phase, index) => {
               const IconComponent = phase.icon;
               const isEven = index % 2 === 0;
@@ -72,34 +72,34 @@ const TimelineSection = ({ duration, team }) => {
               return (
                 <div
                   key={index}
-                  className="relative flex flex-col md:flex-row items-start md:items-center gap-6 group"
+                  className="relative flex flex-col md:flex-row items-start md:items-center gap-4 sm:gap-6 group"
                 >
                   {/* Timeline line (hidden on mobile) */}
                   {index < phases.length - 1 && (
-                    <div className="hidden md:block absolute left-8 top-14 w-0.5 h-16 bg-gradient-to-b from-brand-teal/30 to-brand-aqua/30"></div>
+                    <div className="hidden md:block absolute left-6 sm:left-8 top-12 sm:top-14 w-0.5 h-12 sm:h-16 bg-gradient-to-b from-brand-teal/30 to-brand-aqua/30"></div>
                   )}
                   
                   {/* Icon/Number */}
                   <div className="relative z-10 flex-shrink-0">
-                    <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${phase.color} flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-300`}>
-                      <IconComponent className="w-7 h-7 text-white" />
+                    <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-lg sm:rounded-xl bg-gradient-to-br ${phase.color} flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-300`}>
+                      <IconComponent className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 text-white" />
                     </div>
-                    <div className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-white rounded-full flex items-center justify-center text-xs font-bold text-brand-navy shadow-md">
+                    <div className="absolute -top-1 -right-1 sm:-top-1.5 sm:-right-1.5 w-4 h-4 sm:w-5 sm:h-5 bg-white rounded-full flex items-center justify-center text-[10px] sm:text-xs font-bold text-brand-navy shadow-md">
                       {index + 1}
                     </div>
                   </div>
                   
                   {/* Content Card */}
-                  <div className={`flex-1 w-full md:text-left bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg hover:scale-[1.01] transition-all duration-300 group-hover:border-brand-teal`}>
-                    <div className="flex flex-wrap items-center gap-3 mb-2">
-                      <h3 className="text-xl md:text-2xl font-bold text-brand-navy group-hover:text-brand-teal transition-colors">
+                  <div className={`flex-1 w-full md:text-left bg-white rounded-lg sm:rounded-xl p-4 sm:p-6 shadow-md border border-gray-100 hover:shadow-lg hover:scale-[1.01] transition-all duration-300 group-hover:border-brand-teal`}>
+                    <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-2">
+                      <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-brand-navy group-hover:text-brand-teal transition-colors">
                         {phase.phase}
                       </h3>
-                      <span className="text-xs font-semibold text-brand-teal bg-brand-teal/10 px-3 py-1 rounded-full whitespace-nowrap">
+                      <span className="text-[10px] sm:text-xs font-semibold text-brand-teal bg-brand-teal/10 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full whitespace-nowrap">
                         {phase.duration}
                       </span>
                     </div>
-                    <p className="text-gray-600 leading-relaxed text-base">
+                    <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
                       {phase.description}
                     </p>
                   </div>
