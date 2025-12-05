@@ -39,7 +39,7 @@ const CEOMessage = () => {
                   <div className="w-48 h-48 mx-auto bg-gradient-to-r from-[#00B894] to-[#00C4FF] rounded-full p-[6px] shadow-2xl">
                     <div className="w-full h-full bg-white rounded-full overflow-hidden border-2 border-white shadow-inner">
                       <Image
-                        src="/images/leadership/Majid-aliCEO.jpeg"
+                        src="https://res.cloudinary.com/dfdzl01qj/image/upload/v1764948234/majid-ali-ceo-syncops_c6y6ay.jpg"
                         alt="Majid Ali - CEO of SyncOps"
                         width={192}
                         height={192}
@@ -119,7 +119,7 @@ const CEOMessage = () => {
                     </svg>
                   </a>
                   <a
-                    href="https://github.com/majidali"
+                    href="https://github.com/MajidAli36"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="View Majid Ali's GitHub profile"
