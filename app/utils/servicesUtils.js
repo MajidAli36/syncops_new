@@ -700,4 +700,460 @@ export const servicesData = {
     ],
     accentColor: "#D62828",
   },
+
+  "ecommerce-solutions": {
+    title: "E-commerce Solutions",
+    description:
+      "Complete marketplace platforms with secure payments, inventory control, and order orchestration. We build scalable e-commerce solutions that drive sales, enhance customer experiences, and streamline operations. From online stores to complex multi-vendor marketplaces, our solutions are designed to grow with your business and adapt to changing market demands.",
+    image:
+      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8RWNvbW1lcmNlfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=500",
+    processTitle: "E-commerce Development Process",
+    processDescription:
+      "Our comprehensive e-commerce development process ensures a seamless shopping experience, secure transactions, and scalable infrastructure that grows with your business.",
+    process: [
+      {
+        icon: "ShoppingCart",
+        title: "Platform Strategy & Planning",
+        description:
+          "We begin by understanding your business model, target audience, and product catalog. Our team designs a comprehensive e-commerce strategy that includes platform selection, feature requirements, and integration needs. We analyze your competitors and market trends to create a unique value proposition that sets your store apart.",
+      },
+      {
+        icon: "Layout",
+        title: "UI/UX Design & User Experience",
+        description:
+          "Creating an intuitive and visually appealing shopping experience is crucial for conversion. Our design team focuses on user-friendly navigation, product discovery, and checkout optimization. We design responsive interfaces that work seamlessly across all devices, ensuring customers can shop comfortably from anywhere.",
+      },
+      {
+        icon: "CreditCard",
+        title: "Payment Gateway Integration",
+        description:
+          "We integrate secure payment gateways that support multiple payment methods including credit cards, digital wallets, and buy-now-pay-later options. Our solutions are PCI-DSS compliant and support international transactions, ensuring secure and smooth payment processing for customers worldwide.",
+      },
+      {
+        icon: "Package",
+        title: "Inventory & Order Management",
+        description:
+          "Efficient inventory management is key to running a successful e-commerce business. We build systems that track stock levels in real-time, manage multiple warehouses, handle order fulfillment, and provide automated notifications. Our solutions integrate with shipping providers for seamless logistics management.",
+      },
+      {
+        icon: "ChartBar",
+        title: "Analytics & Optimization",
+        description:
+          "Data-driven decisions are essential for e-commerce success. We implement comprehensive analytics to track sales, customer behavior, conversion rates, and marketing performance. Our dashboards provide actionable insights that help optimize product offerings, pricing strategies, and marketing campaigns.",
+      },
+    ],
+    features: [
+      {
+        title: "Multi-Vendor Marketplace",
+        description:
+          "Build powerful multi-vendor platforms that allow multiple sellers to list and sell products. Our solutions include vendor management, commission tracking, and automated payouts, enabling you to scale your marketplace efficiently.",
+      },
+      {
+        title: "Mobile Commerce",
+        description:
+          "With mobile commerce becoming increasingly important, we build mobile-optimized stores and native mobile apps that provide seamless shopping experiences. Our solutions support mobile payments, push notifications, and location-based features.",
+      },
+      {
+        title: "SEO & Marketing Tools",
+        description:
+          "We integrate SEO best practices and marketing tools directly into your e-commerce platform. Features include product SEO optimization, email marketing automation, social media integration, and promotional campaign management to drive traffic and increase sales.",
+      },
+      {
+        title: "Customer Management",
+        description:
+          "Build lasting customer relationships with comprehensive CRM features. Our solutions include customer profiles, order history, wishlists, loyalty programs, and personalized recommendations that enhance customer satisfaction and encourage repeat purchases.",
+      },
+      {
+        title: "Security & Compliance",
+        description:
+          "E-commerce platforms handle sensitive customer data and payment information. We implement robust security measures including SSL encryption, secure authentication, fraud detection, and compliance with GDPR, PCI-DSS, and other regulatory requirements.",
+      },
+      {
+        title: "Scalable Architecture",
+        description:
+          "As your business grows, your e-commerce platform needs to scale. We build solutions on scalable cloud infrastructure that can handle traffic spikes during sales events, support growing product catalogs, and accommodate increasing transaction volumes without performance degradation.",
+      },
+    ],
+    accentColor: "#FF6B6B",
+  },
+
+  "system-integration": {
+    title: "System Integration",
+    description:
+      "Connect third-party APIs, legacy software, and modern platforms so data flows across the business. Our system integration services ensure seamless communication between different systems, eliminating data silos and improving operational efficiency. We help businesses connect their existing infrastructure with new technologies, enabling unified workflows and real-time data synchronization.",
+    image:
+      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8U3lzdGVtJTIwSW50ZWdyYXRpb258ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=500",
+    processTitle: "System Integration Process",
+    processDescription:
+      "Our systematic approach to system integration ensures minimal disruption to your operations while connecting disparate systems into a unified, efficient ecosystem.",
+    process: [
+      {
+        icon: "Network",
+        title: "Integration Assessment",
+        description:
+          "We start by analyzing your existing systems, identifying integration points, and understanding data flow requirements. Our team maps out all systems, APIs, and data sources to create a comprehensive integration architecture. We identify potential challenges and design solutions that minimize disruption to your current operations.",
+      },
+      {
+        icon: "Code",
+        title: "API Development & Custom Connectors",
+        description:
+          "We develop custom APIs and connectors that enable seamless communication between systems. Our solutions support REST, GraphQL, SOAP, and other protocols. We build middleware solutions that translate data formats, handle authentication, and manage communication protocols between different systems.",
+      },
+      {
+        icon: "Database",
+        title: "Data Mapping & Transformation",
+        description:
+          "Different systems often use different data formats and structures. We map data fields between systems and create transformation logic that ensures data integrity and consistency. Our solutions handle data validation, enrichment, and error handling to maintain data quality across all integrated systems.",
+      },
+      {
+        icon: "ShieldCheck",
+        title: "Security & Authentication",
+        description:
+          "System integration requires secure authentication and authorization mechanisms. We implement OAuth, API keys, and other security protocols to ensure that only authorized systems can access and exchange data. Our solutions include encryption, audit logging, and compliance with security standards.",
+      },
+      {
+        icon: "Monitor",
+        title: "Testing & Monitoring",
+        description:
+          "Thorough testing ensures that integrated systems work correctly together. We perform integration testing, load testing, and end-to-end testing to validate data flow and system behavior. After deployment, we implement monitoring solutions that track integration health, detect errors, and provide alerts for any issues.",
+      },
+    ],
+    features: [
+      {
+        title: "Legacy System Integration",
+        description:
+          "Connect modern applications with legacy systems without requiring complete replacement. We build bridges between old and new technologies, enabling data exchange and workflow automation while preserving your existing investments in legacy infrastructure.",
+      },
+      {
+        title: "Real-Time Data Sync",
+        description:
+          "Ensure data consistency across all systems with real-time synchronization. Our solutions update data across integrated systems instantly, eliminating delays and ensuring that all systems have access to the most current information.",
+      },
+      {
+        title: "Cloud Integration",
+        description:
+          "Integrate cloud-based services with on-premises systems and other cloud platforms. We connect SaaS applications, cloud databases, and cloud storage solutions, enabling hybrid architectures that leverage the best of both cloud and on-premises technologies.",
+      },
+      {
+        title: "Enterprise Service Bus (ESB)",
+        description:
+          "For complex integration scenarios, we implement Enterprise Service Bus architectures that provide a centralized platform for managing integrations. ESB solutions simplify integration management, provide message routing, and enable scalable integration patterns.",
+      },
+      {
+        title: "Workflow Automation",
+        description:
+          "Automate business processes that span multiple systems. Our integration solutions trigger automated workflows based on events in one system, executing actions in other systems. This eliminates manual data entry and reduces the risk of errors.",
+      },
+      {
+        title: "API Management",
+        description:
+          "Manage and govern all your APIs from a central platform. We provide API management solutions that include rate limiting, versioning, documentation, and analytics. This ensures consistent API design, security, and performance across all integrations.",
+      },
+    ],
+    accentColor: "#4ECDC4",
+  },
+
+  "digital-transformation": {
+    title: "Digital Transformation",
+    description:
+      "End-to-end modernization programs that reinvent processes, products, and customer experiences. Our digital transformation services help businesses embrace new technologies, optimize operations, and create innovative digital experiences. We guide organizations through comprehensive digital journeys that enhance competitiveness, improve customer satisfaction, and drive sustainable growth.",
+    image:
+      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8RGlnaXRhbCUyMFRyYW5zZm9ybWF0aW9ufGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=500",
+    processTitle: "Digital Transformation Process",
+    processDescription:
+      "Our holistic approach to digital transformation ensures that technology investments align with business objectives, creating sustainable competitive advantages and measurable business value.",
+    process: [
+      {
+        icon: "Target",
+        title: "Digital Strategy & Vision",
+        description:
+          "We begin by understanding your business goals, market position, and competitive landscape. Our team develops a comprehensive digital transformation roadmap that aligns technology initiatives with business objectives. We identify opportunities for innovation, process improvement, and customer experience enhancement.",
+      },
+      {
+        icon: "Users",
+        title: "Change Management & Culture",
+        description:
+          "Successful digital transformation requires organizational change. We help build a digital-first culture by providing training, change management strategies, and communication plans. Our approach ensures that employees are engaged, equipped, and motivated to embrace new technologies and ways of working.",
+      },
+      {
+        icon: "Code",
+        title: "Technology Implementation",
+        description:
+          "We implement modern technologies that drive digital transformation, including cloud platforms, AI/ML solutions, automation tools, and data analytics platforms. Our solutions are designed to be scalable, secure, and adaptable to future needs, ensuring long-term value from technology investments.",
+      },
+      {
+        icon: "TrendingUp",
+        title: "Process Optimization",
+        description:
+          "Digital transformation goes beyond technology—it's about reimagining business processes. We analyze existing workflows, identify inefficiencies, and redesign processes to leverage digital capabilities. This includes automation, workflow optimization, and elimination of manual, error-prone tasks.",
+      },
+      {
+        icon: "BarChart",
+        title: "Performance Measurement",
+        description:
+          "We establish KPIs and metrics to measure the success of digital transformation initiatives. Our dashboards and analytics provide real-time visibility into transformation progress, enabling data-driven decision-making and continuous improvement. We track ROI, efficiency gains, and customer satisfaction improvements.",
+      },
+    ],
+    features: [
+      {
+        title: "Customer Experience Transformation",
+        description:
+          "Reimagine customer interactions with digital-first experiences. We design and implement omnichannel customer experiences that span web, mobile, and physical touchpoints. Our solutions include personalization, self-service capabilities, and seamless cross-channel experiences that delight customers.",
+      },
+      {
+        title: "Data-Driven Decision Making",
+        description:
+          "Transform data into strategic assets with advanced analytics and business intelligence. We implement data platforms that collect, process, and analyze data from across your organization, providing actionable insights that drive better decision-making and strategic planning.",
+      },
+      {
+        title: "Agile & DevOps Culture",
+        description:
+          "Build organizational agility with modern development practices. We help establish Agile methodologies, DevOps practices, and continuous delivery pipelines that enable faster innovation cycles, improved quality, and better responsiveness to market changes.",
+      },
+      {
+        title: "Innovation Labs",
+        description:
+          "Create dedicated spaces for experimentation and innovation. We help establish innovation labs where teams can explore emerging technologies, prototype new ideas, and test innovative solutions in a risk-free environment before scaling successful initiatives.",
+      },
+      {
+        title: "Ecosystem Integration",
+        description:
+          "Connect with partners, suppliers, and customers through digital ecosystems. We build platforms and APIs that enable seamless collaboration, data sharing, and value creation across your business ecosystem, creating new opportunities for growth and innovation.",
+      },
+      {
+        title: "Future-Proof Architecture",
+        description:
+          "Build technology foundations that adapt to future changes. Our digital transformation solutions use modular, microservices-based architectures that can evolve with your business. This ensures that your technology investments remain valuable as your needs and the market evolve.",
+      },
+    ],
+    accentColor: "#8338EC",
+  },
+
+  "quality-assurance": {
+    title: "Quality Assurance & Testing",
+    description:
+      "Comprehensive QA covering automated, performance, and security testing for reliable releases. Our quality assurance services ensure that your software meets the highest standards of quality, reliability, and security. We employ a comprehensive testing strategy that covers all aspects of software quality, from functional testing to performance optimization and security validation.",
+    image:
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8UXVhbGl0eSUyMEFzc3VyYW5jZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=500",
+    processTitle: "Quality Assurance Process",
+    processDescription:
+      "Our systematic QA process ensures comprehensive test coverage, early bug detection, and continuous quality improvement throughout the software development lifecycle.",
+    process: [
+      {
+        icon: "FileText",
+        title: "Test Planning & Strategy",
+        description:
+          "We begin by analyzing requirements and creating comprehensive test plans that cover all functional and non-functional aspects. Our test strategy includes test case design, test data preparation, and risk assessment. We identify critical test scenarios and prioritize testing efforts to maximize coverage while optimizing resources.",
+      },
+      {
+        icon: "Code",
+        title: "Automated Testing",
+        description:
+          "We develop automated test suites that run continuously, catching bugs early in the development cycle. Our automation frameworks support unit testing, integration testing, API testing, and end-to-end testing. Automated tests provide fast feedback, reduce manual effort, and ensure consistent test execution across different environments.",
+      },
+      {
+        icon: "Users",
+        title: "Manual & Exploratory Testing",
+        description:
+          "While automation handles repetitive tests, our QA engineers perform manual and exploratory testing to discover edge cases, usability issues, and unexpected behaviors. We test from the user's perspective, ensuring that the software is intuitive, accessible, and provides a positive user experience.",
+      },
+      {
+        icon: "Gauge",
+        title: "Performance Testing",
+        description:
+          "We validate that your software performs well under various load conditions. Our performance testing includes load testing, stress testing, and scalability testing. We identify performance bottlenecks, optimize response times, and ensure that your application can handle expected user traffic and data volumes.",
+      },
+      {
+        icon: "Shield",
+        title: "Security Testing",
+        description:
+          "Security is a critical aspect of quality. We perform comprehensive security testing including vulnerability scanning, penetration testing, and security code reviews. We identify security weaknesses, validate authentication and authorization mechanisms, and ensure compliance with security standards and best practices.",
+      },
+    ],
+    features: [
+      {
+        title: "Test Automation Frameworks",
+        description:
+          "We build robust test automation frameworks using industry-leading tools like Selenium, Cypress, Jest, and Playwright. Our frameworks are maintainable, scalable, and integrated into CI/CD pipelines, enabling continuous testing and rapid feedback on code quality.",
+      },
+      {
+        title: "API & Integration Testing",
+        description:
+          "Ensure that APIs and system integrations work correctly with comprehensive API testing. We test API endpoints for functionality, performance, security, and compliance with specifications. Our testing covers error handling, data validation, and integration scenarios across different systems.",
+      },
+      {
+        title: "Mobile Testing",
+        description:
+          "Mobile applications require specialized testing approaches. We test on real devices and emulators across different platforms, screen sizes, and OS versions. Our mobile testing covers functionality, performance, usability, and device-specific features like GPS, camera, and push notifications.",
+      },
+      {
+        title: "Accessibility Testing",
+        description:
+          "Ensure your software is accessible to all users, including those with disabilities. We perform accessibility testing to validate compliance with WCAG standards, test with screen readers, and verify keyboard navigation. This ensures your software is inclusive and meets accessibility requirements.",
+      },
+      {
+        title: "Regression Testing",
+        description:
+          "Prevent new changes from breaking existing functionality with comprehensive regression testing. We maintain test suites that cover critical user paths and business workflows, ensuring that software updates don't introduce regressions. Automated regression tests run with every code change.",
+      },
+      {
+        title: "Test Reporting & Analytics",
+        description:
+          "Get clear visibility into test results and quality metrics with comprehensive reporting. Our test dashboards provide real-time insights into test coverage, defect trends, and quality trends over time. This enables data-driven decisions about release readiness and quality improvement priorities.",
+      },
+    ],
+    accentColor: "#F9C80E",
+  },
+
+  "consulting-strategy": {
+    title: "Consulting & Strategy",
+    description:
+      "Technology advisory services that align architecture decisions with measurable business goals. Our consulting services help businesses make informed technology decisions, optimize IT investments, and create strategic roadmaps for digital success. We combine deep technical expertise with business acumen to deliver actionable strategies that drive growth and innovation.",
+    image:
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Q29uc3VsdGluZ3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=500",
+    processTitle: "Consulting & Strategy Process",
+    processDescription:
+      "Our consulting approach combines strategic thinking with technical expertise to deliver actionable recommendations that align technology initiatives with business objectives and drive measurable outcomes.",
+    process: [
+      {
+        icon: "Search",
+        title: "Business & Technology Assessment",
+        description:
+          "We begin by conducting a comprehensive assessment of your current business processes, technology stack, and organizational capabilities. Our analysis includes stakeholder interviews, system audits, and gap analysis. We identify strengths, weaknesses, opportunities, and threats to create a clear picture of your current state.",
+      },
+      {
+        icon: "Target",
+        title: "Strategic Planning & Roadmap",
+        description:
+          "Based on our assessment, we develop a strategic technology roadmap that aligns with your business goals. Our roadmaps include prioritized initiatives, resource requirements, timelines, and success metrics. We create phased implementation plans that balance quick wins with long-term strategic objectives.",
+      },
+      {
+        icon: "Layout",
+        title: "Architecture Design",
+        description:
+          "We design scalable, secure, and maintainable technology architectures that support your business objectives. Our architecture designs consider current needs and future growth, ensuring that technology investments provide long-term value. We create detailed architecture documentation and implementation guidelines.",
+      },
+      {
+        icon: "TrendingUp",
+        title: "Technology Selection",
+        description:
+          "With so many technology options available, choosing the right tools and platforms is crucial. We evaluate technologies based on your specific requirements, budget, and long-term strategy. Our recommendations consider factors like scalability, vendor support, community adoption, and total cost of ownership.",
+      },
+      {
+        icon: "CheckCircle",
+        title: "Implementation Support",
+        description:
+          "We don't just provide recommendations—we support implementation. Our consultants work alongside your teams to guide implementation, provide training, and ensure that strategic plans are executed effectively. We help overcome challenges, adjust strategies as needed, and ensure successful delivery of technology initiatives.",
+      },
+    ],
+    features: [
+      {
+        title: "Digital Strategy",
+        description:
+          "Develop comprehensive digital strategies that transform how your business operates and competes. We help identify digital opportunities, prioritize initiatives, and create execution plans that drive digital transformation. Our strategies consider market trends, competitive landscape, and organizational capabilities.",
+      },
+      {
+        title: "Technology Roadmaps",
+        description:
+          "Create detailed technology roadmaps that guide your IT investments over time. Our roadmaps balance short-term tactical needs with long-term strategic goals, ensuring that technology decisions support business growth and innovation. We include timelines, dependencies, and resource requirements.",
+      },
+      {
+        title: "Architecture Consulting",
+        description:
+          "Design robust, scalable architectures that support business growth. Our architecture consulting covers application architecture, data architecture, infrastructure architecture, and security architecture. We ensure that architectural decisions align with business requirements and industry best practices.",
+      },
+      {
+        title: "Cloud Strategy",
+        description:
+          "Develop cloud adoption strategies that optimize costs, improve scalability, and enhance agility. We help evaluate cloud options, plan migrations, and design hybrid architectures. Our cloud strategies consider security, compliance, and total cost of ownership to ensure optimal cloud investments.",
+      },
+      {
+        title: "IT Governance & Best Practices",
+        description:
+          "Establish IT governance frameworks and best practices that ensure consistent, high-quality technology delivery. We help define processes, standards, and policies that guide technology decisions and implementations. This includes agile methodologies, DevOps practices, and quality assurance standards.",
+      },
+      {
+        title: "Vendor Evaluation & Selection",
+        description:
+          "Make informed decisions about technology vendors and partners. We evaluate vendors based on technical capabilities, financial stability, support quality, and alignment with your requirements. Our vendor selection process includes RFPs, proof-of-concept evaluations, and contract negotiations.",
+      },
+    ],
+    accentColor: "#06FFA5",
+  },
+
+  "legacy-modernization": {
+    title: "Legacy System Modernization",
+    description:
+      "Refactor and migrate core systems to cloud-native stacks with zero-downtime strategies. Our legacy modernization services help businesses transform outdated systems into modern, scalable, and maintainable solutions. We employ proven strategies that minimize risk, reduce costs, and ensure business continuity while modernizing your technology infrastructure.",
+    image:
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8TW9kZXJuaXphdGlvbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=500",
+    processTitle: "Legacy Modernization Process",
+    processDescription:
+      "Our systematic approach to legacy modernization ensures minimal disruption to business operations while transforming outdated systems into modern, cloud-native solutions that support future growth.",
+    process: [
+      {
+        icon: "FileSearch",
+        title: "System Analysis & Assessment",
+        description:
+          "We begin by conducting a thorough analysis of your legacy systems, understanding their architecture, dependencies, and business criticality. Our assessment identifies technical debt, performance bottlenecks, and modernization opportunities. We create a detailed inventory of systems, their interconnections, and their role in business operations.",
+      },
+      {
+        icon: "Map",
+        title: "Modernization Strategy",
+        description:
+          "Based on our analysis, we develop a tailored modernization strategy. We evaluate different approaches including rehosting, replatforming, refactoring, and rebuilding. Our strategy balances business needs, technical requirements, budget constraints, and risk tolerance to recommend the optimal modernization path.",
+      },
+      {
+        icon: "Code",
+        title: "Incremental Migration",
+        description:
+          "We employ incremental migration strategies that minimize risk and business disruption. Rather than big-bang replacements, we modernize systems in phases, starting with less critical components and gradually moving to core systems. This approach allows for continuous validation and adjustment while maintaining business operations.",
+      },
+      {
+        icon: "Cloud",
+        title: "Cloud Migration",
+        description:
+          "We migrate legacy systems to cloud-native architectures, leveraging modern cloud services and platforms. Our cloud migration strategies include lift-and-shift, cloud-native refactoring, and hybrid approaches. We ensure that migrated systems benefit from cloud scalability, reliability, and cost-efficiency.",
+      },
+      {
+        icon: "CheckCircle",
+        title: "Testing & Validation",
+        description:
+          "Comprehensive testing ensures that modernized systems maintain functionality and performance. We perform parallel running, data validation, and user acceptance testing to ensure that modernized systems meet all requirements. Our testing strategies minimize the risk of issues during and after migration.",
+      },
+    ],
+    features: [
+      {
+        title: "Zero-Downtime Migration",
+        description:
+          "Minimize business disruption with zero-downtime migration strategies. We use techniques like blue-green deployments, database replication, and gradual cutover to ensure that business operations continue uninterrupted during modernization. This approach reduces risk and maintains customer satisfaction.",
+      },
+      {
+        title: "Code Refactoring",
+        description:
+          "Transform legacy code into modern, maintainable codebases. We refactor code to follow current best practices, improve code quality, and enhance maintainability. Our refactoring preserves business logic while modernizing technology stack, architecture, and coding standards.",
+      },
+      {
+        title: "API-First Architecture",
+        description:
+          "Modernize legacy systems by exposing them through modern APIs. We create API layers that enable integration with modern applications while preserving existing functionality. This approach allows gradual modernization and enables new applications to interact with legacy systems through modern interfaces.",
+      },
+      {
+        title: "Data Migration",
+        description:
+          "Safely migrate data from legacy systems to modern databases and platforms. We ensure data integrity, validate data completeness, and maintain data relationships during migration. Our data migration strategies include data cleansing, transformation, and validation to ensure high-quality data in modernized systems.",
+      },
+      {
+        title: "Microservices Transformation",
+        description:
+          "Break down monolithic legacy systems into modern microservices architectures. We identify service boundaries, extract services incrementally, and build microservices that are independently deployable and scalable. This transformation improves agility, scalability, and maintainability.",
+      },
+      {
+        title: "Documentation & Knowledge Transfer",
+        description:
+          "Ensure that modernized systems are well-documented and that your team understands the new architecture. We create comprehensive documentation, provide training, and conduct knowledge transfer sessions. This ensures that your team can effectively maintain and extend modernized systems.",
+      },
+    ],
+    accentColor: "#FF6B35",
+  },
 };

@@ -333,9 +333,9 @@ export default function Blog({ posts }) {
                         )}
                         
                         <div className="p-5 sm:p-6 h-full flex flex-col flex-grow">
-                          {/* Category Tag */}
+                          {/* Category Tag and Date */}
                           <motion.div 
-                            className="mb-3"
+                            className="mb-3 flex justify-between items-center gap-2"
                             initial={{ opacity: 0, scale: 0.8 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             transition={{ delay: index * 0.1 + 0.2 }}
@@ -349,6 +349,7 @@ export default function Blog({ posts }) {
                             >
                               {post.category || "Technology"}
                             </motion.span>
+                            <span className="text-xs font-medium text-gray-600">{formatDate(post.date)}</span>
                           </motion.div>
 
                           {/* Title */}
@@ -394,7 +395,6 @@ export default function Blog({ posts }) {
                                 <span>{post.views || Math.floor((post.slug?.length || 0) * 50) + 100} views</span>
                               </motion.div>
                             </div>
-                            <span className="text-gray-400">{formatDate(post.date)}</span>
                           </motion.div>
 
                           {/* Read More Button */}
@@ -511,9 +511,9 @@ export default function Blog({ posts }) {
                           )}
                           
                           <div className="p-5 sm:p-6 h-full flex flex-col flex-grow">
-                            {/* Category Tag */}
+                            {/* Category Tag and Date */}
                             <motion.div 
-                              className="mb-3"
+                              className="mb-3 flex justify-between items-center gap-2"
                               initial={{ opacity: 0, scale: 0.8 }}
                               whileInView={{ opacity: 1, scale: 1 }}
                               transition={{ delay: index * 0.1 + 0.2 }}
@@ -527,6 +527,7 @@ export default function Blog({ posts }) {
                               >
                                 {post.category || "Technology"}
                               </motion.span>
+                              <span className="text-xs font-medium text-gray-600">{formatDate(post.date)}</span>
                             </motion.div>
 
                             {/* Title */}
@@ -572,7 +573,6 @@ export default function Blog({ posts }) {
                                   <span>{post.views || Math.floor((post.slug?.length || 0) * 50) + 100} views</span>
                                 </motion.div>
                               </div>
-                              <span className="text-gray-400">{formatDate(post.date)}</span>
                             </motion.div>
 
                             {/* Read More Button */}

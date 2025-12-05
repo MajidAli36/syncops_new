@@ -134,7 +134,7 @@ const HowWeWork = () => {
     {
       title: "Iterate",
       description: "Continuous improvement and optimization",
-      percentage: 85,
+      percentage: 95,
       duration: "Ongoing",
       gradient: "from-[#00C4FF] to-[#00B894]"
     }

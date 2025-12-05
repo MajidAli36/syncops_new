@@ -24,7 +24,7 @@ const metrics = [
     textColor: "text-purple-600"
   },
   {
-    value: "9.8/10",
+    value: "9.9/10",
     label: "Client Rating",
     icon: Star,
     color: "from-orange-500 to-red-600",

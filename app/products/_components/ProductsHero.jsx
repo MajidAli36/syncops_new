@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { fadeUp, stagger, springSoft } from '../../../lib/motionConfig';
 import SafeLink from '../../components/ui/SafeLink';
 import { FaRocket, FaBoxOpen, FaStar, FaShieldAlt } from 'react-icons/fa';
+import { Briefcase } from 'lucide-react';
 
 const trustChips = [
   { icon: <FaStar className="text-brand-aqua" aria-hidden="true" />, text: "Battle-tested components", ariaLabel: "Battle-tested components" },
@@ -28,23 +29,38 @@ export default function ProductsHero() {
               Launch faster with our prebuilt modules for workflows, data sync, and cloud security—designed to integrate seamlessly.
             </motion.p>
 
-            <motion.div className="flex flex-col sm:flex-row gap-4 mb-8" variants={fadeUp(28)}>
-              <SafeLink 
-                href="#products" 
-                className="btn-primary inline-flex items-center justify-center focus-visible:ring-4 focus-visible:ring-brand-teal/50 focus-visible:outline-none"
-                aria-label="Explore our products"
-              >
-                <FaBoxOpen className="w-5 h-5 mr-2" aria-hidden="true" />
-                Explore Products
-              </SafeLink>
-              <SafeLink 
-                href="/contact" 
-                className="btn-secondary inline-flex items-center justify-center focus-visible:ring-4 focus-visible:ring-brand-teal/50 focus-visible:outline-none"
-                aria-label="Schedule a product demo"
-              >
-                <FaRocket className="w-5 h-5 mr-2" aria-hidden="true" />
-                Get a Demo
-              </SafeLink>
+            <motion.div className="mb-8" variants={fadeUp(28)}>
+              {/* Primary CTA - Large and Prominent */}
+              <div className="mb-4">
+                <SafeLink 
+                  href="#products" 
+                  className="btn-primary inline-flex items-center justify-center w-full sm:w-auto focus-visible:ring-4 focus-visible:ring-brand-teal/50 focus-visible:outline-none group"
+                  aria-label="Explore our products"
+                >
+                  <FaBoxOpen className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform duration-300" aria-hidden="true" />
+                  Explore Products
+                </SafeLink>
+              </div>
+              
+              {/* Secondary CTAs - Compact and Grouped */}
+              <div className="flex flex-col sm:flex-row gap-3">
+                <SafeLink 
+                  href="/contact" 
+                  className="flex-1 sm:flex-initial inline-flex items-center justify-center px-6 py-3 bg-white/5 backdrop-blur-sm border border-white/20 text-white font-semibold rounded-xl hover:bg-white/10 hover:border-brand-teal/50 transition-all duration-300 hover:scale-[1.02] focus-visible:ring-4 focus-visible:ring-brand-teal/50 focus-visible:outline-none group"
+                  aria-label="Schedule a product demo"
+                >
+                  <FaRocket className="w-4 h-4 mr-2 group-hover:translate-y-[-2px] transition-transform duration-300" aria-hidden="true" />
+                  Get a Demo
+                </SafeLink>
+                <SafeLink 
+                  href="/case-studies" 
+                  className="flex-1 sm:flex-initial inline-flex items-center justify-center px-6 py-3 bg-white/5 backdrop-blur-sm border border-white/20 text-white font-semibold rounded-xl hover:bg-white/10 hover:border-brand-teal/50 transition-all duration-300 hover:scale-[1.02] focus-visible:ring-4 focus-visible:ring-brand-teal/50 focus-visible:outline-none group"
+                  aria-label="View our case studies"
+                >
+                  <Briefcase className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform duration-300" aria-hidden="true" />
+                  Case Studies
+                </SafeLink>
+              </div>
             </motion.div>
 
             <motion.div className="flex flex-wrap gap-3" {...stagger.container(0.06)} role="list">
