@@ -2,7 +2,7 @@
 title: "How Blockchain Can Revolutionize Software Development"
 date: "2024-11-23"
 excerpt: "Explore how blockchain technology is transforming software development, offering new possibilities for security, transparency, and decentralization across various applications."
-coverImage: "/images/Blockchain.jpg"
+coverImage: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017875/blockchain-syncops_txdrn6.jpg"
 ---
 
 ## Introduction

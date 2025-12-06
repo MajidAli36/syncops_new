@@ -2,7 +2,7 @@
 title: "The Future of Web Development: Trends to Watch"
 date: "2024-05-20"
 excerpt: "Discover the emerging trends that are shaping the future of web development. Stay ahead of the curve with insights into AI, serverless architecture, PWAs, and more."
-coverImage: "/images/web-deveploment.jpg"
+coverImage: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017880/web-deveploment-syncops_sydprh.jpg"
 ---
 
 Web development is an ever-evolving field that shapes how we interact with the digital world. Every year, new technologies, tools, and practices emerge, pushing developers and businesses to innovate. If you’re a web developer, aspiring coder, or just curious about where the web is heading, this guide will help you understand the key trends shaping the future of web development.

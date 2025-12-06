@@ -2,7 +2,7 @@
 title: "Top 5 Skills Every Developer Needs to Learn in 2024"
 date: "2024-11-20"
 excerpt: "Discover the top five essential skills every developer needs to master in 2024, from AI and cloud computing to blockchain and cybersecurity, to stay ahead in the tech industry."
-coverImage: "/images/5topSkills.jpg"
+coverImage: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017875/5topskills-syncops_k9akp6.jpg"
 ---
 
 ## Introduction

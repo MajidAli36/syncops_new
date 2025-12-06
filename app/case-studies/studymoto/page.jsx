@@ -1,7 +1,6 @@
 import CaseStudyHero from "../_components/Hero";
 import ChallengeSection from "../_components/Challenges";
 import SolutionSection from "../_components/Solutions";
-import ResultsSection from "../_components/Results";
 import Testimonial from "../_components/Testimonial";
 import CaseStudyCTA from "../_components/CTA";
 import RelatedCaseStudies from "../_components/RelatedStudies";
@@ -11,7 +10,7 @@ const caseStudyData = {
   title: "StudyMate AI: AI-Powered Homework Help Platform",
   subtitle:
     "How SyncOps created an intelligent homework help platform that provides step-by-step solutions, explanations, and practice problems across 60+ subjects — transforming how students learn and master academic concepts with AI-powered tutoring.",
-  image: "/images/studymate.png",
+  image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017875/studymate-syncops_mvrfxc.png",
   industry: "Education Technology",
   duration: "10 months",
   team: "15 specialists",
@@ -34,7 +33,7 @@ const caseStudyData = {
       title: "Interactive AI Demo with Real-Time Learning",
       description:
         "We developed an interactive demo platform that showcases StudyMate AI's capabilities in real-time. The system provides step-by-step explanations, interactive chat interface, and subject-specific learning tools. Students can ask questions about math, physics, history, or any subject and receive comprehensive, educational responses.",
-      image: "/images/studydemo.png",
+      image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017874/studymate-demo-syncops_rocigs.png",
       features: [
         "Interactive chat interface with AI-powered explanations",
         "Subject-specific learning tools (Math, Physics, History, etc.)",
@@ -44,7 +43,7 @@ const caseStudyData = {
       title: "User-Friendly Contact and Inquiry System",
       description:
         "We implemented a comprehensive contact form system that allows students, parents, and educators to easily reach out with questions or inquiries. The form includes topic categorization, project type selection, and secure message handling, ensuring all inquiries are properly routed and responded to within 1 business day.",
-      image: "/images/studycontact.png",
+      image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017873/studymate-contact-syncops_g8sani.png",
       features: [
         "Streamlined contact form with topic categorization",
         "Secure message handling with 1 business day response guarantee",
@@ -77,21 +76,21 @@ const caseStudyData = {
   relatedCaseStudies: [
     {
       title: "MediMind AI: AI-Powered Medical Assistant Platform",
-      image: "/images/medmindai.png",
+      image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017877/medmindi-syncops_uwmk7t.png",
       description: "Intelligent medical assistant that transforms clinical workflows with AI automation",
       link: "/case-studies/medimind",
       industry: "Healthcare",
     },
     {
       title: "FitResume AI: Intelligent Resume Builder Platform",
-      image: "/images/fitresume.png",
+      image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017875/fitresume-syncops_on9rzq.png",
       description: "Guided resume builder with AI coaching, premium themes, and ATS-safe exports",
       link: "/case-studies/resume-ai",
       industry: "Career & Recruitment",
     },
     {
       title: "Building GeoPulse: Community Data Intelligence Platform",
-      image: "/images/GeoPluse.png",
+      image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017876/geopluse-syncops_v05qbs.png",
       description: "Creating a privacy-first, scalable platform for community data collection",
       link: "/case-studies/geopulse",
       industry: "Community Intelligence",
@@ -112,7 +111,6 @@ export default function StudyMateCaseStudyPage() {
       />
       <ChallengeSection challenges={caseStudyData.challenges} />
       <SolutionSection solutions={caseStudyData.solutions} />
-      {caseStudyData.results && <ResultsSection results={caseStudyData.results} />}
       <Testimonial {...caseStudyData.testimonial} />
       <CaseStudyCTA title={caseStudyData.title} industry={caseStudyData.industry} />
       <RelatedCaseStudies caseStudies={caseStudyData.relatedCaseStudies} />

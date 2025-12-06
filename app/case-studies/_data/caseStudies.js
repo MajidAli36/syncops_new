@@ -4,7 +4,7 @@ export const caseStudiesData = {
     title: "Building GeoPulse: A Community Data Intelligence Platform",
     subtitle:
       "How SyncOps created a privacy-first, scalable platform for community data collection and analysis, transforming how organizations understand and serve their communities",
-    image: "/images/GeoPluse.png",
+    image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017876/geopluse-syncops_v05qbs.png",
     industry: "Community Intelligence",
     duration: "8 months",
     team: "12 specialists",
@@ -28,7 +28,7 @@ export const caseStudiesData = {
         title: "Privacy-First Architecture with Offline Support",
         description:
           "We built a robust platform with end-to-end encryption and offline-first data collection capabilities.",
-        image: "/images/GeoPlusedashboard.png",
+        image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017876/geopluse-dashboard-syncops_dixcm0.png",
         features: [
           "PII encryption at source with aggregated insights",
           "Offline form deployment with automatic sync",
@@ -38,7 +38,7 @@ export const caseStudiesData = {
         title: "AI-Powered Analytics and Visualization",
         description:
           "We implemented advanced AI algorithms for pattern recognition with interactive maps and real-time dashboards.",
-        image: "/images/GeoPlusedashboard.png",
+        image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017876/geopluse-dashboard-syncops_dixcm0.png",
         features: [
           "AI-powered insights and pattern recognition",
           "Real-time analytics dashboards with live metrics",
@@ -71,21 +71,21 @@ export const caseStudiesData = {
     relatedCaseStudies: [
       {
         title: "AI-Powered SyncPeople HR Management Platform",
-        image: "/images/syncpeople.png",
+        image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017877/syncpeople-syncops_lmx6iw.png",
         description: "Comprehensive AI-driven HR management system that streamlines workforce operations",
         link: "/case-studies/syncpeople",
         industry: "HR Management",
       },
       {
         title: "MediMind AI: AI-Powered Medical Assistant Platform",
-        image: "/images/medmindai.png",
+        image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017877/medmindi-syncops_uwmk7t.png",
         description: "Intelligent medical assistant that transforms clinical workflows with AI automation",
         link: "/case-studies/medimind",
         industry: "Healthcare",
       },
       {
         title: "SyncIQ: AI-Powered Operational Intelligence Platform",
-        image: "/images/syncIq.png",
+        image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017876/syncIq-syncops_ef24ou.png",
         description: "Enterprise-grade AI SaaS platform that automates audits and provides real-time analytics",
         link: "/case-studies/synciq",
         industry: "Operational Intelligence",
@@ -120,7 +120,7 @@ export const caseStudiesData = {
         title: "Unified AI-Powered HR Platform",
         description:
           "We built a comprehensive HR management platform that unifies attendance, leave management, timesheets, and payroll into a single intelligent system.",
-        image: "/images/syncpeopledashboard.png",
+        image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017877/syncpeople-dashboard-syncops_vxgrkd.png",
         features: [
           "Unified platform integrating all HR modules",
           "AI-powered automation reducing manual work by 70%",
@@ -130,7 +130,7 @@ export const caseStudiesData = {
         title: "AI-Driven Analytics and Predictive Insights",
         description:
           "We implemented advanced AI algorithms that analyze patterns to provide predictive insights and automated alerts with real-time dashboards.",
-        image: "/images/synclivekpis.png",
+        image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017877/syncpeople-analytics-syncops_nkxf7c.png",
         features: [
           "Real-time KPI dashboards with live metrics",
           "AI-powered predictive alerts for absenteeism and turnover risks",
@@ -163,21 +163,21 @@ export const caseStudiesData = {
     relatedCaseStudies: [
       {
         title: "Building GeoPulse: Community Data Intelligence Platform",
-        image: "/images/GeoPluse.png",
+        image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017876/geopluse-syncops_v05qbs.png",
         description: "Creating a privacy-first, scalable platform for community data collection and analysis",
         link: "/case-studies/geopulse",
         industry: "Community Intelligence",
       },
       {
         title: "MediMind AI: AI-Powered Medical Assistant Platform",
-        image: "/images/medmindai.png",
+        image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017877/medmindi-syncops_uwmk7t.png",
         description: "Intelligent medical assistant that transforms clinical workflows with AI automation",
         link: "/case-studies/medimind",
         industry: "Healthcare",
       },
       {
         title: "SyncIQ: AI-Powered Operational Intelligence Platform",
-        image: "/images/syncIq.png",
+        image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017876/syncIq-syncops_ef24ou.png",
         description: "Enterprise-grade AI SaaS platform that automates audits and provides real-time analytics",
         link: "/case-studies/synciq",
         industry: "Operational Intelligence",
@@ -212,7 +212,7 @@ export const caseStudiesData = {
         title: "Interactive Medical AI Demo with Voice-to-Text",
         description:
           "We developed an interactive demo platform that showcases AI-powered voice-to-text conversion and intelligent clinical summary generation. The system processes clinical notes in real-time and provides confidence scores for AI-generated assessments.",
-        image: "/images/mediaidemo.png",
+        image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017877/medimind-ai-demo-syncops_fl6an8.png",
         features: [
           "Web Speech API integration for voice-to-text conversion",
           "Real-time AI clinical summary generation with confidence scoring",
@@ -222,7 +222,7 @@ export const caseStudiesData = {
         title: "Secure User Authentication and Account Management",
         description:
           "We implemented a secure, user-friendly authentication system that allows healthcare providers to create accounts and access the platform. The system ensures HIPAA-compliant user management with enterprise-grade security.",
-        image: "/images/medilogin.png",
+        image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017876/medilogin-syncops_pzn3rn.png",
         features: [
           "Secure account creation and authentication system",
           "HIPAA-compliant user management with enterprise security",
@@ -255,21 +255,21 @@ export const caseStudiesData = {
     relatedCaseStudies: [
       {
         title: "Building GeoPulse: Community Data Intelligence Platform",
-        image: "/images/GeoPluse.png",
+        image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017876/geopluse-syncops_v05qbs.png",
         description: "Creating a privacy-first, scalable platform for community data collection and analysis",
         link: "/case-studies/geopulse",
         industry: "Community Intelligence",
       },
       {
         // title: "AI-Powered SyncPeople HR Management Platform",
-        image: "/images/syncpeople.png",
+        image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017877/syncpeople-syncops_lmx6iw.png",
         description: "Comprehensive AI-driven HR management system that streamlines workforce operations",
         link: "/case-studies/syncpeople",
         industry: "HR Management",
       },
       {
         title: "SyncIQ: AI-Powered Operational Intelligence Platform",
-        image: "/images/syncIq.png",
+        image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017876/syncIq-syncops_ef24ou.png",
         description: "Enterprise-grade AI SaaS platform that automates audits and provides real-time analytics",
         link: "/case-studies/synciq",
         industry: "Operational Intelligence",
@@ -280,7 +280,7 @@ export const caseStudiesData = {
     title: "SyncIQ: AI-Powered Operational Intelligence Platform",
     subtitle:
       "How SyncOps created an enterprise-grade AI SaaS platform that automates audits, provides real-time risk analytics, and delivers machine learning insights for multi-tenant operational intelligence — transforming how organizations monitor, analyze, and optimize their operations.",
-    image: "/images/syncIq.png",
+    image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017876/syncIq-syncops_ef24ou.png",
     industry: "Operational Intelligence",
     duration: "14 months",
     team: "20 specialists",
@@ -304,7 +304,7 @@ export const caseStudiesData = {
         title: "AI-Powered Audit Automation and Compliance Monitoring",
         description:
           "We developed an enterprise-grade AI SaaS platform that automates audit processes using machine learning algorithms and real-time compliance monitoring.",
-        image: "/images/syncIqdashboard.png",
+        image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017876/syncIq-dashboard-syncops_qwqgek.png",
         features: [
           "AI-powered audit automation with machine learning algorithms",
           "Real-time compliance monitoring and gap identification",
@@ -314,7 +314,7 @@ export const caseStudiesData = {
         title: "Machine Learning Insights and Risk Analytics",
         description:
           "We implemented advanced machine learning algorithms that analyze operational patterns and predict risks with real-time analytics dashboards.",
-        image: "/images/synciqdashboard1.png",
+        image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017876/synciq-dashboard-1-syncops_lyz6bz.png",
         features: [
           "Machine learning risk predictions and trend analysis",
           "Predictive analytics for proactive risk management",
@@ -347,21 +347,21 @@ export const caseStudiesData = {
     relatedCaseStudies: [
       {
         title: "Building GeoPulse: Community Data Intelligence Platform",
-        image: "/images/GeoPluse.png",
+        image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017876/geopluse-syncops_v05qbs.png",
         description: "Creating a privacy-first, scalable platform for community data collection and analysis",
         link: "/case-studies/geopulse",
         industry: "Community Intelligence",
       },
       {
         title: "AI-Powered SyncPeople HR Management Platform",
-        image: "/images/syncpeople.png",
+        image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017877/syncpeople-syncops_lmx6iw.png",
         description: "Comprehensive AI-driven HR management system that streamlines workforce operations",
         link: "/case-studies/syncpeople",
         industry: "HR Management",
       },
       {
         title: "MediMind AI: AI-Powered Medical Assistant Platform",
-        image: "/images/medmindai.png",
+        image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017877/medmindi-syncops_uwmk7t.png",
         description: "Intelligent medical assistant that transforms clinical workflows with AI automation",
         link: "/case-studies/medimind",
         industry: "Healthcare",
@@ -372,7 +372,7 @@ export const caseStudiesData = {
     title: "SmartProperty AI: AI-Powered Real Estate Intelligence Platform",
     subtitle:
       "How SyncOps created an intelligent real estate platform that uses AI to help users find, analyze, and secure properties with real-time predictions, blockchain verification, and smart recommendations — transforming the property search and investment experience.",
-    image: "/images/smartproperty.png",
+    image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017874/smartproperty-syncops_comso4.png",
     industry: "Real Estate",
     duration: "11 months",
     team: "16 specialists",
@@ -396,7 +396,7 @@ export const caseStudiesData = {
         title: "AI-Powered Property Search and Smart Recommendations",
         description:
           "We built an intelligent platform with AI-driven property search, smart recommendations, and lifestyle matching. The system uses machine learning to analyze properties by city, budget, and lifestyle preferences.",
-        image: "/images/smartdashboard.png",
+        image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017878/smartproperty-dashboard-syncops_s76uzx.png",
         features: [
           "AI-driven property search with smart recommendations",
           "Lifestyle matching and ROI predictions",
@@ -406,7 +406,7 @@ export const caseStudiesData = {
         title: "AI Valuation Tools and Blockchain Verification",
         description:
           "We implemented AI valuation tools that estimate property values in seconds, along with blockchain-verified listings for trust and transparency. The platform includes market pulse analytics and fraud protection.",
-        image: "/images/smartlogin.png",
+        image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017878/smartproperty-login-syncops_udyhha.png",
         features: [
           "AI price estimator with 10-second property valuation",
           "Blockchain verified listings for trust and transparency",
@@ -439,21 +439,21 @@ export const caseStudiesData = {
     relatedCaseStudies: [
       {
         title: "Building GeoPulse: Community Data Intelligence Platform",
-        image: "/images/GeoPluse.png",
+        image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017876/geopluse-syncops_v05qbs.png",
         description: "Creating a privacy-first, scalable platform for community data collection and analysis",
         link: "/case-studies/geopulse",
         industry: "Community Intelligence",
       },
       {
         title: "AI-Powered SyncPeople HR Management Platform",
-        image: "/images/syncpeople.png",
+        image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017877/syncpeople-syncops_lmx6iw.png",
         description: "Comprehensive AI-driven HR management system that streamlines workforce operations",
         link: "/case-studies/syncpeople",
         industry: "HR Management",
       },
       {
         title: "SyncIQ: AI-Powered Operational Intelligence Platform",
-        image: "/images/syncIq.png",
+        image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017876/syncIq-syncops_ef24ou.png",
         description: "Enterprise-grade AI SaaS platform that automates audits and provides real-time risk analytics",
         link: "/case-studies/synciq",
         industry: "Operational Intelligence",
@@ -464,7 +464,7 @@ export const caseStudiesData = {
     title: "FitResume AI: Intelligent Resume Builder Platform",
     subtitle:
       "How SyncOps partnered with FitResume to build a data-driven resume builder that lets candidates craft polished, ATS-friendly resumes in minutes with AI guidance, guided workflows, and premium visual themes.",
-    image: "/images/fitresume.png",
+    image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017875/fitresume-syncops_on9rzq.png",
     industry: "Career & Recruitment",
     duration: "9 months",
     team: "14 specialists",
@@ -488,7 +488,7 @@ export const caseStudiesData = {
         title: "Guided Resume Workspace with AI Suggestions",
         description:
           "We delivered a canvas where contact info, experience, skills, and achievements stay perfectly aligned with ATS rules. Inline AI prompts help users quantify impact, while progress indicators show what sections still need work.",
-        image: "/images/fitwork.png",
+        image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017875/fitresume-howwork-syncops_vudczg.png",
         features: [
           "Data-driven section editor with live validation and AI nudges",
           "Centralized profile so users can reuse roles, projects, and skills instantly",
@@ -498,7 +498,7 @@ export const caseStudiesData = {
         title: "Theme Studio with Instant Preview & Export",
         description:
           "We built a visual theme studio that lets users toggle gradients, typography, and layouts before exporting. Every change renders in real time on the resume canvas and stays ATS-safe.",
-        image: "/images/fittheme.png",
+        image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017877/fitresume-theme-syncops_kp5fst.png",
         features: [
           "40+ curated colorways, gradients, and typography presets",
           "One-click PDF export with pixel-perfect spacing and brand fonts",
@@ -531,21 +531,21 @@ export const caseStudiesData = {
     relatedCaseStudies: [
       {
         title: "AI-Powered SyncPeople HR Management Platform",
-        image: "/images/syncpeople.png",
+        image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017877/syncpeople-syncops_lmx6iw.png",
         description: "Comprehensive AI-driven HR management system that streamlines workforce operations",
         link: "/case-studies/syncpeople",
         industry: "HR Management",
       },
       {
         title: "SmartProperty AI: AI-Powered Real Estate Intelligence Platform",
-        image: "/images/smartproperty.png",
+        image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017874/smartproperty-syncops_comso4.png",
         description: "Intelligent real estate platform with AI-powered property search and valuation",
         link: "/case-studies/smartproperty",
         industry: "Real Estate",
       },
       {
         title: "SyncIQ: AI-Powered Operational Intelligence Platform",
-        image: "/images/syncIq.png",
+        image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017876/syncIq-syncops_ef24ou.png",
         description: "Enterprise-grade AI SaaS platform that automates audits and provides real-time analytics",
         link: "/case-studies/synciq",
         industry: "Operational Intelligence",
@@ -556,7 +556,7 @@ export const caseStudiesData = {
     title: "Warehouse Visualization Dashboard: AI-Powered Operational Intelligence",
     subtitle:
       "How SyncOps created an enterprise-grade warehouse visualization dashboard that maps bins and SKUs, monitors flows, and provides AI-powered slotting and risk detection — transforming warehouse management from reactive monitoring to predictive optimization.",
-    image: "/images/warehouse.png",
+    image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017879/warehouse-syncops_unrbn6.png",
     industry: "Warehouse & Logistics",
     duration: "13 months",
     team: "17 specialists",
@@ -580,7 +580,7 @@ export const caseStudiesData = {
         title: "Interactive Warehouse Map with Real-Time Visualization",
         description:
           "We built an interactive warehouse visualization dashboard that maps aisles, bays, and bins with real-time occupancy colors and alerts. The system provides KPI heatmaps, pick rate monitoring, and hourly activity tracking for instant operational visibility.",
-        image: "/images/waredashboard.png",
+        image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017878/warehouse-dashboard-syncops_hagjmf.png",
         features: [
           "Interactive map with aisles, bays, and bins visualization",
           "Real-time KPI heatmaps and occupancy monitoring",
@@ -590,7 +590,7 @@ export const caseStudiesData = {
         title: "AI-Powered Slotting and Risk Detection Engine",
         description:
           "We implemented an AI scoring engine that calculates velocity metrics, forecasts stockout risks, and suggests optimal slotting moves. The system provides clear explanations for cycle counts, re-slotting recommendations, and QC tasks with human-readable reasoning.",
-        image: "/images/waredemologin.png",
+        image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017879/warehouse-login-syncops_ah3ubm.png",
         features: [
           "AI-powered slotting recommendations with velocity scoring",
           "Predictive risk detection with stockout and overstock alerts",
@@ -623,14 +623,14 @@ export const caseStudiesData = {
     relatedCaseStudies: [
       {
         title: "SyncIQ: AI-Powered Operational Intelligence Platform",
-        image: "/images/syncIq.png",
+        image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017876/syncIq-syncops_ef24ou.png",
         description: "Enterprise-grade AI SaaS platform that automates audits and provides real-time analytics",
         link: "/case-studies/synciq",
         industry: "Operational Intelligence",
       },
       {
         title: "AI-Powered SyncPeople HR Management Platform",
-        image: "/images/syncpeople.png",
+        image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017877/syncpeople-syncops_lmx6iw.png",
         description: "Comprehensive AI-driven HR management system that streamlines workforce operations",
         link: "/case-studies/syncpeople",
         industry: "HR Management",
@@ -648,7 +648,7 @@ export const caseStudiesData = {
     title: "StudyMate AI: AI-Powered Homework Help Platform",
     subtitle:
       "How SyncOps created an intelligent homework help platform that provides step-by-step solutions, explanations, and practice problems across 60+ subjects — transforming how students learn and master academic concepts with AI-powered tutoring.",
-    image: "/images/studymate.png",
+    image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017875/studymate-syncops_mvrfxc.png",
     industry: "Education Technology",
     duration: "10 months",
     team: "15 specialists",
@@ -672,7 +672,7 @@ export const caseStudiesData = {
         title: "Interactive AI Demo with Real-Time Learning",
         description:
           "We developed an interactive demo platform that showcases StudyMate AI's capabilities in real-time. The system provides step-by-step explanations, interactive chat interface, and subject-specific learning tools. Students can ask questions about math, physics, history, or any subject and receive comprehensive, educational responses.",
-        image: "/images/studydemo.png",
+        image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017874/studymate-demo-syncops_rocigs.png",
         features: [
           "Interactive chat interface with AI-powered explanations",
           "Subject-specific learning tools (Math, Physics, History, etc.)",
@@ -682,7 +682,7 @@ export const caseStudiesData = {
         title: "User-Friendly Contact and Inquiry System",
         description:
           "We implemented a comprehensive contact form system that allows students, parents, and educators to easily reach out with questions or inquiries. The form includes topic categorization, project type selection, and secure message handling, ensuring all inquiries are properly routed and responded to within 1 business day.",
-        image: "/images/studycontact.png",
+        image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017873/studymate-contact-syncops_g8sani.png",
         features: [
           "Streamlined contact form with topic categorization",
           "Secure message handling with 1 business day response guarantee",
@@ -715,21 +715,21 @@ export const caseStudiesData = {
     relatedCaseStudies: [
       {
         title: "MediMind AI: AI-Powered Medical Assistant Platform",
-        image: "/images/medmindai.png",
+        image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017877/medmindi-syncops_uwmk7t.png",
         description: "Intelligent medical assistant that transforms clinical workflows with AI automation",
         link: "/case-studies/medimind",
         industry: "Healthcare",
       },
       {
         title: "FitResume AI: Intelligent Resume Builder Platform",
-        image: "/images/fitresume.png",
+        image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017875/fitresume-syncops_on9rzq.png",
         description: "Guided resume builder with AI coaching, premium themes, and ATS-safe exports",
         link: "/case-studies/resume-ai",
         industry: "Career & Recruitment",
       },
       {
         title: "Building GeoPulse: Community Data Intelligence Platform",
-        image: "/images/GeoPluse.png",
+        image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017876/geopluse-syncops_v05qbs.png",
         description: "Creating a privacy-first, scalable platform for community data collection",
         link: "/case-studies/geopulse",
         industry: "Community Intelligence",

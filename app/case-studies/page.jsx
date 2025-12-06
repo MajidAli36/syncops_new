@@ -17,7 +17,7 @@ const caseStudies = [
     title: "Building GeoPulse: Community Data Intelligence Platform",
     description:
       "Creating a privacy-first, scalable platform for community data collection and analysis, transforming how organizations understand and serve their communities",
-    image: "/images/GeoPluse.png",
+    image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017876/geopluse-syncops_v05qbs.png",
     industry: "Community Intelligence",
     metrics: "78.5%",
     metricLabel: "Response Rate",
@@ -29,7 +29,7 @@ const caseStudies = [
     title: "AI-Powered SyncPeople HR Management Platform",
     description:
       "Comprehensive AI-driven HR management system that streamlines workforce operations, automates manual processes, and empowers every role with intelligent insights",
-    image: "/images/syncpeople.png",
+    image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017877/syncpeople-syncops_lmx6iw.png",
     industry: "HR Management",
     metrics: "70%",
     metricLabel: "Time Saved",
@@ -41,7 +41,7 @@ const caseStudies = [
     title: "MediMind AI: AI-Powered Medical Assistant Platform",
     description:
       "Intelligent medical assistant that transforms clinical workflows by reducing charting time by 50%, automating ICD-10 suggestions, and generating AI-drafted prescriptions",
-    image: "/images/medmindai.png",
+    image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017877/medmindi-syncops_uwmk7t.png",
     industry: "Healthcare",
     metrics: "50%",
     metricLabel: "Time Reduction",
@@ -53,7 +53,7 @@ const caseStudies = [
     title: "SyncIQ: AI-Powered Operational Intelligence Platform",
     description:
       "Enterprise-grade AI SaaS platform that automates audits, provides real-time risk analytics, and delivers machine learning insights for operational intelligence",
-    image: "/images/syncIq.png",
+    image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017876/syncIq-syncops_ef24ou.png",
     industry: "Operational Intelligence",
     metrics: "85%",
     metricLabel: "Time Reduction",
@@ -65,7 +65,7 @@ const caseStudies = [
     title: "SmartProperty AI: AI-Powered Real Estate Intelligence Platform",
     description:
       "Intelligent real estate platform that uses AI to help users find, analyze, and secure properties with real-time predictions and blockchain verification",
-    image: "/images/smartproperty.png",
+    image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017874/smartproperty-syncops_comso4.png",
     industry: "Real Estate",
     metrics: "10s",
     metricLabel: "Valuation Time",
@@ -77,7 +77,7 @@ const caseStudies = [
     title: "FitResume AI: Intelligent Resume Builder Platform",
     description:
       "Intelligent resume builder that helps users create professional, ATS-friendly resumes in minutes with AI content suggestions and customizable templates",
-    image: "/images/fitresume.png",
+    image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017875/fitresume-syncops_on9rzq.png",
     industry: "Career & Recruitment",
     metrics: "98%",
     metricLabel: "ATS Friendly",
@@ -89,7 +89,7 @@ const caseStudies = [
     title: "Warehouse Visualization Dashboard: AI-Powered Operational Intelligence",
     description:
       "Enterprise-grade warehouse visualization dashboard that maps bins and SKUs, monitors flows, and provides AI-powered slotting and risk detection",
-    image: "/images/warehouse.png",
+    image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017879/warehouse-syncops_unrbn6.png",
     industry: "Warehouse & Logistics",
     metrics: "Real-Time",
     metricLabel: "Visibility",
@@ -101,7 +101,7 @@ const caseStudies = [
     title: "StudyMate AI: AI-Powered Homework Help Platform",
     description:
       "Intelligent homework help platform that provides step-by-step solutions, explanations, and practice problems across 60+ subjects",
-    image: "/images/studymate.png",
+    image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017875/studymate-syncops_mvrfxc.png",
     industry: "Education Technology",
     metrics: "60+",
     metricLabel: "Subjects",

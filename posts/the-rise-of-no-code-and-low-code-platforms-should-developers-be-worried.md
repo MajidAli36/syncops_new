@@ -2,7 +2,7 @@
 title: "The Rise of No-Code and Low-Code Platforms: Should Developers Be Worried?"
 date: "2024-11-19"
 excerpt: "Explore the impact of no-code and low-code platforms on the software development industry and whether developers should be concerned about their rise."
-coverImage: "/images/NoCode.jpg"
+coverImage: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017878/nocode-syncops_isx2lf.jpg"
 ---
 
 ## Introduction

@@ -23,7 +23,7 @@ export const metadata = {
     siteName: "SyncOps",
     images: [
       {
-        url: "https://syncops.tech/images/GeoPluse.png",
+        url: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017876/geopluse-syncops_v05qbs.png",
         width: 1200,
         height: 630,
         alt: "SyncOps Case Studies - Success Stories",
@@ -36,7 +36,7 @@ export const metadata = {
     title: "Case Studies - Success Stories | SyncOps",
     description:
       "Explore SyncOps case studies showcasing successful AI-powered software solutions.",
-    images: ["https://syncops.tech/images/GeoPluse.png"],
+    images: ["https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017876/geopluse-syncops_v05qbs.png"],
     creator: "@SyncOps",
   },
   robots: {

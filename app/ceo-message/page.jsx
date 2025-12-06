@@ -1,5 +1,8 @@
 import CEOMessage from "./_components/CEOMessage";
 import QuoteHighlight from "./_components/QuoteHighlight";
+import ScrollToTop from "../components/ScrollToTop";
+import { ChevronRight, Home } from "lucide-react";
+import SafeLink from "../components/ui/SafeLink";
 
 export const generateMetadata = () => {
   return {
@@ -80,12 +83,49 @@ const CEOMessagePage = () => {
   };
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-white" id="main-content">
+      {/* Skip to Content Link for Accessibility */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#00B894] focus:text-white focus:rounded-lg focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#00B894] focus:ring-offset-2"
+      >
+        Skip to main content
+      </a>
+      
       {/* Structured Data */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
+      
+      {/* Breadcrumbs Navigation */}
+      <nav 
+        className="bg-white border-b border-gray-100 py-4"
+        aria-label="Breadcrumb"
+      >
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <ol className="flex items-center gap-2 text-sm text-gray-600">
+            <li>
+              <SafeLink
+                href="/"
+                className="hover:text-[#00B894] transition-colors flex items-center gap-1"
+                aria-label="Home"
+              >
+                <Home size={16} className="flex-shrink-0" />
+                <span>Home</span>
+              </SafeLink>
+            </li>
+            <li>
+              <ChevronRight size={14} className="text-gray-400 flex-shrink-0" aria-hidden="true" />
+            </li>
+            <li>
+              <span className="text-gray-900 font-medium" aria-current="page">
+                CEO Message
+              </span>
+            </li>
+          </ol>
+        </div>
+      </nav>
       
       {/* Hero Section - CEO Message */}
       <CEOMessage />
@@ -93,6 +133,8 @@ const CEOMessagePage = () => {
       {/* Quote Highlight */}
       <QuoteHighlight />
       
+      {/* Scroll to Top Button */}
+      <ScrollToTop />
     </main>
   );
 };

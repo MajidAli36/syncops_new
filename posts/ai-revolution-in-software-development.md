@@ -2,7 +2,7 @@
 title: "The AI Revolution in Software Development"
 date: "2024-11-15"
 excerpt: "Explore how artificial intelligence is transforming the landscape of software development. From coding assistants to automated testing, discover the tools and techniques reshaping our industry."
-coverImage: "/images/AiDevelopment.jpg"
+coverImage: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017874/ai-development-syncops_hd3oar.jpg"
 ---
 
 Software development has always been about pushing boundaries, finding better ways to build, test, and deploy software. Enter AI—the game-changer. It’s not just a buzzword anymore. It’s reshaping how we work, write code, and even think about problem-solving.
