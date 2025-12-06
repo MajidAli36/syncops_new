@@ -6,85 +6,125 @@ import { Check, Zap, RefreshCw, Shield, Clock, Server, ShieldCheck, TrendingUp, 
 const rows = [
   { 
     feature: 'Setup Time', 
-    syncflow: '2-3 days', 
-    datasync: '3-5 days', 
-    cloudguard: '5-7 days',
+    warehouse: '3-5 days', 
+    syncpeople: '2-4 days', 
+    medmindi: '4-6 days',
+    synciq: '5-7 days',
+    geopluse: '3-5 days',
+    fitresume: '1-2 days',
+    studymate: '2-3 days',
+    smartproperty: '4-6 days',
     icon: Clock,
     description: 'Time to get up and running'
   },
   { 
-    feature: 'Managed Hosting', 
-    syncflow: 'Optional', 
-    datasync: 'Recommended', 
-    cloudguard: 'Included',
-    icon: Server,
-    description: 'Hosting and infrastructure management'
-  },
-  { 
-    feature: 'SOC2 Controls', 
-    syncflow: 'Included', 
-    datasync: 'Included', 
-    cloudguard: 'Enhanced',
-    icon: ShieldCheck,
-    description: 'Security and compliance certifications'
-  },
-  { 
-    feature: 'SLA Guarantee', 
-    syncflow: '99.8%', 
-    datasync: '99.9%', 
-    cloudguard: '99.95%',
-    icon: TrendingUp,
-    description: 'Uptime service level agreement'
-  },
-  { 
-    feature: 'API-First', 
-    syncflow: 'Yes', 
-    datasync: 'Yes', 
-    cloudguard: 'Yes',
-    icon: Code,
-    description: 'RESTful APIs and webhooks'
-  },
-  { 
-    feature: 'Real-time Sync', 
-    syncflow: 'Event-based', 
-    datasync: '<1ms latency', 
-    cloudguard: 'N/A',
-    icon: RefreshCw,
-    description: 'Data synchronization speed'
-  },
-  { 
-    feature: 'AI Features', 
-    syncflow: 'Built-in', 
-    datasync: 'Optional', 
-    cloudguard: 'Threat detection',
+    feature: 'AI-Powered', 
+    warehouse: 'Yes', 
+    syncpeople: 'Yes', 
+    medmindi: 'Partial',
+    synciq: 'Yes',
+    geopluse: 'Yes',
+    fitresume: 'Yes',
+    studymate: 'Yes',
+    smartproperty: 'Yes',
     icon: Zap,
     description: 'Artificial intelligence capabilities'
   },
   { 
+    feature: 'API Access', 
+    warehouse: 'Full', 
+    syncpeople: 'Full', 
+    medmindi: 'Full',
+    synciq: 'Full',
+    geopluse: 'Full',
+    fitresume: 'Limited',
+    studymate: 'Limited',
+    smartproperty: 'Full',
+    icon: Code,
+    description: 'RESTful APIs and webhooks'
+  },
+  { 
+    feature: 'Real-time Updates', 
+    warehouse: 'Yes', 
+    syncpeople: 'Yes', 
+    medmindi: 'Yes',
+    synciq: 'Yes',
+    geopluse: 'Yes',
+    fitresume: 'No',
+    studymate: 'Yes',
+    smartproperty: 'Yes',
+    icon: RefreshCw,
+    description: 'Live data synchronization'
+  },
+  { 
+    feature: 'Security & Compliance', 
+    warehouse: 'Enterprise', 
+    syncpeople: 'SOC2', 
+    medmindi: 'HIPAA',
+    synciq: 'SOC2',
+    geopluse: 'Enterprise',
+    fitresume: 'Standard',
+    studymate: 'COPPA',
+    smartproperty: 'GDPR',
+    icon: ShieldCheck,
+    description: 'Security and compliance standards'
+  },
+  { 
+    feature: 'SLA Guarantee', 
+    warehouse: '99.9%', 
+    syncpeople: '99.8%', 
+    medmindi: '99.95%',
+    synciq: '99.9%',
+    geopluse: '99.8%',
+    fitresume: '99.5%',
+    studymate: '99.7%',
+    smartproperty: '99.9%',
+    icon: TrendingUp,
+    description: 'Uptime service level agreement'
+  },
+  { 
     feature: 'Data Encryption', 
-    syncflow: 'At rest & transit', 
-    datasync: 'End-to-end', 
-    cloudguard: 'Zero-trust',
+    warehouse: 'End-to-end', 
+    syncpeople: 'At rest & transit', 
+    medmindi: 'End-to-end',
+    synciq: 'Zero-trust',
+    geopluse: 'At rest & transit',
+    fitresume: 'At rest',
+    studymate: 'At rest & transit',
+    smartproperty: 'Blockchain',
     icon: Lock,
     description: 'Security encryption standards'
+  },
+  { 
+    feature: 'Mobile Support', 
+    warehouse: 'Web & Mobile', 
+    syncpeople: 'Web & Mobile', 
+    medmindi: 'Web & Mobile',
+    synciq: 'Web & Mobile',
+    geopluse: 'Web & Mobile',
+    fitresume: 'Web',
+    studymate: 'Web & Mobile',
+    smartproperty: 'Web & Mobile',
+    icon: Database,
+    description: 'Platform availability'
   }
 ];
 
 const productHighlights = {
-  syncflow: {
+  warehouse: {
     icon: Zap,
     color: 'from-[#00B894] to-[#00C4FF]',
-    strength: 'Best for workflow automation'
+    strength: 'Best for warehouse operations'
   },
-  datasync: {
+  syncpeople: {
     icon: RefreshCw,
     color: 'from-[#00C4FF] to-[#00B894]',
-    strength: 'Best for data consistency'
+    strength: 'Best for HR management'
   },
-  cloudguard: {
+  medmindi: {
     icon: Shield,
     color: 'from-[#00B894] to-[#00C4FF]',
-    strength: 'Best for security & compliance'
+    strength: 'Best for healthcare'
   }
 };
 
@@ -110,7 +150,7 @@ export default function ProductComparison() {
       >
         {Object.entries(productHighlights).map(([key, highlight]) => {
           const IconComponent = highlight.icon;
-          const productName = key === 'syncflow' ? 'SyncFlow' : key === 'datasync' ? 'DataSync Pro' : 'CloudGuard';
+          const productName = key === 'warehouse' ? 'Warehouse SyncOps' : key === 'syncpeople' ? 'SyncPeople' : 'MedMindi';
           return (
             <motion.div
               key={key}
@@ -129,32 +169,62 @@ export default function ProductComparison() {
 
       {/* Enhanced Comparison Table */}
       <div className="overflow-x-auto rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm -mx-6 px-6 md:mx-0 md:px-0">
-        <div className="min-w-[600px] md:min-w-full">
-          <table className="w-full text-sm" role="table" aria-label="Product comparison table">
+        <div className="min-w-[900px] md:min-w-full">
+          <table className="w-full text-xs md:text-sm" role="table" aria-label="Product comparison table">
           <thead>
             <tr className="border-b border-white/10">
-              <th className="py-4 px-6 text-left font-semibold text-white sticky left-0 bg-brand-navy/95 backdrop-blur-sm z-10">
+              <th className="py-4 px-4 text-left font-semibold text-white sticky left-0 bg-brand-navy/95 backdrop-blur-sm z-10">
                 <span className="flex items-center gap-2">
                   <AlertCircle className="w-4 h-4" aria-hidden="true" />
                   Feature
                 </span>
               </th>
-              <th className="py-4 px-6 text-center font-semibold text-white">
+              <th className="py-4 px-3 text-center font-semibold text-white text-xs">
                 <div className="flex flex-col items-center gap-1">
-                  <Zap className="w-5 h-5 text-brand-aqua" aria-hidden="true" />
-                  <span>SyncFlow</span>
+                  <Zap className="w-4 h-4 text-brand-aqua" aria-hidden="true" />
+                  <span className="leading-tight">Warehouse</span>
                 </div>
               </th>
-              <th className="py-4 px-6 text-center font-semibold text-white">
+              <th className="py-4 px-3 text-center font-semibold text-white text-xs">
                 <div className="flex flex-col items-center gap-1">
-                  <RefreshCw className="w-5 h-5 text-brand-teal" aria-hidden="true" />
-                  <span>DataSync Pro</span>
+                  <RefreshCw className="w-4 h-4 text-brand-teal" aria-hidden="true" />
+                  <span className="leading-tight">SyncPeople</span>
                 </div>
               </th>
-              <th className="py-4 px-6 text-center font-semibold text-white">
+              <th className="py-4 px-3 text-center font-semibold text-white text-xs">
                 <div className="flex flex-col items-center gap-1">
-                  <Shield className="w-5 h-5 text-brand-aqua" aria-hidden="true" />
-                  <span>CloudGuard</span>
+                  <Shield className="w-4 h-4 text-brand-aqua" aria-hidden="true" />
+                  <span className="leading-tight">MedMindi</span>
+                </div>
+              </th>
+              <th className="py-4 px-3 text-center font-semibold text-white text-xs">
+                <div className="flex flex-col items-center gap-1">
+                  <Zap className="w-4 h-4 text-brand-teal" aria-hidden="true" />
+                  <span className="leading-tight">SyncIQ</span>
+                </div>
+              </th>
+              <th className="py-4 px-3 text-center font-semibold text-white text-xs">
+                <div className="flex flex-col items-center gap-1">
+                  <RefreshCw className="w-4 h-4 text-brand-aqua" aria-hidden="true" />
+                  <span className="leading-tight">GeoPluse</span>
+                </div>
+              </th>
+              <th className="py-4 px-3 text-center font-semibold text-white text-xs">
+                <div className="flex flex-col items-center gap-1">
+                  <Shield className="w-4 h-4 text-brand-teal" aria-hidden="true" />
+                  <span className="leading-tight">FitResume</span>
+                </div>
+              </th>
+              <th className="py-4 px-3 text-center font-semibold text-white text-xs">
+                <div className="flex flex-col items-center gap-1">
+                  <Zap className="w-4 h-4 text-brand-aqua" aria-hidden="true" />
+                  <span className="leading-tight">StudyMate</span>
+                </div>
+              </th>
+              <th className="py-4 px-3 text-center font-semibold text-white text-xs">
+                <div className="flex flex-col items-center gap-1">
+                  <Shield className="w-4 h-4 text-brand-teal" aria-hidden="true" />
+                  <span className="leading-tight">SmartProperty</span>
                 </div>
               </th>
             </tr>
@@ -171,31 +241,61 @@ export default function ProductComparison() {
                   viewport={viewport}
                   variants={fadeUp(10 + index * 2)}
                 >
-                  <td className="py-4 px-6 text-gray-200 sticky left-0 bg-brand-navy/95 backdrop-blur-sm z-10">
-                    <div className="flex items-center gap-3">
+                  <td className="py-4 px-4 text-gray-200 sticky left-0 bg-brand-navy/95 backdrop-blur-sm z-10">
+                    <div className="flex items-center gap-2">
                       <IconComponent className="w-4 h-4 text-brand-teal flex-shrink-0" aria-hidden="true" />
                       <div>
-                        <div className="font-medium">{r.feature}</div>
+                        <div className="font-medium text-sm">{r.feature}</div>
                         <div className="text-xs text-gray-400 mt-0.5">{r.description}</div>
                       </div>
                     </div>
                   </td>
-                  <td className="py-4 px-6 text-center text-gray-200">
-                    <span className="inline-flex items-center gap-1.5">
-                      <Check className="w-4 h-4 text-brand-aqua" aria-hidden="true" />
-                      {r.syncflow}
+                  <td className="py-4 px-3 text-center text-gray-200 text-xs">
+                    <span className="inline-flex items-center gap-1">
+                      <Check className="w-3 h-3 text-brand-aqua" aria-hidden="true" />
+                      {r.warehouse}
                     </span>
                   </td>
-                  <td className="py-4 px-6 text-center text-gray-200">
-                    <span className="inline-flex items-center gap-1.5">
-                      <Check className="w-4 h-4 text-brand-teal" aria-hidden="true" />
-                      {r.datasync}
+                  <td className="py-4 px-3 text-center text-gray-200 text-xs">
+                    <span className="inline-flex items-center gap-1">
+                      <Check className="w-3 h-3 text-brand-teal" aria-hidden="true" />
+                      {r.syncpeople}
                     </span>
                   </td>
-                  <td className="py-4 px-6 text-center text-gray-200">
-                    <span className="inline-flex items-center gap-1.5">
-                      <Check className="w-4 h-4 text-brand-aqua" aria-hidden="true" />
-                      {r.cloudguard}
+                  <td className="py-4 px-3 text-center text-gray-200 text-xs">
+                    <span className="inline-flex items-center gap-1">
+                      <Check className="w-3 h-3 text-brand-aqua" aria-hidden="true" />
+                      {r.medmindi}
+                    </span>
+                  </td>
+                  <td className="py-4 px-3 text-center text-gray-200 text-xs">
+                    <span className="inline-flex items-center gap-1">
+                      <Check className="w-3 h-3 text-brand-teal" aria-hidden="true" />
+                      {r.synciq}
+                    </span>
+                  </td>
+                  <td className="py-4 px-3 text-center text-gray-200 text-xs">
+                    <span className="inline-flex items-center gap-1">
+                      <Check className="w-3 h-3 text-brand-aqua" aria-hidden="true" />
+                      {r.geopluse}
+                    </span>
+                  </td>
+                  <td className="py-4 px-3 text-center text-gray-200 text-xs">
+                    <span className="inline-flex items-center gap-1">
+                      <Check className="w-3 h-3 text-brand-teal" aria-hidden="true" />
+                      {r.fitresume}
+                    </span>
+                  </td>
+                  <td className="py-4 px-3 text-center text-gray-200 text-xs">
+                    <span className="inline-flex items-center gap-1">
+                      <Check className="w-3 h-3 text-brand-aqua" aria-hidden="true" />
+                      {r.studymate}
+                    </span>
+                  </td>
+                  <td className="py-4 px-3 text-center text-gray-200 text-xs">
+                    <span className="inline-flex items-center gap-1">
+                      <Check className="w-3 h-3 text-brand-teal" aria-hidden="true" />
+                      {r.smartproperty}
                     </span>
                   </td>
                 </motion.tr>

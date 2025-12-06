@@ -1,8 +1,6 @@
 import CEOMessage from "./_components/CEOMessage";
 import QuoteHighlight from "./_components/QuoteHighlight";
 import ScrollToTop from "../components/ScrollToTop";
-import { ChevronRight, Home } from "lucide-react";
-import SafeLink from "../components/ui/SafeLink";
 
 export const generateMetadata = () => {
   return {
@@ -97,35 +95,6 @@ const CEOMessagePage = () => {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      
-      {/* Breadcrumbs Navigation */}
-      <nav 
-        className="bg-white border-b border-gray-100 py-4"
-        aria-label="Breadcrumb"
-      >
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <ol className="flex items-center gap-2 text-sm text-gray-600">
-            <li>
-              <SafeLink
-                href="/"
-                className="hover:text-[#00B894] transition-colors flex items-center gap-1"
-                aria-label="Home"
-              >
-                <Home size={16} className="flex-shrink-0" />
-                <span>Home</span>
-              </SafeLink>
-            </li>
-            <li>
-              <ChevronRight size={14} className="text-gray-400 flex-shrink-0" aria-hidden="true" />
-            </li>
-            <li>
-              <span className="text-gray-900 font-medium" aria-current="page">
-                CEO Message
-              </span>
-            </li>
-          </ol>
-        </div>
-      </nav>
       
       {/* Hero Section - CEO Message */}
       <CEOMessage />

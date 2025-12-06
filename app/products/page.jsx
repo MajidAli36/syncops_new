@@ -1,19 +1,29 @@
 import ProductsClient from './_components/ProductsClient';
 
 export const generateMetadata = () => ({
-  title: "Products - SyncOps | SaaS Building Blocks for Modern Teams",
-  description: "Discover SyncOps productized SaaS building blocks: SyncFlow (AI workflow automation), DataSync Pro (real-time data sync), and CloudGuard (cloud security). Production-ready modules that integrate seamlessly with your stack. 50+ integrations, 99.8% uptime, enterprise-grade security.",
+  title: "Products - SyncOps | AI-Powered SaaS Solutions for Modern Businesses",
+  description: "Discover SyncOps productized SaaS solutions: Warehouse SyncOps, SyncPeople HR, MedMindi Healthcare, SyncIQ Intelligence, GeoPluse Location, FitResume Builder, StudyMate Education, and SmartProperty Real Estate. Production-ready AI-powered platforms with 99.9% uptime, enterprise-grade security, and seamless integrations.",
   keywords: [
-    "SaaS building blocks",
-    "workflow automation",
-    "data synchronization",
-    "cloud security",
-    "productized SaaS",
-    "SyncFlow",
-    "DataSync Pro",
-    "CloudGuard",
+    "SaaS products",
+    "AI-powered solutions",
+    "warehouse management",
+    "HR management software",
+    "healthcare management",
+    "operational intelligence",
+    "location intelligence",
+    "resume builder",
+    "education platform",
+    "real estate software",
     "enterprise software",
-    "API integration"
+    "API integration",
+    "Warehouse SyncOps",
+    "SyncPeople",
+    "MedMindi",
+    "SyncIQ",
+    "GeoPluse",
+    "FitResume",
+    "StudyMate",
+    "SmartProperty"
   ],
   openGraph: {
     title: "Products - SyncOps | SaaS Building Blocks",
@@ -59,8 +69,8 @@ export default function ProductsPage() {
               "itemListElement": [
                 {
                   "@type": "SoftwareApplication",
-                  "name": "SyncFlow",
-                  "description": "AI-powered workflow automation platform",
+                  "name": "Warehouse SyncOps",
+                  "description": "AI-powered warehouse management and visualization platform",
                   "applicationCategory": "BusinessApplication",
                   "offers": {
                     "@type": "Offer",
@@ -69,8 +79,8 @@ export default function ProductsPage() {
                 },
                 {
                   "@type": "SoftwareApplication",
-                  "name": "DataSync Pro",
-                  "description": "Real-time data synchronization solution",
+                  "name": "SyncPeople",
+                  "description": "AI-powered HR management platform with payroll and analytics",
                   "applicationCategory": "BusinessApplication",
                   "offers": {
                     "@type": "Offer",
@@ -79,9 +89,59 @@ export default function ProductsPage() {
                 },
                 {
                   "@type": "SoftwareApplication",
-                  "name": "CloudGuard",
-                  "description": "Cloud security and compliance platform",
-                  "applicationCategory": "SecurityApplication",
+                  "name": "MedMindi",
+                  "description": "Comprehensive healthcare management system with patient records",
+                  "applicationCategory": "HealthApplication",
+                  "offers": {
+                    "@type": "Offer",
+                    "availability": "https://schema.org/InStock"
+                  }
+                },
+                {
+                  "@type": "SoftwareApplication",
+                  "name": "SyncIQ",
+                  "description": "AI-powered operational intelligence platform with audit automation",
+                  "applicationCategory": "BusinessApplication",
+                  "offers": {
+                    "@type": "Offer",
+                    "availability": "https://schema.org/InStock"
+                  }
+                },
+                {
+                  "@type": "SoftwareApplication",
+                  "name": "GeoPluse",
+                  "description": "Advanced geospatial analytics and location-based services platform",
+                  "applicationCategory": "BusinessApplication",
+                  "offers": {
+                    "@type": "Offer",
+                    "availability": "https://schema.org/InStock"
+                  }
+                },
+                {
+                  "@type": "SoftwareApplication",
+                  "name": "FitResume",
+                  "description": "AI-powered resume builder with ATS optimization",
+                  "applicationCategory": "BusinessApplication",
+                  "offers": {
+                    "@type": "Offer",
+                    "availability": "https://schema.org/InStock"
+                  }
+                },
+                {
+                  "@type": "SoftwareApplication",
+                  "name": "StudyMate",
+                  "description": "AI-powered educational platform for homework help and learning",
+                  "applicationCategory": "EducationalApplication",
+                  "offers": {
+                    "@type": "Offer",
+                    "availability": "https://schema.org/InStock"
+                  }
+                },
+                {
+                  "@type": "SoftwareApplication",
+                  "name": "SmartProperty",
+                  "description": "AI-powered real estate platform with property valuation and blockchain verification",
+                  "applicationCategory": "BusinessApplication",
                   "offers": {
                     "@type": "Offer",
                     "availability": "https://schema.org/InStock"

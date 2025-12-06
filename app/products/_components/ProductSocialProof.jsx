@@ -5,25 +5,60 @@ import { Star, Quote, CheckCircle2 } from 'lucide-react';
 
 const testimonials = [
   {
-    quote: "SyncFlow reduced our manual processes by 85%. The AI-powered workflows are incredibly intuitive and the ROI was immediate.",
+    quote: "Warehouse SyncOps transformed our logistics operations. The AI-powered slotting optimization increased our efficiency by 85% and the real-time visualization helps us make data-driven decisions instantly.",
+    author: "David Tan",
+    role: "Operations Director, LogisticsPro",
+    rating: 5,
+    product: "Warehouse SyncOps"
+  },
+  {
+    quote: "SyncPeople has revolutionized our HR department. The AI automation saved us 70% of our time on payroll and attendance, and the analytics dashboard gives us insights we never had before.",
     author: "Sarah Chen",
-    role: "CTO, TechStart Inc.",
+    role: "HR Director, TechCorp",
     rating: 5,
-    product: "SyncFlow"
+    product: "SyncPeople"
   },
   {
-    quote: "DataSync Pro keeps our 20+ systems perfectly synchronized. The conflict resolution is brilliant—we've had zero data inconsistencies.",
+    quote: "MedMindi streamlined our entire healthcare practice. Patient record management is seamless, appointment scheduling is automated, and HIPAA compliance is built-in. Our staff productivity increased by 60%.",
+    author: "Dr. Emily Watson",
+    role: "Medical Director, HealthCare Plus",
+    rating: 5,
+    product: "MedMindi"
+  },
+  {
+    quote: "SyncIQ's AI audit automation reduced our compliance workload by 85%. The real-time risk analytics help us identify issues before they become problems. This platform is exactly what modern operations need.",
     author: "Michael Rodriguez",
-    role: "VP Engineering, DataCorp",
+    role: "VP Operations, Enterprise Solutions",
     rating: 5,
-    product: "DataSync Pro"
+    product: "SyncIQ"
   },
   {
-    quote: "CloudGuard gives us complete visibility and automated remediation. We passed our SOC2 audit on the first try thanks to their platform.",
-    author: "Emily Watson",
-    role: "Security Lead, SecureCloud",
+    quote: "GeoPluse's location intelligence has been game-changing for our logistics network. Real-time mapping and route optimization have reduced delivery times by 30% and improved customer satisfaction significantly.",
+    author: "James Wilson",
+    role: "Logistics Manager, Global Shipping Co.",
     rating: 5,
-    product: "CloudGuard"
+    product: "GeoPluse"
+  },
+  {
+    quote: "FitResume helped me land my dream job! The AI optimization made my resume ATS-compatible and the suggestions were spot-on. I got 3 interviews within a week of using it.",
+    author: "Alexandra Martinez",
+    role: "Software Engineer",
+    rating: 5,
+    product: "FitResume"
+  },
+  {
+    quote: "StudyMate has been a lifesaver for my kids. The step-by-step solutions actually teach concepts instead of just giving answers. My daughter's grades improved from B's to A's in just one semester.",
+    author: "Jennifer Lee",
+    role: "Parent & Educator",
+    rating: 5,
+    product: "StudyMate"
+  },
+  {
+    quote: "SmartProperty's AI valuation tool is incredibly accurate. We found our perfect home using their smart recommendations, and the blockchain verification gave us complete confidence in the transaction.",
+    author: "Robert Kim",
+    role: "Real Estate Investor",
+    rating: 5,
+    product: "SmartProperty"
   }
 ];
 
@@ -48,7 +83,7 @@ export default function ProductSocialProof() {
       </motion.div>
 
       {/* Testimonials */}
-      <div className="grid md:grid-cols-3 gap-8 mb-16">
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
         {testimonials.map((testimonial, i) => (
           <motion.div
             key={i}

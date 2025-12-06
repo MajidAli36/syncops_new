@@ -3,10 +3,10 @@ import { ParallaxProvider } from 'react-scroll-parallax';
 import { motion } from 'framer-motion';
 import { stagger, viewport } from '../../../lib/motionConfig';
 import ProductsHero from './ProductsHero';
+import FeaturedProducts from './FeaturedProducts';
 import ProductUseCases from './ProductUseCases';
 import ProductIntegrations from './ProductIntegrations';
 import ProductComparison from './ProductComparison';
-import ProductSocialProof from './ProductSocialProof';
 import MetricsBar from '../../components/MetricsBar';
 import FinalCTA from '../../components/FinalCTA';
 import TechnologyStackCards from '../../components/TechnologyStackCards';
@@ -28,6 +28,13 @@ export default function ProductsClient() {
           </motion.div>
         </section>
 
+        {/* Featured Products */}
+        <section className="bg-white py-20">
+          <motion.div initial="initial" whileInView="animate" viewport={viewport} variants={stagger.container(0.08)}>
+            <FeaturedProducts />
+          </motion.div>
+        </section>
+
         {/* Use Cases (light) */}
         <section className="bg-white py-20">
           <motion.div initial="initial" whileInView="animate" viewport={viewport} variants={stagger.container(0.08)}>
@@ -46,13 +53,6 @@ export default function ProductsClient() {
         <section className="bg-brand-navy text-white py-20">
           <motion.div initial="initial" whileInView="animate" viewport={viewport} variants={stagger.container(0.08)}>
             <ProductComparison />
-          </motion.div>
-        </section>
-
-        {/* Social Proof (light) */}
-        <section className="bg-white py-20">
-          <motion.div initial="initial" whileInView="animate" viewport={viewport} variants={stagger.container(0.08)}>
-            <ProductSocialProof />
           </motion.div>
         </section>
 

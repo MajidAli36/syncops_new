@@ -2,91 +2,241 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { fadeUp, stagger, springSoft, viewport } from '../../../lib/motionConfig';
 import SafeLink from '../../components/ui/SafeLink';
-import { ArrowRight, Zap, RefreshCw, Shield, CheckCircle2, TrendingUp, Clock, Star, Sparkles } from 'lucide-react';
-import { useState } from 'react';
+import { ArrowRight, Zap, RefreshCw, Shield, CheckCircle2, TrendingUp, Clock, Star, Sparkles, Filter } from 'lucide-react';
+import { useState, useMemo } from 'react';
+import Image from 'next/image';
 
 const products = [
   {
-    title: 'SyncFlow',
-    tagline: 'AI-powered workflow automation',
-    description: 'Automate repetitive processes with intelligent triggers, approvals, and analytics.',
-    href: '/products/syncflow',
+    title: 'Warehouse SyncOps',
+    tagline: 'AI-Powered Warehouse Management',
+    description: 'Enterprise-grade warehouse visualization dashboard with AI-powered slotting and risk detection.',
+    href: '/case-studies/warehouse',
+    image: 'https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017879/warehouse-syncops_unrbn6.png',
     color: 'from-[#00B894] to-[#00C4FF]',
     icon: Zap,
     features: [
-      'AI-powered decision making',
-      'Multi-step workflow builder',
-      'Real-time analytics dashboard',
-      'Human-in-the-loop approvals',
-      '100+ pre-built connectors'
+      'Real-time warehouse visualization',
+      'AI-powered slotting optimization',
+      'Bin and SKU mapping',
+      'Flow monitoring & analytics',
+      'Risk detection & alerts'
     ],
     stats: [
-      { label: 'Efficiency Gain', value: '80%', icon: TrendingUp },
-      { label: 'Setup Time', value: '2-3 days', icon: Clock },
-      { label: 'Client Rating', value: '9.5/10', icon: Star }
+      { label: 'Efficiency', value: '85%', icon: TrendingUp },
+      { label: 'Accuracy', value: '99%', icon: CheckCircle2 },
+      { label: 'Rating', value: '9.5/10', icon: Star }
     ],
-    badge: 'Most Popular'
+    badge: 'Enterprise'
   },
   {
-    title: 'DataSync Pro',
-    tagline: 'Real-time data synchronization',
-    description: 'Keep your data consistent across services with resilient, observable pipelines.',
-    href: '/products/datasync-pro',
+    title: 'SyncPeople',
+    tagline: 'AI-Powered HR Management',
+    description: 'Complete HR management platform with AI automation, payroll, attendance, and analytics.',
+    href: '/case-studies/syncpeople',
+    image: 'https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017877/syncpeople-syncops_lmx6iw.png',
     color: 'from-[#00C4FF] to-[#00B894]',
     icon: RefreshCw,
     features: [
-      '<1ms sync latency',
-      'Automatic conflict resolution',
-      'Full audit trail & replay',
-      'Multi-directional sync',
-      '50+ database connectors'
+      'AI-powered automation',
+      'Payroll & attendance management',
+      'Real-time HR analytics',
+      'Role-based dashboards',
+      'Employee self-service portal'
     ],
     stats: [
-      { label: 'Sync Speed', value: '<1ms', icon: Zap },
-      { label: 'Uptime', value: '99.9%', icon: Shield },
-      { label: 'Data Sources', value: '50+', icon: Sparkles }
+      { label: 'Time Saved', value: '70%', icon: Clock },
+      { label: 'Accuracy', value: '99%', icon: CheckCircle2 },
+      { label: 'Users', value: '10K+', icon: TrendingUp }
     ],
-    badge: 'Enterprise Ready'
+    badge: 'HR Solution'
   },
   {
-    title: 'CloudGuard',
-    tagline: 'Cloud security & compliance',
-    description: 'Zero-trust security with policy-as-code, monitoring, and automated remediation.',
-    href: '/products/cloudguard',
+    title: 'MedMindi',
+    tagline: 'Healthcare Management Platform',
+    description: 'Comprehensive healthcare management system with patient records and appointment scheduling.',
+    href: '/case-studies/medmindi',
+    image: 'https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017877/medmindi-syncops_uwmk7t.png',
     color: 'from-[#00B894] to-[#00C4FF]',
     icon: Shield,
     features: [
-      'Zero-trust architecture',
-      'Policy-as-code enforcement',
-      'Real-time threat detection',
-      'Automated remediation',
-      'SOC2 & GDPR compliant'
+      'Patient record management',
+      'Appointment scheduling',
+      'Medical history tracking',
+      'HIPAA compliant',
+      'Multi-clinic support'
     ],
     stats: [
-      { label: 'Threats Blocked', value: '10M+', icon: Shield },
-      { label: 'Compliance', value: '100%', icon: CheckCircle2 },
-      { label: 'Response Time', value: '<5min', icon: Clock }
+      { label: 'Compliance', value: '100%', icon: Shield },
+      { label: 'Patients', value: '50K+', icon: TrendingUp },
+      { label: 'Uptime', value: '99.9%', icon: CheckCircle2 }
     ],
-    badge: 'Security First'
+    badge: 'Healthcare'
+  },
+  {
+    title: 'SyncIQ',
+    tagline: 'AI-Powered Operational Intelligence',
+    description: 'Advanced operational intelligence platform with AI audit automation and risk analytics.',
+    href: '/case-studies/synciq',
+    image: 'https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017876/syncIq-syncops_ef24ou.png',
+    color: 'from-[#00C4FF] to-[#00B894]',
+    icon: Zap,
+    features: [
+      'AI audit automation',
+      'Real-time risk analytics',
+      'Multi-tenant architecture',
+      'Machine learning insights',
+      'Compliance monitoring'
+    ],
+    stats: [
+      { label: 'Automation', value: '85%', icon: TrendingUp },
+      { label: 'Speed', value: '10x', icon: Zap },
+      { label: 'Rating', value: '9.8/10', icon: Star }
+    ],
+    badge: 'Intelligence'
+  },
+  {
+    title: 'GeoPluse',
+    tagline: 'Location Intelligence Platform',
+    description: 'Advanced geospatial analytics and location-based services platform.',
+    href: '/case-studies/geopluse',
+    image: 'https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017876/geopluse-syncops_v05qbs.png',
+    color: 'from-[#00B894] to-[#00C4FF]',
+    icon: RefreshCw,
+    features: [
+      'Geospatial analytics',
+      'Location-based services',
+      'Real-time mapping',
+      'Route optimization',
+      'Territory management'
+    ],
+    stats: [
+      { label: 'Coverage', value: 'Global', icon: TrendingUp },
+      { label: 'Accuracy', value: '99%', icon: CheckCircle2 },
+      { label: 'Speed', value: '<1s', icon: Zap }
+    ],
+    badge: 'Location AI'
+  },
+  {
+    title: 'FitResume',
+    tagline: 'AI Resume Builder',
+    description: 'Intelligent resume builder with AI-powered optimization and ATS compatibility.',
+    href: '/case-studies/fitresume',
+    image: 'https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017875/fitresume-syncops_on9rzq.png',
+    color: 'from-[#00C4FF] to-[#00B894]',
+    icon: Sparkles,
+    features: [
+      'AI-powered optimization',
+      'ATS compatibility',
+      'Multiple templates',
+      'Real-time suggestions',
+      'Export to PDF/Word'
+    ],
+    stats: [
+      { label: 'Success Rate', value: '90%', icon: TrendingUp },
+      { label: 'Templates', value: '50+', icon: Sparkles },
+      { label: 'Users', value: '100K+', icon: Star }
+    ],
+    badge: 'Career Tool'
+  },
+  {
+    title: 'StudyMate',
+    tagline: 'AI-Powered Homework Help',
+    description: 'AI-powered educational platform providing step-by-step homework solutions and learning support.',
+    href: '/case-studies/studymate',
+    image: 'https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017875/studymate-syncops_mvrfxc.png',
+    color: 'from-[#00B894] to-[#00C4FF]',
+    icon: Star,
+    features: [
+      'Step-by-step solutions',
+      '24/7 AI assistance',
+      'Multi-subject support',
+      'Interactive learning',
+      'Personalized tutoring'
+    ],
+    stats: [
+      { label: 'Students', value: '500K+', icon: TrendingUp },
+      { label: 'Subjects', value: '50+', icon: Sparkles },
+      { label: 'Rating', value: '9.7/10', icon: Star }
+    ],
+    badge: 'Education'
+  },
+  {
+    title: 'SmartProperty',
+    tagline: 'AI Real Estate Intelligence',
+    description: 'AI-powered real estate platform with property valuation, blockchain verification, and smart recommendations.',
+    href: '/case-studies/smartproperty',
+    image: 'https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017874/smartproperty-syncops_comso4.png',
+    color: 'from-[#00C4FF] to-[#00B894]',
+    icon: Shield,
+    features: [
+      'AI property valuation',
+      'Blockchain verification',
+      'Smart recommendations',
+      'Market analytics',
+      'Virtual property tours'
+    ],
+    stats: [
+      { label: 'Properties', value: '1M+', icon: TrendingUp },
+      { label: 'Accuracy', value: '95%', icon: CheckCircle2 },
+      { label: 'Speed', value: '<5s', icon: Zap }
+    ],
+    badge: 'Real Estate'
   }
 ];
 
 export default function FeaturedProducts() {
   const [expandedCard, setExpandedCard] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState('All');
+
+  // Extract unique categories from products
+  const categories = useMemo(() => {
+    const cats = ['All', ...new Set(products.map(p => p.badge))];
+    return cats;
+  }, []);
+
+  // Filter products based on selected category
+  const filteredProducts = useMemo(() => {
+    if (selectedCategory === 'All') return products;
+    return products.filter(p => p.badge === selectedCategory);
+  }, [selectedCategory]);
 
   return (
     <div className="max-w-7xl mx-auto px-6" id="products">
-      <motion.div className="text-center mb-16" initial="initial" whileInView="animate" viewport={viewport} variants={stagger.container(0.06)}>
+      <motion.div className="text-center mb-12" initial="initial" whileInView="animate" viewport={viewport} variants={stagger.container(0.06)}>
         <motion.h2 className="text-display-sm font-bold text-gray-900 mb-6" variants={fadeUp(16)}>
           Featured <span className="gradient-text">Products</span>
         </motion.h2>
-        <motion.p className="text-body-xl text-gray-600 max-w-3xl mx-auto" variants={fadeUp(20)}>
+        <motion.p className="text-body-xl text-gray-600 max-w-3xl mx-auto mb-8" variants={fadeUp(20)}>
           Production-ready modules you can adopt today—built and refined with real client workloads.
         </motion.p>
+        
+        {/* Category Filter */}
+        <motion.div 
+          className="flex flex-wrap items-center justify-center gap-3 mb-8"
+          variants={fadeUp(24)}
+        >
+          <Filter className="w-5 h-5 text-gray-500" aria-hidden="true" />
+          {categories.map((category) => (
+            <button
+              key={category}
+              onClick={() => setSelectedCategory(category)}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                selectedCategory === category
+                  ? 'bg-gradient-to-r from-[#00B894] to-[#00C4FF] text-white shadow-lg scale-105'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
+              aria-label={`Filter by ${category}`}
+              aria-pressed={selectedCategory === category}
+            >
+              {category}
+            </button>
+          ))}
+        </motion.div>
       </motion.div>
 
-      <div className="grid md:grid-cols-3 gap-8">
-        {products.map((p, i) => {
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {filteredProducts.map((p, i) => {
           const IconComponent = p.icon;
           const isExpanded = expandedCard === p.title;
 
@@ -106,8 +256,25 @@ export default function FeaturedProducts() {
               </div>
 
               <div className="p-8 h-full flex flex-col">
-                <div className={`w-16 h-16 bg-gradient-to-br ${p.color} rounded-2xl mb-5 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                  <IconComponent size={32} className="text-white" aria-hidden="true" />
+                <div className={`w-full h-48 bg-gradient-to-br ${p.color} rounded-2xl mb-5 shadow-lg group-hover:scale-105 transition-transform duration-300 overflow-hidden relative flex items-center justify-center`}>
+                  {p.image ? (
+                    <div className="relative w-full h-full min-h-[192px]">
+                      <Image
+                        src={p.image}
+                        alt={`${p.title} - ${p.tagline}`}
+                        fill
+                        className="object-contain p-6"
+                        priority={i < 4}
+                        loading={i < 4 ? "eager" : "lazy"}
+                        quality={95}
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      />
+                    </div>
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center">
+                      <IconComponent size={32} className="text-white" aria-hidden="true" />
+                    </div>
+                  )}
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-brand-teal transition-colors duration-300">
                   {p.title}
@@ -182,6 +349,36 @@ export default function FeaturedProducts() {
           );
         })}
       </div>
+
+      {/* Empty State */}
+      {filteredProducts.length === 0 && (
+        <motion.div
+          className="text-center py-16"
+          initial="initial"
+          whileInView="animate"
+          viewport={viewport}
+          variants={fadeUp(20)}
+        >
+          <p className="text-gray-500 text-lg">No products found in this category.</p>
+          <button
+            onClick={() => setSelectedCategory('All')}
+            className="mt-4 text-brand-teal hover:text-brand-aqua font-medium transition-colors"
+          >
+            Show all products
+          </button>
+        </motion.div>
+      )}
+
+      {/* Product Count */}
+      <motion.div
+        className="text-center mt-12 text-gray-600 text-sm"
+        initial="initial"
+        whileInView="animate"
+        viewport={viewport}
+        variants={fadeUp(20)}
+      >
+        Showing {filteredProducts.length} of {products.length} products
+      </motion.div>
     </div>
   );
 }
