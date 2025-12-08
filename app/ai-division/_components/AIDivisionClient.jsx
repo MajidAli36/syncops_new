@@ -1,7 +1,5 @@
 "use client";
-import { motion } from 'framer-motion';
 import { ParallaxProvider } from 'react-scroll-parallax';
-import { stagger, viewport } from '../../../lib/motionConfig';
 import AIHero from './AIHero';
 import AIOfferings from './AIOfferings';
 import AITechnologies from './AITechnologies';
@@ -15,58 +13,58 @@ export default function AIDivisionClient() {
     <ParallaxProvider>
       <main className="min-h-screen">
         {/* Hero Section */}
-        <section className="bg-brand-navy text-white">
-          <motion.div {...stagger.container(0.06)}>
+        <section data-gsap-section className="bg-brand-navy text-white">
+          <div data-gsap-stagger>
             <AIHero />
-          </motion.div>
+          </div>
         </section>
 
         {/* AI Offerings Section */}
-        <section className="bg-gradient-to-br from-white via-gray-50 to-gray-100 py-12 md:py-20 relative">
+        <section data-gsap-section className="bg-gradient-to-br from-white via-gray-50 to-gray-100 py-12 md:py-20 relative">
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-aqua/20 to-transparent"></div>
-          <motion.div initial="initial" whileInView="animate" viewport={viewport} variants={stagger.container(0.08)}>
+          <div data-gsap-stagger>
             <AIOfferings />
-          </motion.div>
+          </div>
           <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-teal/20 to-transparent"></div>
         </section>
 
         {/* AI Capabilities Section */}
-        <section className="bg-brand-navy text-white py-12 md:py-20">
-          <motion.div initial="initial" whileInView="animate" viewport={viewport} variants={stagger.container(0.08)}>
+        <section data-gsap-section className="bg-brand-navy text-white py-12 md:py-20">
+          <div data-gsap-stagger>
             <AICapabilities />
-          </motion.div>
+          </div>
         </section>
 
         {/* AI Technologies Section */}
-        <section className="bg-gradient-to-br from-white via-gray-50 to-gray-100 py-12 md:py-20 relative">
+        <section data-gsap-section className="bg-gradient-to-br from-white via-gray-50 to-gray-100 py-12 md:py-20 relative">
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-aqua/20 to-transparent"></div>
-          <motion.div initial="initial" whileInView="animate" viewport={viewport} variants={stagger.container(0.08)}>
+          <div data-gsap-stagger>
             <AITechnologies />
-          </motion.div>
+          </div>
           <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-teal/20 to-transparent"></div>
         </section>
 
         {/* AI Process Section */}
-        <section className="bg-brand-navy text-white py-12 md:py-20">
-          <motion.div initial="initial" whileInView="animate" viewport={viewport} variants={stagger.container(0.08)}>
+        <section data-gsap-section className="bg-brand-navy text-white py-12 md:py-20">
+          <div data-gsap-stagger>
             <AIProcess />
-          </motion.div>
+          </div>
         </section>
 
         {/* AI Case Studies Section */}
-        <section className="bg-gradient-to-br from-gray-50 via-white to-gray-100 py-12 md:py-20 relative">
+        <section data-gsap-section className="bg-gradient-to-br from-gray-50 via-white to-gray-100 py-12 md:py-20 relative">
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-teal/20 to-transparent"></div>
-          <motion.div initial="initial" whileInView="animate" viewport={viewport} variants={stagger.container(0.08)}>
+          <div data-gsap-stagger>
             <AICaseStudies />
-          </motion.div>
+          </div>
           <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-aqua/20 to-transparent"></div>
         </section>
 
         {/* Final CTA Section */}
-        <section className="bg-gradient-to-br from-brand-navy via-gray-900 to-brand-navy py-12 md:py-20">
-          <motion.div initial="initial" whileInView="animate" viewport={viewport} variants={stagger.container(0.08)}>
+        <section data-gsap-section className="bg-gradient-to-br from-brand-navy via-gray-900 to-brand-navy py-12 md:py-20">
+          <div data-gsap-stagger>
             <AICTA />
-          </motion.div>
+          </div>
         </section>
       </main>
     </ParallaxProvider>

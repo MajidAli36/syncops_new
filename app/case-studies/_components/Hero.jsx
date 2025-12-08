@@ -71,6 +71,8 @@ const CaseStudyHero = ({ title, subtitle, image, industry, duration, team, demoL
                 <SafeLink
                   href={demoLink || "/contact?type=demo&source=case-study"}
                   className="inline-flex items-center justify-center bg-gradient-brand text-white px-6 py-3 sm:px-8 sm:py-4 rounded-lg font-semibold text-sm sm:text-base hover:shadow-glow transition-all duration-300 hover:scale-105 group w-full sm:w-auto"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <Calendar className="w-4 h-4 sm:w-5 sm:h-5 mr-2 group-hover:rotate-12 transition-transform" />
                   <span className="hidden sm:inline">View Demo</span>

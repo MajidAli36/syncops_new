@@ -10,6 +10,7 @@ import {
   Instagram,
   Youtube,
   Twitter,
+  Github,
   User,
   ExternalLink,
 } from "lucide-react";
@@ -25,6 +26,7 @@ const socialLinks = [
   { href: "https://www.facebook.com/SyncOpsTech", icon: Facebook, label: "Facebook", tooltip: "Follow us on Facebook" },
   { href: "https://www.youtube.com/@syncops-tech", icon: Youtube, label: "YouTube", tooltip: "Subscribe to our YouTube" },
   { href: "https://www.instagram.com/syncops_tech/", icon: Instagram, label: "Instagram", tooltip: "Follow us on Instagram" },
+  { href: "https://github.com/SyncOpsTech", icon: Github, label: "GitHub", tooltip: "Check out our GitHub" },
 ];
 
 export default function TopBar() {

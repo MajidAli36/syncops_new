@@ -81,7 +81,7 @@ const CEOMessagePage = () => {
   };
 
   return (
-    <main className="min-h-screen bg-white" id="main-content">
+    <main className="min-h-screen bg-[#0B0A1C]" id="main-content">
       {/* Skip to Content Link for Accessibility */}
       <a
         href="#main-content"

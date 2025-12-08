@@ -14,6 +14,8 @@ export default function Footer() {
                 src="/images/logo-footer.png"
                 alt="SyncOps"
                 className="h-12 w-auto"
+                style={{ imageRendering: 'crisp-edges' }}
+                loading="eager"
               />
             </div>
             <p className="text-[#F3F4F6] mb-6 leading-relaxed">

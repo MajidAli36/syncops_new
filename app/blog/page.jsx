@@ -67,13 +67,25 @@ export default function BlogPage() {
   return (
     <main className="min-h-screen">
       {/* Hero Section */}
-      <BlogHero />
+      <section data-gsap-section>
+        <div data-gsap-stagger>
+          <BlogHero />
+        </div>
+      </section>
       
       {/* Blog Posts Section */}
-      <Blog posts={posts} />
+      <section data-gsap-section>
+        <div data-gsap-stagger>
+          <Blog posts={posts} />
+        </div>
+      </section>
       
       {/* CTA Section */}
-      <FinalCTA />
+      <section data-gsap-section>
+        <div data-gsap-stagger>
+          <FinalCTA />
+        </div>
+      </section>
       
     </main>
   );

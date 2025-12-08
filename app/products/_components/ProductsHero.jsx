@@ -22,8 +22,13 @@ export default function ProductsHero() {
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-8 lg:py-12">
         <motion.div className="grid lg:grid-cols-[1.1fr_1fr] gap-12 items-center" {...stagger.container(0.08)}>
           <div className="text-white">
-            <motion.h1 className="text-display font-bold leading-tight mb-6 text-balance" variants={fadeUp(20)}>
-              Productized <span className="gradient-text">SaaS Building Blocks</span>
+            <motion.h1 className="text-4xl lg:text-6xl font-bold leading-snug mb-4" variants={fadeUp(20)}>
+              <span className="text-white bg-clip-text text-transparent">
+               Productized 
+              </span>
+              <span className="bg-gradient-to-r from-[#00B894] to-[#00C4FF] bg-clip-text text-transparent">
+                {" "}SaaS Building Blocks
+              </span>
             </motion.h1>
             <motion.p className="text-body-xl text-gray-300 mb-8 max-w-2xl leading-relaxed" variants={fadeUp(24)}>
               Launch faster with our prebuilt modules for workflows, data sync, and cloud security—designed to integrate seamlessly.

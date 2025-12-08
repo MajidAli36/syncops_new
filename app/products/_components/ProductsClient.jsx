@@ -1,7 +1,5 @@
 "use client";
 import { ParallaxProvider } from 'react-scroll-parallax';
-import { motion } from 'framer-motion';
-import { stagger, viewport } from '../../../lib/motionConfig';
 import ProductsHero from './ProductsHero';
 import FeaturedProducts from './FeaturedProducts';
 import ProductUseCases from './ProductUseCases';
@@ -15,59 +13,59 @@ export default function ProductsClient() {
     <ParallaxProvider>
       <main className="min-h-screen">
         {/* Hero */}
-        <section className="bg-brand-navy text-white">
-          <motion.div {...stagger.container(0.06)}>
+        <section data-gsap-section className="bg-brand-navy text-white">
+          <div data-gsap-stagger>
             <ProductsHero />
-          </motion.div>
+          </div>
         </section>
 
         {/* Metrics (light) */}
-        <section className="bg-white py-16">
-          <motion.div initial="initial" whileInView="animate" viewport={viewport} variants={stagger.container(0.08)}>
+        <section data-gsap-section className="bg-white py-16">
+          <div data-gsap-stagger>
             <MetricsBar />
-          </motion.div>
+          </div>
         </section>
 
         {/* Featured Products */}
-        <section className="bg-white py-20">
-          <motion.div initial="initial" whileInView="animate" viewport={viewport} variants={stagger.container(0.08)}>
+        <section data-gsap-section className="bg-white py-20">
+          <div data-gsap-stagger>
             <FeaturedProducts />
-          </motion.div>
+          </div>
         </section>
 
         {/* Use Cases (light) */}
-        <section className="bg-white py-20">
-          <motion.div initial="initial" whileInView="animate" viewport={viewport} variants={stagger.container(0.08)}>
+        <section data-gsap-section className="bg-white py-20">
+          <div data-gsap-stagger>
             <ProductUseCases />
-          </motion.div>
+          </div>
         </section>
 
         {/* Integrations (light gray) */}
-        <section className="bg-gray-50 py-20">
-          <motion.div initial="initial" whileInView="animate" viewport={viewport} variants={stagger.container(0.08)}>
+        <section data-gsap-section className="bg-gray-50 py-20">
+          <div data-gsap-stagger>
             <ProductIntegrations />
-          </motion.div>
+          </div>
         </section>
 
         {/* Comparison (dark) */}
-        <section className="bg-brand-navy text-white py-20">
-          <motion.div initial="initial" whileInView="animate" viewport={viewport} variants={stagger.container(0.08)}>
+        <section data-gsap-section className="bg-brand-navy text-white py-20">
+          <div data-gsap-stagger>
             <ProductComparison />
-          </motion.div>
+          </div>
         </section>
 
         {/* Technologies (light) */}
-        <section>
-          <motion.div initial="initial" whileInView="animate" viewport={viewport} variants={stagger.container(0.08)}>
+        <section data-gsap-section>
+          <div data-gsap-stagger>
             <TechnologyStackCards />
-          </motion.div>
+          </div>
         </section>
 
         {/* Final CTA (brand gradient) */}
-        <section>
-          <motion.div initial="initial" whileInView="animate" viewport={viewport} variants={stagger.container(0.08)}>
+        <section data-gsap-section>
+          <div data-gsap-stagger>
             <FinalCTA />
-          </motion.div>
+          </div>
         </section>
       </main>
     </ParallaxProvider>

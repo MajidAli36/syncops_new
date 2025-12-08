@@ -164,14 +164,16 @@ const BlogHero = () => {
           <div className="text-white">
             <div>
               <motion.h1 
-                className="text-display font-bold leading-tight mb-6 text-balance"
+                className="text-4xl lg:text-6xl font-bold leading-snug mb-4"
                 initial={{ opacity: 0, y: 30, scale: 0.95 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
               >
-                Discover{" "}
+                <span className="text-white bg-clip-text text-transparent">
+                 Discover 
+                </span>
                 <motion.span 
-                  className="gradient-text"
+                  className="bg-gradient-to-r from-[#00B894] to-[#00C4FF] bg-clip-text text-transparent"
                   animate={{
                     backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
                   }}
@@ -184,7 +186,7 @@ const BlogHero = () => {
                     backgroundSize: "200% 200%",
                   }}
                 >
-                  Insights That Drive Innovation
+                  {" "}Insights That Drive Innovation
                 </motion.span>
               </motion.h1>
             </div>

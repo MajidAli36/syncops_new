@@ -18,10 +18,15 @@ export default function ReferralHero() {
         >
           <div className="text-white">
             <motion.h1 
-              className="text-display font-bold leading-tight mb-6 text-balance" 
+              className="text-4xl lg:text-6xl font-bold leading-snug mb-4" 
               variants={fadeUp(20)}
             >
-              Earn by Referring <span className="gradient-text">Clients & Talent</span>
+              <span className="text-white bg-clip-text text-transparent">
+               Earn by Referring 
+              </span>
+              <span className="bg-gradient-to-r from-[#00B894] to-[#00C4FF] bg-clip-text text-transparent">
+                {" "}Clients & Talent
+              </span>
             </motion.h1>
             <motion.p 
               className="text-body-xl text-gray-300 mb-8 max-w-2xl leading-relaxed" 

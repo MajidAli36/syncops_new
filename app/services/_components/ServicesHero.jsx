@@ -55,14 +55,14 @@ export default function ServicesHero() {
           {/* Left Side - Content */}
           <div className="text-white">
             {/* Service Badge */}
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-brand-aqua/20 to-brand-teal/20 border border-brand-aqua/30 rounded-full px-4 py-2 mb-8">
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-brand-aqua/20 to-brand-teal/20 border border-brand-aqua/30 rounded-full px-4 py-2 mb-6">
               <div className="w-2 h-2 bg-brand-aqua rounded-full animate-pulse"></div>
               <span className="text-sm font-medium text-brand-aqua">Professional Services</span>
             </div>
             
-            <h1 className="text-display font-bold leading-tight mb-6 text-balance">
+            <h1 className="text-4xl lg:text-6xl font-bold leading-snug mb-4">
               Transform Your Vision Into{" "}
-              <span className="gradient-text">
+              <span className="bg-gradient-to-r from-[#00B894] to-[#00C4FF] bg-clip-text text-transparent">
                 Digital Reality
               </span>
             </h1>

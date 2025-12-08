@@ -31,6 +31,27 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Prevent GSAP blinking - Hide elements initially */
+[data-gsap-section] {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(80px);
+}
+
+[data-gsap-stagger] {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(40px);
+}
+
+/* Show elements when GSAP is ready (will be overridden by GSAP) */
+[data-gsap-section].gsap-ready,
+[data-gsap-stagger].gsap-ready {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
 /* Reduce motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -457,6 +478,16 @@ body {
   50% { transform: translateY(0) translateX(0); }
   75% { transform: translateY(8px) translateX(-4px); }
   100% { transform: translateY(0) translateX(0); }
+}
+
+/* Shine animation for cards */
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
 }
 
 /* Gradient animation keyframes */

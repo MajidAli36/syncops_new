@@ -69,33 +69,45 @@ const AboutPage = () => {
   return (
     <main className="min-h-screen">
       {/* 1. Hero Section - Dark */}
-      <section className="bg-[#0B0A1C] text-white" id="about-hero">
-        <AboutHero />
+      <section data-gsap-section className="bg-[#0B0A1C] text-white" id="about-hero">
+        <div data-gsap-stagger>
+          <AboutHero />
+        </div>
       </section>
       
       {/* 2. Mission & Vision - Light */}
-      <section className="bg-gradient-to-br from-[#FAFAFF] to-white py-20" id="mission-vision">
-        <MissionVision />
+      <section data-gsap-section className="bg-gradient-to-br from-[#FAFAFF] to-white py-20" id="mission-vision">
+        <div data-gsap-stagger>
+          <MissionVision />
+        </div>
       </section>
       
       {/* 3. What We Stand For - Light */}
-      <section className="bg-gradient-to-br from-white to-[#FAFAFF] py-20" id="what-we-stand-for">
-        <WhatWeStandFor />
+      <section data-gsap-section className="bg-gradient-to-br from-white to-[#FAFAFF] py-20" id="what-we-stand-for">
+        <div data-gsap-stagger>
+          <WhatWeStandFor />
+        </div>
       </section>
       
       {/* 4. Leadership Team - Dark */}
-      <section className="bg-[#0B0A1C] text-white py-20" id="leadership-team">
-        <LeadershipTeam />
+      <section data-gsap-section className="bg-[#0B0A1C] text-white py-20" id="leadership-team">
+        <div data-gsap-stagger>
+          <LeadershipTeam />
+        </div>
       </section>
       
      
-      <section className="bg-gradient-to-br from-[#FAFAFF] to-white py-20" id="trusted-metrics">
-       <HowWeWork />
+      <section data-gsap-section className="bg-gradient-to-br from-[#FAFAFF] to-white py-20" id="trusted-metrics">
+        <div data-gsap-stagger>
+          <HowWeWork />
+        </div>
       </section>
       
       {/* 6. What Drives Us - Light */}
-      <section className="bg-gradient-to-br from-white to-[#FAFAFF] py-20" id="what-drives-us">
-        <WhatDrivesUs />
+      <section data-gsap-section className="bg-gradient-to-br from-white to-[#FAFAFF] py-20" id="what-drives-us">
+        <div data-gsap-stagger>
+          <WhatDrivesUs />
+        </div>
       </section>
       
     </main>

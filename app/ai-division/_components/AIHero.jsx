@@ -46,10 +46,12 @@ export default function AIHero() {
           {/* Left Side - Content */}
           <div className="text-white">
             <div>
-              <motion.h1 className="text-display font-bold leading-tight mb-6 text-balance" variants={fadeUp(20)}>
-                Transforming Business with{" "}
-                <span className="gradient-text">
-                  AI-Powered Innovation
+              <motion.h1 className="text-4xl lg:text-6xl font-bold leading-snug mb-4" variants={fadeUp(20)}>
+                <span className="text-white bg-clip-text text-transparent">
+                 Transforming Business with 
+                </span>
+                <span className="bg-gradient-to-r from-[#00B894] to-[#00C4FF] bg-clip-text text-transparent">
+                  {" "}AI-Powered Innovation
                 </span>
               </motion.h1>
             </div>

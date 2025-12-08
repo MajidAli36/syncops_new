@@ -40,6 +40,8 @@ const CaseStudyCTA = ({ title, industry }) => {
               <SafeLink
                 href="/contact?type=demo&source=case-study"
                 className="inline-flex items-center justify-center bg-gradient-brand text-white px-6 py-3 sm:px-8 sm:py-4 lg:px-10 lg:py-5 rounded-xl font-semibold text-sm sm:text-base lg:text-lg hover:shadow-glow transition-all duration-300 hover:scale-110 group relative overflow-hidden w-full sm:w-auto"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                 <Calendar className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 mr-2 sm:mr-3 group-hover:rotate-12 transition-transform" />
