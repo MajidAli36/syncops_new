@@ -256,22 +256,21 @@ export default function FeaturedProducts() {
               </div>
 
               <div className="p-8 h-full flex flex-col">
-                <div className={`w-full h-48 bg-gradient-to-br ${p.color} rounded-2xl mb-5 shadow-lg group-hover:scale-105 transition-transform duration-300 overflow-hidden relative flex items-center justify-center`}>
+                <div className="w-full h-48 bg-white rounded-2xl mb-5 shadow-lg group-hover:shadow-xl border border-gray-200 group-hover:border-brand-teal/30 transition-all duration-300 overflow-hidden relative">
                   {p.image ? (
-                    <div className="relative w-full h-full min-h-[192px]">
+                    <div className="relative w-full h-full">
                       <Image
                         src={p.image}
                         alt={`${p.title} - ${p.tagline}`}
                         fill
-                        className="object-contain p-6"
+                        className="object-contain p-4"
                         priority={i < 4}
-                        loading={i < 4 ? "eager" : "lazy"}
                         quality={95}
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                     </div>
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center">
+                    <div className={`w-full h-full bg-gradient-to-br ${p.color} flex items-center justify-center`}>
                       <IconComponent size={32} className="text-white" aria-hidden="true" />
                     </div>
                   )}
