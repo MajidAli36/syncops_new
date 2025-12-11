@@ -1,6 +1,6 @@
 "use client";
 
-import { Database, Server, Package, Box, DollarSign, Mail, Calendar, Flask, Pill, Briefcase, Linkedin, Cloud, Chrome, StickyNote, CreditCard, Link, Map, Navigation, Clipboard, BarChart, GraduationCap } from "lucide-react";
+import { Database, Server, Package, Box, DollarSign, Mail, Calendar, Beaker, Pill, Briefcase, Linkedin, Cloud, Chrome, StickyNote, CreditCard, Link, Map, Navigation, Clipboard, BarChart, GraduationCap } from "lucide-react";
 import { StaggerWrapper } from "../../../components/InViewWrapper";
 import InViewWrapper from "../../../components/InViewWrapper";
 
@@ -12,7 +12,7 @@ const iconMap = {
   DollarSign,
   Mail,
   Calendar,
-  Flask,
+  Beaker,
   Pill,
   Briefcase,
   Linkedin,
