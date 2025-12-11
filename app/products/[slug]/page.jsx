@@ -4,7 +4,6 @@ import ProductFeatures from "./_components/ProductFeatures";
 import ProductUseCases from "./_components/ProductUseCases";
 import ProductIntegrations from "./_components/ProductIntegrations";
 import ProductBenefits from "./_components/ProductBenefits";
-import ProductCTA from "./_components/ProductCTA";
 import RelatedProducts from "./_components/RelatedProducts";
 import { productsData, getProductBySlug, getRelatedProducts } from "../_data/products";
 
@@ -164,7 +163,6 @@ export default async function ProductPage({ params }) {
         <ProductBenefits benefits={product.benefits} color={product.color} />
         <ProductUseCases useCases={product.useCases} color={product.color} />
         <ProductIntegrations integrations={product.integrations} color={product.color} />
-        <ProductCTA product={product} color={product.color} />
         <RelatedProducts relatedProducts={relatedProducts} />
       </article>
     </>

@@ -10,7 +10,7 @@ const RelatedProducts = ({ relatedProducts }) => {
   if (!relatedProducts || relatedProducts.length === 0) return null;
 
   return (
-    <section className="relative py-12 sm:py-16 lg:py-24 bg-white overflow-hidden" aria-labelledby="related-products-heading">
+    <section className="relative py-8 lg:py-12 bg-white overflow-hidden" aria-labelledby="related-products-heading">
       <div className="container mx-auto px-4 sm:px-6 md:px-12">
         <InViewWrapper animation="fadeUp" className="text-center mb-8 sm:mb-12 lg:mb-16">
           <h2 id="related-products-heading" className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-brand-navy mb-3 sm:mb-4">
@@ -29,7 +29,7 @@ const RelatedProducts = ({ relatedProducts }) => {
             >
               <article className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-2xl hover:scale-[1.02] transition-all duration-500 h-full flex flex-col">
                 {/* Image */}
-                <div className="relative h-48 sm:h-56 overflow-hidden bg-gray-900 flex items-center justify-center">
+                <div className="relative h-48 sm:h-56 overflow-hidden bg-white flex items-center justify-center border border-gray-200 group-hover:border-brand-teal/30 transition-all duration-300">
                   <Image
                     src={product.image}
                     alt={`${product.title} - ${product.tagline}`}

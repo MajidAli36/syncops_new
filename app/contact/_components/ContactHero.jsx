@@ -6,7 +6,7 @@ import SafeLink from "../../components/ui/SafeLink";
 
 const ContactHero = () => {
   return (
-    <section className="relative overflow-hidden bg-[#0B0A1C] text-white py-12 sm:py-16 md:py-20 lg:py-24 border-b border-white/5">
+    <section className="relative overflow-hidden bg-[#0B0A1C] text-white py-8 lg:py-12 border-b border-white/5">
       {/* Background Effects */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#00B894]/10 to-[#00C4FF]/10 opacity-30"></div>
       <div className="absolute top-10 left-5 sm:top-20 sm:left-20 w-48 h-48 sm:w-72 sm:h-72 bg-gradient-to-r from-[#00B894] to-[#00C4FF] rounded-full filter blur-3xl opacity-20 animate-pulse"></div>

@@ -73,13 +73,13 @@ const KeyFeatures = ({ features = [], accentColor = fallbackColor }) => {
               <div className="w-12 h-12 bg-gradient-to-br from-[#00B894] to-[#00C4FF] rounded-xl flex items-center justify-center shadow-md flex-shrink-0 mr-4 group-hover:scale-110 transition-transform duration-300">
                 <IconComponent className="w-6 h-6 text-white" />
               </div>
-              <div className="flex-1 pr-20">
+              <div className="flex-1 pr-28">
                 <h3 className="text-xl font-bold text-gray-800 leading-tight">
                   {feature?.title}
                 </h3>
               </div>
               {/* Metric Badge - Positioned to not overlap */}
-              <div className="absolute top-0 right-4 inline-flex items-center px-3 py-1 bg-gradient-to-r from-[#00B894]/10 to-[#00C4FF]/10 rounded-full border border-[#00B894]/20 z-10">
+              <div className="absolute top-0 right-6 inline-flex items-center px-3 py-1 bg-gradient-to-r from-[#00B894]/10 to-[#00C4FF]/10 rounded-full border border-[#00B894]/20 z-10">
                 <span className="text-xs font-semibold text-[#00B894]">{feature.metricLabel}</span>
               </div>
             </div>

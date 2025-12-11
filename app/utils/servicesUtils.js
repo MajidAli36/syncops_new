@@ -175,7 +175,7 @@ export const servicesData = {
     description:
       "At SyncOps, we specialize in delivering cutting-edge web development services that combine aesthetics with high-performance functionality. Our team is passionate about creating stunning, dynamic, and user-centric websites that not only look great but also perform exceptionally well. We cater to all stages of web development, from initial conceptualization to final deployment, ensuring that your website is a powerful tool that drives engagement and achieves business goals.",
     image:
-      "https://pub-e82cc9e80e5b41f0822b99235bdacd0b.r2.dev/web-development.webp",
+      "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017880/web-deveploment-syncops_sydprh.jpg",
     processTitle: "Web Development Process",
     processDescription:
       "Our approach to web development is methodical and comprehensive, ensuring that your website is visually appealing, functional, and optimized for success across all platforms and devices. Each step of the process is focused on delivering a high-quality, user-friendly final product.",
@@ -326,7 +326,7 @@ export const servicesData = {
     description:
       "Unlock the power of cloud computing to optimize operations, increase scalability, and reduce costs. Our solutions provide flexible, reliable access to resources, empowering business growth through efficient cloud adoption and seamless integration.",
     image:
-      "https://pub-e82cc9e80e5b41f0822b99235bdacd0b.r2.dev/cloud-computing.webp",
+      "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765290831/cloud-computing-syncops_noet8x.jpg",
     processTitle: "Cloud Computing Process",
     processDescription:
       "Our tailored process ensures a smooth cloud transition from strategy development to post-migration support, aligned with your business needs and goals.",
@@ -478,7 +478,7 @@ export const servicesData = {
     description:
       "In today’s digital world, securing your assets is more important than ever. Our comprehensive cybersecurity solutions provide end-to-end services designed to protect your systems, data, and infrastructure from an ever-evolving landscape of cyber threats. We leverage the latest technologies and best practices to secure your network, safeguard sensitive data, and ensure compliance with industry regulations. Our expert team helps you identify and mitigate risks, so you can confidently focus on your core business operations while we protect your digital assets.",
     image:
-      "https://images.unsplash.com/photo-1586023492126-2f7bd41e4f77?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Q2VudHJhbCUyMGNvbXB1dGVyJTIwY29ubmVjdGlvbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=500",
+      "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017875/cybersecurity-syncops_zrsq65.jpg",
     processTitle: "Cybersecurity Process",
     processDescription:
       "Our multi-layered approach combines the latest technologies with proven strategies to defend against potential cyber threats. We assess, protect, and monitor your systems, networks, and data to provide continuous defense, ensuring peace of mind for your business operations.",

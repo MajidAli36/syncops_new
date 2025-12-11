@@ -2,7 +2,6 @@
 import { ParallaxProvider } from 'react-scroll-parallax';
 import ProductsHero from './ProductsHero';
 import FeaturedProducts from './FeaturedProducts';
-import ProductUseCases from './ProductUseCases';
 import ProductIntegrations from './ProductIntegrations';
 import ProductComparison from './ProductComparison';
 import MetricsBar from '../../components/MetricsBar';
@@ -30,13 +29,6 @@ export default function ProductsClient() {
         <section data-gsap-section className="bg-white py-20">
           <div data-gsap-stagger>
             <FeaturedProducts />
-          </div>
-        </section>
-
-        {/* Use Cases (light) */}
-        <section data-gsap-section className="bg-white py-20">
-          <div data-gsap-stagger>
-            <ProductUseCases />
           </div>
         </section>
 
