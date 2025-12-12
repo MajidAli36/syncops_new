@@ -190,7 +190,7 @@ export default function CaseStudiesPage() {
             <div className="text-white">
               {/* Badge */}
               <motion.div variants={fadeUp(20)}>
-                <div className="inline-flex items-center gap-2 bg-gradient-to-r from-brand-aqua/20 to-brand-teal/20 border border-brand-aqua/30 rounded-full px-4 py-2 mb-8">
+                <div className="inline-flex items-center gap-2 bg-gradient-to-r from-brand-aqua/20 to-brand-teal/20 border border-brand-aqua/30 rounded-full px-4 py-2 mb-4">
                   <Briefcase className="w-4 h-4 text-brand-aqua" />
                   <span className="text-sm font-medium text-brand-aqua">Success Stories</span>
                 </div>
@@ -198,7 +198,7 @@ export default function CaseStudiesPage() {
 
               <motion.h1 
                 id="case-studies-heading"
-                className="text-display font-bold leading-tight mb-6 text-balance" 
+                className="text-4xl lg:text-6xl font-bold leading-snug mb-4" 
                 variants={fadeUp(22)}
               >
                 Stories of Our{" "}

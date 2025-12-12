@@ -1,16 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import SafeLink from "../../components/ui/SafeLink";
 import Image from "next/image";
-import { ArrowRight, ExternalLink } from "lucide-react";
-import ImageModal from "./ImageModal";
+import { ArrowRight } from "lucide-react";
 import { StaggerWrapper } from "../../components/InViewWrapper";
 import InViewWrapper from "../../components/InViewWrapper";
 
 const RelatedCaseStudies = ({ caseStudies }) => {
-  const [selectedImage, setSelectedImage] = useState(null);
-
   if (!caseStudies || caseStudies.length === 0) return null;
 
   return (
@@ -36,7 +33,7 @@ const RelatedCaseStudies = ({ caseStudies }) => {
         <StaggerWrapper className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch" stagger={0.15}>
           {caseStudies.map((study, index) => (
             <div key={index} className="flex h-full">
-              <SafeLink href={study.link || "#"} className="block group w-full flex flex-col">
+              <SafeLink href={study.link || "#"} className="group w-full flex flex-col">
                 <div className="bg-white rounded-2xl border-2 border-gray-200 overflow-hidden hover:border-brand-teal hover:shadow-2xl transition-all duration-500 flex flex-col h-full hover:scale-[1.03] relative">
                   {/* Industry badge */}
                   {study.industry && (
@@ -46,36 +43,18 @@ const RelatedCaseStudies = ({ caseStudies }) => {
                   )}
                   
                   <div 
-                    className="relative cursor-pointer overflow-hidden"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                      setSelectedImage({
-                        src: study.image,
-                        alt: `${study.title} - ${study.industry} case study by SyncOps. ${study.description}`,
-                        title: study.title
-                      });
-                    }}
+                    className="relative overflow-hidden"
                   >
                     <Image
                       src={study.image}
                       alt={`${study.title} - ${study.industry} case study by SyncOps. ${study.description}`}
                       width={400}
                       height={250}
-                      className="w-full h-48 sm:h-56 object-cover transition-transform duration-700 group-hover:scale-125"
+                      className="w-full h-48 sm:h-56 object-cover transition-transform duration-700 group-hover:scale-110"
                       style={{ objectPosition: 'center 20%' }}
                       loading="lazy"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
-                    {/* Enhanced overlay on hover */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end justify-center pb-3 sm:pb-4">
-                      <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 text-white font-semibold text-[10px] sm:text-xs bg-white/20 backdrop-blur-md px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg border border-white/30 flex items-center gap-1.5 sm:gap-2">
-                        Click to enlarge
-                        <ExternalLink className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
-                      </div>
-                    </div>
-                    {/* Shine effect */}
-                    <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
                   </div>
                   
                   <div className="p-4 sm:p-6 flex flex-col flex-grow">
@@ -95,16 +74,6 @@ const RelatedCaseStudies = ({ caseStudies }) => {
         </StaggerWrapper>
       </div>
 
-      {/* Image Modal */}
-      {selectedImage && (
-        <ImageModal
-          isOpen={!!selectedImage}
-          onClose={() => setSelectedImage(null)}
-          imageSrc={selectedImage.src}
-          imageAlt={selectedImage.alt}
-          title={selectedImage.title}
-        />
-      )}
     </section>
   );
 };

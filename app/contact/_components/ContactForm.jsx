@@ -28,6 +28,7 @@ const ContactForm = () => {
     phone: "",
     region: "",
     services: [],
+    description: "",
   });
   const [loading, setLoading] = useState(false);
   const [captchaVerified, setCaptchaVerified] = useState(false);
@@ -97,6 +98,7 @@ const ContactForm = () => {
       phone_number: formData.phone,
       region: formData.region,
       services: formData.services.join(", "),
+      description: formData.description,
     };
 
     emailjs
@@ -121,6 +123,7 @@ const ContactForm = () => {
             phone: "",
             region: "",
             services: [],
+            description: "",
           });
           recaptchaRef.current.reset();
           setCaptchaVerified(false);
@@ -373,6 +376,26 @@ const ContactForm = () => {
                 </div>
               </div>
 
+              {/* Description */}
+              <div>
+                <label htmlFor="description" className="block text-xs sm:text-sm font-medium text-gray-700 mb-2">
+                  Project Description
+                </label>
+                <div className="relative">
+                  <MessageSquare className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 z-10" size={20} />
+                  <textarea
+                    id="description"
+                    name="description"
+                    value={formData.description}
+                    onChange={handleChange}
+                    placeholder="Tell us about your project, ideas, and requirements..."
+                    disabled={loading}
+                    rows="4"
+                    className="w-full pl-10 sm:pl-12 pr-3 sm:pr-4 py-3 sm:py-4 bg-white/90 backdrop-blur-sm border-2 border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 sm:focus:ring-4 focus:ring-[#00B894]/20 focus:border-[#00B894] transition-all duration-300 hover:border-[#00C4FF]/50 text-gray-900 placeholder-gray-500 text-sm sm:text-base resize-none"
+                  />
+                </div>
+              </div>
+
               {/* Services */}
               <div>
                 <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-3">
@@ -394,6 +417,8 @@ const ContactForm = () => {
                   ))}
                 </div>
               </div>
+
+              
               <div className="flex justify-center overflow-hidden">
                 <div className="scale-75 sm:scale-100 origin-center">
                   <ReCAPTCHA

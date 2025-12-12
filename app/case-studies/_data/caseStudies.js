@@ -119,7 +119,7 @@ export const caseStudiesData = {
     title: "AI-Powered SyncPeople HR Management Platform",
     subtitle:
       "How SyncOps created a comprehensive, AI-driven HR management system that streamlines workforce operations, automates manual processes, and empowers every role with intelligent insights — transforming HR chaos into clarity.",
-    image: "/images/syncpeople.png",
+    image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017877/syncpeople-syncops_lmx6iw.png",
     industry: "HR Management",
     duration: "10 months",
     team: "15 specialists",
@@ -234,7 +234,7 @@ export const caseStudiesData = {
     title: "MediMind AI: AI-Powered Medical Assistant Platform",
     subtitle:
       "How SyncOps created an intelligent medical assistant that transforms clinical workflows by reducing charting time by 50%, automating ICD-10 suggestions, and generating AI-drafted prescriptions — all while maintaining HIPAA compliance and enterprise-grade security.",
-    image: "/images/medmindai.png",
+    image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017877/medmindi-syncops_uwmk7t.png",
     industry: "Healthcare",
     duration: "12 months",
     team: "18 specialists",
