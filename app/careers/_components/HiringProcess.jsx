@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { FileText, Phone, Code, Handshake } from 'lucide-react';
 
 const HiringProcess = () => {
   const steps = [
@@ -7,28 +8,28 @@ const HiringProcess = () => {
       number: "01",
       title: "Application Review",
       description: "We carefully review your application, portfolio, and experience to understand your skills and potential fit.",
-      icon: "📋",
+      icon: FileText,
       duration: "2-3 days"
     },
     {
       number: "02",
       title: "Initial Screening",
       description: "A brief call with our team to discuss your background, interests, and answer any questions you may have.",
-      icon: "📞",
+      icon: Phone,
       duration: "30 min"
     },
     {
       number: "03",
       title: "Technical Assessment",
       description: "Complete a practical assessment that demonstrates your skills and problem-solving approach.",
-      icon: "💻",
+      icon: Code,
       duration: "2-4 hours"
     },
     {
       number: "04",
       title: "Final Interview",
       description: "Meet with key team members to discuss your role, team dynamics, and ensure mutual fit.",
-      icon: "🤝",
+      icon: Handshake,
       duration: "1-2 hours"
     }
   ];
@@ -82,7 +83,7 @@ const HiringProcess = () => {
                         {step.title}
                       </h3>
                       <div className="flex items-center gap-2 text-sm text-gray-300">
-                        <span className="text-2xl">{step.icon}</span>
+                        <step.icon className="w-6 h-6" aria-hidden="true" />
                         <span>{step.duration}</span>
                       </div>
                     </div>

@@ -4,7 +4,6 @@ import AIHero from './AIHero';
 import AIOfferings from './AIOfferings';
 import AITechnologies from './AITechnologies';
 import AICapabilities from './AICapabilities';
-import AICaseStudies from './AICaseStudies';
 import AIProcess from './AIProcess';
 import AICTA from './AICTA';
 
@@ -51,17 +50,9 @@ export default function AIDivisionClient() {
           </div>
         </section>
 
-        {/* AI Case Studies Section */}
-        <section data-gsap-section className="bg-gradient-to-br from-gray-50 via-white to-gray-100 py-12 md:py-20 relative">
-          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-teal/20 to-transparent"></div>
-          <div data-gsap-stagger>
-            <AICaseStudies />
-          </div>
-          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-aqua/20 to-transparent"></div>
-        </section>
-
+       
         {/* Final CTA Section */}
-        <section data-gsap-section className="bg-gradient-to-br from-brand-navy via-gray-900 to-brand-navy py-12 md:py-20">
+        <section data-gsap-section>
           <div data-gsap-stagger>
             <AICTA />
           </div>

@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import { Briefcase, Calendar, MapPin, User, ArrowRight, Award, CheckCircle, X } from 'lucide-react';
 import { createPortal } from "react-dom";
 
 const initialFormState = {
@@ -190,11 +191,12 @@ const OpenPositions = () => {
             }`}
           >
             {/* Featured Badge */}
-            {position.featured && (
+                {position.featured && (
               <div className="absolute top-4 right-4">
-                <span className="bg-gradient-to-r from-[#00B894] to-[#00C4FF] text-[#0B0A1C] px-3 py-1 rounded-full text-sm font-semibold">
-                  🔥 Featured
-                </span>
+                    <span className="bg-gradient-to-r from-[#00B894] to-[#00C4FF] text-[#0B0A1C] px-3 py-1 rounded-full text-sm font-semibold inline-flex items-center gap-2">
+                      <Award className="w-4 h-4 text-[#0B0A1C]" aria-hidden="true" />
+                      Featured
+                    </span>
               </div>
             )}
 
@@ -211,27 +213,19 @@ const OpenPositions = () => {
             {/* Position Details */}
             <div className="grid grid-cols-2 gap-4 mb-6">
               <div className="flex items-center gap-2 text-sm text-gray-300">
-                <svg className="w-4 h-4 text-[#00B894]" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                </svg>
+                <Briefcase className="w-4 h-4 text-[#00B894]" aria-hidden="true" />
                 <span>{position.department}</span>
               </div>
               <div className="flex items-center gap-2 text-sm text-gray-300">
-                <svg className="w-4 h-4 text-[#00C4FF]" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                </svg>
+                <Calendar className="w-4 h-4 text-[#00C4FF]" aria-hidden="true" />
                 <span>{position.type}</span>
               </div>
               <div className="flex items-center gap-2 text-sm text-gray-300">
-                <svg className="w-4 h-4 text-[#00B894]" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
-                </svg>
+                <MapPin className="w-4 h-4 text-[#00B894]" aria-hidden="true" />
                 <span>{position.location}</span>
               </div>
               <div className="flex items-center gap-2 text-sm text-gray-300">
-                <svg className="w-4 h-4 text-[#00C4FF]" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                </svg>
+                <User className="w-4 h-4 text-[#00C4FF]" aria-hidden="true" />
                 <span>{position.experience}</span>
               </div>
             </div>
@@ -254,9 +248,7 @@ const OpenPositions = () => {
               className="group w-full bg-gradient-to-r from-[#00B894] to-[#00C4FF] text-white font-semibold px-6 py-3 rounded-lg hover:shadow-[0_0_30px_rgba(0,184,148,0.5)] transition-all duration-300 hover:scale-105"
             >
               <span className="flex items-center justify-center gap-2">
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                </svg>
+                <ArrowRight className="w-5 h-5" aria-hidden="true" />
                 Apply Now
               </span>
             </button>
@@ -267,10 +259,8 @@ const OpenPositions = () => {
       {/* No Results Message */}
       {filteredPositions.length === 0 && (
         <div className="text-center py-16">
-          <div className="w-24 h-24 bg-gradient-to-br from-[#00B894]/20 to-[#00C4FF]/20 rounded-full flex items-center justify-center mx-auto mb-6">
-            <svg className="w-12 h-12 text-[#00B894]" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-            </svg>
+            <div className="w-24 h-24 bg-gradient-to-br from-[#00B894]/20 to-[#00C4FF]/20 rounded-full flex items-center justify-center mx-auto mb-6">
+              <CheckCircle className="w-12 h-12 text-[#00B894]" aria-hidden="true" />
           </div>
           <h3 className="text-2xl font-bold text-white mb-4">No positions found</h3>
           <p className="text-gray-300">Try adjusting your filters or check back later for new opportunities.</p>
@@ -303,20 +293,7 @@ const OpenPositions = () => {
                 className="text-gray-500 hover:text-gray-700 transition-colors"
                 aria-label="Close application drawer"
               >
-                <svg
-                  className="w-6 h-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
+                <X className="w-6 h-6" aria-hidden="true" />
               </button>
             </div>
 

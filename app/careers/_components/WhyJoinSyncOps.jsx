@@ -1,10 +1,11 @@
 "use client";
 import React from "react";
+import { Rocket, Globe, BookOpen, Lightbulb, Handshake, Award, Star, Quote } from 'lucide-react';
 
 const WhyJoinSyncOps = () => {
   const benefits = [
     {
-      icon: "🚀",
+      icon: Rocket,
       title: "Cutting-Edge Projects",
       description:
         "Work on the latest AI and machine learning technologies that are shaping the future of software development.",
@@ -13,7 +14,7 @@ const WhyJoinSyncOps = () => {
       metricScore: 98
     },
     {
-      icon: "🌍",
+      icon: Globe,
       title: "Remote-First Culture",
       description:
         "Work from anywhere in the world with flexible hours and a supportive team that values work-life balance.",
@@ -22,7 +23,7 @@ const WhyJoinSyncOps = () => {
       metricScore: 96
     },
     {
-      icon: "🎓",
+      icon: BookOpen,
       title: "Continuous Learning",
       description:
         "Access to courses, conferences, and mentorship programs to help you grow both personally and professionally.",
@@ -31,7 +32,7 @@ const WhyJoinSyncOps = () => {
       metricScore: 97
     },
     {
-      icon: "💡",
+      icon: Lightbulb,
       title: "Innovation-Driven",
       description:
         "Be part of a team that encourages creative thinking and rewards innovative solutions to complex problems.",
@@ -40,7 +41,7 @@ const WhyJoinSyncOps = () => {
       metricScore: 95
     },
     {
-      icon: "🤝",
+      icon: Handshake,
       title: "Collaborative Environment",
       description:
         "Join a diverse team where every voice matters and collaboration leads to breakthrough solutions.",
@@ -49,7 +50,7 @@ const WhyJoinSyncOps = () => {
       metricScore: 99
     },
     {
-      icon: "🏆",
+      icon: Award,
       title: "Competitive Benefits",
       description:
         "Comprehensive health coverage, generous PTO, and performance-based bonuses that recognize your contributions.",
@@ -89,7 +90,7 @@ const WhyJoinSyncOps = () => {
                 <div
                   className={`w-16 h-16 bg-gradient-to-br ${benefit.gradient} rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110`}
                 >
-                  <span className="text-2xl">{benefit.icon}</span>
+                  <benefit.icon className="w-8 h-8 text-white" aria-hidden="true" />
                 </div>
                 <div className="ml-4 px-3 py-1 rounded-full bg-gray-50 border border-gray-100 text-[11px] font-medium text-gray-600 whitespace-nowrap">
                   {benefit.metricLabel}
@@ -136,9 +137,7 @@ const WhyJoinSyncOps = () => {
           {/* Quote Icon */}
           <div className="mb-8">
             <div className="w-16 h-16 bg-gradient-to-br from-[#00B894] to-[#00C4FF] rounded-full flex items-center justify-center shadow-lg mx-auto">
-              <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
-              </svg>
+              <Quote className="w-8 h-8 text-white" aria-hidden="true" />
             </div>
           </div>
 
@@ -160,9 +159,7 @@ const WhyJoinSyncOps = () => {
             </div>
             <div className="flex items-center justify-center gap-1">
               {[...Array(5)].map((_, i) => (
-                <svg key={i} className="w-5 h-5 text-[#00B894]" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                </svg>
+                <Star key={i} className="w-5 h-5 text-[#00B894]" aria-hidden="true" />
               ))}
             </div>
           </div>
