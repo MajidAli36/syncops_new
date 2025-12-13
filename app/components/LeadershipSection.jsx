@@ -2,7 +2,7 @@
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
-import { Linkedin, Twitter, Globe, Mail, ChevronLeft, ChevronRight } from "lucide-react";
+import { Linkedin, Globe, Mail, ChevronLeft, ChevronRight } from "lucide-react";
 
 // Removed TypeScript types for plain JSX usage
 
@@ -46,7 +46,7 @@ const cSuite = [
     experienceBadge: "5+ years' experience",
     blurb: "Leads product development, technology roadmap, and innovation strategy.",
     photo: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1764948234/rimshaimran-cto-syncops_lvs2eb.jpg",
-    website: "https://rimshaimran.tech",
+    website: "https://www.rimshaimran.tech/",
     linkedin: "https://www.linkedin.com/in/rimshaimran-syncops/",
     twitter: "#",
     email: "#",
@@ -76,7 +76,7 @@ const cSuite = [
     blurb: "Leads client relationships, discovers new growth opportunities, and supports strategic business expansion.",
     photo: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1764948375/faizan-zia-bdm-syncops_uacwlv.jpg",
     website: "#",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/faizanzia-syncops/",
     twitter: "#",
     email: "#",
   },
@@ -260,15 +260,7 @@ const CoverflowCard = ({ person, index, currentIndex, total, onClick }) => {
               >
                 <Linkedin size={18} />
               </a>
-              <a 
-                aria-label="Twitter" 
-                href={twitter} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="hover:text-[#00C4FF] hover:scale-125 transition-all duration-300 p-1.5 rounded-full hover:bg-gray-100"
-              >
-                <Twitter size={18} />
-              </a>
+              {/* Twitter icon removed per request */}
               <a 
                 aria-label="Website" 
                 href={website} 

@@ -59,10 +59,10 @@ const homepageStructuredData = {
         "@type": "Person",
         "name": "Rimsha Imran",
         "jobTitle": "Chief Technology Officer",
-        "url": "https://rimshaimran.tech",
+        "url": "https://www.rimshaimran.tech/",
         "sameAs": [
           "https://www.linkedin.com/in/rimshaimran-syncops/",
-          "https://rimshaimran.tech"
+          "https://www.rimshaimran.tech/"
         ]
       },
       {

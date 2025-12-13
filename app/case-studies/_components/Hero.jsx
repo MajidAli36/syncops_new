@@ -11,7 +11,7 @@ const CaseStudyHero = ({ title, subtitle, image, industry, duration, team, demoL
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <section className="relative pt-4 pb-8 sm:pb-12 lg:pt-6 lg:pb-16 bg-gradient-to-b from-white via-gray-50/30 to-white overflow-hidden" style={{ marginTop: '0', zIndex: 1, scrollMarginTop: '120px' }}>
+    <section className="relative py-8  lg:py-12 bg-gradient-to-b from-white via-gray-50/30 to-white overflow-hidden" style={{ marginTop: '0', zIndex: 1, scrollMarginTop: '120px' }}>
       {/* Decorative background elements */}
       <div className="absolute top-0 right-0 w-64 h-64 sm:w-96 sm:h-96 bg-gradient-to-br from-brand-teal/5 to-transparent rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
       <div className="absolute bottom-0 left-0 w-64 h-64 sm:w-96 sm:h-96 bg-gradient-to-tr from-brand-aqua/5 to-transparent rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>

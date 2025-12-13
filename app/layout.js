@@ -118,12 +118,12 @@ const organizationSchema = {
     {
       "@type": "Person",
       "name": "Rimsha Imran",
-      "jobTitle": "Chief Technology Officer",
-      "url": "https://rimshaimran.tech",
-      "sameAs": [
-        "https://www.linkedin.com/in/rimshaimran-syncops/",
-        "https://rimshaimran.tech"
-      ]
+        "jobTitle": "Chief Technology Officer",
+        "url": "https://www.rimshaimran.tech/",
+        "sameAs": [
+          "https://www.linkedin.com/in/rimshaimran-syncops/",
+          "https://www.rimshaimran.tech/"
+        ]
     },
     {
       "@type": "Person",

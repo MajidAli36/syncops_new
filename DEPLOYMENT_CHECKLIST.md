@@ -200,7 +200,7 @@
 
 ### ✅ Leadership Websites
 - [x] CEO website: https://majidali.tech
-- [x] CTO website: https://rimshaimran.tech
+- [x] CTO website: https://www.rimshaimran.tech/
 
 ### ✅ Contact Information
 - [x] Email: info@syncops.tech

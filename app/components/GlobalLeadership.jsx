@@ -1,5 +1,4 @@
 "use client";
-import { Linkedin, Twitter, Globe, Mail } from 'lucide-react';
 
 export default function GlobalLeadership() {
   return (

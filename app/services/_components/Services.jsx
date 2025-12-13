@@ -143,10 +143,10 @@ const services = [
 ];
 
 const serviceStats = [
-  { label: "Engagements", value: "500+" },
+  { label: "Engagements", value: "50+" },
   { label: "Industries Served", value: "15" },
-  { label: "Specialists", value: "120+" },
-  { label: "Avg. NPS", value: "9.6/10" },
+  { label: "Specialists", value: "25+" },
+  { label: "Avg. NPS", value: "9.8/10" },
 ];
 
 const Services = () => {
