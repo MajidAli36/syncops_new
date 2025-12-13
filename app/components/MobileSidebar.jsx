@@ -197,7 +197,7 @@ const MobileSidebar = ({ isOpen, onClose }) => {
                       animate="open"
                       custom={index}
                       onClick={onClose}
-                      className="group flex items-center gap-4 py-3 px-5 rounded-xl bg-white/10 hover:bg-white/20 transition-all duration-300 text-white font-semibold"
+                      className="group flex items-center gap-4 py-2 px-5 rounded-xl bg-white/10 hover:bg-white/20 transition-all duration-300 text-white font-semibold"
                       whileHover={{ scale: 1.02, x: 5 }}
                       whileTap={{ scale: 0.98 }}
                     >

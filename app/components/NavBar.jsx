@@ -63,7 +63,7 @@ export default function NavBar() {
   // Throttled scroll handler to prevent excessive updates
   useEffect(() => {
     if (!mounted) return;
-    
+
     let ticking = false;
     const throttledHandleScroll = () => {
       if (!ticking) {
@@ -325,7 +325,7 @@ export default function NavBar() {
 
               {/* Premium Brand Logo Section */}
               <motion.div
-                className="flex flex-col items-center justify-center pt-16 pb-8 px-6 relative"
+                className="flex flex-col items-center justify-center py-6 px-6 relative"
                 initial={{ opacity: 0, y: -40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3, duration: 0.6, type: "spring", stiffness: 100 }}
@@ -373,7 +373,7 @@ export default function NavBar() {
               </motion.div>
 
               {/* Ultra Premium Navigation */}
-              <nav className="px-6 pb-8 h-full overflow-y-auto relative z-10">
+              <nav className="px-6 pb-10 h-[78vh] overflow-y-auto relative z-10">
                 <motion.div
                   className="flex flex-col gap-4"
                   initial={{ opacity: 0 }}
@@ -396,7 +396,7 @@ export default function NavBar() {
                         href={link.href}
                         className={`group relative text-white 
                                    transition-all duration-300 touch-manipulation 
-                                   min-h-[80px] flex items-center px-6 py-6 
+                                   min-h-[60px] flex items-center px-6 py-4 
                                    rounded-3xl border-2
                                    hover:border-[#00B894]/60 hover:scale-[1.02] hover:-translate-y-2
                                    hover:shadow-2xl
@@ -437,25 +437,13 @@ export default function NavBar() {
                       </SafeLink>
                     </motion.div>
                   ))}
-                </motion.div>
 
-                {/* Ultra Premium CTA Section */}
-                <motion.div
-                  className="mt-10 space-y-5 px-2"
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{
-                    delay: prefersReducedMotion ? 0 : 0.6,
-                    duration: prefersReducedMotion ? 0.1 : 0.5
-                  }}
-                  style={{ willChange: "transform, opacity" }}
-                >
-                  {/* Secondary CTA */}
+                  {/* Contact CTA placed after mapped nav items */}
                   <SafeLink
                     href="/contact"
                     className="group relative bg-gradient-to-r from-white/10 to-white/5 backdrop-blur-xl border-2 border-white/20 text-white font-bold 
-                             text-lg px-6 py-5 rounded-3xl shadow-xl hover:shadow-2xl hover:shadow-[#00B894]/20
-                             hover:border-[#00B894]/40 hover:scale-[1.03] hover:-translate-y-1 transition-all duration-300 
+                      text-lg px-6 py-5 rounded-3xl shadow-xl hover:shadow-2xl hover:shadow-[#00B894]/20
+                     hover:border-[#00B894]/40 hover:scale-[1.03] hover:-translate-y-1 transition-all duration-300 
                              flex items-center justify-center gap-3 min-h-[64px]
                              focus:outline-none focus:ring-4 focus:ring-[#00B894]/40 overflow-hidden"
                     onClick={() => setIsMenuOpen(false)}
@@ -469,6 +457,8 @@ export default function NavBar() {
                     />
                   </SafeLink>
                 </motion.div>
+
+             
               </nav>
             </motion.div>
           </motion.div>
