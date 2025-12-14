@@ -11,18 +11,39 @@ export async function generateStaticParams() {
   }));
 }
 
+import { generateMetadata as generateSEO, generateServiceSchema } from "../../utils/seoUtils";
+
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const service = servicesData[slug];
   if (!service) {
     return {
-      title: "Service Not Found",
+      title: "Service Not Found | SyncOps",
+      description: "The requested service could not be found.",
+      robots: {
+        index: false,
+        follow: false,
+      },
     };
   }
-  return {
-    title: `${service.title} | Our Services`,
-    description: service.description,
-  };
+
+  // Generate keywords from service features and title
+  const keywords = [
+    service.title.toLowerCase(),
+    "software development",
+    "SyncOps services",
+    "custom software",
+    "enterprise solutions",
+    ...(service.features?.slice(0, 5).map(f => f.title.toLowerCase()) || []),
+  ].filter(Boolean);
+
+  return generateSEO({
+    title: `${service.title} - Professional Software Development Services | SyncOps`,
+    description: `${service.description.substring(0, 150)}... Professional ${service.title} services by SyncOps. 50+ successful projects, 99.5% uptime.`,
+    keywords,
+    url: `/services/${slug}`,
+    type: "website"
+  });
 }
 
 export default async function ServicePage({ params }) {
@@ -33,8 +54,50 @@ export default async function ServicePage({ params }) {
     notFound();
   }
 
+  // Generate structured data for the service
+  const serviceSchema = generateServiceSchema({
+    name: service.title,
+    description: service.description,
+    slug: slug
+  });
+
+  // Generate breadcrumb schema
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://syncops.tech"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Services",
+        "item": "https://syncops.tech/services"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": service.title,
+        "item": `https://syncops.tech/services/${slug}`
+      }
+    ]
+  };
+
   return (
-    <div className="min-h-screen">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <div className="min-h-screen">
       <section className="py-12 lg:py-16 bg-gradient-to-br from-white via-gray-50 to-white relative overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
@@ -144,5 +207,6 @@ export default async function ServicePage({ params }) {
         </div>
       </section>
     </div>
+    </>
   );
 }

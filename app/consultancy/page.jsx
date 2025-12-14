@@ -9,12 +9,32 @@ import {
   CpuIcon,
 } from "lucide-react";
 
+import { generateMetadata as generateSEO } from "../utils/seoUtils";
+
 export const generateMetadata = () => {
-  return {
-    title: "Consultancy - SyncOps",
+  return generateSEO({
+    title: "Free Software Consultancy - 15 Days Free Consultation | SyncOps",
     description:
-      "Transform your business with expert consultancy services from SyncOps. Take advantage of our 15-day free consultancy to address your unique challenges and drive growth.",
-  };
+      "Get 15 days of free software consultancy from SyncOps. Expert analysis of your current software, improvement recommendations, scaling strategies, security audits, system integration guidance, and architecture advice. Transform your business with professional software consulting.",
+    keywords: [
+      "free software consultancy",
+      "software consulting",
+      "free consultation",
+      "software analysis",
+      "system integration consulting",
+      "software architecture consulting",
+      "scaling strategies",
+      "security audit",
+      "software optimization",
+      "IT consulting",
+      "technology consulting",
+      "software improvement",
+      "15 day free consultancy",
+      "SyncOps consultancy"
+    ],
+    url: "/consultancy",
+    type: "website"
+  });
 };
 
 const services = [
@@ -57,8 +77,65 @@ const services = [
 ];
 
 export default function ConsultancyPage() {
+  // Structured data for consultancy service
+  const consultancySchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Software Consultancy",
+    "name": "Free Software Consultancy - 15 Days",
+    "description": "Get 15 days of free software consultancy from SyncOps. Expert analysis, improvement recommendations, scaling strategies, and architecture advice.",
+    "provider": {
+      "@type": "Organization",
+      "name": "SyncOps",
+      "url": "https://syncops.tech"
+    },
+    "areaServed": "Worldwide",
+    "availableChannel": {
+      "@type": "ServiceChannel",
+      "serviceUrl": "https://syncops.tech/consultancy",
+      "serviceType": "Online"
+    },
+    "offers": {
+      "@type": "Offer",
+      "name": "15-Day Free Consultancy",
+      "description": "Free software consultancy for 15 days including analysis, recommendations, and expert guidance",
+      "price": "0",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock"
+    }
+  };
+
+  // Generate breadcrumb schema
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://syncops.tech"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Consultancy",
+        "item": "https://syncops.tech/consultancy"
+      }
+    ]
+  };
+
   return (
-    <div className="min-h-screen text-[#042638] flex flex-col items-center justify-center px-8 py-12">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(consultancySchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <div className="min-h-screen text-[#042638] flex flex-col items-center justify-center px-8 py-12">
       <div className="max-w-5xl w-full">
         <h1 className="text-4xl md:text-5xl font-bold mb-8 text-center text-balance">
           Get Free Software Consultancy for 15 Days!
@@ -92,5 +169,6 @@ export default function ConsultancyPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }

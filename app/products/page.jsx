@@ -1,60 +1,66 @@
 import ProductsClient from './_components/ProductsClient';
+import { generateMetadata as generateSEO } from '../utils/seoUtils';
 
-export const generateMetadata = () => ({
-  title: "Products - SyncOps | AI-Powered SaaS Solutions for Modern Businesses",
-  description: "Discover SyncOps productized SaaS solutions: Warehouse SyncOps, SyncPeople HR, MedMindi Healthcare, SyncIQ Intelligence, GeoPluse Location, FitResume Builder, StudyMate Education, and SmartProperty Real Estate. Production-ready AI-powered platforms with 99.9% uptime, enterprise-grade security, and seamless integrations.",
-  keywords: [
-    "SaaS products",
-    "AI-powered solutions",
-    "warehouse management",
-    "HR management software",
-    "healthcare management",
-    "operational intelligence",
-    "location intelligence",
-    "resume builder",
-    "education platform",
-    "real estate software",
-    "enterprise software",
-    "API integration",
-    "Warehouse SyncOps",
-    "SyncPeople",
-    "MedMindi",
-    "SyncIQ",
-    "GeoPluse",
-    "FitResume",
-    "StudyMate",
-    "SmartProperty"
-  ],
-  openGraph: {
-    title: "Products - SyncOps | SaaS Building Blocks",
-    description: "Production-ready modules for workflows, data sync, and cloud security. Launch faster with our prebuilt SaaS building blocks.",
-    type: "website",
-    url: "https://syncops.tech/products",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Products - SyncOps | SaaS Building Blocks",
-    description: "Production-ready modules for workflows, data sync, and cloud security.",
-  },
-  robots: { 
-    index: true, 
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
-  alternates: {
-    canonical: "https://syncops.tech/products",
-  },
-});
+export const generateMetadata = () => {
+  return generateSEO({
+    title: "Products - AI-Powered SaaS Solutions for Modern Businesses | SyncOps",
+    description: "Discover SyncOps productized SaaS solutions: Warehouse SyncOps, SyncPeople HR, MedMindi Healthcare, SyncIQ Intelligence, GeoPluse Location, FitResume Builder, StudyMate Education, and SmartProperty Real Estate. Production-ready AI-powered platforms with 99.9% uptime, enterprise-grade security, and seamless integrations.",
+    keywords: [
+      "SaaS products",
+      "AI-powered solutions",
+      "warehouse management",
+      "HR management software",
+      "healthcare management",
+      "operational intelligence",
+      "location intelligence",
+      "resume builder",
+      "education platform",
+      "real estate software",
+      "enterprise software",
+      "API integration",
+      "Warehouse SyncOps",
+      "SyncPeople",
+      "MedMindi",
+      "SyncIQ",
+      "GeoPluse",
+      "FitResume",
+      "StudyMate",
+      "SmartProperty",
+      "SaaS building blocks",
+      "productized solutions"
+    ],
+    url: "/products",
+    type: "website"
+  });
+};
 
 export default function ProductsPage() {
+  // Generate breadcrumb schema
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://syncops.tech"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Products",
+        "item": "https://syncops.tech/products"
+      }
+    ]
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

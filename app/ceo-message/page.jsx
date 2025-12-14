@@ -80,21 +80,44 @@ const CEOMessagePage = () => {
     "image": "https://syncops.tech/images/ceo-majid-ali.jpg"
   };
 
+  // Generate breadcrumb schema
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://syncops.tech"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "CEO Message",
+        "item": "https://syncops.tech/ceo-message"
+      }
+    ]
+  };
+
   return (
-    <main className="min-h-screen bg-[#0B0A1C]" id="main-content">
-      {/* Skip to Content Link for Accessibility */}
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#00B894] focus:text-white focus:rounded-lg focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#00B894] focus:ring-offset-2"
-      >
-        Skip to main content
-      </a>
-      
-      {/* Structured Data */}
+    <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <main className="min-h-screen bg-[#0B0A1C]" id="main-content">
+        {/* Skip to Content Link for Accessibility */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#00B894] focus:text-white focus:rounded-lg focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#00B894] focus:ring-offset-2"
+        >
+          Skip to main content
+        </a>
       
       {/* Hero Section - CEO Message */}
       <CEOMessage />
@@ -105,6 +128,7 @@ const CEOMessagePage = () => {
       {/* Scroll to Top Button */}
       <ScrollToTop />
     </main>
+    </>
   );
 };
 

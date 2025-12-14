@@ -161,9 +161,40 @@ export default function CaseStudiesPage() {
       document.head.appendChild(structuredDataScript);
     }
     
+    // Add breadcrumb schema
+    const breadcrumbSchema = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://syncops.tech"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Case Studies",
+          "item": "https://syncops.tech/case-studies"
+        }
+      ]
+    };
+    
+    const breadcrumbScript = document.createElement('script');
+    breadcrumbScript.type = 'application/ld+json';
+    breadcrumbScript.text = JSON.stringify(breadcrumbSchema);
+    breadcrumbScript.id = 'case-studies-breadcrumb-data';
+    
+    if (!document.getElementById('case-studies-breadcrumb-data')) {
+      document.head.appendChild(breadcrumbScript);
+    }
+    
     return () => {
       const existingStructured = document.getElementById('case-studies-structured-data');
       if (existingStructured) existingStructured.remove();
+      const existingBreadcrumb = document.getElementById('case-studies-breadcrumb-data');
+      if (existingBreadcrumb) existingBreadcrumb.remove();
     };
   }, []);
 

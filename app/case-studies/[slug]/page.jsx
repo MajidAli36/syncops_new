@@ -211,12 +211,42 @@ export default async function CaseStudyPage({ params }) {
 
   const structuredData = generateStructuredData(caseStudyData, slug);
 
+  // Generate breadcrumb schema
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://syncops.tech"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Case Studies",
+        "item": "https://syncops.tech/case-studies"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": caseStudyData.title,
+        "item": `https://syncops.tech/case-studies/${slug}`
+      }
+    ]
+  };
+
   return (
     <>
       {/* Structured Data (JSON-LD) for SEO */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       
       <article className="bg-white min-h-screen relative" itemScope itemType="https://schema.org/Article" style={{ paddingTop: '0', marginTop: '0' }}>
