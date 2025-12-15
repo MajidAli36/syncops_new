@@ -178,7 +178,7 @@ export default function NavBar() {
             priority
             quality={100}
             unoptimized={false}
-            className="h-8  w-auto  object-contain"
+            className="w-auto object-contain"
             style={{ imageRendering: 'crisp-edges' }}
           />
         </SafeLink>
@@ -352,13 +352,13 @@ export default function NavBar() {
                   >
                     <Image
                       src="/images/logo-footer.png"
-                      width={200}
-                      height={60}
+                      width={120}
+                      height={36}
                       alt="SyncOps Logo"
                       priority
                       quality={100}
                       unoptimized={false}
-                      className="h-16 w-auto object-contain drop-shadow-2xl group-hover:drop-shadow-[0_0_20px_rgba(0,184,148,0.5)] transition-all duration-300"
+                      className="h-8 w-auto object-contain drop-shadow-2xl group-hover:drop-shadow-[0_0_20px_rgba(0,184,148,0.5)] transition-all duration-300"
                       style={{ imageRendering: 'crisp-edges' }}
                     />
                     {/* Premium Glow Effect */}

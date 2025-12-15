@@ -1,30 +1,28 @@
-export const generateMetadata = () => ({
-  title: "Referral Program - SyncOps",
-  description:
-    "Earn rewards by referring clients and talent to SyncOps. Transparent rewards, simple steps, and fast payouts.",
-  openGraph: {
-    title: "SyncOps Referral Program",
+import { generateMetadata as generateSEO } from "../utils/seoUtils";
+
+export const generateMetadata = () => {
+  return generateSEO({
+    title: "Referral Program - Earn Rewards by Referring Clients & Talent | SyncOps",
     description:
-      "Refer clients or talent to SyncOps and earn rewards when they engage.",
-    url: "https://syncops.co/referral-program",
-    images: [
-      {
-        url: "/images/logo.png",
-        width: 1200,
-        height: 630,
-        alt: "SyncOps Referral Program",
-      },
+      "Join SyncOps Referral Program and earn rewards by referring clients and talent. Transparent rewards, simple steps, fast payouts. Multiple referral paths including client referrals and talent referrals. Start earning today!",
+    keywords: [
+      "referral program",
+      "referral rewards",
+      "client referral",
+      "talent referral",
+      "referral bonus",
+      "earn rewards",
+      "referral commission",
+      "referral program SyncOps",
+      "refer clients",
+      "refer talent",
+      "referral incentives",
+      "affiliate program"
     ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "SyncOps Referral Program",
-    description:
-      "Refer clients or talent to SyncOps and earn rewards when they engage.",
-    images: ["/images/logo.png"],
-  },
-  robots: { index: true, follow: true },
-});
+    url: "/referral-program",
+    type: "website"
+  });
+};
 
 import FAQ from "../components/FAQ";
 import ReferralHero from "./_components/ReferralHero";
@@ -92,6 +90,30 @@ export default function ReferralProgramPage() {
         </div>
       </section>
 
+      {/* Breadcrumb Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://syncops.tech"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Referral Program",
+                "item": "https://syncops.tech/referral-program"
+              }
+            ]
+          })
+        }}
+      />
       {/* JSON-LD Schema for Program */}
       <script
         type="application/ld+json"
@@ -100,14 +122,26 @@ export default function ReferralProgramPage() {
             "@context": "https://schema.org",
             "@type": "ProgramMembership",
             "name": "SyncOps Referral Program",
-            "url": "https://syncops.co/referral-program",
+            "url": "https://syncops.tech/referral-program",
             "programName": "SyncOps Referral Program",
-            "description": "Refer clients or talent to SyncOps and earn rewards when they engage.",
+            "description": "Earn rewards by referring clients and talent to SyncOps. Transparent rewards, simple steps, and fast payouts.",
+            "provider": {
+              "@type": "Organization",
+              "name": "SyncOps",
+              "url": "https://syncops.tech"
+            },
             "memberBenefits": [
               "Transparent rewards",
               "Fast qualification",
-              "Multiple referral paths"
-            ]
+              "Multiple referral paths",
+              "Client referral rewards",
+              "Talent referral rewards",
+              "Fast payouts"
+            ],
+            "offers": {
+              "@type": "Offer",
+              "description": "Referral program with rewards for successful client and talent referrals"
+            }
           })
         }}
       />

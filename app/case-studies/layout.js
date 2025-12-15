@@ -1,7 +1,9 @@
-export const metadata = {
-  title: "Case Studies - Success Stories | SyncOps Software Development",
+import { generateMetadata as generateSEO } from "../utils/seoUtils";
+
+export const metadata = generateSEO({
+  title: "Case Studies - Success Stories & Portfolio | SyncOps Software Development",
   description:
-    "Explore SyncOps case studies showcasing successful AI-powered software solutions across healthcare, HR management, real estate, and more. See how we've helped businesses transform their operations with cutting-edge technology.",
+    "Explore SyncOps case studies showcasing successful AI-powered software solutions across healthcare, HR management, real estate, warehouse management, and more. See how we've helped businesses transform their operations with cutting-edge technology. 50+ successful projects, 99.5% uptime.",
   keywords: [
     "case studies",
     "software development case studies",
@@ -13,47 +15,16 @@ export const metadata = {
     "software development portfolio",
     "enterprise software solutions",
     "digital transformation",
-  ].join(", "),
-  openGraph: {
-    title: "Case Studies - Success Stories | SyncOps",
-    description:
-      "Explore SyncOps case studies showcasing successful AI-powered software solutions. See how we've helped businesses transform their operations.",
-    type: "website",
-    url: "https://syncops.tech/case-studies",
-    siteName: "SyncOps",
-    images: [
-      {
-        url: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017876/geopluse-syncops_v05qbs.png",
-        width: 1200,
-        height: 630,
-        alt: "SyncOps Case Studies - Success Stories",
-      },
-    ],
-    locale: "en_US",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Case Studies - Success Stories | SyncOps",
-    description:
-      "Explore SyncOps case studies showcasing successful AI-powered software solutions.",
-    images: ["https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017876/geopluse-syncops_v05qbs.png"],
-    creator: "@SyncOps",
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-  alternates: {
-    canonical: "https://syncops.tech/case-studies",
-  },
-};
+    "project portfolio",
+    "client success stories",
+    "software projects",
+    "AI projects",
+    "enterprise solutions"
+  ],
+  url: "/case-studies",
+  type: "website",
+  image: "https://res.cloudinary.com/dfdzl01qj/image/upload/v1765017876/geopluse-syncops_v05qbs.png"
+});
 
 export default function CaseStudiesLayout({ children }) {
   return <>{children}</>;

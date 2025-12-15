@@ -1,13 +1,24 @@
+import { caseStudiesData } from './case-studies/_data/caseStudies';
+import { servicesData } from './utils/servicesUtils';
+import { getAllPosts } from './utils/blogUtils';
+
 export default function sitemap() {
   const baseUrl = 'https://syncops.tech';
   
-  // Static pages
+  // Static pages with images
   const routes = [
     {
       url: baseUrl,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 1,
+      images: [
+        {
+          url: `${baseUrl}/images/logo.png`,
+          title: 'SyncOps - AI-Powered Software Solutions',
+          alt: 'SyncOps Logo',
+        },
+      ],
     },
     {
       url: `${baseUrl}/about`,
@@ -87,6 +98,12 @@ export default function sitemap() {
       changeFrequency: 'yearly',
       priority: 0.3,
     },
+    {
+      url: `${baseUrl}/consultancy`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
   ];
 
   // Case studies
@@ -101,51 +118,72 @@ export default function sitemap() {
     'studymoto',
   ];
 
-  const caseStudyRoutes = caseStudies.map((slug) => ({
-    url: `${baseUrl}/case-studies/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly',
-    priority: 0.8,
-  }));
+  const caseStudyRoutes = caseStudies
+    .filter((slug) => caseStudiesData[slug]) // Only include existing case studies
+    .map((slug) => {
+      const caseStudy = caseStudiesData[slug];
+      const images = [];
+      
+      if (caseStudy?.image) {
+        images.push({
+          url: caseStudy.image.startsWith('http') ? caseStudy.image : `${baseUrl}${caseStudy.image}`,
+          title: caseStudy.title,
+          alt: `${caseStudy.title} - ${caseStudy.industry} Case Study`,
+        });
+      }
+      
+      return {
+        url: `${baseUrl}/case-studies/${slug}`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly',
+        priority: 0.8,
+        ...(images.length > 0 && { images }),
+      };
+    });
 
-  // Blog posts
-  const blogPosts = [
-    'ai-revolution-in-software-development',
-    'cybersecurity-in-software-development',
-    'future-of-web-development',
-    'how-blockchain-can-revolutionize-software-development',
-    'mastering-nextjs-app-router',
-    'role-of-data-in-software-development',
-    'role-of-ui-ux-in-software-development',
-    'the-rise-of-no-code-and-low-code-platforms-should-developers-be-worried',
-    'top-5-skills-every-developer-needs-to-learn-in-2024',
-  ];
+  // Blog posts with images
+  const allPosts = getAllPosts();
+  const blogRoutes = allPosts.map((post) => {
+    const images = [];
+    
+    if (post.coverImage) {
+      images.push({
+        url: post.coverImage.startsWith('http') ? post.coverImage : `${baseUrl}${post.coverImage}`,
+        title: post.title,
+        alt: post.title,
+      });
+    }
+    
+    return {
+      url: `${baseUrl}/blog/${post.slug}`,
+      lastModified: post.date ? new Date(post.date) : new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+      ...(images.length > 0 && { images }),
+    };
+  });
 
-  const blogRoutes = blogPosts.map((slug) => ({
-    url: `${baseUrl}/blog/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly',
-    priority: 0.7,
-  }));
-
-  // Services
-  const services = [
-    'ai-solutions',
-    'software-development',
-    'web-development',
-    'mobile-development',
-    'cloud-services',
-    'cybersecurity',
-    'data-analytics',
-    'consulting',
-  ];
-
-  const serviceRoutes = services.map((slug) => ({
-    url: `${baseUrl}/services/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly',
-    priority: 0.8,
-  }));
+  // Services with images
+  const serviceRoutes = Object.keys(servicesData).map((slug) => {
+    const service = servicesData[slug];
+    const images = [];
+    
+    if (service?.image) {
+      images.push({
+        url: service.image.startsWith('http') ? service.image : `${baseUrl}${service.image}`,
+        title: service.title,
+        alt: `${service.title} - SyncOps Services`,
+      });
+    }
+    
+    return {
+      url: `${baseUrl}/services/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+      ...(images.length > 0 && { images }),
+    };
+  });
 
   return [...routes, ...caseStudyRoutes, ...blogRoutes, ...serviceRoutes];
 }

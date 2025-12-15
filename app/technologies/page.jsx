@@ -67,8 +67,33 @@ export const metadata = {
 };
 
 const TechnologiesPage = () => {
+  // Generate breadcrumb schema
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://syncops.tech"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Technologies",
+        "item": "https://syncops.tech/technologies"
+      }
+    ]
+  };
+
   return (
-    <main className="min-h-screen">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <main className="min-h-screen">
       {/* 1. Hero Section - Dark */}
       <section data-gsap-section>
         <div data-gsap-stagger>
@@ -120,6 +145,7 @@ const TechnologiesPage = () => {
       
     
     </main>
+    </>
   );
 };
 

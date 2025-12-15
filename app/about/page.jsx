@@ -66,8 +66,33 @@ export const metadata = {
 };
 
 const AboutPage = () => {
+  // Generate breadcrumb schema
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://syncops.tech"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "About",
+        "item": "https://syncops.tech/about"
+      }
+    ]
+  };
+
   return (
-    <main className="min-h-screen">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <main className="min-h-screen">
       {/* 1. Hero Section - Dark */}
       <section data-gsap-section className="bg-[#0B0A1C] text-white" id="about-hero">
         <div data-gsap-stagger>
@@ -111,6 +136,7 @@ const AboutPage = () => {
       </section>
       
     </main>
+    </>
   );
 };
 
