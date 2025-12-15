@@ -27,11 +27,11 @@ export default function GlobalLeadership() {
               </p>
               <p className="text-xs text-gray-500 mb-2">SyncOps Technologies</p>
             </div>
-            <p className="text-sm text-gray-600 leading-relaxed mb-4 text-center">
-              Overall visionary and leader of SyncOps, responsible for strategy, innovation, and company direction.
-                  </p>
+             <p className="text-sm text-gray-600 leading-relaxed mb-4 text-center">
+               Overall visionary and leader of SyncOps, responsible for strategy, innovation, and company direction.
+             </p>
                 </div>
-                </div>
+            </div>
         </div>
       </div>
   );

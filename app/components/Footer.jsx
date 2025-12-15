@@ -4,7 +4,7 @@ import { Mail, Phone, MapPin, Linkedin, Twitter, Github } from "lucide-react";
 
 export default function Footer() {
   return (
-    <section className="bg-[#0B0A1C] text-[#F3F4F6]">
+    <section data-footer className="bg-[#0B0A1C] text-[#F3F4F6]">
       <div className="max-w-6xl mx-auto px-6 lg:px-8 pt-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Left: Logo + Rights */}

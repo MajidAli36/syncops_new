@@ -5,6 +5,7 @@ import { X, Phone, Mail, User, MapPin, MessageSquare } from "lucide-react";
 const FloatingCTA = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isServiceDrawerOpen, setIsServiceDrawerOpen] = useState(false);
+  const [isNearFooter, setIsNearFooter] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -149,17 +150,41 @@ const FloatingCTA = () => {
     };
   }, [isOpen]);
 
+  // Raise mobile button when footer enters viewport
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const footerEl = document.querySelector("[data-footer]");
+    if (!footerEl || !("IntersectionObserver" in window)) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          setIsNearFooter(entry.isIntersecting);
+        });
+      },
+      {
+        root: null,
+        rootMargin: "0px 0px -30% 0px",
+        threshold: 0,
+      }
+    );
+
+    observer.observe(footerEl);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <>
       {/* Mobile: Circular button at bottom */}
       {!isOpen && !isServiceDrawerOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 right-6 sm:hidden z-[9999] w-14 h-14 bg-gradient-to-br from-teal-400 to-cyan-500 rounded-full shadow-lg cursor-pointer hover:brightness-110 transition duration-300 ease-in-out flex items-center justify-center"
+          className={`fixed ${isNearFooter ? "bottom-24" : "bottom-6"} left-6 sm:hidden z-[9999] w-14 h-14 bg-gradient-to-br from-teal-400 to-cyan-500 rounded-full shadow-lg cursor-pointer hover:brightness-110 transition duration-300 ease-in-out flex items-center justify-center`}
           aria-label="Open Contact Form"
           style={{ transform: 'translateZ(0)' }}
         >
-          <Phone className="w-6 h-6 text-white" />
+          <MessageSquare className="w-6 h-6 text-white" />
         </button>
       )}
 
