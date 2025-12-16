@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { motion } from "framer-motion";
 import SafeLink from "../../components/ui/SafeLink";
 
 const AboutHero = () => {
@@ -10,19 +11,17 @@ const AboutHero = () => {
       <div className="absolute top-10 left-5 sm:top-16 sm:left-10 md:top-20 md:left-20 w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 bg-gradient-to-r from-[#00B894] to-[#00C4FF] rounded-full filter blur-3xl opacity-20 animate-pulse"></div>
       <div className="absolute bottom-10 right-5 sm:bottom-16 sm:right-10 md:bottom-20 md:right-20 w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 bg-gradient-to-r from-[#00C4FF] to-[#00B894] rounded-full filter blur-3xl opacity-20 animate-pulse delay-1000"></div>
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12 items-center">
           {/* Left Content */}
           <div className="text-center lg:text-left order-1">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight sm:leading-snug mb-3 sm:mb-4 md:mb-5">
+            <motion.h1 className="text-4xl lg:text-6xl font-bold leading-snug mb-4">
               <span className="text-white bg-clip-text text-transparent">
-                Empowering the Future
+                Empowering the Future{" "}
               </span>
-              <br />
               <span className="bg-gradient-to-r from-[#00B894] to-[#00C4FF] bg-clip-text text-transparent">with Purpose-Driven</span>
-              <br />
               <span className="bg-gradient-to-r from-[#00B894] to-[#00C4FF] bg-clip-text text-transparent">Innovation</span>
-            </h1>
+            </motion.h1>
             
             <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-5 sm:mb-6 md:mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed px-2 sm:px-0">
               At SyncOps, we transform businesses through technology, people, and purpose.

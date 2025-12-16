@@ -9,14 +9,14 @@ import ProvenMethodologyStrip from "./_components/ProvenMethodologyStrip";
 
 export const metadata = {
   title: "Technologies - Powering Innovation Through Advanced Technology Stack | SyncOps",
-  description: "Explore SyncOps' comprehensive technology stack including React, Node.js, Python, AWS, Azure, GCP, and more. Discover our expertise in frontend, backend, database, cloud, AI/ML, and DevOps technologies.",
+  description: "Explore SyncOps' comprehensive technology stack including React, Node.js, .NET, ASP.NET Core, Java, Python, AWS, Azure, GCP, and more. Discover our expertise in frontend, backend, database, cloud, AI/ML, and DevOps technologies.",
   keywords: [
     "technology stack",
     "frontend technologies",
     "backend technologies",
     "cloud technologies",
     "AWS Azure GCP",
-    "React Node.js Python",
+    "React Node.js .NET ASP.NET Core Java Python",
     "database technologies",
     "AI ML technologies",
     "DevOps tools",

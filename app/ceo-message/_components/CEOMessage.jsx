@@ -56,6 +56,23 @@ const CEOMessage = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
         </svg>
       )
+    },
+    "Managed Services & Support": {
+      services: [
+        "24/7 Monitoring & Support",
+        "SLA-Backed Maintenance",
+        "Incident & Problem Management"
+      ],
+      icon: (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M18 13V7a6 6 0 10-12 0v6m1 4h10a2 2 0 002-2v-2H5v2a2 2 0 002 2zm3 0v1a2 2 0 004 0v-1"
+          />
+        </svg>
+      )
     }
   };
 
@@ -247,9 +264,9 @@ const CEOMessage = () => {
           style={{ animationDelay: '0.1s' }}
         >
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 tracking-tight leading-tight">
-            <span className="text-white inline-block">A Message from </span>
-            <span className="bg-gradient-to-r from-[#00B894] to-[#00C4FF] bg-clip-text text-transparent inline-block">
-              Our CEO
+            <span className="text-white ">A Message from</span>
+            <span className="bg-gradient-to-r from-[#00B894] to-[#00C4FF] bg-clip-text text-transparent ">
+            {" "} Our CEO
             </span>
           </h1>
           <div 
@@ -336,14 +353,25 @@ const CEOMessage = () => {
                     </svg>
                   </a>
                   <a
-                    href="https://twitter.com/majidali"
+                    href="https://majidali.tech"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="Follow Majid Ali on X"
-                    className="w-11 h-11 bg-white/5 rounded-xl flex items-center justify-center text-gray-400 hover:bg-[#1DA1F2] hover:text-white hover:scale-110 hover:-rotate-6 transition-all duration-300 hover:shadow-lg hover:shadow-[#1DA1F2]/50 border border-white/5 hover:border-[#1DA1F2]/50"
+                    aria-label="Visit Majid Ali's portfolio website"
+                    className="w-11 h-11 bg-white/5 rounded-xl flex items-center justify-center text-gray-400 hover:bg-[#00C4FF] hover:text-white hover:scale-110 hover:-rotate-6 transition-all duration-300 hover:shadow-lg hover:shadow-[#00C4FF]/50 border border-white/5 hover:border-[#00C4FF]/50"
                   >
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 3a9 9 0 100 18 9 9 0 000-18z"
+                      />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M3 12h18M12 3c2.5 2.5 3.75 5.5 3.75 9S14.5 17.5 12 21m0-18C9.5 5.5 8.25 8.5 8.25 12S9.5 17.5 12 21"
+                      />
                     </svg>
                   </a>
                   <a
@@ -556,11 +584,6 @@ const CEOMessage = () => {
                     <div className="mt-6 pt-6 border-t border-white/10">
                       <div className="flex items-center gap-2 text-xs text-gray-500 group-hover:text-[#00B894] transition-colors duration-300">
                         <span className="font-semibold">{data.services.length} Services</span>
-                        <span>•</span>
-                        <span>Learn More</span>
-                        <svg className="w-3 h-3 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
                       </div>
                     </div>
                   </div>

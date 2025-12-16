@@ -13,14 +13,17 @@ export default function ScrollToTop() {
       const documentHeight = document.documentElement.scrollHeight;
       
       // Show button when user has scrolled past 80% of the page
-      // This ensures the button appears at the bottom section of the page
       const scrollPercentage = scrollY / (documentHeight - windowHeight);
-      
-      if (scrollPercentage > 0.8) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
+      const nextVisible = scrollPercentage > 0.8;
+
+      setIsVisible(nextVisible);
+
+      // Inform other components (e.g. FloatingCTA) about visibility
+      window.dispatchEvent(
+        new CustomEvent('scrollToTopVisibility', {
+          detail: { visible: nextVisible },
+        })
+      );
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -39,7 +42,7 @@ export default function ScrollToTop() {
       {isVisible && (
         <motion.button
           onClick={scrollToTop}
-          className="fixed bottom-24 right-8 z-50 w-14 h-14 bg-gradient-to-r from-brand-aqua to-brand-teal rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-brand-teal/50"
+          className="fixed bottom-18 right-8 z-50 w-14 h-14 bg-gradient-to-r from-brand-aqua to-brand-teal rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-brand-teal/50"
           aria-label="Scroll to top"
           initial={{ opacity: 0, scale: 0.9, boxShadow: '0 0 0 0 rgba(0,196,255,0)' }}
           animate={{ opacity: 1, scale: 1, boxShadow: '0 0 40px 0 rgba(0,196,255,0.25)' }}

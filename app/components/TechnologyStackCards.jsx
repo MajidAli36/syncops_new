@@ -1,7 +1,32 @@
 "use client";
 import React, { useState } from "react";
-import { FaReact, FaNodeJs, FaDatabase, FaCloud, FaShieldAlt, FaRocket, FaServer, FaDatabase as FaPostgresql, FaLeaf, FaFire, FaPython, FaPhp, FaAws, FaMicrosoft, FaGoogle } from "react-icons/fa";
-import { SiNextdotjs, SiTypescript, SiTailwindcss, SiVuedotjs, SiAngular, SiMysql } from "react-icons/si";
+import {
+  FaReact,
+  FaNodeJs,
+  FaDatabase,
+  FaCloud,
+  FaShieldAlt,
+  FaRocket,
+  FaServer,
+  FaDatabase as FaPostgresql,
+  FaLeaf,
+  FaFire,
+  FaPython,
+  FaPhp,
+  FaAws,
+  FaMicrosoft,
+  FaGoogle,
+  FaJava,
+} from "react-icons/fa";
+import {
+  SiNextdotjs,
+  SiTypescript,
+  SiTailwindcss,
+  SiVuedotjs,
+  SiAngular,
+  SiMysql,
+  SiDotnet,
+} from "react-icons/si";
 
 const TechnologyStackCards = () => {
   const [activeFilter, setActiveFilter] = useState("all");
@@ -62,6 +87,34 @@ const TechnologyStackCards = () => {
       icon: <FaServer className="w-8 h-8" />,
       category: "backend",
       color: "text-gray-800"
+    },
+    {
+      name: ".NET",
+      description: "Robust Microsoft framework for building enterprise-grade web, desktop, and cloud applications",
+      icon: <SiDotnet className="w-8 h-8" />,
+      category: "backend",
+      color: "text-indigo-600"
+    },
+    {
+      name: "ASP.NET Core",
+      description: "Modern, cross-platform framework for building high-performance, cloud-native web APIs and services",
+      icon: <SiDotnet className="w-8 h-8" />,
+      category: "backend",
+      color: "text-purple-600"
+    },
+    {
+      name: "Java",
+      description: "Battle-tested, object-oriented language ideal for high-performance, scalable systems",
+      icon: <FaJava className="w-8 h-8" />,
+      category: "backend",
+      color: "text-orange-600"
+    },
+    {
+      name: "Python",
+      description: "Versatile, developer-friendly language used for APIs, automation, data, and AI solutions",
+      icon: <FaPython className="w-8 h-8" />,
+      category: "backend",
+      color: "text-yellow-500"
     },
     {
       name: "Django",
@@ -147,6 +200,15 @@ const TechnologyStackCards = () => {
     ? technologies 
     : technologies.filter(tech => tech.category === activeFilter);
 
+  const handleFilterClick = (id) => {
+    setActiveFilter(id);
+
+    // Ensure GSAP scroll animations recalculate positions
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(new Event("resize"));
+    }
+  };
+
   return (
     <section className="py-20 bg-white" id="tech-stack">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -169,7 +231,7 @@ const TechnologyStackCards = () => {
           {filters.map((filter) => (
             <button
               key={filter.id}
-              onClick={() => setActiveFilter(filter.id)}
+              onClick={() => handleFilterClick(filter.id)}
               className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
                 activeFilter === filter.id
                   ? "bg-gradient-to-r from-[#00B894] to-[#00C4FF] text-white shadow-lg"

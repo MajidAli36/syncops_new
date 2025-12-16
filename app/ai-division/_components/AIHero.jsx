@@ -41,7 +41,7 @@ export default function AIHero() {
       {/* Gradient Aura */}
       <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[800px] h-[800px] bg-gradient-to-br from-brand-aqua/20 via-brand-teal/10 to-transparent rounded-full blur-3xl" aria-hidden="true"></div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-8 lg:py-12">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-8 lg:py-12">
         <motion.div className="grid lg:grid-cols-[1.2fr_1fr] gap-8 lg:gap-12 items-center" {...stagger.container(0.08)}>
           {/* Left Side - Content */}
           <div className="text-white">

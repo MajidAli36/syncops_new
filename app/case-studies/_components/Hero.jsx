@@ -16,7 +16,7 @@ const CaseStudyHero = ({ title, subtitle, image, industry, duration, team, demoL
       <div className="absolute top-0 right-0 w-64 h-64 sm:w-96 sm:h-96 bg-gradient-to-br from-brand-teal/5 to-transparent rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
       <div className="absolute bottom-0 left-0 w-64 h-64 sm:w-96 sm:h-96 bg-gradient-to-tr from-brand-aqua/5 to-transparent rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
       
-      <div className="container mx-auto px-4 sm:px-6 md:px-12 relative z-10">
+      <div className="container mx-auto px-6 lg:px-8 py-8 lg:py-12 relative z-10">
         <div className="flex flex-col lg:flex-row items-start gap-6 sm:gap-8 lg:gap-12">
           <div className="w-full lg:w-1/2">
             <InViewWrapper animation="fadeUp" delay={0.1}>

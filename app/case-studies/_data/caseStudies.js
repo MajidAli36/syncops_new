@@ -423,7 +423,7 @@ export const caseStudiesData = {
         label: "Risk Prediction Accuracy",
       },
       {
-        value: "$2.4M",
+        value: "$2.4k",
         label: "Avg Annual Savings",
       },
     ],
@@ -768,7 +768,7 @@ export const caseStudiesData = {
         label: "Congestion Reduction",
       },
       {
-        value: "$1.8M",
+        value: "$2.8k",
         label: "Avg Annual Savings",
       },
     ],

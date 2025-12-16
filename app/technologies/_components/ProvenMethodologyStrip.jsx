@@ -5,19 +5,19 @@ import { FaCheckCircle, FaRocket, FaUsers, FaChartLine } from "react-icons/fa";
 const ProvenMethodologyStrip = () => {
   const highlights = [
     {
-      icon: <FaCheckCircle className="w-6 h-6" />,
+      icon: <FaCheckCircle className="w-4 h-4" />,
       text: "Proven track record of successful project deliveries"
     },
     {
-      icon: <FaRocket className="w-6 h-6" />,
+      icon: <FaRocket className="w-4 h-4" />,
       text: "Accelerated development with modern tools and practices"
     },
     {
-      icon: <FaUsers className="w-6 h-6" />,
+      icon: <FaUsers className="w-4 h-4" />,
       text: "Collaborative approach with transparent communication"
     },
     {
-      icon: <FaChartLine className="w-6 h-6" />,
+      icon: <FaChartLine className="w-4 h-4" />,
       text: "Measurable results and continuous improvement"
     }
   ];
@@ -35,7 +35,7 @@ const ProvenMethodologyStrip = () => {
               </div>
               
               <h3 className="text-3xl lg:text-4xl font-bold text-[#2D2D2D] mb-6 leading-tight">
-                Trusted by <span className="bg-gradient-to-r from-[#00B894] to-[#00C4FF] bg-clip-text text-transparent">500+</span> Companies Worldwide
+                Trusted by <span className="bg-gradient-to-r from-[#00B894] to-[#00C4FF] bg-clip-text text-transparent">50+</span> Companies Worldwide
               </h3>
               
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
@@ -59,7 +59,7 @@ const ProvenMethodologyStrip = () => {
             {/* Right Content - Stats */}
             <div className="grid grid-cols-2 gap-6">
               <div className="text-center p-6 bg-gradient-to-br from-[#00B894]/10 to-[#00C4FF]/10 rounded-xl border border-[#00B894]/20">
-                <div className="text-4xl font-bold text-[#00B894] mb-2">500+</div>
+                <div className="text-4xl font-bold text-[#00B894] mb-2">50+</div>
                 <div className="text-gray-600 font-medium">Projects Delivered</div>
               </div>
               <div className="text-center p-6 bg-gradient-to-br from-[#00C4FF]/10 to-[#00B894]/10 rounded-xl border border-[#00C4FF]/20">

@@ -5,7 +5,7 @@ import { X, Phone, Mail, User, MapPin, MessageSquare } from "lucide-react";
 const FloatingCTA = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isServiceDrawerOpen, setIsServiceDrawerOpen] = useState(false);
-  const [isNearFooter, setIsNearFooter] = useState(false);
+  const [isScrollTopVisible, setIsScrollTopVisible] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -150,28 +150,17 @@ const FloatingCTA = () => {
     };
   }, [isOpen]);
 
-  // Raise mobile button when footer enters viewport
+  // Listen for ScrollToTop visibility changes to move button
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    const footerEl = document.querySelector("[data-footer]");
-    if (!footerEl || !("IntersectionObserver" in window)) return;
+    const handler = (event) => {
+      const visible = event?.detail?.visible ?? false;
+      setIsScrollTopVisible(Boolean(visible));
+    };
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          setIsNearFooter(entry.isIntersecting);
-        });
-      },
-      {
-        root: null,
-        rootMargin: "0px 0px -30% 0px",
-        threshold: 0,
-      }
-    );
-
-    observer.observe(footerEl);
-    return () => observer.disconnect();
+    window.addEventListener("scrollToTopVisibility", handler);
+    return () => window.removeEventListener("scrollToTopVisibility", handler);
   }, []);
 
   return (
@@ -180,9 +169,15 @@ const FloatingCTA = () => {
       {!isOpen && !isServiceDrawerOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className={`fixed ${isNearFooter ? "bottom-24" : "bottom-6"} left-6 sm:hidden z-[9999] w-14 h-14 bg-gradient-to-br from-teal-400 to-cyan-500 rounded-full shadow-lg cursor-pointer hover:brightness-110 transition duration-300 ease-in-out flex items-center justify-center`}
+          className="fixed right-8 sm:hidden z-[9999] w-14 h-14 bg-gradient-to-br from-teal-400 to-cyan-500 rounded-full shadow-lg cursor-pointer hover:brightness-110 transition-all duration-300 ease-in-out flex items-center justify-center"
           aria-label="Open Contact Form"
-          style={{ transform: 'translateZ(0)' }}
+          style={{
+            transform: "translateZ(0)",
+            // Keep above Book Now bar even when arrow is hidden,
+            // and move further up when arrow appears
+            bottom: isScrollTopVisible ? "8.5rem" : "4.5rem",
+            transition: "bottom 0.35s ease-in-out, transform 0.35s ease-in-out",
+          }}
         >
           <MessageSquare className="w-6 h-6 text-white" />
         </button>

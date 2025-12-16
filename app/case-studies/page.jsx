@@ -340,7 +340,7 @@ export default function CaseStudiesPage() {
               { icon: Target, value: "50+", label: "Projects Completed", color: "from-emerald-500 to-teal-600", ariaLabel: "500 plus projects completed" },
               { icon: Star, value: "99.5%", label: "Customer Satisfaction", color: "from-blue-500 to-cyan-600", ariaLabel: "99 percent customer satisfaction" },
               { icon: Users, value: "50+", label: "Global Presence", color: "from-purple-500 to-pink-600", ariaLabel: "50 plus global presence" },
-              { icon: Award, value: "9.8", label: "Industry Rating", color: "from-orange-500 to-red-600", ariaLabel: "9.8 industry rating" }
+              { icon: Award, value: "9.9/10", label: "Industry Rating", color: "from-orange-500 to-red-600", ariaLabel: "9.9/10 industry rating" }
             ].map((metric, index) => {
               const IconComponent = metric.icon;
               return (

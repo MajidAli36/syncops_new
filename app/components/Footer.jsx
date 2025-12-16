@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Left: Logo + Rights */}
           <div className="text-center md:text-left">
-            <div className="flex items-center justify-center md:justify-start mb-6">
+            <div className="flex items-center justify-center md:justify-start mb-4">
               <img
                 src="/images/logo-footer.png"
                 alt="SyncOps"
