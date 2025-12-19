@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import SafeLink from "../../components/ui/SafeLink";
 import { FaSearch, FaRocket, FaBookOpen, FaChartBar, FaUsers, FaClock, FaStar, FaCheckCircle, FaEye } from 'react-icons/fa';
@@ -104,24 +104,39 @@ const TrustChips = () => {
 // Animated Counter Component
 const AnimatedCounter = ({ end, duration = 2 }) => {
   const [count, setCount] = useState(0);
+  const animationFrameRef = useRef(null);
+  const startTimeRef = useRef(null);
 
   useEffect(() => {
-    let startTime;
-    const startCount = 0;
+    // Reset state when end or duration changes
+    setCount(0);
+    startTimeRef.current = null;
+
     const endCount = parseInt(end.replace(/\D/g, ''));
+    if (isNaN(endCount)) return;
 
     const updateCount = (timestamp) => {
-      if (!startTime) startTime = timestamp;
-      const progress = Math.min((timestamp - startTime) / (duration * 1000), 1);
+      if (!startTimeRef.current) {
+        startTimeRef.current = timestamp;
+      }
+      
+      const progress = Math.min((timestamp - startTimeRef.current) / (duration * 1000), 1);
       const currentCount = Math.floor(progress * endCount);
       setCount(currentCount);
 
       if (progress < 1) {
-        requestAnimationFrame(updateCount);
+        animationFrameRef.current = requestAnimationFrame(updateCount);
       }
     };
 
-    requestAnimationFrame(updateCount);
+    animationFrameRef.current = requestAnimationFrame(updateCount);
+
+    // Cleanup function to cancel animation frame
+    return () => {
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+    };
   }, [end, duration]);
 
   return <span>{count}{end.replace(/\d/g, '')}</span>;

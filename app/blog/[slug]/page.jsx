@@ -17,7 +17,7 @@ const mdxComponents = {
       .toLowerCase()
       .replace(/[^\w\s-]/g, "")
       .replace(/\s+/g, "-");
-    return <h2 id={id} {...props} />;
+    return <h2 id={id} className="text-xl sm:text-2xl font-semibold text-gray-900 mt-8 mb-3 leading-tight" {...props} />;
   },
   h3: (props) => {
     const id = props.children
@@ -25,7 +25,10 @@ const mdxComponents = {
       .toLowerCase()
       .replace(/[^\w\s-]/g, "")
       .replace(/\s+/g, "-");
-    return <h3 id={id} {...props} />;
+    return <h3 id={id} className="text-lg sm:text-xl font-semibold text-gray-900 mt-6 mb-2.5 leading-tight" {...props} />;
+  },
+  p: (props) => {
+    return <p className="text-gray-700 leading-[1.7] mb-4 text-[15px] sm:text-base font-normal" {...props} />;
   },
 };
 
@@ -185,33 +188,33 @@ export default async function BlogPost({ params }) {
       <article className="bg-white min-h-screen">
         {/* Hero Section */}
         <section className="bg-white border-b border-gray-100">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8 md:pt-12 pb-8 sm:pb-10 md:pb-12">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-10 pb-6 sm:pb-8">
             {/* Title */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight tracking-tight mb-6 sm:mb-8 mt-4">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 leading-[1.3] tracking-tight mb-4 sm:mb-5">
               {post.title}
             </h1>
 
             {/* Author & Meta Info Row */}
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-6 mb-6 sm:mb-8">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 mb-4 sm:mb-5">
               <AuthorProfile
                 author={post.author || "SyncOps"}
                 role={post.authorRole || "Tech Innovators"}
                 className="mb-0"
               />
-              <div className="flex items-center gap-4 sm:gap-6 text-sm text-gray-600">
-                <div className="flex items-center gap-2">
-                  <Clock size={18} className="text-gray-400" />
+              <div className="flex items-center gap-4 text-xs sm:text-sm text-gray-500">
+                <div className="flex items-center gap-1.5">
+                  <Clock size={14} className="text-gray-400" />
                   <span>{readTime} min read</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <CalendarDays size={18} className="text-gray-400" />
+                <div className="flex items-center gap-1.5">
+                  <CalendarDays size={14} className="text-gray-400" />
                   <span>{formattedDate}</span>
                 </div>
               </div>
             </div>
 
             {/* Interactive Buttons Row */}
-            <div className="flex items-center gap-3 mb-6 sm:mb-8">
+            <div className="flex items-center gap-3 mb-5 sm:mb-6">
               <InteractiveButtons slug={slug} />
               <SocialShare
                 title={post.title}
@@ -221,8 +224,8 @@ export default async function BlogPost({ params }) {
             </div>
 
             {/* Cover Image */}
-            <div className="rounded-xl sm:rounded-2xl overflow-hidden border border-gray-200 shadow-sm">
-              <div className="relative h-[250px] sm:h-[350px] md:h-[450px] lg:h-[550px] bg-gray-100">
+            <div className="rounded-lg overflow-hidden border border-gray-200 shadow-sm">
+              <div className="relative h-[200px] sm:h-[280px] md:h-[360px] bg-gray-100">
                 <Image
                   src={coverImage}
                   alt={post.title}
@@ -237,23 +240,24 @@ export default async function BlogPost({ params }) {
         </section>
 
         {/* Main Content Section */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 md:py-12">
-          <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
+        <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+          <div className="flex flex-col lg:flex-row gap-8 lg:gap-10">
             {/* Main Content - Left Column */}
-            <div className="flex-1 order-2 lg:order-1 min-w-0">
+            <div className="flex-1 order-2 lg:order-1 min-w-0 lg:max-w-[72ch]">
               {/* Article Content */}
-              <div className="prose prose-sm sm:prose-base md:prose-lg lg:prose-xl prose-slate max-w-none 
-                prose-headings:font-bold prose-headings:text-gray-900 prose-headings:tracking-tight
-                prose-h2:text-2xl sm:prose-h2:text-3xl md:prose-h2:text-4xl prose-h2:mt-10 prose-h2:mb-5 prose-h2:font-bold
-                prose-h3:text-xl sm:prose-h3:text-2xl md:prose-h3:text-3xl prose-h3:mt-8 prose-h3:mb-4 prose-h3:font-semibold
-                prose-p:text-gray-700 prose-p:leading-relaxed prose-p:mb-5 prose-p:text-base sm:prose-p:text-lg
-                prose-a:text-[#0fbab1] prose-a:font-semibold prose-a:no-underline hover:prose-a:underline
+              <div className="prose prose-sm sm:prose-base max-w-none 
+                prose-headings:font-semibold prose-headings:text-gray-900 prose-headings:tracking-tight
+                prose-h2:text-xl sm:prose-h2:text-2xl prose-h2:mt-8 prose-h2:mb-3 prose-h2:font-semibold prose-h2:leading-tight
+                prose-h3:text-lg sm:prose-h3:text-xl prose-h3:mt-6 prose-h3:mb-2.5 prose-h3:font-semibold prose-h3:leading-tight
+                prose-p:text-gray-700 prose-p:leading-[1.7] prose-p:mb-4 prose-p:text-[15px] sm:prose-p:text-base prose-p:font-normal
+                prose-a:text-[#0fbab1] prose-a:font-medium prose-a:no-underline hover:prose-a:underline prose-a:transition-all
                 prose-strong:text-gray-900 prose-strong:font-semibold
-                prose-ul:text-gray-700 prose-ul:my-5 prose-li:my-2 prose-li:text-base sm:prose-li:text-lg
-                prose-ol:text-gray-700 prose-ol:my-5 prose-li:my-2
-                prose-code:text-sm prose-code:bg-gray-100 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:font-mono
-                prose-blockquote:border-l-4 prose-blockquote:border-[#0fbab1] prose-blockquote:pl-6 prose-blockquote:italic prose-blockquote:text-gray-600
-                prose-img:rounded-lg prose-img:shadow-md">
+                prose-ul:text-gray-700 prose-ul:my-4 prose-ul:pl-5 prose-li:my-1.5 prose-li:text-[15px] sm:prose-li:text-base prose-li:leading-relaxed
+                prose-ol:text-gray-700 prose-ol:my-4 prose-ol:pl-5 prose-li:my-1.5
+                prose-code:text-[13px] prose-code:bg-gray-100 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:font-mono prose-code:text-gray-800
+                prose-blockquote:border-l-3 prose-blockquote:border-[#0fbab1] prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:text-gray-600 prose-blockquote:my-4 prose-blockquote:text-[15px] sm:prose-blockquote:text-base
+                prose-img:rounded-lg prose-img:shadow-sm prose-img:my-6
+                prose-hr:my-6 prose-hr:border-gray-200">
                 <MDXRemote source={post.content} components={mdxComponents} />
               </div>
 
@@ -261,15 +265,15 @@ export default async function BlogPost({ params }) {
               <RelatedPosts currentSlug={slug} />
 
               {/* Comments Section */}
-              <div id="comments-section" className="mt-12 sm:mt-16">
-                <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">Join the Discussion</h2>
-                <p className="text-gray-600 text-base sm:text-lg leading-relaxed">Comments feature coming soon! Share your thoughts and join the discussion.</p>
+              <div id="comments-section" className="mt-10 sm:mt-12 pt-8 border-t border-gray-200">
+                <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-3">Join the Discussion</h2>
+                <p className="text-gray-600 text-sm sm:text-base leading-relaxed">Comments feature coming soon! Share your thoughts and join the discussion.</p>
               </div>
             </div>
             
             {/* Sidebar - Table of Contents - Right Column */}
-            <aside className="lg:w-80 xl:w-96 flex-shrink-0 order-1 lg:order-2">
-              <div className="lg:sticky lg:top-28">
+            <aside className="lg:w-64 xl:w-80 flex-shrink-0 order-1 lg:order-2">
+              <div className="lg:sticky lg:top-24">
                 <TableOfContents content={post.content} />
               </div>
             </aside>

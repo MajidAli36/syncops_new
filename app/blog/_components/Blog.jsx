@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import SafeLink from "../../components/ui/SafeLink";
-import { FaSearch, FaBookmark, FaClock, FaFire, FaStar, FaFilter, FaSort, FaEye, FaBookOpen, FaArrowRight, FaMagic } from 'react-icons/fa';
+import { FaSearch, FaBookmark, FaClock, FaFire, FaStar, FaFilter, FaSort, FaEye, FaBookOpen, FaArrowRight, FaMagic, FaCheckCircle } from 'react-icons/fa';
 
 // Shimmer Loading Component
 const ShimmerCard = () => (
@@ -48,6 +48,89 @@ const ShimmerCard = () => (
   </div>
 );
 
+// Function to determine category based on post title and slug
+const getPostCategory = (post) => {
+  // If category is already defined in post metadata, use it
+  if (post.category) {
+    return post.category;
+  }
+
+  const title = (post.title || "").toLowerCase();
+  const slug = (post.slug || "").toLowerCase();
+  const combined = `${title} ${slug}`;
+
+  // AI-related keywords
+  if (
+    combined.includes("ai") ||
+    combined.includes("artificial intelligence") ||
+    combined.includes("machine learning") ||
+    combined.includes("ml ") ||
+    combined.includes("neural") ||
+    combined.includes("deep learning")
+  ) {
+    return "AI";
+  }
+
+  // DevOps-related keywords
+  if (
+    combined.includes("devops") ||
+    combined.includes("ci/cd") ||
+    combined.includes("deployment") ||
+    combined.includes("infrastructure") ||
+    combined.includes("kubernetes") ||
+    combined.includes("docker")
+  ) {
+    return "DevOps";
+  }
+
+  // Cloud-related keywords
+  if (
+    combined.includes("cloud") ||
+    combined.includes("aws") ||
+    combined.includes("azure") ||
+    combined.includes("gcp") ||
+    combined.includes("serverless")
+  ) {
+    return "Cloud";
+  }
+
+  // Tutorials/Guides
+  if (
+    combined.includes("tutorial") ||
+    combined.includes("guide") ||
+    combined.includes("how to") ||
+    combined.includes("step-by-step") ||
+    combined.includes("learn") ||
+    combined.includes("mastering")
+  ) {
+    return "Tutorials";
+  }
+
+  // Development-related keywords
+  if (
+    combined.includes("development") ||
+    combined.includes("developer") ||
+    combined.includes("coding") ||
+    combined.includes("programming") ||
+    combined.includes("software") ||
+    combined.includes("web development") ||
+    combined.includes("nextjs") ||
+    combined.includes("react") ||
+    combined.includes("javascript") ||
+    combined.includes("typescript") ||
+    combined.includes("framework") ||
+    combined.includes("ui/ux") ||
+    combined.includes("blockchain") ||
+    combined.includes("cybersecurity") ||
+    combined.includes("data")
+  ) {
+    return "Development";
+  }
+
+  // Default fallback
+  return "Technology";
+};
+
 export default function Blog({ posts }) {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [sortBy, setSortBy] = useState("latest");
@@ -62,10 +145,17 @@ export default function Blog({ posts }) {
   // Trending tags
   const trendingTags = ["#AI", "#DevOps", "#Cloud", "#NextJS", "#React", "#AWS"];
 
+  // Add category to each post if not present
+  const postsWithCategories = posts.map(post => ({
+    ...post,
+    category: getPostCategory(post)
+  }));
+
   // Filter and sort posts
-  const filteredPosts = posts
+  const filteredPosts = postsWithCategories
     .filter(post => {
-      const matchesCategory = selectedCategory === "all" || post.category === selectedCategory;
+      const postCategory = getPostCategory(post);
+      const matchesCategory = selectedCategory === "all" || postCategory === selectedCategory;
       const matchesSearch = searchQuery === "" || 
         post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
@@ -119,7 +209,7 @@ export default function Blog({ posts }) {
 
   // AI Surprise Me function
   const surpriseMe = () => {
-    const randomPost = posts[Math.floor(Math.random() * posts.length)];
+    const randomPost = postsWithCategories[Math.floor(Math.random() * postsWithCategories.length)];
     // In a real app, this would use AI to recommend content
     alert(`AI recommends: ${randomPost.title}`);
   };
@@ -144,7 +234,7 @@ export default function Blog({ posts }) {
                 "url": "https://syncops.com/logo.png"
               }
             },
-            "blogPost": posts.map(post => ({
+            "blogPost": postsWithCategories.map(post => ({
               "@type": "BlogPosting",
               "headline": post.title,
               "description": post.excerpt,
@@ -159,126 +249,237 @@ export default function Blog({ posts }) {
       />
 
              <div className="min-h-screen">
-         {/* Section 1: Blog Articles - White Background for Better Contrast */}
-        <section className="bg-white py-20 relative overflow-hidden">
-          {/* Subtle Background Pattern */}
-          <div className="absolute inset-0 bg-gradient-to-br from-brand-aqua/3 to-brand-teal/3 opacity-20"></div>
+         {/* Section 1: Blog Articles - Enhanced Professional Design */}
+        <section className="bg-gradient-to-b from-white via-gray-50/30 to-white py-24 relative overflow-hidden">
+          {/* Enhanced Background Effects */}
+          <div className="absolute inset-0 bg-[url('/images/grid-pattern.svg')] opacity-[0.02]"></div>
+          <motion.div 
+            className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-br from-[#00C4FF]/10 via-[#00B894]/5 to-transparent rounded-full blur-3xl"
+            animate={{
+              scale: [1, 1.1, 1],
+              opacity: [0.1, 0.15, 0.1],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+          <motion.div 
+            className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-[#00B894]/10 via-[#00C4FF]/5 to-transparent rounded-full blur-3xl"
+            animate={{
+              scale: [1.1, 1, 1.1],
+              opacity: [0.1, 0.15, 0.1],
+            }}
+            transition={{
+              duration: 10,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 2,
+            }}
+          />
           
           <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-            {/* Section Header */}
+            {/* Enhanced Section Header */}
             <motion.div 
-              className="text-center mb-16"
+              className="text-center mb-20"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45 }}
-              viewport={{ once: true }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              viewport={{ once: true, margin: "-100px" }}
             >
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                Latest <span className="gradient-text">Articles</span>
-              </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Discover insights, tutorials, and industry trends from our expert team.
-              </p>
+              <motion.div
+                className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#00C4FF]/10 to-[#00B894]/10 rounded-full border border-[#00C4FF]/20 mb-6"
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.1, duration: 0.3 }}
+              >
+                <FaBookOpen className="w-4 h-4 text-[#00C4FF]" />
+                <span className="text-sm font-semibold text-gray-700">Latest Insights</span>
+              </motion.div>
+              
+              <motion.h2 
+                className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 mb-6 leading-tight"
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.15, duration: 0.3 }}
+              >
+                Latest{" "}
+                <span className="relative inline-block">
+                  <span className="relative z-10 bg-gradient-to-r from-[#00C4FF] via-[#00B894] to-[#00C4FF] bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient">
+                    Articles
+                  </span>
+                  <motion.span
+                    className="absolute -bottom-2 left-0 right-0 h-3 bg-gradient-to-r from-[#00C4FF]/20 via-[#00B894]/20 to-[#00C4FF]/20 rounded-full blur-sm"
+                    initial={{ scaleX: 0 }}
+                    whileInView={{ scaleX: 1 }}
+                    transition={{ delay: 0.5, duration: 0.8 }}
+                  />
+                </span>
+              </motion.h2>
+              
+              <motion.p 
+                className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.3 }}
+              >
+                Discover cutting-edge insights, expert tutorials, and industry trends that drive innovation forward.
+              </motion.p>
+              
+              {/* Stats Bar */}
+              <motion.div 
+                className="flex flex-wrap items-center justify-center gap-6 mt-10"
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3, duration: 0.3 }}
+              >
+                {[
+                  { icon: <FaBookOpen />, value: "50+", label: "Articles" },
+                  { icon: <FaEye />, value: "10K+", label: "Readers" },
+                  { icon: <FaStar />, value: "4.9", label: "Rating" },
+                ].map((stat, idx) => (
+                  <motion.div
+                    key={idx}
+                    className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-lg border border-gray-200/50 shadow-sm"
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <span className="text-[#00C4FF]">{stat.icon}</span>
+                    <span className="font-bold text-gray-900">{stat.value}</span>
+                    <span className="text-sm text-gray-600">{stat.label}</span>
+                  </motion.div>
+                ))}
+              </motion.div>
             </motion.div>
 
             {/* Main Content Grid */}
             <div className="flex flex-col lg:flex-row gap-8">
-              {/* Sidebar Filters - White Card Style */}
+              {/* Enhanced Sidebar Filters */}
               <div className="lg:w-80 flex-shrink-0">
                 <motion.div 
-                  className="card sticky top-8 relative overflow-hidden"
-                  initial={{ opacity: 0, x: -20, scale: 0.97 }}
+                  className="bg-white/90 backdrop-blur-xl rounded-2xl border border-gray-200/50 shadow-xl sticky top-8 relative overflow-hidden"
+                  initial={{ opacity: 0, x: -30, scale: 0.95 }}
                   whileInView={{ opacity: 1, x: 0, scale: 1 }}
-                  transition={{ duration: 0.45, ease: "easeOut" }}
+                  transition={{ duration: 0.5, ease: "easeOut" }}
                   viewport={{ once: true }}
                   whileHover={{ 
-                    y: -2,
-                    boxShadow: "0 20px 40px rgba(0, 248, 180, 0.1)"
+                    y: -4,
+                    boxShadow: "0 25px 50px rgba(0, 196, 255, 0.15)"
                   }}
                 >
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-br from-brand-aqua/5 to-brand-teal/5 opacity-0 hover:opacity-100 transition-opacity duration-500"
-                    whileHover={{ scale: 1.05 }}
-                  />
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#00C4FF]/5 via-transparent to-[#00B894]/5 opacity-0 hover:opacity-100 transition-opacity duration-500" />
+                  
+                  {/* Decorative Elements */}
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#00C4FF]/10 to-transparent rounded-bl-full opacity-50" />
+                  <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-[#00B894]/10 to-transparent rounded-tr-full opacity-50" />
+                  
                   <div className="p-6 relative z-10">
-                  <motion.h3 
-                      className="text-lg font-bold text-gray-900 mb-6 flex items-center gap-2"
+                    <motion.h3 
+                      className="text-xl font-bold text-gray-900 mb-8 flex items-center gap-3"
                       initial={{ opacity: 0, y: 8 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.15 }}
                     >
                       <motion.div
-                        whileHover={{ rotate: 360 }}
-                        transition={{ duration: 0.35 }}
+                        className="w-10 h-10 bg-gradient-to-br from-[#00C4FF] to-[#00B894] rounded-xl flex items-center justify-center shadow-lg"
+                        whileHover={{ rotate: 360, scale: 1.1 }}
+                        transition={{ duration: 0.4 }}
                       >
-                        <FaFilter className="w-4 h-4 text-brand-aqua" />
+                        <FaFilter className="w-5 h-5 text-white" />
                       </motion.div>
-                      Filters
+                      <span>Filters & Sort</span>
                     </motion.h3>
 
-                    {/* Category Filter */}
+                    {/* Enhanced Category Filter */}
                     <motion.div 
-                      className="mb-6"
+                      className="mb-8"
                       initial={{ opacity: 0, y: 8 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.25 }}
                     >
-                      <h4 className="text-sm font-medium text-gray-600 mb-3">Categories</h4>
+                      <h4 className="text-sm font-semibold text-gray-700 mb-4 flex items-center gap-2">
+                        <div className="w-1 h-4 bg-gradient-to-b from-[#00C4FF] to-[#00B894] rounded-full" />
+                        Categories
+                      </h4>
                       <div className="space-y-2">
                         {categories.map((category, index) => (
                           <motion.label 
                             key={category} 
-                            className="flex items-center gap-3 cursor-pointer group relative"
+                            className={`flex items-center gap-3 cursor-pointer group relative p-3 rounded-xl transition-all duration-300 ${
+                              selectedCategory === category 
+                                ? 'bg-gradient-to-r from-[#00C4FF]/10 to-[#00B894]/10 border-2 border-[#00C4FF]/30' 
+                                : 'bg-gray-50/50 border-2 border-transparent hover:border-gray-200'
+                            }`}
                             initial={{ opacity: 0, x: -10 }}
                             whileInView={{ opacity: 1, x: 0 }}
-                            transition={{ delay: 0.4 + index * 0.1 }}
+                            transition={{ delay: 0.4 + index * 0.08 }}
                             whileHover={{ 
-                              x: 5,
-                              scale: 1.02
+                              x: 4,
+                              scale: 1.02,
+                              backgroundColor: selectedCategory === category ? undefined : "rgba(0, 196, 255, 0.05)"
                             }}
                             whileTap={{ scale: 0.98 }}
                           >
-                            <motion.input
+                            <motion.div
+                              className={`w-5 h-5 rounded-lg border-2 flex items-center justify-center transition-all duration-300 ${
+                                selectedCategory === category
+                                  ? 'bg-gradient-to-br from-[#00C4FF] to-[#00B894] border-transparent'
+                                  : 'bg-white border-gray-300 group-hover:border-[#00C4FF]'
+                              }`}
+                              whileHover={{ scale: 1.1 }}
+                            >
+                              {selectedCategory === category && (
+                                <motion.div
+                                  initial={{ scale: 0 }}
+                                  animate={{ scale: 1 }}
+                                  className="w-2 h-2 bg-white rounded-full"
+                                />
+                              )}
+                            </motion.div>
+                            <motion.span 
+                              className={`text-sm font-medium relative z-10 transition-colors duration-200 ${
+                                selectedCategory === category
+                                  ? 'text-gray-900'
+                                  : 'text-gray-600 group-hover:text-gray-900'
+                              }`}
+                            >
+                              {category.charAt(0).toUpperCase() + category.slice(1)}
+                            </motion.span>
+                            <input
                               type="radio"
                               name="category"
                               value={category}
                               checked={selectedCategory === category}
                               onChange={(e) => setSelectedCategory(e.target.value)}
-                              className="w-4 h-4 text-brand-aqua bg-white border-gray-300 focus:ring-brand-aqua focus:ring-2"
-                              whileHover={{ scale: 1.1 }}
+                              className="sr-only"
                             />
-                            <motion.span 
-                              className="text-sm text-gray-600 group-hover:text-gray-900 transition-colors duration-200 relative z-10"
-                              whileHover={{ color: "#00B894" }}
-                            >
-                              {category.charAt(0).toUpperCase() + category.slice(1)}
-                            </motion.span>
                           </motion.label>
                         ))}
                       </div>
                     </motion.div>
 
-                    {/* Sort Options */}
+                    {/* Enhanced Sort Options */}
                     <motion.div 
-                      className="mb-6"
+                      className="mb-8"
                       initial={{ opacity: 0, y: 8 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.35 }}
                     >
-                      <h4 className="text-sm font-medium text-gray-600 mb-3 flex items-center gap-2">
+                      <h4 className="text-sm font-semibold text-gray-700 mb-4 flex items-center gap-2">
                         <motion.div
+                          className="w-1 h-4 bg-gradient-to-b from-[#00B894] to-[#00C4FF] rounded-full"
                           whileHover={{ rotate: 180 }}
                           transition={{ duration: 0.35 }}
-                        >
-                          <FaSort className="w-4 h-4 text-brand-teal" />
-                        </motion.div>
+                        />
                         Sort By
                       </h4>
                       <motion.select
                         value={sortBy}
                         onChange={(e) => setSortBy(e.target.value)}
-                        className="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-brand-aqua focus:border-brand-aqua transition-all duration-300"
-                        whileHover={{ scale: 1.02 }}
+                        className="w-full bg-gradient-to-br from-gray-50 to-white border-2 border-gray-200 rounded-xl px-4 py-3.5 text-gray-900 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#00C4FF]/50 focus:border-[#00C4FF] transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%2300C4FF%22 stroke-width=%222%22%3E%3Cpolyline points=%226 9 12 15 18 9%22%3E%3C/polyline%3E%3C/svg%3E')] bg-[length:20px] bg-[right_12px_center] bg-no-repeat"
+                        whileHover={{ scale: 1.02, borderColor: "#00C4FF" }}
                         whileFocus={{ scale: 1.02 }}
                       >
                         <option value="latest">Latest First</option>
@@ -287,135 +488,121 @@ export default function Blog({ posts }) {
                       </motion.select>
                     </motion.div>
 
-                    {/* Results Count */}
+                    {/* Enhanced Results Count */}
                     <motion.div 
-                      className="text-sm text-gray-500"
+                      className="p-4 bg-gradient-to-br from-[#00C4FF]/5 to-[#00B894]/5 rounded-xl border border-[#00C4FF]/10"
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.6 }}
                     >
-                      {totalPosts} articles found
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm font-medium text-gray-700">Results</span>
+                        <span className="text-lg font-bold bg-gradient-to-r from-[#00C4FF] to-[#00B894] bg-clip-text text-transparent">
+                          {totalPosts}
+                        </span>
+                      </div>
+                      <p className="text-xs text-gray-500 mt-1">articles found</p>
                     </motion.div>
                   </div>
                 </motion.div>
               </div>
 
-              {/* Articles Grid - 3 Column Layout */}
+              {/* Enhanced Articles Grid */}
               <div className="flex-1">
-                {/* Articles Grid - first batch */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {/* Articles Grid - Modern Professional Design */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
                   {initialPosts.map((post, index) => (
                     <motion.article
                       key={post.slug}
-                      className="group bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 relative overflow-hidden flex flex-col"
-                      initial={{ opacity: 0, y: 30, scale: 0.95 }}
-                      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                      transition={{ duration: 0.35, delay: index * 0.08, ease: "easeOut" }}
-                      viewport={{ once: true }}
+                      className="group bg-white/90 backdrop-blur-sm rounded-2xl border border-gray-200/50 shadow-lg hover:shadow-2xl transition-all duration-500 relative overflow-hidden flex flex-col"
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.3, delay: index * 0.03, ease: "easeOut" }}
+                      viewport={{ once: true, margin: "-50px" }}
                       whileHover={{ 
-                        y: -4,
-                        boxShadow: "0 10px 25px rgba(0, 0, 0, 0.1)"
+                        y: -8,
+                        scale: 1.02,
+                        boxShadow: "0 20px 40px rgba(0, 196, 255, 0.15)"
                       }}
                     >
+                      {/* Gradient Overlay on Hover */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-[#00C4FF]/0 via-[#00B894]/0 to-[#00C4FF]/0 group-hover:from-[#00C4FF]/5 group-hover:via-[#00B894]/5 group-hover:to-[#00C4FF]/5 transition-all duration-500 z-0" />
+                      
+                      {/* Decorative Corner */}
+                      <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-[#00C4FF]/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      
                       <SafeLink href={`/blog/${post.slug || "default"}`} className="block h-full relative z-10 flex flex-col">
-                        {/* Cover Image */}
-                        {post.coverImage && (
-                          <div className="relative h-48 w-full overflow-hidden bg-gray-100 flex-shrink-0">
-                            <Image
-                              src={post.coverImage}
-                              alt={post.title}
-                              fill
-                              sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                              className="object-cover group-hover:scale-105 transition-transform duration-500"
-                              loading={index < 6 ? "eager" : "lazy"}
-                            />
-                          </div>
-                        )}
-                        
-                        <div className="p-5 sm:p-6 h-full flex flex-col flex-grow">
-                          {/* Category Tag and Date */}
-                          <motion.div 
-                            className="mb-3 flex justify-between items-center gap-2"
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: index * 0.1 + 0.2 }}
-                          >
-                            <motion.span 
-                              className="inline-block bg-[#0fbab1]/10 text-[#0fbab1] text-xs font-semibold px-3 py-1 rounded-full border border-[#0fbab1]/20"
-                              whileHover={{ 
-                                scale: 1.05,
-                                boxShadow: "0 5px 15px rgba(15, 186, 177, 0.2)"
-                              }}
-                            >
-                              {post.category || "Technology"}
-                            </motion.span>
-                            <span className="text-xs font-medium text-gray-600">{formatDate(post.date)}</span>
-                          </motion.div>
-
-                          {/* Title */}
-                          <motion.h2 
-                            className="text-lg font-bold text-gray-900 mb-2 group-hover:text-[#0fbab1] transition-colors duration-300 line-clamp-2"
-                            initial={{ opacity: 0, y: 10 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ delay: index * 0.1 + 0.3 }}
-                          >
-                            {post.title}
-                          </motion.h2>
-                          
-                          {/* Excerpt */}
-                          <motion.p 
-                            className="text-gray-600 text-sm leading-relaxed line-clamp-3 mb-4 flex-grow"
-                            initial={{ opacity: 0, y: 10 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ delay: index * 0.1 + 0.4 }}
-                          >
-                            {post.excerpt}
-                          </motion.p>
-
-                          {/* Meta Information */}
-                          <motion.div 
-                            className="flex items-center justify-between text-xs text-gray-500 mb-4"
-                            initial={{ opacity: 0, y: 10 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ delay: index * 0.1 + 0.5 }}
-                          >
-                            <div className="flex items-center gap-4">
-                              <motion.div 
-                                className="flex items-center gap-1.5"
-                                whileHover={{ scale: 1.05 }}
-                              >
-                                <FaClock className="w-3 h-3 text-gray-400" />
-                                <span>{calculateReadingTime(post.content || post.excerpt)} min read</span>
-                              </motion.div>
-                              <motion.div 
-                                className="flex items-center gap-1.5"
-                                whileHover={{ scale: 1.05 }}
-                              >
-                                <FaEye className="w-3 h-3 text-gray-400" />
-                                <span>{post.views || Math.floor((post.slug?.length || 0) * 50) + 100} views</span>
-                              </motion.div>
+                        {/* Enhanced Cover Image */}
+                        <div className="relative h-56 w-full overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 flex-shrink-0">
+                          {post.coverImage ? (
+                            <>
+                              <Image
+                                src={post.coverImage}
+                                alt={post.title}
+                                fill
+                                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                                className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                                priority={index < 6}
+                                loading={index < 6 ? "eager" : "lazy"}
+                                quality={85}
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                            </>
+                          ) : (
+                            <div className="w-full h-full bg-gradient-to-br from-[#00C4FF]/20 via-[#00B894]/20 to-[#00C4FF]/20 flex items-center justify-center">
+                              <FaBookOpen className="w-16 h-16 text-gray-400/50" />
                             </div>
-                          </motion.div>
+                          )}
+                          
+                          {/* Category Badge Overlay */}
+                          <div className="absolute top-4 left-4">
+                            <span className="inline-flex items-center px-3 py-1.5 bg-white/95 backdrop-blur-sm text-[#00C4FF] text-xs font-bold rounded-full border border-[#00C4FF]/20 shadow-lg">
+                              {getPostCategory(post)}
+                            </span>
+                          </div>
+                        </div>
+                        
+                        <div className="p-6 h-full flex flex-col flex-grow">
+                          {/* Date */}
+                          <div className="mb-4">
+                            <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                              {formatDate(post.date)}
+                            </span>
+                          </div>
 
-                          {/* Read More Button */}
-                          <motion.div 
-                            className="flex items-center justify-between mt-auto pt-4 border-t border-gray-100"
-                            initial={{ opacity: 0, y: 10 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ delay: index * 0.1 + 0.6 }}
-                          >
-                            <motion.span 
-                              className="text-[#0fbab1] text-sm font-medium group-hover:text-[#00C4FF] transition-colors duration-300"
-                            >
+                          {/* Enhanced Title */}
+                          <h2 className="text-xl font-extrabold text-gray-900 mb-3 group-hover:bg-gradient-to-r group-hover:from-[#00C4FF] group-hover:to-[#00B894] group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300 line-clamp-2 leading-tight">
+                            {post.title}
+                          </h2>
+                          
+                          {/* Enhanced Excerpt */}
+                          <p className="text-gray-600 text-sm leading-relaxed line-clamp-3 mb-6 flex-grow">
+                            {post.excerpt}
+                          </p>
+
+                          {/* Enhanced Meta Information */}
+                          <div className="flex items-center justify-between text-xs mb-5 pb-5 border-b border-gray-100">
+                            <div className="flex items-center gap-5">
+                              <div className="flex items-center gap-2 text-gray-500 hover:text-[#00C4FF] transition-colors duration-200">
+                                <FaClock className="w-4 h-4" />
+                                <span className="font-medium">{calculateReadingTime(post.content || post.excerpt)} min</span>
+                              </div>
+                              <div className="flex items-center gap-2 text-gray-500 hover:text-[#00B894] transition-colors duration-200">
+                                <FaEye className="w-4 h-4" />
+                                <span className="font-medium">{post.views || Math.floor((post.slug?.length || 0) * 50) + 100}</span>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Enhanced Read More Button */}
+                          <div className="flex items-center justify-between mt-auto">
+                            <span className="text-sm font-bold bg-gradient-to-r from-[#00C4FF] to-[#00B894] bg-clip-text text-transparent group-hover:from-[#00B894] group-hover:to-[#00C4FF] transition-all duration-300">
                               Read Article
-                            </motion.span>
-                            <motion.div
-                              whileHover={{ x: 5 }}
-                              transition={{ duration: 0.3 }}
-                            >
-                              <FaArrowRight className="w-4 h-4 text-[#0fbab1] group-hover:text-[#00C4FF] transition-colors duration-300" />
-                            </motion.div>
-                          </motion.div>
+                            </span>
+                            <div className="w-8 h-8 rounded-full bg-gradient-to-r from-[#00C4FF] to-[#00B894] flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:translate-x-1">
+                              <FaArrowRight className="w-3 h-3 text-white" />
+                            </div>
+                          </div>
                         </div>
                       </SafeLink>
                     </motion.article>
@@ -479,121 +666,99 @@ export default function Blog({ posts }) {
                   </motion.div>
                 )}
 
-                {/* Remaining articles shown below the button */}
+                {/* Remaining articles with enhanced design */}
                 {showAll && remainingPosts.length > 0 && (
-                  <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
                     {remainingPosts.map((post, index) => (
                       <motion.article
                         key={post.slug}
-                        className="group bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 relative overflow-hidden flex flex-col"
-                        initial={{ opacity: 0, y: 30, scale: 0.95 }}
-                        whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                        transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
-                        viewport={{ once: true }}
+                        className="group bg-white/90 backdrop-blur-sm rounded-2xl border border-gray-200/50 shadow-lg hover:shadow-2xl transition-all duration-500 relative overflow-hidden flex flex-col"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.3, delay: index * 0.02, ease: "easeOut" }}
+                        viewport={{ once: true, margin: "-50px" }}
                         whileHover={{ 
-                          y: -4,
-                          boxShadow: "0 10px 25px rgba(0, 0, 0, 0.1)"
+                          y: -8,
+                          scale: 1.02,
+                          boxShadow: "0 20px 40px rgba(0, 196, 255, 0.15)"
                         }}
                       >
+                        {/* Gradient Overlay on Hover */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-[#00C4FF]/0 via-[#00B894]/0 to-[#00C4FF]/0 group-hover:from-[#00C4FF]/5 group-hover:via-[#00B894]/5 group-hover:to-[#00C4FF]/5 transition-all duration-500 z-0" />
+                        
+                        {/* Decorative Corner */}
+                        <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-[#00C4FF]/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                         <SafeLink href={`/blog/${post.slug || "default"}`} className="block h-full relative z-10 flex flex-col">
-                          {/* Cover Image */}
-                          {post.coverImage && (
-                            <div className="relative h-48 w-full overflow-hidden bg-gray-100 flex-shrink-0">
-                              <Image
-                                src={post.coverImage}
-                                alt={post.title}
-                                fill
-                                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                                className="object-cover group-hover:scale-105 transition-transform duration-500"
-                                loading="lazy"
-                              />
-                            </div>
-                          )}
-                          
-                          <div className="p-5 sm:p-6 h-full flex flex-col flex-grow">
-                            {/* Category Tag and Date */}
-                            <motion.div 
-                              className="mb-3 flex justify-between items-center gap-2"
-                              initial={{ opacity: 0, scale: 0.8 }}
-                              whileInView={{ opacity: 1, scale: 1 }}
-                              transition={{ delay: index * 0.1 + 0.2 }}
-                            >
-                              <motion.span 
-                                className="inline-block bg-[#0fbab1]/10 text-[#0fbab1] text-xs font-semibold px-3 py-1 rounded-full border border-[#0fbab1]/20"
-                                whileHover={{ 
-                                  scale: 1.05,
-                                  boxShadow: "0 5px 15px rgba(15, 186, 177, 0.2)"
-                                }}
-                              >
-                                {post.category || "Technology"}
-                              </motion.span>
-                              <span className="text-xs font-medium text-gray-600">{formatDate(post.date)}</span>
-                            </motion.div>
-
-                            {/* Title */}
-                            <motion.h2 
-                              className="text-lg font-bold text-gray-900 mb-2 group-hover:text-[#0fbab1] transition-colors duration-300 line-clamp-2"
-                              initial={{ opacity: 0, y: 10 }}
-                              whileInView={{ opacity: 1, y: 0 }}
-                              transition={{ delay: index * 0.1 + 0.3 }}
-                            >
-                              {post.title}
-                            </motion.h2>
-                            
-                            {/* Excerpt */}
-                            <motion.p 
-                              className="text-gray-600 text-sm leading-relaxed line-clamp-3 mb-4 flex-grow"
-                              initial={{ opacity: 0, y: 10 }}
-                              whileInView={{ opacity: 1, y: 0 }}
-                              transition={{ delay: index * 0.1 + 0.4 }}
-                            >
-                              {post.excerpt}
-                            </motion.p>
-
-                            {/* Meta Information */}
-                            <motion.div 
-                              className="flex items-center justify-between text-xs text-gray-500 mb-4"
-                              initial={{ opacity: 0, y: 10 }}
-                              whileInView={{ opacity: 1, y: 0 }}
-                              transition={{ delay: index * 0.1 + 0.5 }}
-                            >
-                              <div className="flex items-center gap-4">
-                                <motion.div 
-                                  className="flex items-center gap-1.5"
-                                  whileHover={{ scale: 1.05 }}
-                                >
-                                  <FaClock className="w-3 h-3 text-gray-400" />
-                                  <span>{calculateReadingTime(post.content || post.excerpt)} min read</span>
-                                </motion.div>
-                                <motion.div 
-                                  className="flex items-center gap-1.5"
-                                  whileHover={{ scale: 1.05 }}
-                                >
-                                  <FaEye className="w-3 h-3 text-gray-400" />
-                                  <span>{post.views || Math.floor((post.slug?.length || 0) * 50) + 100} views</span>
-                                </motion.div>
+                          {/* Enhanced Cover Image */}
+                          <div className="relative h-56 w-full overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 flex-shrink-0">
+                            {post.coverImage ? (
+                              <>
+                                <Image
+                                  src={post.coverImage}
+                                  alt={post.title}
+                                  fill
+                                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                                  className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                                  loading="lazy"
+                                  quality={85}
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                              </>
+                            ) : (
+                              <div className="w-full h-full bg-gradient-to-br from-[#00C4FF]/20 via-[#00B894]/20 to-[#00C4FF]/20 flex items-center justify-center">
+                                <FaBookOpen className="w-16 h-16 text-gray-400/50" />
                               </div>
-                            </motion.div>
+                            )}
+                            
+                            {/* Category Badge Overlay */}
+                            <div className="absolute top-4 left-4">
+                              <span className="inline-flex items-center px-3 py-1.5 bg-white/95 backdrop-blur-sm text-[#00C4FF] text-xs font-bold rounded-full border border-[#00C4FF]/20 shadow-lg">
+                                {getPostCategory(post)}
+                              </span>
+                            </div>
+                          </div>
+                          
+                          <div className="p-6 h-full flex flex-col flex-grow">
+                            {/* Date */}
+                            <div className="mb-4">
+                              <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                                {formatDate(post.date)}
+                              </span>
+                            </div>
 
-                            {/* Read More Button */}
-                            <motion.div 
-                              className="flex items-center justify-between mt-auto pt-4 border-t border-gray-100"
-                              initial={{ opacity: 0, y: 10 }}
-                              whileInView={{ opacity: 1, y: 0 }}
-                              transition={{ delay: index * 0.1 + 0.6 }}
-                            >
-                              <motion.span 
-                                className="text-[#0fbab1] text-sm font-medium group-hover:text-[#00C4FF] transition-colors duration-300"
-                              >
+                            {/* Enhanced Title */}
+                            <h2 className="text-xl font-extrabold text-gray-900 mb-3 group-hover:bg-gradient-to-r group-hover:from-[#00C4FF] group-hover:to-[#00B894] group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300 line-clamp-2 leading-tight">
+                              {post.title}
+                            </h2>
+                            
+                            {/* Enhanced Excerpt */}
+                            <p className="text-gray-600 text-sm leading-relaxed line-clamp-3 mb-6 flex-grow">
+                              {post.excerpt}
+                            </p>
+
+                            {/* Enhanced Meta Information */}
+                            <div className="flex items-center justify-between text-xs mb-5 pb-5 border-b border-gray-100">
+                              <div className="flex items-center gap-5">
+                                <div className="flex items-center gap-2 text-gray-500 hover:text-[#00C4FF] transition-colors duration-200">
+                                  <FaClock className="w-4 h-4" />
+                                  <span className="font-medium">{calculateReadingTime(post.content || post.excerpt)} min</span>
+                                </div>
+                                <div className="flex items-center gap-2 text-gray-500 hover:text-[#00B894] transition-colors duration-200">
+                                  <FaEye className="w-4 h-4" />
+                                  <span className="font-medium">{post.views || Math.floor((post.slug?.length || 0) * 50) + 100}</span>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Enhanced Read More Button */}
+                            <div className="flex items-center justify-between mt-auto">
+                              <span className="text-sm font-bold bg-gradient-to-r from-[#00C4FF] to-[#00B894] bg-clip-text text-transparent group-hover:from-[#00B894] group-hover:to-[#00C4FF] transition-all duration-300">
                                 Read Article
-                              </motion.span>
-                              <motion.div
-                                whileHover={{ x: 5 }}
-                                transition={{ duration: 0.3 }}
-                              >
-                                <FaArrowRight className="w-4 h-4 text-[#0fbab1] group-hover:text-[#00C4FF] transition-colors duration-300" />
-                              </motion.div>
-                            </motion.div>
+                              </span>
+                              <div className="w-8 h-8 rounded-full bg-gradient-to-r from-[#00C4FF] to-[#00B894] flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:translate-x-1">
+                                <FaArrowRight className="w-3 h-3 text-white" />
+                              </div>
+                            </div>
                           </div>
                         </SafeLink>
                       </motion.article>
@@ -601,31 +766,68 @@ export default function Blog({ posts }) {
                   </div>
                 )}
 
-                {/* Load More / Pagination Controls (always at the very bottom) */}
+                {/* Enhanced Load More / Pagination Controls */}
                 {totalPosts > postsPerPage && (
-                  <div className="mt-12 text-center">
-                    <div className="flex items-center justify-center gap-4 mb-4">
-                      <span className="text-sm text-gray-400">
-                        Showing 1-{showingCount} of {totalPosts} articles
+                  <motion.div 
+                    className="mt-16 text-center"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                    viewport={{ once: true }}
+                  >
+                    <div className="flex items-center justify-center gap-4 mb-6">
+                      <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gray-300 to-transparent max-w-xs" />
+                      <span className="text-sm font-medium text-gray-500 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-gray-200 shadow-sm">
+                        Showing <span className="font-bold text-[#00C4FF]">1-{showingCount}</span> of <span className="font-bold text-[#00B894]">{totalPosts}</span> articles
                       </span>
+                      <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gray-300 to-transparent max-w-xs" />
                     </div>
                     
                     {!showAll && remainingPosts.length > 0 && (
-                      <button
+                      <motion.button
                         onClick={() => setShowAll(true)}
-                        className="bg-gradient-to-r from-[#00B894] to-[#00C4FF] text-white font-semibold px-8 py-3 rounded-lg hover:scale-105 transition-all duration-300 shadow-lg shadow-[#00B894]/20 flex items-center gap-2 mx-auto mb-4"
+                        className="group relative bg-gradient-to-r from-[#00C4FF] via-[#00B894] to-[#00C4FF] bg-[length:200%_auto] text-white font-bold px-10 py-4 rounded-2xl hover:scale-105 transition-all duration-500 shadow-xl shadow-[#00C4FF]/30 hover:shadow-2xl hover:shadow-[#00B894]/40 flex items-center gap-3 mx-auto overflow-hidden"
+                        whileHover={{ 
+                          scale: 1.05,
+                          boxShadow: "0 20px 40px rgba(0, 196, 255, 0.4)"
+                        }}
+                        whileTap={{ scale: 0.95 }}
+                        animate={{
+                          backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+                        }}
+                        transition={{
+                          backgroundPosition: {
+                            duration: 3,
+                            repeat: Infinity,
+                            ease: "linear"
+                          }
+                        }}
                       >
-                        <span>Load More Articles</span>
-                        <FaArrowRight className="w-4 h-4" />
-                      </button>
+                        <span className="relative z-10 flex items-center gap-3">
+                          <FaBookOpen className="w-5 h-5" />
+                          <span>Load More Articles</span>
+                          <FaArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                        </span>
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                      </motion.button>
                     )}
                     
                     {showAll && (
-                      <div className="text-sm text-gray-400">
-                        You've reached the end of all articles
-                      </div>
+                      <motion.div 
+                        className="flex flex-col items-center gap-3"
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.5 }}
+                      >
+                        <div className="w-16 h-16 bg-gradient-to-br from-[#00C4FF]/20 to-[#00B894]/20 rounded-full flex items-center justify-center">
+                          <FaCheckCircle className="w-8 h-8 text-[#00B894]" />
+                        </div>
+                        <p className="text-sm font-medium text-gray-600">
+                          You've reached the end of all articles
+                        </p>
+                      </motion.div>
                     )}
-                  </div>
+                  </motion.div>
                 )}
                </div>
              </div>

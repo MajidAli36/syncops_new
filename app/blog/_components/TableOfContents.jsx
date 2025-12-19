@@ -25,6 +25,8 @@ export default function TableOfContents({ content }) {
       if (!proseElement) return;
 
       const headingElements = proseElement.querySelectorAll("h2, h3");
+      const idCounts = new Map(); // Track ID occurrences
+      
       const extractedHeadings = Array.from(headingElements).map((heading, index) => {
         const text = heading.textContent || "";
         const level = parseInt(heading.tagName.charAt(1)); // h2 = 2, h3 = 3
@@ -36,10 +38,23 @@ export default function TableOfContents({ content }) {
             .toLowerCase()
             .replace(/[^\w\s-]/g, "")
             .replace(/\s+/g, "-");
-          heading.id = id;
         }
+        
+        // Ensure unique ID by appending index if duplicate
+        const baseId = id;
+        let uniqueId = id;
+        let count = idCounts.get(baseId) || 0;
+        
+        if (count > 0) {
+          uniqueId = `${baseId}-${count}`;
+        }
+        
+        idCounts.set(baseId, count + 1);
+        
+        // Set the unique ID on the heading element
+        heading.id = uniqueId;
 
-        return { id, text, level, index };
+        return { id: uniqueId, text, level, index, uniqueKey: `${uniqueId}-${index}` };
       });
 
       if (extractedHeadings.length > 0) {
@@ -94,9 +109,9 @@ export default function TableOfContents({ content }) {
 
   if (headings.length === 0) {
     return (
-      <div className="bg-white rounded-2xl border border-gray-100 shadow-md p-6">
-        <h3 className="text-lg font-bold text-[#042638] mb-2">Table of Contents</h3>
-        <p className="text-sm text-gray-500">No headings found in this article.</p>
+      <div className="bg-white rounded-lg border border-gray-200 shadow-sm p-4">
+        <h3 className="text-sm font-semibold text-gray-900 mb-2">Table of Contents</h3>
+        <p className="text-xs text-gray-500">No headings found in this article.</p>
       </div>
     );
   }
@@ -119,27 +134,27 @@ export default function TableOfContents({ content }) {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="bg-white rounded-lg border border-gray-200 shadow-sm lg:sticky lg:top-28 mb-6 lg:mb-0 overflow-hidden"
+      className="bg-white rounded-lg border border-gray-200 shadow-sm lg:sticky lg:top-24 mb-6 lg:mb-0 overflow-hidden"
     >
       {/* Mobile: Collapsible Header */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="lg:hidden w-full flex items-center justify-between p-4 sm:p-5 text-left hover:bg-gray-50 active:bg-gray-100 transition-colors border-b border-gray-100"
+        className="lg:hidden w-full flex items-center justify-between p-3.5 text-left hover:bg-gray-50 active:bg-gray-100 transition-colors border-b border-gray-200"
         aria-label="Toggle table of contents"
       >
-        <h3 className="text-base sm:text-lg font-bold text-gray-900 flex items-center gap-2.5">
-          <Menu size={18} className="text-gray-600" />
+        <h3 className="text-sm font-semibold text-gray-900 flex items-center gap-2">
+          <Menu size={16} className="text-gray-600" />
           Table of Contents
         </h3>
         <ChevronDown
-          size={20}
+          size={18}
           className={`text-gray-500 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
         />
       </button>
 
       {/* Desktop: Always visible header */}
-      <div className="hidden lg:block px-5 pt-5 pb-4 border-b border-gray-200">
-        <h3 className="text-base font-bold text-gray-900">Table of Contents</h3>
+      <div className="hidden lg:block px-4 pt-4 pb-3 border-b border-gray-200">
+        <h3 className="text-sm font-semibold text-gray-900">Table of Contents</h3>
       </div>
 
       {/* Content - Collapsible on mobile, always visible on desktop */}
@@ -149,11 +164,11 @@ export default function TableOfContents({ content }) {
           animate={{ height: "auto", opacity: 1 }}
           exit={{ height: 0, opacity: 0 }}
           transition={{ duration: 0.2 }}
-          className="space-y-1 max-h-[600px] overflow-y-auto px-4 sm:px-5 pb-4 sm:pb-5 lg:pt-3"
+          className="space-y-0.5 max-h-[600px] overflow-y-auto px-3.5 pb-3.5 lg:pt-2.5"
         >
           {headings.map((heading) => (
             <motion.a
-              key={heading.id}
+              key={heading.uniqueKey || `${heading.id}-${heading.index}`}
               href={`#${heading.id}`}
               onClick={(e) => {
                 e.preventDefault();
@@ -163,11 +178,11 @@ export default function TableOfContents({ content }) {
                   setIsOpen(false);
                 }
               }}
-              className={`block text-sm transition-all duration-200 py-2 px-3 rounded-md touch-manipulation ${
-                heading.level === 3 ? "ml-4 text-xs" : ""
+              className={`block text-xs sm:text-sm transition-all duration-200 py-1.5 px-2.5 rounded-md touch-manipulation ${
+                heading.level === 3 ? "ml-3 text-xs" : ""
               } ${
                 activeId === heading.id
-                  ? "text-[#0fbab1] font-semibold bg-[#0fbab1]/10"
+                  ? "text-[#0fbab1] font-medium bg-[#0fbab1]/10"
                   : "text-gray-600 hover:text-[#0fbab1] hover:bg-gray-50 active:bg-gray-100"
               }`}
               whileHover={{ x: 2 }}

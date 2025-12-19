@@ -57,7 +57,7 @@ export default function TopBar() {
   return (
     <>
       {/* Top bar - hides on scroll down */}
-      <div className={`fixed top-0 left-0 right-0 w-full bg-[#0A0A1F]/80 backdrop-blur-sm text-white text-sm font-medium h-10 flex items-center px-4 md:px-6 lg:px-8 justify-between select-none border-b border-white/5 z-50 transition-transform duration-300 ${isHidden ? '-translate-y-full' : ''}`}>
+      <div className={`fixed top-0 left-0 right-0 w-full bg-[#0A0A1F] text-white text-sm font-medium h-10 flex items-center px-4 md:px-6 lg:px-8 justify-between select-none border-b border-white/5 z-50 transition-transform duration-300 ${isHidden ? '-translate-y-full' : ''}`}>
         {/* Left: Contact */}
         <div className="flex items-center gap-3 md:gap-4 flex-wrap min-w-0">
           <a
@@ -137,7 +137,7 @@ export default function TopBar() {
       {showMobileContact && (
         <div
           id="mobile-contact"
-          className="sm:hidden bg-[#0A0A1F]/95 backdrop-blur-sm border-b border-white/5 animate-slideInFromTop"
+          className="sm:hidden bg-[#0A0A1F] border-b border-white/5 animate-slideInFromTop"
         >
           <div className="px-4 py-3 space-y-3 text-[13px] text-gray-300">
             <a href="mailto:info@syncops.tech" className="flex items-center gap-2 touch-manipulation">
