@@ -69,7 +69,7 @@ export default function ReferralHero() {
                 role="listitem"
               >
                 <Users className="w-4 h-4 text-brand-aqua" aria-hidden="true" />
-                <span>500+ Active Referrers</span>
+                <span>25+ Active Referrers</span>
               </motion.div>
               <motion.div 
                 variants={fadeUp(18)}

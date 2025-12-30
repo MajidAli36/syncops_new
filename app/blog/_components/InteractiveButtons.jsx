@@ -2,16 +2,30 @@
 import { Heart, Bookmark, MessageCircle } from "lucide-react";
 import { useState, useEffect } from "react";
 
+// Helper function to safely parse JSON from localStorage
+const parseJSON = (key, defaultValue = {}) => {
+  try {
+    const item = localStorage.getItem(key);
+    if (!item || item.trim() === "") return defaultValue;
+    return JSON.parse(item);
+  } catch (e) {
+    console.error(`Error parsing ${key} from localStorage:`, e);
+    // Clear corrupted data
+    localStorage.removeItem(key);
+    return defaultValue;
+  }
+};
+
 export default function InteractiveButtons({ slug }) {
   const [isLiked, setIsLiked] = useState(false);
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [likeCount, setLikeCount] = useState(0);
 
   useEffect(() => {
-    // Load saved state from localStorage
-    const savedLikes = JSON.parse(localStorage.getItem("blogLikes") || "{}");
-    const savedBookmarks = JSON.parse(localStorage.getItem("blogBookmarks") || "{}");
-    const savedLikeCounts = JSON.parse(localStorage.getItem("blogLikeCounts") || "{}");
+    // Load saved state from localStorage with error handling
+    const savedLikes = parseJSON("blogLikes", {});
+    const savedBookmarks = parseJSON("blogBookmarks", {});
+    const savedLikeCounts = parseJSON("blogLikeCounts", {});
 
     setIsLiked(savedLikes[slug] || false);
     setIsBookmarked(savedBookmarks[slug] || false);
@@ -22,11 +36,11 @@ export default function InteractiveButtons({ slug }) {
     const newLiked = !isLiked;
     setIsLiked(newLiked);
     
-    const savedLikes = JSON.parse(localStorage.getItem("blogLikes") || "{}");
+    const savedLikes = parseJSON("blogLikes", {});
     savedLikes[slug] = newLiked;
     localStorage.setItem("blogLikes", JSON.stringify(savedLikes));
 
-    const savedLikeCounts = JSON.parse(localStorage.getItem("blogLikeCounts") || "{}");
+    const savedLikeCounts = parseJSON("blogLikeCounts", {});
     const currentCount = savedLikeCounts[slug] || 0;
     savedLikeCounts[slug] = newLiked ? currentCount + 1 : Math.max(0, currentCount - 1);
     localStorage.setItem("blogLikeCounts", JSON.stringify(savedLikeCounts));
@@ -37,7 +51,7 @@ export default function InteractiveButtons({ slug }) {
     const newBookmarked = !isBookmarked;
     setIsBookmarked(newBookmarked);
     
-    const savedBookmarks = JSON.parse(localStorage.getItem("blogBookmarks") || "{}");
+    const savedBookmarks = parseJSON("blogBookmarks", {});
     savedBookmarks[slug] = newBookmarked;
     localStorage.setItem("blogBookmarks", JSON.stringify(savedBookmarks));
   };

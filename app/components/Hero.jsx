@@ -24,13 +24,7 @@ export default function Hero() {
         aria-hidden="true"
         poster="https://res.cloudinary.com/dfdzl01qj/video/upload/q_auto,w_1200/vecteezy_ai-generative-beautiful-fantasy-human-reptile-eye-with-neon_28716522_2_ovsvbo.jpg"
       >
-        {/* HLS Streaming – super fast */}
-        <source 
-          src="https://res.cloudinary.com/dfdzl01qj/video/upload/sp_hd/f_auto,q_auto,vc_auto,w_1920/vecteezy_ai-generative-beautiful-fantasy-human-reptile-eye-with-neon_28716522_2_ovsvbo.m3u8" 
-          type="application/x-mpegURL" 
-        />
-
-        {/* MP4 fallback */}
+        {/* MP4 video source */}
         <source 
           src="https://res.cloudinary.com/dfdzl01qj/video/upload/f_auto,q_auto:good,vc_auto,w_1920/vecteezy_ai-generative-beautiful-fantasy-human-reptile-eye-with-neon_28716522_2_ovsvbo.mp4" 
           type="video/mp4" 
@@ -70,7 +64,7 @@ export default function Hero() {
             </motion.p>
 
             <motion.h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight mb-4" variants={fadeUp(22)}>
-              Building Secure, Scalable,<br className="hidden sm:block" />
+              Building Secure, Scalable,{' '}<br className="hidden sm:block" />
               <span className="gradient-text">Intelligent Products</span>
             </motion.h1>
 

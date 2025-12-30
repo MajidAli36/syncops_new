@@ -15,7 +15,7 @@ export const metadata = generateSEO({
     "enterprise technology CEO",
     "AI software company founder"
   ],
-  url: "/majid-ali",
+  url: "/ceo",
   type: "website",
   noindex: false
 });
@@ -33,7 +33,7 @@ const MajidAliProfilePage = () => {
       "url": "https://syncops.tech"
     },
     "description": "Founder & CEO of SyncOps Tech, leading an AI-first technology company that delivers enterprise solutions to global markets.",
-    "url": "https://syncops.tech/majid-ali",
+    "url": "https://syncops.tech/ceo",
     "sameAs": [
       "https://www.linkedin.com/in/majidali-syncops/",
       "https://majidali.tech",
@@ -57,7 +57,7 @@ const MajidAliProfilePage = () => {
         "@type": "ListItem",
         "position": 2,
         "name": "Majid Ali - Founder & CEO",
-        "item": "https://syncops.tech/majid-ali"
+        "item": "https://syncops.tech/ceo"
       }
     ]
   };

@@ -210,7 +210,7 @@ export default function NavBar() {
         <div className="hidden lg:flex items-center">
           <SafeLink
             href="/contact"
-            className="group bg-[#00B894] text-white font-semibold px-4 py-2 lg:px-5 lg:py-2.5 rounded-lg shadow-lg hover:shadow-[0_0_20px_rgba(0,184,148,0.4)] hover:scale-105 transition-all duration-300 relative overflow-hidden whitespace-nowrap"
+            className="group bg-[#1CCFC9] text-white font-semibold px-4 py-2 lg:px-5 lg:py-2.5 rounded-lg shadow-lg hover:shadow-[0_0_20px_rgba(0,184,148,0.4)] hover:scale-105 transition-all duration-300 relative overflow-hidden whitespace-nowrap"
             style={{ lineHeight: 1.25 }}
             aria-label="Schedule a Call"
           >

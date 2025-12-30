@@ -2,7 +2,7 @@
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
-import { Linkedin, Globe, Mail, ChevronLeft, ChevronRight } from "lucide-react";
+import { Linkedin, Globe, Github, ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 
 // Removed TypeScript types for plain JSX usage
 
@@ -134,6 +134,16 @@ const CoverflowCard = ({ person, index, currentIndex, total, onClick }) => {
     email = "#" 
   } = person;
 
+  // Get GitHub URL based on name
+  const getGithubUrl = (name) => {
+    if (name === "Rimsha Imran") return "https://github.com/RimshaDev/rimshaimran-profile";
+    if (name === "Nida Naeem") return "https://github.com/NidaNaeem-SyncOps";
+    if (name === "Majid Ali") return "https://github.com/MajidAli36";
+    return "#";
+  };
+
+  const githubUrl = getGithubUrl(name);
+
   // Calculate position relative to center
   const offset = index - currentIndex;
   const absOffset = Math.abs(offset);
@@ -230,7 +240,12 @@ const CoverflowCard = ({ person, index, currentIndex, total, onClick }) => {
           
           {/* Info overlay - Compact */}
           <div className="absolute bottom-0 left-0 right-0 p-3 md:p-4 text-white">
-            <h3 className="text-lg md:text-xl font-bold mb-0.5">{name}</h3>
+            <a 
+              href={name === "Majid Ali" ? "/ceo" : name === "Rimsha Imran" ? "/cto" : name === "Nida Naeem" ? "/cbdo" : "#"}
+              className="block group"
+            >
+              <h3 className="text-lg md:text-xl font-bold mb-0.5 group-hover:text-[#00C4FF] transition-colors duration-300">{name}</h3>
+            </a>
             <div className="text-xs font-medium text-white/90 mb-1.5">{role}</div>
             <div className="inline-flex items-center rounded-full bg-white/20 backdrop-blur-sm px-2.5 py-0.5 text-xs font-medium border border-white/30">
               {experienceBadge}
@@ -271,11 +286,13 @@ const CoverflowCard = ({ person, index, currentIndex, total, onClick }) => {
                 <Globe size={18} />
               </a>
               <a 
-                aria-label="Email" 
-                href={`mailto:${email}`}
+                aria-label="GitHub" 
+                href={githubUrl}
+                target="_blank" 
+                rel="noopener noreferrer"
                 className="hover:text-[#00C4FF] hover:scale-125 transition-all duration-300 p-1.5 rounded-full hover:bg-gray-100"
               >
-                <Mail size={18} />
+                <Github size={18} />
               </a>
             </div>
           </motion.div>
@@ -386,7 +403,7 @@ const LeadershipSection = () => {
         <div className="relative h-[600px] md:h-[560px] lg:h-[540px] flex items-center justify-center overflow-visible w-full">
           {/* Coverflow Cards - Full width to show 4 cards */}
           <div className="relative w-full h-full" style={{ perspective: '1200px' }}>
-            <AnimatePresence mode="wait">
+            <AnimatePresence>
               {allLeadership.map((person, index) => (
                 <CoverflowCard
                   key={`${person.name}-${index}`}
@@ -432,6 +449,18 @@ const LeadershipSection = () => {
               />
             ))}
           </div>
+        </div>
+
+        {/* View All Leadership Link */}
+        <div className="mt-12 text-center">
+          <a
+            href="/about#team"
+            className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-[#00B894] to-[#00C4FF] text-white font-semibold rounded-lg hover:shadow-lg hover:scale-105 transition-all duration-300"
+            aria-label="View all leadership team members"
+          >
+            View All Leadership
+            <ArrowRight className="w-5 h-5" />
+          </a>
         </div>
 
       </div>

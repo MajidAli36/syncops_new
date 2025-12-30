@@ -15,7 +15,7 @@ export const metadata = generateSEO({
     "business development leader",
     "SyncOps leadership"
   ],
-  url: "/nida-naeem",
+  url: "/cbdo",
   type: "website",
   noindex: false
 });
@@ -33,7 +33,7 @@ const NidaNaeemProfilePage = () => {
       "url": "https://syncops.tech"
     },
     "description": "Chief Business Development Officer of SyncOps Tech, responsible for global client partnerships, strategic growth, and business development.",
-    "url": "https://syncops.tech/nida-naeem",
+    "url": "https://syncops.tech/cbdo",
     "sameAs": [
       "https://www.linkedin.com/in/nidanaeem-syncops/"
     ],
@@ -55,7 +55,7 @@ const NidaNaeemProfilePage = () => {
         "@type": "ListItem",
         "position": 2,
         "name": "Nida Naeem - Chief Business Development Officer",
-        "item": "https://syncops.tech/nida-naeem"
+        "item": "https://syncops.tech/cbdo"
       }
     ]
   };

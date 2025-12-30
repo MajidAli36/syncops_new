@@ -81,19 +81,19 @@ export default function sitemap() {
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/majid-ali`,
+      url: `${baseUrl}/ceo`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/rimsha-imran`,
+      url: `${baseUrl}/cto`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/nida-naeem`,
+      url: `${baseUrl}/cbdo`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.7,

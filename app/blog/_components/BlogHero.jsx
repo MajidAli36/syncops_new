@@ -107,12 +107,25 @@ const AnimatedCounter = ({ end, duration = 2 }) => {
   const animationFrameRef = useRef(null);
   const startTimeRef = useRef(null);
 
+  // Check if value contains non-numeric characters in the middle (like "24/7")
+  // These should be displayed as-is without animation
+  const hasNonNumericInMiddle = /[^0-9]/.test(end) && !/^[0-9]+[^0-9]*$/.test(end);
+  
   useEffect(() => {
+    // If it's a special format like "24/7", don't animate
+    if (hasNonNumericInMiddle) {
+      return;
+    }
+
     // Reset state when end or duration changes
     setCount(0);
     startTimeRef.current = null;
 
-    const endCount = parseInt(end.replace(/\D/g, ''));
+    // Extract numeric part and suffix
+    const numericPart = end.replace(/\D/g, '');
+    const suffix = end.replace(/\d/g, '');
+    const endCount = parseInt(numericPart);
+    
     if (isNaN(endCount)) return;
 
     const updateCount = (timestamp) => {
@@ -126,6 +139,8 @@ const AnimatedCounter = ({ end, duration = 2 }) => {
 
       if (progress < 1) {
         animationFrameRef.current = requestAnimationFrame(updateCount);
+      } else {
+        setCount(endCount);
       }
     };
 
@@ -137,9 +152,16 @@ const AnimatedCounter = ({ end, duration = 2 }) => {
         cancelAnimationFrame(animationFrameRef.current);
       }
     };
-  }, [end, duration]);
+  }, [end, duration, hasNonNumericInMiddle]);
 
-  return <span>{count}{end.replace(/\d/g, '')}</span>;
+  // For special formats like "24/7", display directly
+  if (hasNonNumericInMiddle) {
+    return <span>{end}</span>;
+  }
+
+  // For regular numbers with optional suffix (like "100%"), animate and show suffix
+  const suffix = end.replace(/\d/g, '');
+  return <span>{count}{suffix}</span>;
 };
 
 const BlogHero = () => {

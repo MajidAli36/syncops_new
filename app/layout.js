@@ -85,7 +85,9 @@ const organizationSchema = {
     "https://rocketreach.co/syncops-profile_b6e4db2fc708a182",
     "https://www.trustpilot.com/review/syncops.tech",
     "https://tracxn.com/d/companies/syncops/__vXEaZ6f2kBDQ2cqCCZmYfSCy6Wqxpu2TXiTaJmWn-IA",
-    "https://www.crunchbase.com/organization/syncops"
+    "https://www.crunchbase.com/organization/syncops",
+    "https://themanifest.com/company/syncops",
+    "https://goodfirms.co/company/syncops"
   ],
   "aggregateRating": {
     "@type": "AggregateRating",

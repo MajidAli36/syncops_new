@@ -4,6 +4,7 @@ import ChallengeSection from "../_components/Challenges";
 import SolutionSection from "../_components/Solutions";
 import TimelineSection from "../_components/Timeline";
 import RelatedCaseStudies from "../_components/RelatedStudies";
+import RelatedServices from "./_components/RelatedServices";
 import CaseStudyCTA from "../_components/CTA";
 import { caseStudiesData } from "../_data/caseStudies";
 
@@ -264,6 +265,7 @@ export default async function CaseStudyPage({ params }) {
         <TimelineSection duration={caseStudyData.duration} team={caseStudyData.team} />
         <CaseStudyCTA title={caseStudyData.title} industry={caseStudyData.industry} />
         <RelatedCaseStudies caseStudies={caseStudyData.relatedCaseStudies} />
+        <RelatedServices industry={caseStudyData.industry} />
       </article>
     </>
   );

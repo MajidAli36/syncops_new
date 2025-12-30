@@ -15,7 +15,7 @@ export const metadata = generateSEO({
     "enterprise AI systems",
     "technology CTO"
   ],
-  url: "/rimsha-imran",
+  url: "/cto",
   type: "website",
   noindex: false
 });
@@ -33,7 +33,7 @@ const RimshaImranProfilePage = () => {
       "url": "https://syncops.tech"
     },
     "description": "Chief Technology Officer of SyncOps Tech, responsible for AI architecture, scalable engineering systems, and technical excellence.",
-    "url": "https://syncops.tech/rimsha-imran",
+    "url": "https://syncops.tech/cto",
     "sameAs": [
       "https://www.linkedin.com/in/rimshaimran-syncops/",
       "https://www.rimshaimran.tech/"
@@ -56,7 +56,7 @@ const RimshaImranProfilePage = () => {
         "@type": "ListItem",
         "position": 2,
         "name": "Rimsha Imran - Chief Technology Officer",
-        "item": "https://syncops.tech/rimsha-imran"
+        "item": "https://syncops.tech/cto"
       }
     ]
   };

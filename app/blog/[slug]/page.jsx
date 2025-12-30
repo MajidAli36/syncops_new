@@ -4,6 +4,8 @@ import { CalendarDays, Clock } from "lucide-react";
 import { getPostBySlug, getAllPosts } from "../../utils/blogUtils";
 import AuthorProfile from "../_components/AuthorProfile";
 import RelatedPosts from "../_components/RelatedPosts";
+import RelatedServices from "./_components/RelatedServices";
+import RelatedCaseStudies from "./_components/RelatedCaseStudies";
 import SocialShare from "../_components/SocialShare";
 import InteractiveButtons from "../_components/InteractiveButtons";
 import ReadingProgress from "../_components/ReadingProgress";
@@ -263,6 +265,12 @@ export default async function BlogPost({ params }) {
 
               {/* Related Posts */}
               <RelatedPosts currentSlug={slug} />
+
+              {/* Related Services */}
+              <RelatedServices category={post.category} />
+
+              {/* Related Case Studies */}
+              <RelatedCaseStudies tags={post.tags} />
 
               {/* Comments Section */}
               <div id="comments-section" className="mt-10 sm:mt-12 pt-8 border-t border-gray-200">

@@ -103,6 +103,7 @@ const CaseStudyHero = ({ title, subtitle, image, industry, duration, team, demoL
                   width={600}
                   height={400}
                   className="w-full h-auto max-h-[250px] sm:max-h-[300px] md:max-h-[350px] lg:max-h-[400px] xl:max-h-[450px] object-contain transition-transform duration-500 group-hover:scale-105"
+                  style={{ width: "auto", height: "auto" }}
                   priority
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 600px"
                 />

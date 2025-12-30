@@ -2,6 +2,10 @@ import React from "react";
 import { notFound } from "next/navigation";
 import KeyFeatures from "../_components/KeyFeatures";
 import Process from "../_components/Process";
+import RelatedServices from "./_components/RelatedServices";
+import RelatedCaseStudies from "./_components/RelatedCaseStudies";
+import FAQSection from "./_components/FAQSection";
+import SafeLink from "../../components/ui/SafeLink";
 import { servicesData } from "../../utils/servicesUtils";
 import Image from "next/image";
 
@@ -120,20 +124,37 @@ export default async function ServicePage({ params }) {
                 {service.description}
               </p>
 
-              {/* Quick Stats */}
+              {/* Quick Stats with contextual links */}
               <div className="grid grid-cols-3 gap-4 max-w-2xl">
                 <div className="bg-white rounded-xl p-4 shadow-md border border-gray-100">
                   <div className="text-2xl font-bold text-[#00B894] mb-1">95%</div>
                   <div className="text-xs font-semibold text-gray-600">Success Rate</div>
                 </div>
-                <div className="bg-white rounded-xl p-4 shadow-md border border-gray-100">
+                <SafeLink
+                  href="/case-studies"
+                  className="bg-white rounded-xl p-4 shadow-md border border-gray-100 hover:shadow-lg hover:border-[#00C4FF]/30 transition-all duration-300"
+                >
                   <div className="text-2xl font-bold text-[#00C4FF] mb-1">50+</div>
                   <div className="text-xs font-semibold text-gray-600">Projects</div>
-                </div>
-                <div className="bg-white rounded-xl p-4 shadow-md border border-gray-100">
+                </SafeLink>
+                <SafeLink
+                  href="/about"
+                  className="bg-white rounded-xl p-4 shadow-md border border-gray-100 hover:shadow-lg hover:border-[#00B894]/30 transition-all duration-300"
+                >
                   <div className="text-2xl font-bold text-[#00B894] mb-1">99.5%</div>
                   <div className="text-xs font-semibold text-gray-600">Uptime</div>
-                </div>
+                </SafeLink>
+              </div>
+              
+              {/* CTA with link */}
+              <div className="mt-8">
+                <SafeLink
+                  href="/contact"
+                  className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-[#00B894] to-[#00C4FF] text-white font-semibold rounded-lg hover:shadow-lg hover:scale-105 transition-all duration-300"
+                  aria-label="Get started with our services"
+                >
+                  Get Started Today
+                </SafeLink>
               </div>
             </div>
             
@@ -206,7 +227,16 @@ export default async function ServicePage({ params }) {
           />
         </div>
       </section>
+
+      {/* Related Services Section */}
+      <RelatedServices currentSlug={slug} />
+
+      {/* Related Case Studies Section */}
+      <RelatedCaseStudies service={service.title} />
+
+      {/* FAQ Section */}
+      <FAQSection service={service.title} />
     </div>
-    </>
+    </> 
   );
 }

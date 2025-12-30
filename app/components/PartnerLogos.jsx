@@ -33,6 +33,16 @@ const partners = [
     logo: "/trusted/crunchbace.png",
     href: "https://www.crunchbase.com/organization/syncops",
   },
+  {
+    name: "The Manifest",
+    logo: "/trusted/the-manifest-syncops.png",
+    href: "https://themanifest.com/company/syncops",
+  },
+  {
+    name: "Goodfirms",
+    logo: "/trusted/goodfirms-syncops.png",
+    href: "https://goodfirms.co/company/syncops",
+  },
 ];
 
 // duplicate list so scrolling feels continuous
@@ -58,8 +68,8 @@ export default function PartnerLogos() {
 
           <div className="flex-1 overflow-hidden">
             <motion.div
-              className="flex items-center gap-12 sm:gap-16 lg:gap-20"
-              animate={{ x: ["0%", "-100%"] }}
+              className="flex items-center gap-6 sm:gap-8 lg:gap-14"
+              animate={{ x: ["0%", "-150%"] }}
               transition={{
                 duration: 30,
                 ease: "linear",
