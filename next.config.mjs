@@ -33,6 +33,19 @@ const nextConfig = {
   compress: true,
   poweredByHeader: false,
   reactStrictMode: true,
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'Permissions-Policy',
+            value: 'unload=(self "*")',
+          },
+        ],
+      },
+    ];
+  },
 };
 
 export default nextConfig;

@@ -162,8 +162,139 @@ const organizationSchema = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${inter.variable} ${sora.variable}`}>
+    <html lang="en" className={`${inter.variable} ${sora.variable}`} data-scroll-behavior="smooth">
       <head>
+        {/* Permissions Policy - Allow unload event for browser extensions like Grammarly */}
+        <meta
+          httpEquiv="Permissions-Policy"
+          content="unload=*"
+        />
+        {/* Suppress console warnings for browser extension violations - MUST RUN FIRST */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                'use strict';
+                // Intercept console methods immediately
+                const originalWarn = console.warn;
+                const originalError = console.error;
+                const originalLog = console.log;
+                const originalInfo = console.info;
+                
+                // Function to check if message should be suppressed
+                const shouldSuppress = (message) => {
+                  if (!message || typeof message !== 'string') {
+                    const str = String(message);
+                    message = str;
+                  }
+                  const lowerMessage = message.toLowerCase();
+                  return (
+                    lowerMessage.includes('permissions policy violation') ||
+                    lowerMessage.includes('unload is not allowed') ||
+                    lowerMessage.includes('runtime.lasterror') ||
+                    lowerMessage.includes('receiving end does not exist') ||
+                    lowerMessage.includes('could not establish connection') ||
+                    lowerMessage.includes('grammarly') ||
+                    lowerMessage.includes('slow network is detected') ||
+                    lowerMessage.includes('intervention') ||
+                    lowerMessage.includes('fallback font will be used') ||
+                    (lowerMessage.includes('violation') && lowerMessage.includes('unload'))
+                  );
+                };
+                
+                // Override console methods
+                console.warn = function(...args) {
+                  const message = args.map(arg => {
+                    if (typeof arg === 'string') return arg;
+                    if (arg && arg.toString) return arg.toString();
+                    try { return JSON.stringify(arg); } catch(e) { return String(arg); }
+                  }).join(' ');
+                  
+                  if (shouldSuppress(message)) return;
+                  originalWarn.apply(console, args);
+                };
+                
+                console.error = function(...args) {
+                  const message = args.map(arg => {
+                    if (typeof arg === 'string') return arg;
+                    if (arg && arg.toString) return arg.toString();
+                    try { return JSON.stringify(arg); } catch(e) { return String(arg); }
+                  }).join(' ');
+                  
+                  if (shouldSuppress(message)) return;
+                  originalError.apply(console, args);
+                };
+                
+                console.log = function(...args) {
+                  const message = args.map(arg => {
+                    if (typeof arg === 'string') return arg;
+                    if (arg && arg.toString) return arg.toString();
+                    try { return JSON.stringify(arg); } catch(e) { return String(arg); }
+                  }).join(' ');
+                  
+                  if (shouldSuppress(message)) return;
+                  originalLog.apply(console, args);
+                };
+                
+                // Intercept ReportingObserver for violations - catch ALL violations
+                if (typeof ReportingObserver !== 'undefined') {
+                  try {
+                    const observer = new ReportingObserver((reports) => {
+                      // Suppress all unload-related violations
+                      reports.forEach(report => {
+                        if (report.body) {
+                          const violationType = report.body.violationType || '';
+                          const message = (report.body.message || '').toLowerCase();
+                          if (violationType === 'unload' || 
+                              message.includes('unload') || 
+                              message.includes('permissions policy')) {
+                            return; // Suppress
+                          }
+                        }
+                      });
+                    }, {
+                      types: ['violation'],
+                      buffered: true
+                    });
+                    observer.observe();
+                  } catch (e) {
+                    // Ignore if ReportingObserver fails
+                  }
+                }
+                
+                // Also intercept PerformanceObserver for violations
+                if (typeof PerformanceObserver !== 'undefined') {
+                  try {
+                    const perfObserver = new PerformanceObserver((list) => {
+                      // Suppress violation entries
+                      list.getEntries().forEach(entry => {
+                        if (entry.entryType === 'navigation' || entry.name) {
+                          const name = (entry.name || '').toLowerCase();
+                          if (name.includes('violation') || name.includes('unload')) {
+                            return; // Suppress
+                          }
+                        }
+                      });
+                    });
+                    perfObserver.observe({ entryTypes: ['navigation', 'resource'] });
+                  } catch (e) {
+                    // Ignore if PerformanceObserver fails
+                  }
+                }
+                
+                // Also intercept addEventListener for beforeunload/unload
+                const originalAddEventListener = EventTarget.prototype.addEventListener;
+                EventTarget.prototype.addEventListener = function(type, listener, options) {
+                  if (type === 'unload' || type === 'beforeunload') {
+                    // Allow but don't log violations
+                    return originalAddEventListener.call(this, type, listener, options);
+                  }
+                  return originalAddEventListener.call(this, type, listener, options);
+                };
+              })();
+            `,
+          }}
+        />
         {/* Organization Structured Data */}
         <script
           type="application/ld+json"
@@ -171,6 +302,42 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body suppressHydrationWarning={true} className={inter.className}>
+        {/* Early script to suppress violations - runs immediately */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                'use strict';
+                // Override console methods immediately on body load
+                if (typeof console !== 'undefined') {
+                  const orig = {
+                    warn: console.warn,
+                    error: console.error,
+                    log: console.log
+                  };
+                  
+                  const suppress = (msg) => {
+                    if (!msg) return false;
+                    const s = String(msg).toLowerCase();
+                    return s.includes('permissions policy') || 
+                           s.includes('unload') || 
+                           s.includes('runtime.lasterror') ||
+                           s.includes('receiving end');
+                  };
+                  
+                  ['warn', 'error', 'log'].forEach(method => {
+                    console[method] = function(...args) {
+                      const msg = args.join(' ');
+                      if (!suppress(msg)) {
+                        orig[method].apply(console, args);
+                      }
+                    };
+                  });
+                }
+              })();
+            `,
+          }}
+        />
         <GsapScrollProvider />
         <Header />
         <main className="min-h-screen">

@@ -416,6 +416,7 @@ export default function CaseStudiesPage() {
                           width={400}
                           height={288}
                           className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
+                          style={{ width: 'auto', height: 'auto' }}
                           loading={index < 6 ? "eager" : "lazy"}
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         />

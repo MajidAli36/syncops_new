@@ -14,7 +14,6 @@ import {
   Clock,
   MapPin,
 } from "lucide-react";
-import emailjs from "@emailjs/browser";
 import ReCAPTCHA from "react-google-recaptcha";
 import Toast from "../../components/Toast";
 
@@ -77,7 +76,7 @@ const ContactForm = () => {
     setCaptchaVerified(!!value);
   };
 
-  const sendEmail = (e) => {
+  const sendEmail = async (e) => {
     e.preventDefault();
 
     if (!captchaVerified) {
@@ -91,54 +90,56 @@ const ContactForm = () => {
 
     setLoading(true);
 
-    const emailData = {
-      first_name: formData.firstName,
-      last_name: formData.lastName,
-      user_email: formData.email,
-      phone_number: formData.phone,
-      region: formData.region,
-      services: formData.services.join(", "),
-      description: formData.description,
-    };
-
-    emailjs
-      .send(
-        "service_xxwpgv9",
-        "template_upbtwqk",
-        emailData,
-        "gQDkveoFh37NYebva"
-      )
-      .then(
-        () => {
-          setToast({
-            show: true,
-            message: "Email sent successfully!",
-            type: "success",
-          });
-          // Reset form after successful submission
-          setFormData({
-            firstName: "",
-            lastName: "",
-            email: "",
-            phone: "",
-            region: "",
-            services: [],
-            description: "",
-          });
-          recaptchaRef.current.reset();
-          setCaptchaVerified(false);
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
         },
-        (error) => {
-          setToast({
-            show: true,
-            message: "Failed to send email: " + error.text,
-            type: "error",
-          });
-        }
-      )
-      .finally(() => {
-        setLoading(false);
+        body: JSON.stringify({
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          phone: formData.phone,
+          region: formData.region,
+          services: formData.services.join(", "),
+          description: formData.description,
+        }),
       });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send email');
+      }
+
+      setToast({
+        show: true,
+        message: "Email sent successfully!",
+        type: "success",
+      });
+
+      // Reset form after successful submission
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        region: "",
+        services: [],
+        description: "",
+      });
+      recaptchaRef.current.reset();
+      setCaptchaVerified(false);
+    } catch (error) {
+      setToast({
+        show: true,
+        message: "Failed to send email: " + error.message,
+        type: "error",
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -285,6 +286,7 @@ const ContactForm = () => {
                       placeholder="Enter first name"
                       required
                       disabled={loading}
+                      suppressHydrationWarning
                       className="w-full pl-10 sm:pl-12 pr-3 sm:pr-4 py-3 sm:py-4 bg-white/90 backdrop-blur-sm border-2 border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 sm:focus:ring-4 focus:ring-[#00B894]/20 focus:border-[#00B894] transition-all duration-300 hover:border-[#00C4FF]/50 text-gray-900 placeholder-gray-500 text-sm sm:text-base"
                     />
                   </div>
@@ -304,6 +306,7 @@ const ContactForm = () => {
                       placeholder="Enter last name"
                       required
                       disabled={loading}
+                      suppressHydrationWarning
                       className="w-full pl-10 sm:pl-12 pr-3 sm:pr-4 py-3 sm:py-4 bg-white/90 backdrop-blur-sm border-2 border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 sm:focus:ring-4 focus:ring-[#00B894]/20 focus:border-[#00B894] transition-all duration-300 hover:border-[#00C4FF]/50 text-gray-900 placeholder-gray-500 text-sm sm:text-base"
                     />
                   </div>
@@ -326,6 +329,7 @@ const ContactForm = () => {
                     placeholder="Enter email address"
                     required
                     disabled={loading}
+                    suppressHydrationWarning
                     className="w-full pl-10 sm:pl-12 pr-3 sm:pr-4 py-3 sm:py-4 bg-white/90 backdrop-blur-sm border-2 border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 sm:focus:ring-4 focus:ring-[#00B894]/20 focus:border-[#00B894] transition-all duration-300 hover:border-[#00C4FF]/50 text-gray-900 placeholder-gray-500 text-sm sm:text-base"
                   />
                 </div>
@@ -347,6 +351,7 @@ const ContactForm = () => {
                     onChange={handleChange}
                     placeholder="Enter phone number"
                     disabled={loading}
+                    suppressHydrationWarning
                     className="w-full pl-10 sm:pl-12 pr-3 sm:pr-4 py-3 sm:py-4 bg-white/90 backdrop-blur-sm border-2 border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 sm:focus:ring-4 focus:ring-[#00B894]/20 focus:border-[#00B894] transition-all duration-300 hover:border-[#00C4FF]/50 text-gray-900 placeholder-gray-500 text-sm sm:text-base"
                   />
                 </div>
@@ -365,6 +370,7 @@ const ContactForm = () => {
                     value={formData.region}
                     onChange={handleChange}
                     disabled={loading}
+                    suppressHydrationWarning
                     className="w-full pl-10 sm:pl-12 pr-3 sm:pr-4 py-3 sm:py-4 bg-white/90 backdrop-blur-sm border-2 border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 sm:focus:ring-4 focus:ring-[#00B894]/20 focus:border-[#00B894] transition-all duration-300 hover:border-[#00C4FF]/50 text-gray-900 text-sm sm:text-base appearance-none"
                   >
                     {regionOptions.map(option => (
@@ -391,6 +397,7 @@ const ContactForm = () => {
                     placeholder="Tell us about your project, ideas, and requirements..."
                     disabled={loading}
                     rows="4"
+                    suppressHydrationWarning
                     className="w-full pl-10 sm:pl-12 pr-3 sm:pr-4 py-3 sm:py-4 bg-white/90 backdrop-blur-sm border-2 border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 sm:focus:ring-4 focus:ring-[#00B894]/20 focus:border-[#00B894] transition-all duration-300 hover:border-[#00C4FF]/50 text-gray-900 placeholder-gray-500 text-sm sm:text-base resize-none"
                   />
                 </div>
@@ -410,6 +417,7 @@ const ContactForm = () => {
                         checked={formData.services.includes(service.value)}
                         onChange={() => handleServiceChange(service.value)}
                         disabled={loading}
+                        suppressHydrationWarning
                         className="w-4 h-4 text-[#00B894] border-gray-300 rounded focus:ring-[#00B894]"
                       />
                       <span className="text-xs sm:text-sm text-gray-700">{service.label}</span>
@@ -419,15 +427,24 @@ const ContactForm = () => {
               </div>
 
               
-              <div className="flex justify-center overflow-hidden">
-                <div className="scale-75 sm:scale-100 origin-center">
-                  <ReCAPTCHA
-                    sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
-                    onChange={handleCaptchaChange}
-                    ref={recaptchaRef}
-                  />
+              {process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && 
+                process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY !== 'your_recaptcha_site_key_here' ? (
+                <div className="flex justify-center overflow-hidden">
+                  <div className="scale-75 sm:scale-100 origin-center">
+                    <ReCAPTCHA
+                      sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+                      onChange={handleCaptchaChange}
+                      ref={recaptchaRef}
+                    />
+                  </div>
                 </div>
-              </div>
+              ) : (
+                <div className="text-center p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+                  <p className="text-sm text-yellow-800">
+                    reCAPTCHA is not configured. Please set NEXT_PUBLIC_RECAPTCHA_SITE_KEY in your .env.local file.
+                  </p>
+                </div>
+              )}
               
               <motion.button
                 type="submit"

@@ -1,11 +1,14 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { X, Phone, Mail, User, MapPin, MessageSquare } from "lucide-react";
+import Toast from "./Toast";
 
 const FloatingCTA = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isServiceDrawerOpen, setIsServiceDrawerOpen] = useState(false);
   const [isScrollTopVisible, setIsScrollTopVisible] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [toast, setToast] = useState({ show: false, message: "", type: "" });
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -112,21 +115,64 @@ const FloatingCTA = () => {
   };
 
   // Handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    // Here you would typically send the data to your backend
-    alert("Thank you for your interest! We'll get back to you soon.");
-    setIsOpen(false);
-    setFormData({
-      firstName: "",
-      lastName: "",
-      email: "",
-      phone: "",
-      region: "",
-      services: [],
-      description: "",
-    });
+    
+    setLoading(true);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          phone: formData.phone,
+          region: formData.region,
+          services: formData.services.join(", "), // Convert array to string
+          description: formData.description,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send email');
+      }
+
+      setToast({
+        show: true,
+        message: "Email sent successfully! We'll get back to you soon.",
+        type: "success",
+      });
+
+      // Reset form after successful submission
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        region: "",
+        services: [],
+        description: "",
+      });
+
+      // Close drawer after a short delay
+      setTimeout(() => {
+        setIsOpen(false);
+      }, 1500);
+    } catch (error) {
+      setToast({
+        show: true,
+        message: "Failed to send email: " + error.message,
+        type: "error",
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   // Close panel on escape key
@@ -165,6 +211,14 @@ const FloatingCTA = () => {
 
   return (
     <>
+      {toast.show && (
+        <Toast
+          message={toast.message}
+          type={toast.type}
+          onClose={() => setToast({ show: false, message: "", type: "" })}
+        />
+      )}
+      
       {/* Mobile: Circular button at bottom */}
       {!isOpen && !isServiceDrawerOpen && (
         <button
@@ -379,9 +433,17 @@ const FloatingCTA = () => {
             <div className="p-6 border-t border-gray-200 bg-white sticky bottom-0 z-40">
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-teal-400 to-cyan-500 text-white font-semibold px-6 py-2 rounded-lg hover:brightness-110 transition-all duration-300"
+                disabled={loading}
+                className="w-full bg-gradient-to-r from-teal-400 to-cyan-500 text-white font-semibold px-6 py-2 rounded-lg hover:brightness-110 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
               >
-                Submit Request
+                {loading ? (
+                  <>
+                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
+                    Sending...
+                  </>
+                ) : (
+                  "Submit Request"
+                )}
               </button>
             </div>
           </form>
