@@ -1,5 +1,6 @@
 # robots.txt for SyncOps
 # https://syncops.tech/robots.txt
+# Last updated: 2024
 
 # Allow all search engines
 User-agent: *
@@ -15,6 +16,9 @@ Disallow: /admin/
 Disallow: /_error
 Disallow: /404
 Disallow: /500
+Disallow: /*.json$
+Disallow: /_buildManifest.js
+Disallow: /_ssgManifest.js
 
 # Allow important pages explicitly
 Allow: /
@@ -29,10 +33,18 @@ Allow: /technologies
 Allow: /ai-division
 Allow: /ceo-message
 Allow: /referral-program
+Allow: /manifest.json
+Allow: /robots.txt
+Allow: /sitemap.xml
 
 # Specific rules for major search engines
 User-agent: Googlebot
 Allow: /
+Crawl-delay: 0
+
+User-agent: Googlebot-Image
+Allow: /images/
+Allow: /public/
 Crawl-delay: 0
 
 User-agent: Bingbot
@@ -42,6 +54,44 @@ Crawl-delay: 1
 User-agent: Slurp
 Allow: /
 Crawl-delay: 1
+
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 2
+
+User-agent: Yandex
+Allow: /
+Crawl-delay: 1
+
+User-agent: Sogou
+Allow: /
+Crawl-delay: 2
+
+User-agent: Exabot
+Allow: /
+Crawl-delay: 1
+
+User-agent: facebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: ia_archiver
+Allow: /
+Crawl-delay: 1
+
+# Block bad bots
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
+
+User-agent: MJ12bot
+Crawl-delay: 10
 
 # Crawl-delay for other bots (respectful crawling)
 Crawl-delay: 1

@@ -14,10 +14,15 @@ export const metadata = {
   metadataBase: new URL('https://syncops.tech'),
   alternates: {
     canonical: 'https://syncops.tech',
+    languages: {
+      'en-US': 'https://syncops.tech',
+      'en': 'https://syncops.tech',
+    },
   },
   openGraph: {
     type: 'website',
     locale: 'en_US',
+    alternateLocale: ['en_GB', 'en_CA', 'en_AU'],
     url: 'https://syncops.tech',
     siteName: 'SyncOps',
     title: 'SyncOps | AI-Powered Software Solutions & Enterprise Development',
@@ -28,6 +33,7 @@ export const metadata = {
         width: 1200,
         height: 630,
         alt: 'SyncOps - AI-Powered Software Solutions',
+        type: 'image/png',
       },
     ],
   },
@@ -37,6 +43,7 @@ export const metadata = {
     description: 'Enterprise-grade AI-powered software solutions, development, and consulting.',
     images: ['/images/logo.png'],
     creator: '@SyncOps',
+    site: '@SyncOps',
   },
   robots: {
     index: true,
@@ -49,6 +56,45 @@ export const metadata = {
       'max-snippet': -1,
     },
   },
+  verification: {
+    // Add your verification codes here when available
+    // google: 'your-google-verification-code',
+    // yandex: 'your-yandex-verification-code',
+    // yahoo: 'your-yahoo-verification-code',
+    // other: {
+    //   'facebook-domain-verification': 'your-facebook-verification-code',
+    // },
+  },
+  other: {
+    'mobile-web-app-capable': 'yes',
+    'apple-mobile-web-app-capable': 'yes',
+    'apple-mobile-web-app-status-bar-style': 'black-translucent',
+    'apple-mobile-web-app-title': 'SyncOps',
+    'format-detection': 'telephone=no',
+    'theme-color': '#00B894',
+    'msapplication-TileColor': '#00B894',
+    'msapplication-config': '/browserconfig.xml',
+  },
+  manifest: '/manifest.json',
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/images/logo.png', sizes: '192x192', type: 'image/png' },
+      { url: '/images/logo.png', sizes: '512x512', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/images/logo.png', sizes: '180x180', type: 'image/png' },
+    ],
+    shortcut: '/favicon.ico',
+  },
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+    userScalable: true,
+    viewportFit: 'cover',
+  },
+  category: 'technology',
 };
 
 // Organization structured data
@@ -164,11 +210,80 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${inter.variable} ${sora.variable}`} data-scroll-behavior="smooth">
       <head>
+        {/* Performance & SEO: Preconnect to external domains */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.linkedin.com" />
+        <link rel="dns-prefetch" href="https://twitter.com" />
+        
         {/* Permissions Policy - Allow unload event for browser extensions like Grammarly */}
         <meta
           httpEquiv="Permissions-Policy"
-          content="unload=*"
+          content="unload=*, geolocation=(), microphone=(), camera=()"
         />
+        
+        {/* Security Headers */}
+        <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
+        <meta httpEquiv="X-Frame-Options" content="SAMEORIGIN" />
+        <meta httpEquiv="X-XSS-Protection" content="1; mode=block" />
+        <meta httpEquiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+        
+        {/* Mobile Optimization */}
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-title" content="SyncOps" />
+        
+        {/* Theme & Colors */}
+        <meta name="theme-color" content="#00B894" media="(prefers-color-scheme: light)" />
+        <meta name="theme-color" content="#0B1020" media="(prefers-color-scheme: dark)" />
+        <meta name="msapplication-TileColor" content="#00B894" />
+        <meta name="msapplication-navbutton-color" content="#00B894" />
+        
+        {/* Additional SEO Meta Tags */}
+        <meta name="geo.region" content="PK-PB" />
+        <meta name="geo.placename" content="Gujranwala" />
+        <meta name="geo.position" content="32.1617;74.1883" />
+        <meta name="ICBM" content="32.1617, 74.1883" />
+        <meta name="language" content="English" />
+        <meta name="revisit-after" content="7 days" />
+        <meta name="distribution" content="global" />
+        <meta name="rating" content="general" />
+        <meta name="coverage" content="worldwide" />
+        <meta name="target" content="all" />
+        <meta name="audience" content="all" />
+        
+        {/* Apple Touch Icons */}
+        <link rel="apple-touch-icon" sizes="180x180" href="/images/logo.png" />
+        <link rel="apple-touch-icon" sizes="152x152" href="/images/logo.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="/images/logo.png" />
+        <link rel="apple-touch-icon" sizes="120x120" href="/images/logo.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="/images/logo.png" />
+        <link rel="apple-touch-icon" sizes="76x76" href="/images/logo.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="/images/logo.png" />
+        <link rel="apple-touch-icon" sizes="60x60" href="/images/logo.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="/images/logo.png" />
+        
+        {/* Favicon Links */}
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/images/logo.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.png" />
+        <link rel="icon" type="image/png" sizes="96x96" href="/images/logo.png" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/images/logo.png" />
+        <link rel="icon" type="image/png" sizes="512x512" href="/images/logo.png" />
+        
+        {/* Manifest */}
+        <link rel="manifest" href="/manifest.json" />
+        
+        {/* Microsoft Tiles */}
+        <meta name="msapplication-TileImage" content="/images/logo.png" />
+        <meta name="msapplication-square70x70logo" content="/images/logo.png" />
+        <meta name="msapplication-square150x150logo" content="/images/logo.png" />
+        <meta name="msapplication-wide310x150logo" content="/images/logo.png" />
+        <meta name="msapplication-square310x310logo" content="/images/logo.png" />
         {/* Suppress console warnings for browser extension violations - MUST RUN FIRST */}
         <script
           dangerouslySetInnerHTML={{

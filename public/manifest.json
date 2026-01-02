@@ -1,0 +1,62 @@
+{
+  "name": "SyncOps - AI-Powered Software Solutions & Enterprise Development",
+  "short_name": "SyncOps",
+  "description": "Enterprise-grade AI-powered software solutions, development, and consulting. 50+ launches, 99.5% uptime.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0B1020",
+  "theme_color": "#00B894",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en-US",
+  "dir": "ltr",
+  "categories": ["business", "productivity", "technology"],
+  "icons": [
+    {
+      "src": "/images/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/images/logo.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Services",
+      "short_name": "Services",
+      "description": "View our services",
+      "url": "/services",
+      "icons": [{ "src": "/images/logo.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Case Studies",
+      "short_name": "Case Studies",
+      "description": "View our case studies",
+      "url": "/case-studies",
+      "icons": [{ "src": "/images/logo.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Contact",
+      "short_name": "Contact",
+      "description": "Contact us",
+      "url": "/contact",
+      "icons": [{ "src": "/images/logo.png", "sizes": "96x96" }]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}
+
