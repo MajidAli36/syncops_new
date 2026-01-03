@@ -2,6 +2,7 @@
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { Linkedin, Globe, Github, ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 
 // Removed TypeScript types for plain JSX usage
@@ -143,6 +144,47 @@ const CoverflowCard = ({ person, index, currentIndex, total, onClick }) => {
   };
 
   const githubUrl = getGithubUrl(name);
+  const router = useRouter();
+
+  // Get page URL based on name
+  const getPageUrl = (name) => {
+    if (name === "Majid Ali") return "/ceo";
+    if (name === "Ahmer Mairaj") return "/coo";
+    if (name === "Rimsha Imran") return "/cto";
+    if (name === "Nida Naeem") return "/cbdo";
+    if (name === "Abu Sufian") return "/cmo";
+    if (name === "Faizan Zia") return "/bdm";
+    return null;
+  };
+
+  const pageUrl = getPageUrl(name);
+
+  // Handle card click - navigate to page if available, otherwise change carousel
+  const handleCardClick = (e) => {
+    // Don't navigate if clicking on social icons (LinkedIn, GitHub, Website)
+    const clickedElement = e.target;
+    const isSocialIcon = clickedElement.closest('a[aria-label="LinkedIn"], a[aria-label="Website"], a[aria-label="GitHub"]');
+    
+    // If clicking on social icons, don't navigate
+    if (isSocialIcon) {
+      return;
+    }
+    
+    // If clicking on name link, let it handle navigation naturally (don't prevent default)
+    const isNameLink = clickedElement.closest('a[href*="/ceo"], a[href*="/coo"], a[href*="/cto"], a[href*="/cbdo"], a[href*="/cmo"], a[href*="/bdm"]');
+    if (isNameLink) {
+      return; // Let the link handle navigation
+    }
+    
+    // Otherwise, click anywhere on card should navigate
+    if (pageUrl) {
+      e.preventDefault();
+      e.stopPropagation();
+      router.push(pageUrl);
+    } else {
+      onClick(index);
+    }
+  };
 
   // Calculate position relative to center
   const offset = index - currentIndex;
@@ -185,13 +227,22 @@ const CoverflowCard = ({ person, index, currentIndex, total, onClick }) => {
 
   return (
     <motion.div
-      className="absolute w-[360px] md:w-[380px] cursor-pointer"
+      className="absolute w-[360px] md:w-[380px]"
       style={{
         left: '50%',
         marginLeft: '-180px',
         transformStyle: 'preserve-3d',
         transformOrigin: 'center center',
         zIndex: transform.zIndex,
+        willChange: 'transform',
+        backfaceVisibility: 'visible',
+        WebkitFontSmoothing: 'subpixel-antialiased',
+        MozOsxFontSmoothing: 'grayscale',
+        filter: 'none',
+        WebkitFilter: 'none',
+        imageRendering: 'auto',
+        WebkitImageRendering: 'auto',
+        textRendering: 'optimizeLegibility',
       }}
       animate={{
         x: transform.translateX,
@@ -204,31 +255,89 @@ const CoverflowCard = ({ person, index, currentIndex, total, onClick }) => {
         stiffness: 300,
         damping: 30,
       }}
-      onClick={() => onClick(index)}
-      whileHover={isActive ? { 
-        scale: transform.scale * 1.05,
-        y: -5,
-      } : {
-        scale: transform.scale * 1.02,
-      }}
+      onClick={handleCardClick}
     >
-      <div className={`bg-white rounded-2xl overflow-hidden border transition-all duration-300 flex flex-col ${
-        isActive 
-          ? 'h-[480px] md:h-[460px] lg:h-[440px] shadow-[0_25px_50px_rgba(0,196,255,0.15)] border-[#00C4FF]/30 ring-2 ring-[#00C4FF]/20' 
-          : 'h-[360px] md:h-[340px] lg:h-[320px] shadow-2xl border-gray-100 hover:shadow-[0_25px_50px_rgba(0,0,0,0.15)]'
-      }`}>
+      <div 
+        className={`bg-white rounded-2xl overflow-hidden border transition-shadow duration-300 flex flex-col cursor-pointer ${
+          isActive 
+            ? 'h-[480px] md:h-[460px] lg:h-[440px] shadow-[0_25px_50px_rgba(0,196,255,0.15)] border-[#00C4FF]/30 ring-2 ring-[#00C4FF]/20 hover:shadow-[0_30px_60px_rgba(0,196,255,0.25)]' 
+            : 'h-[360px] md:h-[340px] lg:h-[320px] shadow-2xl border-gray-100 hover:shadow-[0_25px_50px_rgba(0,0,0,0.15)]'
+        }`}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.willChange = 'shadow';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.willChange = 'auto';
+        }}
+        style={{
+          willChange: 'auto', 
+          transform: 'none',
+          isolation: 'isolate',
+          backdropFilter: 'none',
+          WebkitBackdropFilter: 'none',
+          filter: 'none',
+          WebkitFilter: 'none',
+          imageRendering: 'auto',
+          WebkitImageRendering: 'auto',
+          textRendering: 'optimizeLegibility',
+          WebkitFontSmoothing: 'subpixel-antialiased',
+          MozOsxFontSmoothing: 'grayscale',
+          transformStyle: 'flat',
+          WebkitTransform: 'none',
+          imageSmoothingEnabled: true,
+          WebkitImageSmoothingEnabled: true,
+        }}
+      >
         {/* Image Section - Full size, less space */}
-        <div className="relative h-[360px] md:h-[340px] lg:h-[320px] overflow-hidden bg-gradient-to-br from-gray-100 via-gray-50 to-white flex-shrink-0">
+        <div className="relative h-[360px] md:h-[340px] lg:h-[320px] overflow-hidden bg-gradient-to-br from-gray-100 via-gray-50 to-white flex-shrink-0" style={{ 
+          isolation: 'isolate',
+          filter: 'none',
+          WebkitFilter: 'none',
+          backdropFilter: 'none',
+          WebkitBackdropFilter: 'none',
+          imageRendering: 'auto',
+          WebkitImageRendering: 'auto',
+        }}>
           {photo ? (
-            <Image
-              src={photo}
-              alt={`${name} - ${role}`}
-              fill
-              className="object-cover"
-              style={{ objectPosition: 'center 10%' }}
-              priority={isActive}
-              sizes="(max-width: 768px) 100vw, 380px"
-            />
+            <div 
+              className="relative w-full h-full" 
+              style={{ 
+                willChange: 'auto',
+                transform: 'translate3d(0, 0, 0)',
+                backfaceVisibility: 'visible',
+                WebkitBackfaceVisibility: 'visible',
+                filter: 'none',
+                WebkitFilter: 'none',
+                imageRendering: 'auto',
+                isolation: 'isolate',
+              }}
+            >
+              <Image
+                src={photo}
+                alt={`${name} - ${role}`}
+                fill
+                className="object-cover"
+                style={{ 
+                  objectPosition: 'center 10%',
+                  backfaceVisibility: 'visible',
+                  WebkitBackfaceVisibility: 'visible',
+                  transform: 'translate3d(0, 0, 0)',
+                  filter: 'none',
+                  WebkitFilter: 'none',
+                  imageRendering: 'auto',
+                  WebkitImageRendering: 'auto',
+                  willChange: 'auto',
+                  WebkitTransform: 'translate3d(0, 0, 0)',
+                  imageSmoothingEnabled: true,
+                  WebkitImageSmoothingEnabled: true,
+                  transition: 'none',
+                  WebkitTransition: 'none',
+                }}
+                priority={isActive}
+                sizes="(max-width: 768px) 100vw, 380px"
+                quality={100}
+              />
+            </div>
           ) : (
             <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200 text-slate-700 font-bold text-5xl md:text-6xl">
               {getInitials(name)}
@@ -239,15 +348,44 @@ const CoverflowCard = ({ person, index, currentIndex, total, onClick }) => {
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
           
           {/* Info overlay - Compact */}
-          <div className="absolute bottom-0 left-0 right-0 p-3 md:p-4 text-white">
+          <div className="absolute bottom-0 left-0 right-0 p-3 md:p-4 text-white" style={{
+            filter: 'none',
+            WebkitFilter: 'none',
+            textRendering: 'optimizeLegibility',
+            WebkitFontSmoothing: 'subpixel-antialiased',
+            MozOsxFontSmoothing: 'grayscale',
+          }}>
             <a 
-              href={name === "Majid Ali" ? "/ceo" : name === "Rimsha Imran" ? "/cto" : name === "Nida Naeem" ? "/cbdo" : "#"}
+              href={name === "Majid Ali" ? "/ceo" : name === "Ahmer Mairaj" ? "/coo" : name === "Rimsha Imran" ? "/cto" : name === "Nida Naeem" ? "/cbdo" : name === "Abu Sufian" ? "/cmo" : name === "Faizan Zia" ? "/bdm" : "#"}
               className="block group"
+              onClick={(e) => {
+                // Let the link handle navigation, stop propagation to card
+                e.stopPropagation();
+              }}
+              style={{
+                filter: 'none',
+                WebkitFilter: 'none',
+              }}
             >
-              <h3 className="text-lg md:text-xl font-bold mb-0.5 group-hover:text-[#00C4FF] transition-colors duration-300">{name}</h3>
+              <h3 className="text-lg md:text-xl font-bold mb-0.5 group-hover:text-[#00C4FF] transition-colors duration-300" style={{
+                filter: 'none',
+                WebkitFilter: 'none',
+                textRendering: 'optimizeLegibility',
+                WebkitFontSmoothing: 'subpixel-antialiased',
+              }}>{name}</h3>
             </a>
-            <div className="text-xs font-medium text-white/90 mb-1.5">{role}</div>
-            <div className="inline-flex items-center rounded-full bg-white/20 backdrop-blur-sm px-2.5 py-0.5 text-xs font-medium border border-white/30">
+            <div className="text-xs font-medium text-white/90 mb-1.5" style={{
+              filter: 'none',
+              WebkitFilter: 'none',
+              textRendering: 'optimizeLegibility',
+            }}>{role}</div>
+            <div className="inline-flex items-center rounded-full bg-white/20 px-2.5 py-0.5 text-xs font-medium border border-white/30" style={{ 
+              backdropFilter: 'none', 
+              WebkitBackdropFilter: 'none',
+              filter: 'none',
+              WebkitFilter: 'none',
+              textRendering: 'optimizeLegibility',
+            }}>
               {experienceBadge}
             </div>
           </div>
@@ -261,8 +399,21 @@ const CoverflowCard = ({ person, index, currentIndex, total, onClick }) => {
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
             className="flex flex-col p-3 md:p-4 bg-gradient-to-b from-white to-gray-50/50"
+            style={{ 
+              backdropFilter: 'none',
+              WebkitBackdropFilter: 'none',
+              filter: 'none',
+              WebkitFilter: 'none',
+              textRendering: 'optimizeLegibility',
+              WebkitFontSmoothing: 'subpixel-antialiased',
+              MozOsxFontSmoothing: 'grayscale',
+            }}
           >
-            <p className="text-slate-700 leading-relaxed text-xs md:text-sm mb-3">{blurb}</p>
+            <p className="text-slate-700 leading-relaxed text-xs md:text-sm mb-3" style={{
+              filter: 'none',
+              WebkitFilter: 'none',
+              textRendering: 'optimizeLegibility',
+            }}>{blurb}</p>
             
             {/* Social Icons - Compact */}
             <div className="flex items-center gap-2 text-slate-400">
