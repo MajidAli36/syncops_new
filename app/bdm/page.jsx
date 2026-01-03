@@ -31,7 +31,7 @@ const FaizanZiaProfilePage = () => {
       "name": "SyncOps Tech",
       "url": "https://syncops.tech"
     },
-    "description": "Business Development Manager of SyncOps Tech, driving sales pipeline growth, nurturing client partnerships, and supporting revenue-focused initiatives. With over 5 years of experience in business development and sales.",
+    "description": "Business Development Manager of SyncOps Tech, driving sales pipeline growth, nurturing client partnerships, and supporting revenue-focused initiatives.",
     "url": "https://syncops.tech/bdm",
     "sameAs": [
       "https://www.linkedin.com/in/faizanzia-syncops/"
@@ -42,6 +42,7 @@ const FaizanZiaProfilePage = () => {
       "Sales Pipeline Management",
       "Client Relationship Management",
       "Revenue Growth",
+      "Partnership Development",
       "Enterprise Sales"
     ],
     "hasCredential": {

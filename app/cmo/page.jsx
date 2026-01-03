@@ -31,16 +31,17 @@ const AbuSufianProfilePage = () => {
       "name": "SyncOps Tech",
       "url": "https://syncops.tech"
     },
-    "description": "Chief Marketing Officer of SyncOps Tech, managing brand strategy, marketing campaigns, and global visibility. With over 15 years of experience in marketing and brand management.",
+    "description": "Chief Marketing Officer of SyncOps Tech, managing brand strategy, marketing campaigns, and global visibility.",
     "url": "https://syncops.tech/cmo",
     "sameAs": [],
     "image": "https://res.cloudinary.com/dfdzl01qj/image/upload/v1764948233/abu-sufian-cmo-syncops_h7xki9.jpg",
     "knowsAbout": [
       "Brand Strategy",
-      "Marketing Campaigns",
       "Digital Marketing",
+      "Marketing Campaigns",
       "Global Marketing",
-      "Brand Management"
+      "Content Marketing",
+      "Marketing Analytics"
     ],
     "hasCredential": {
       "@type": "EducationalOccupationalCredential",

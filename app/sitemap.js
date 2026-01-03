@@ -1,7 +1,6 @@
 import { caseStudiesData } from './case-studies/_data/caseStudies';
 import { servicesData } from './utils/servicesUtils';
 import { getAllPosts } from './utils/blogUtils';
-import { getAllProductSlugs, getProductBySlug } from './products/_data/products';
 
 export default function sitemap() {
   const baseUrl = 'https://syncops.tech';
@@ -100,6 +99,24 @@ export default function sitemap() {
       priority: 0.7,
     },
     {
+      url: `${baseUrl}/coo`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/cmo`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/bdm`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
       url: `${baseUrl}/referral-program`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
@@ -170,49 +187,6 @@ export default function sitemap() {
       url: `${baseUrl}/why-syncops`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/syncops-global-clients`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/best-software-house-in-pakistan`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    // Country-specific AI software company pages
-    {
-      url: `${baseUrl}/ai-software-company-usa`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/ai-software-company-uk`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/ai-software-company-canada`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/ai-software-company-australia`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/ai-software-company-uae`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
       priority: 0.8,
     },
   ];
@@ -296,29 +270,6 @@ export default function sitemap() {
     };
   });
 
-  // Products with images
-  const productSlugs = getAllProductSlugs();
-  const productRoutes = productSlugs.map((slug) => {
-    const product = getProductBySlug(slug);
-    const images = [];
-    
-    if (product?.image) {
-      images.push({
-        url: product.image.startsWith('http') ? product.image : `${baseUrl}${product.image}`,
-        title: product.title,
-        alt: `${product.title} - SyncOps Product`,
-      });
-    }
-    
-    return {
-      url: `${baseUrl}/products/${slug}`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-      ...(images.length > 0 && { images }),
-    };
-  });
-
-  return [...routes, ...caseStudyRoutes, ...blogRoutes, ...serviceRoutes, ...productRoutes];
+  return [...routes, ...caseStudyRoutes, ...blogRoutes, ...serviceRoutes];
 }
 

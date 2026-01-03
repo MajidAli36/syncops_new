@@ -31,16 +31,17 @@ const AhmerMairajProfilePage = () => {
       "name": "SyncOps Tech",
       "url": "https://syncops.tech"
     },
-    "description": "Chief Operating Officer of SyncOps Tech, overseeing daily operations, resource management, and execution of business strategies. With over 10 years of experience in operations and business management.",
+    "description": "Chief Operating Officer of SyncOps Tech, overseeing daily operations, resource management, and execution of business strategies.",
     "url": "https://syncops.tech/coo",
     "sameAs": [],
     "image": "https://res.cloudinary.com/dfdzl01qj/image/upload/v1764948234/ahmer-mairaj-coo-syncops_olgqbf.jpg",
     "knowsAbout": [
       "Operations Management",
       "Resource Management",
-      "Business Strategy Execution",
+      "Business Strategy",
       "Process Optimization",
-      "Team Coordination"
+      "Team Leadership",
+      "Project Management"
     ],
     "hasCredential": {
       "@type": "EducationalOccupationalCredential",

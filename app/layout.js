@@ -60,6 +60,9 @@ export const metadata = {
     // Add your verification codes here when available
     // google: 'your-google-verification-code',
     // yandex: 'your-yandex-verification-code',
+    // bing: 'your-bing-verification-code',
+    // google: 'your-google-verification-code',
+    // yandex: 'your-yandex-verification-code',
     // yahoo: 'your-yahoo-verification-code',
     // other: {
     //   'facebook-domain-verification': 'your-facebook-verification-code',
@@ -87,14 +90,15 @@ export const metadata = {
     ],
     shortcut: '/favicon.ico',
   },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 5,
-    userScalable: true,
-    viewportFit: 'cover',
-  },
   category: 'technology',
+};
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+  viewportFit: 'cover',
 };
 
 // Organization structured data
