@@ -80,15 +80,8 @@ export const metadata = {
   },
   manifest: '/manifest.json',
   icons: {
-    icon: [
-      { url: '/favicon.ico', sizes: 'any' },
-      { url: '/images/logo.png', sizes: '192x192', type: 'image/png' },
-      { url: '/images/logo.png', sizes: '512x512', type: 'image/png' },
-    ],
-    apple: [
-      { url: '/images/logo.png', sizes: '180x180', type: 'image/png' },
-    ],
-    shortcut: '/favicon.ico',
+    icon: '/favicon.ico',
+    apple: '/apple-icon.png',
   },
   category: 'technology',
 };
@@ -260,24 +253,9 @@ export default function RootLayout({ children }) {
         <meta name="target" content="all" />
         <meta name="audience" content="all" />
         
-        {/* Apple Touch Icons */}
-        <link rel="apple-touch-icon" sizes="180x180" href="/images/logo.png" />
-        <link rel="apple-touch-icon" sizes="152x152" href="/images/logo.png" />
-        <link rel="apple-touch-icon" sizes="144x144" href="/images/logo.png" />
-        <link rel="apple-touch-icon" sizes="120x120" href="/images/logo.png" />
-        <link rel="apple-touch-icon" sizes="114x114" href="/images/logo.png" />
-        <link rel="apple-touch-icon" sizes="76x76" href="/images/logo.png" />
-        <link rel="apple-touch-icon" sizes="72x72" href="/images/logo.png" />
-        <link rel="apple-touch-icon" sizes="60x60" href="/images/logo.png" />
-        <link rel="apple-touch-icon" sizes="57x57" href="/images/logo.png" />
+      
         
-        {/* Favicon Links */}
-        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/images/logo.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.png" />
-        <link rel="icon" type="image/png" sizes="96x96" href="/images/logo.png" />
-        <link rel="icon" type="image/png" sizes="192x192" href="/images/logo.png" />
-        <link rel="icon" type="image/png" sizes="512x512" href="/images/logo.png" />
+      
         
         {/* Manifest */}
         <link rel="manifest" href="/manifest.json" />
