@@ -36,7 +36,7 @@ export default function Footer() {
 
           {/* Center: Quick Links */}
           <div className="text-left">
-            <h3 className="text-xl font-bold text-[#F3F4F6] mb-6">Quick Links</h3>
+            <h2 className="text-xl font-bold text-[#F3F4F6] mb-6">Quick Links</h2>
             <div className="space-y-3 text-left">
               <a href="/services" className="block text-[#F3F4F6] hover:text-[#00B894] transition-colors duration-300">
                 Services
@@ -61,7 +61,7 @@ export default function Footer() {
 
           {/* Right: Contact Info */}
           <div className="text-left md:text-left">
-            <h3 className="text-xl font-bold text-[#F3F4F6] mb-6">Contact Info</h3>
+            <h2 className="text-xl font-bold text-[#F3F4F6] mb-6">Contact Info</h2>
             <div className="space-y-4">
               <div className="flex items-center justify-start md:justify-start gap-3">
                 <Mail className="w-6 h-6 text-[#00B894]" />

@@ -17,7 +17,7 @@ const Toast = ({ message, type, onClose }) => {
 
   return (
     <div
-      className={`fixed top-20 right-4 px-4 py-3 rounded-lg flex items-center shadow-lg z-50 text-white 
+      className={`fixed top-20 right-4 px-4 py-3 rounded-lg flex items-center shadow-lg z-[9999] text-white 
         ${type === "success" ? "bg-[#0fbab1]" : "bg-red-600"} 
         transition-all duration-300 ease-in-out transform
         ${

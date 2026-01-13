@@ -6,6 +6,9 @@ export const inter = Inter({
   variable: '--font-inter',
   preload: true,
   fallback: ['system-ui', 'sans-serif'],
+  adjustFontFallback: true,
+  // Optimize for faster initial render
+  weight: ['400', '500', '600', '700'],
 });
 
 export const sora = Sora({
@@ -14,5 +17,8 @@ export const sora = Sora({
   variable: '--font-sora',
   preload: true,
   fallback: ['system-ui', 'sans-serif'],
+  adjustFontFallback: true,
+  // Optimize for faster initial render
+  weight: ['400', '500', '600', '700'],
 });
 

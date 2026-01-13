@@ -244,6 +244,7 @@ const CoverflowCard = ({ person, index, currentIndex, total, onClick }) => {
         WebkitImageRendering: 'auto',
         textRendering: 'optimizeLegibility',
       }}
+      initial={false}
       animate={{
         x: transform.translateX,
         rotateY: transform.rotateY,
@@ -256,6 +257,7 @@ const CoverflowCard = ({ person, index, currentIndex, total, onClick }) => {
         damping: 30,
       }}
       onClick={handleCardClick}
+      suppressHydrationWarning
     >
       <div 
         className={`bg-white rounded-2xl overflow-hidden border transition-shadow duration-300 flex flex-col cursor-pointer ${
@@ -394,11 +396,12 @@ const CoverflowCard = ({ person, index, currentIndex, total, onClick }) => {
         {/* Content Section - Only show on active card, no white space for inactive */}
         {isActive && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
+            initial={false}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
             className="flex flex-col p-3 md:p-4 bg-gradient-to-b from-white to-gray-50/50"
+            suppressHydrationWarning
             style={{ 
               backdropFilter: 'none',
               WebkitBackdropFilter: 'none',
@@ -477,7 +480,13 @@ const SectionTitle = ({ title, subtitle }) => (
 // Main LeadershipSection Component with Coverflow
 const LeadershipSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [mounted, setMounted] = useState(false);
   const sectionRef = useRef(null);
+
+  // Track mounted state to prevent hydration mismatches
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % allLeadership.length);
@@ -489,7 +498,7 @@ const LeadershipSection = () => {
 
   // Auto-rotate with intersection observer to prevent reset when section comes into view
   useEffect(() => {
-    if (!sectionRef.current) return;
+    if (!sectionRef.current || !mounted) return;
 
     let interval = null;
 
@@ -524,19 +533,20 @@ const LeadershipSection = () => {
         clearInterval(interval);
       }
     };
-  }, []);
+  }, [mounted]);
 
   return (
-    <section ref={sectionRef} className="relative py-20  bg-white overflow-hidden">
-      <div className="relative w-full mx-auto px-2 sm:px-4">
+    <section ref={sectionRef} className="relative py-20  bg-white overflow-hidden" suppressHydrationWarning>
+      <div className="relative w-full mx-auto px-2 sm:px-4" suppressHydrationWarning>
         
         {/* Main Title */}
         <motion.div 
           className="text-center mb-12 md:mb-16"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={false}
+          whileInView={mounted ? { opacity: 1, y: 0 } : false}
           viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+          suppressHydrationWarning
         >
           <h1 className="text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 mb-6 leading-tight">
             SyncOps{" "}
@@ -553,7 +563,7 @@ const LeadershipSection = () => {
         {/* Coverflow Container - Adjusted for 4 visible cards, no side space */}
         <div className="relative h-[600px] md:h-[560px] lg:h-[540px] flex items-center justify-center overflow-visible w-full">
           {/* Coverflow Cards - Full width to show 4 cards */}
-          <div className="relative w-full h-full" style={{ perspective: '1200px' }}>
+          <div className="relative w-full h-full" style={{ perspective: '1200px' }} suppressHydrationWarning>
             <AnimatePresence>
               {allLeadership.map((person, index) => (
                 <CoverflowCard

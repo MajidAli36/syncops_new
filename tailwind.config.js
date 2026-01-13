@@ -11,6 +11,7 @@ module.exports = {
         brand: {
           aqua: '#00B894',
           teal: '#00C4FF',
+          tealDark: '#0a8a82', // Accessible teal for text on white backgrounds
           navy: '#0B1020',
           card: '#111A2A',
         },
@@ -80,8 +81,8 @@ module.exports = {
           '0%': { opacity: '0', transform: 'translateY(20px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
-          },
-        },
       },
+    },
+  },
   plugins: [],
 }

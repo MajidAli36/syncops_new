@@ -177,49 +177,46 @@ const homepageStructuredData = {
 };
 
 export default function Home() {
+  // Inject structured data client-side to avoid hydration issues
   useEffect(() => {
-    // Add structured data to page
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.text = JSON.stringify(homepageStructuredData);
-    script.id = 'homepage-structured-data';
-    
-    if (!document.getElementById('homepage-structured-data')) {
-      document.head.appendChild(script);
+    // Check if script already exists
+    if (document.getElementById('homepage-structured-data')) {
+      return;
     }
     
-    return () => {
-      const existing = document.getElementById('homepage-structured-data');
-      if (existing) existing.remove();
-    };
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.id = 'homepage-structured-data';
+    script.text = JSON.stringify(homepageStructuredData);
+    document.head.appendChild(script);
   }, []);
 
   return (
     <ParallaxProvider>
       <>
         <ClientFloatingCTA />
-        <section className="bg-brand-navy text-white">
+        <section className="bg-brand-navy text-white" aria-label="Hero section">
           <Hero />
         </section>
 
-        <section data-gsap-section className="bg-white py-8">
+        <section data-gsap-section className="bg-white py-8" aria-label="Partner logos">
           <div data-gsap-stagger className="max-w-6xl mx-auto">
             <PartnerLogos />
           </div>
         </section>
 
-        <section data-gsap-section className="bg-white py-8">
+        <section data-gsap-section className="bg-white py-8" aria-label="Key metrics">
           <div data-gsap-stagger className="max-w-6xl mx-auto">
             <MetricsBar />
           </div>
         </section>
 
-        <section data-gsap-section className="bg-gradient-to-br from-white via-gray-50 to-gray-100 py-12 relative">
+        <section data-gsap-section className="bg-gradient-to-br from-white via-gray-50 to-gray-100 py-12 relative" aria-label="Company introduction">
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-aqua/20 to-transparent"></div>
           <div data-gsap-stagger className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
             <p className="text-body-xl text-gray-800 font-semibold leading-relaxed">
               We partner with startups, enterprises, and visionary founders to turn bold ideas into resilient, scalable
-              digital products—backed by 50+ launches and 99.5% uptime.
+              digital products—backed by <a href="/case-studies" className="text-brand-aqua hover:underline focus:outline-none focus:ring-2 focus:ring-brand-aqua focus:ring-offset-2 rounded">50+ launches</a> and <a href="/about" className="text-brand-aqua hover:underline focus:outline-none focus:ring-2 focus:ring-brand-aqua focus:ring-offset-2 rounded">99.5% uptime</a>.
             </p>
           </div>
           <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-teal/20 to-transparent"></div>

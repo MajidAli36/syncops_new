@@ -207,9 +207,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${inter.variable} ${sora.variable}`} data-scroll-behavior="smooth">
       <head>
-        {/* Performance & SEO: Preconnect to external domains */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* Performance & SEO: Preconnect to external domains - Optimized for faster response */}
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.linkedin.com" />
@@ -221,11 +219,7 @@ export default function RootLayout({ children }) {
           content="unload=*, geolocation=(), microphone=(), camera=()"
         />
         
-        {/* Security Headers */}
-        <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
-        <meta httpEquiv="X-Frame-Options" content="SAMEORIGIN" />
-        <meta httpEquiv="X-XSS-Protection" content="1; mode=block" />
-        <meta httpEquiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+        {/* Security Headers - Note: These are set via HTTP headers in next.config.mjs, not meta tags */}
         
         {/* Mobile Optimization */}
         <meta name="format-detection" content="telephone=no" />
@@ -266,178 +260,77 @@ export default function RootLayout({ children }) {
         <meta name="msapplication-square150x150logo" content="/images/logo.png" />
         <meta name="msapplication-wide310x150logo" content="/images/logo.png" />
         <meta name="msapplication-square310x310logo" content="/images/logo.png" />
-        {/* Suppress console warnings for browser extension violations - MUST RUN FIRST */}
+        {/* Suppress console warnings for browser extension violations - Non-blocking */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
                 'use strict';
-                // Intercept console methods immediately
-                const originalWarn = console.warn;
-                const originalError = console.error;
-                const originalLog = console.log;
-                const originalInfo = console.info;
-                
-                // Function to check if message should be suppressed
-                const shouldSuppress = (message) => {
-                  if (!message || typeof message !== 'string') {
-                    const str = String(message);
-                    message = str;
-                  }
-                  const lowerMessage = message.toLowerCase();
-                  return (
-                    lowerMessage.includes('permissions policy violation') ||
-                    lowerMessage.includes('unload is not allowed') ||
-                    lowerMessage.includes('runtime.lasterror') ||
-                    lowerMessage.includes('receiving end does not exist') ||
-                    lowerMessage.includes('could not establish connection') ||
-                    lowerMessage.includes('grammarly') ||
-                    lowerMessage.includes('slow network is detected') ||
-                    lowerMessage.includes('intervention') ||
-                    lowerMessage.includes('fallback font will be used') ||
-                    (lowerMessage.includes('violation') && lowerMessage.includes('unload'))
-                  );
+                if (typeof console === 'undefined') return;
+                const orig = { warn: console.warn, error: console.error, log: console.log, info: console.info };
+                const suppress = (m) => {
+                  if (!m) return false;
+                  const s = String(m).toLowerCase();
+                  return s.includes('permissions policy') || s.includes('unload') || s.includes('runtime.lasterror') || s.includes('receiving end') || s.includes('grammarly') || s.includes('slow network') || s.includes('intervention') || s.includes('fallback font') || s.includes('preload') && s.includes('not used');
                 };
-                
-                // Override console methods
-                console.warn = function(...args) {
-                  const message = args.map(arg => {
-                    if (typeof arg === 'string') return arg;
-                    if (arg && arg.toString) return arg.toString();
-                    try { return JSON.stringify(arg); } catch(e) { return String(arg); }
-                  }).join(' ');
-                  
-                  if (shouldSuppress(message)) return;
-                  originalWarn.apply(console, args);
-                };
-                
-                console.error = function(...args) {
-                  const message = args.map(arg => {
-                    if (typeof arg === 'string') return arg;
-                    if (arg && arg.toString) return arg.toString();
-                    try { return JSON.stringify(arg); } catch(e) { return String(arg); }
-                  }).join(' ');
-                  
-                  if (shouldSuppress(message)) return;
-                  originalError.apply(console, args);
-                };
-                
-                console.log = function(...args) {
-                  const message = args.map(arg => {
-                    if (typeof arg === 'string') return arg;
-                    if (arg && arg.toString) return arg.toString();
-                    try { return JSON.stringify(arg); } catch(e) { return String(arg); }
-                  }).join(' ');
-                  
-                  if (shouldSuppress(message)) return;
-                  originalLog.apply(console, args);
-                };
-                
-                // Intercept ReportingObserver for violations - catch ALL violations
+                ['warn', 'error', 'log', 'info'].forEach(m => {
+                  console[m] = function(...args) {
+                    if (!suppress(args.join(' '))) orig[m].apply(console, args);
+                  };
+                });
                 if (typeof ReportingObserver !== 'undefined') {
                   try {
-                    const observer = new ReportingObserver((reports) => {
-                      // Suppress all unload-related violations
-                      reports.forEach(report => {
-                        if (report.body) {
-                          const violationType = report.body.violationType || '';
-                          const message = (report.body.message || '').toLowerCase();
-                          if (violationType === 'unload' || 
-                              message.includes('unload') || 
-                              message.includes('permissions policy')) {
-                            return; // Suppress
-                          }
-                        }
-                      });
-                    }, {
-                      types: ['violation'],
-                      buffered: true
-                    });
-                    observer.observe();
-                  } catch (e) {
-                    // Ignore if ReportingObserver fails
-                  }
+                    new ReportingObserver((r) => r.forEach(report => {
+                      if (report.body && (report.body.violationType === 'unload' || String(report.body.message || '').toLowerCase().includes('unload'))) return;
+                    }), { types: ['violation'], buffered: true }).observe();
+                  } catch(e) {}
                 }
-                
-                // Also intercept PerformanceObserver for violations
-                if (typeof PerformanceObserver !== 'undefined') {
-                  try {
-                    const perfObserver = new PerformanceObserver((list) => {
-                      // Suppress violation entries
-                      list.getEntries().forEach(entry => {
-                        if (entry.entryType === 'navigation' || entry.name) {
-                          const name = (entry.name || '').toLowerCase();
-                          if (name.includes('violation') || name.includes('unload')) {
-                            return; // Suppress
-                          }
-                        }
-                      });
-                    });
-                    perfObserver.observe({ entryTypes: ['navigation', 'resource'] });
-                  } catch (e) {
-                    // Ignore if PerformanceObserver fails
-                  }
-                }
-                
-                // Also intercept addEventListener for beforeunload/unload
-                const originalAddEventListener = EventTarget.prototype.addEventListener;
-                EventTarget.prototype.addEventListener = function(type, listener, options) {
-                  if (type === 'unload' || type === 'beforeunload') {
-                    // Allow but don't log violations
-                    return originalAddEventListener.call(this, type, listener, options);
-                  }
-                  return originalAddEventListener.call(this, type, listener, options);
-                };
               })();
             `,
           }}
+          defer
         />
-        {/* Organization Structured Data */}
+        {/* Organization Structured Data - Non-blocking */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+          defer
         />
       </head>
       <body suppressHydrationWarning={true} className={inter.className}>
-        {/* Early script to suppress violations - runs immediately */}
+        {/* Console suppression script - Non-blocking, runs after page load */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
                 'use strict';
-                // Override console methods immediately on body load
-                if (typeof console !== 'undefined') {
-                  const orig = {
-                    warn: console.warn,
-                    error: console.error,
-                    log: console.log
+                if (typeof console === 'undefined') return;
+                const orig = { warn: console.warn, error: console.error, log: console.log };
+                const suppress = (m) => {
+                  if (!m) return false;
+                  const s = String(m).toLowerCase();
+                  return s.includes('permissions policy') || s.includes('unload') || s.includes('runtime.lasterror') || s.includes('receiving end') || (s.includes('preload') && s.includes('not used'));
+                };
+                ['warn', 'error', 'log'].forEach(m => {
+                  console[m] = function(...args) {
+                    if (!suppress(args.join(' '))) orig[m].apply(console, args);
                   };
-                  
-                  const suppress = (msg) => {
-                    if (!msg) return false;
-                    const s = String(msg).toLowerCase();
-                    return s.includes('permissions policy') || 
-                           s.includes('unload') || 
-                           s.includes('runtime.lasterror') ||
-                           s.includes('receiving end');
-                  };
-                  
-                  ['warn', 'error', 'log'].forEach(method => {
-                    console[method] = function(...args) {
-                      const msg = args.join(' ');
-                      if (!suppress(msg)) {
-                        orig[method].apply(console, args);
-                      }
-                    };
-                  });
-                }
+                });
               })();
             `,
           }}
+          defer
         />
         <GsapScrollProvider />
+        {/* Skip to main content link for accessibility */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#00B894] focus:text-white focus:rounded-lg focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#00B894] focus:ring-offset-2"
+        >
+          Skip to main content
+        </a>
         <Header />
-        <main className="min-h-screen">
+        <main id="main-content" className="min-h-screen" role="main">
           {children}
         </main>
         <Footer />

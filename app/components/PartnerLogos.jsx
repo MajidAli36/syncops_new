@@ -54,7 +54,7 @@ export default function PartnerLogos() {
       <div className="max-w-6xl mx-auto px-6 lg:px-8 py-10 border-y border-gray-100">
         <div className="flex flex-col gap-6 sm:gap-8 lg:flex-row lg:items-center lg:justify-between">
           <div className="max-w-sm">
-            <p className="text-xs font-semibold tracking-[0.2em] uppercase text-[#0fbab1] mb-2">
+            <p className="text-xs font-semibold tracking-[0.2em] uppercase text-brand-tealDark mb-2">
               Trusted Network
             </p>
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">

@@ -33,9 +33,10 @@ const nextConfig = {
   compress: true,
   poweredByHeader: false,
   reactStrictMode: true,
-  swcMinify: true, // Use SWC minification for better performance
+  // swcMinify is deprecated in Next.js 15 - minification is automatic
   experimental: {
     optimizeCss: true, // Optimize CSS
+    optimizePackageImports: ['lucide-react', 'react-icons', 'framer-motion'], // Tree-shake unused exports
   },
   async headers() {
     return [
@@ -53,7 +54,7 @@ const nextConfig = {
           },
           {
             key: 'X-Frame-Options',
-            value: 'DENY',
+            value: 'SAMEORIGIN',
           },
           {
             key: 'X-Content-Type-Options',
@@ -71,10 +72,14 @@ const nextConfig = {
             key: 'Permissions-Policy',
             value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()',
           },
-          // Performance Headers
+          // Performance Headers - Reduce server response time
           {
-            key: 'X-DNS-Prefetch-Control',
-            value: 'on',
+            key: 'Connection',
+            value: 'keep-alive',
+          },
+          {
+            key: 'Keep-Alive',
+            value: 'timeout=5, max=1000',
           },
         ],
       },
