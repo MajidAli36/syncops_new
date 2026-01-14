@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   User,
@@ -14,12 +14,19 @@ import {
   Clock,
   MapPin,
 } from "lucide-react";
-import ReCAPTCHA from "react-google-recaptcha";
+import dynamic from "next/dynamic";
 import Toast from "../../components/Toast";
+
+// Lazy load reCAPTCHA to reduce third-party cookies - only load when needed
+const ReCAPTCHA = dynamic(
+  () => import("react-google-recaptcha"),
+  { ssr: false }
+);
 
 const ContactForm = () => {
   const form = useRef();
   const recaptchaRef = useRef();
+  const formRef = useRef(null);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -31,6 +38,7 @@ const ContactForm = () => {
   });
   const [loading, setLoading] = useState(false);
   const [captchaVerified, setCaptchaVerified] = useState(false);
+  const [shouldLoadCaptcha, setShouldLoadCaptcha] = useState(false);
   const [toast, setToast] = useState({ show: false, message: "", type: "" });
 
 
@@ -76,8 +84,54 @@ const ContactForm = () => {
     setCaptchaVerified(!!value);
   };
 
+  // Load CAPTCHA when form is in viewport or user starts interacting
+  useEffect(() => {
+    if (!formRef.current || shouldLoadCaptcha) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Load CAPTCHA when form comes into view
+            setShouldLoadCaptcha(true);
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(formRef.current);
+
+    return () => observer.disconnect();
+  }, [shouldLoadCaptcha]);
+
+  // Also load CAPTCHA when user starts filling the form
+  useEffect(() => {
+    const hasFormData = formData.firstName || formData.lastName || formData.email;
+    if (hasFormData && !shouldLoadCaptcha) {
+      setShouldLoadCaptcha(true);
+    }
+  }, [formData.firstName, formData.lastName, formData.email, shouldLoadCaptcha]);
+
   const sendEmail = async (e) => {
     e.preventDefault();
+
+    // Load CAPTCHA if not already loaded
+    if (!shouldLoadCaptcha) {
+      setShouldLoadCaptcha(true);
+      // Wait a moment for CAPTCHA to load, then check
+      setTimeout(() => {
+        if (!captchaVerified) {
+          setToast({
+            show: true,
+            message: "Please verify the CAPTCHA",
+            type: "error",
+          });
+        }
+      }, 500);
+      return;
+    }
 
     if (!captchaVerified) {
       setToast({
@@ -129,7 +183,9 @@ const ContactForm = () => {
         services: [],
         description: "",
       });
-      recaptchaRef.current.reset();
+      if (recaptchaRef.current) {
+        recaptchaRef.current.reset();
+      }
       setCaptchaVerified(false);
     } catch (error) {
       setToast({
@@ -268,7 +324,7 @@ const ContactForm = () => {
               <h3 className="text-xl sm:text-2xl font-bold text-gray-900">Send us a Message</h3>
             </div>
             
-            <form ref={form} onSubmit={sendEmail} className="space-y-4 sm:space-y-6">
+            <form ref={(node) => { form.current = node; formRef.current = node; }} onSubmit={sendEmail} className="space-y-4 sm:space-y-6">
               {/* Name Fields */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
@@ -427,7 +483,8 @@ const ContactForm = () => {
               </div>
 
               
-              {process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && 
+              {/* CAPTCHA - Lazy loaded to reduce third-party cookies */}
+              {shouldLoadCaptcha && process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && 
                 process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY !== 'your_recaptcha_site_key_here' ? (
                 <div className="flex justify-center overflow-hidden">
                   <div className="scale-75 sm:scale-100 origin-center">
@@ -438,13 +495,14 @@ const ContactForm = () => {
                     />
                   </div>
                 </div>
-              ) : (
+              ) : shouldLoadCaptcha && (!process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || 
+                  process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY === 'your_recaptcha_site_key_here') ? (
                 <div className="text-center p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
                   <p className="text-sm text-yellow-800">
                     reCAPTCHA is not configured. Please set NEXT_PUBLIC_RECAPTCHA_SITE_KEY in your .env.local file.
                   </p>
                 </div>
-              )}
+              ) : null}
               
               <motion.button
                 type="submit"

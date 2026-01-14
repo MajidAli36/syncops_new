@@ -1,7 +1,14 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { X, Phone, Mail, User, MapPin, MessageSquare } from "lucide-react";
+import dynamic from "next/dynamic";
 import Toast from "./Toast";
+
+// Lazy load reCAPTCHA to reduce third-party cookies - only load when needed
+const ReCAPTCHA = dynamic(
+  () => import("react-google-recaptcha"),
+  { ssr: false }
+);
 
 const FloatingCTA = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,6 +16,9 @@ const FloatingCTA = () => {
   const [isScrollTopVisible, setIsScrollTopVisible] = useState(false);
   const [loading, setLoading] = useState(false);
   const [toast, setToast] = useState({ show: false, message: "", type: "" });
+  const [captchaVerified, setCaptchaVerified] = useState(false);
+  const [shouldLoadCaptcha, setShouldLoadCaptcha] = useState(false);
+  const recaptchaRef = useRef(null);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -114,9 +124,60 @@ const FloatingCTA = () => {
     }));
   };
 
+  // Handle CAPTCHA verification
+  const handleCaptchaChange = (value) => {
+    setCaptchaVerified(!!value);
+  };
+
+  // Load CAPTCHA when form is opened or user starts interacting
+  useEffect(() => {
+    if (isOpen && !shouldLoadCaptcha) {
+      // Load CAPTCHA after a short delay when form opens, or immediately if user has filled any field
+      const hasFormData = formData.firstName || formData.lastName || formData.email;
+      if (hasFormData) {
+        setShouldLoadCaptcha(true);
+      } else {
+        // Load after 2 seconds of form being open (user might be reading)
+        const timer = setTimeout(() => {
+          setShouldLoadCaptcha(true);
+        }, 2000);
+        return () => clearTimeout(timer);
+      }
+    } else if (!isOpen) {
+      // Reset when form closes
+      setShouldLoadCaptcha(false);
+    }
+  }, [isOpen, formData.firstName, formData.lastName, formData.email, shouldLoadCaptcha]);
+
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Load CAPTCHA if not already loaded
+    if (!shouldLoadCaptcha) {
+      setShouldLoadCaptcha(true);
+      // Wait a moment for CAPTCHA to load, then check
+      setTimeout(() => {
+        if (!captchaVerified) {
+          setToast({
+            show: true,
+            message: "Please verify the CAPTCHA",
+            type: "error",
+          });
+        }
+      }, 500);
+      return;
+    }
+
+    // Check CAPTCHA verification
+    if (!captchaVerified) {
+      setToast({
+        show: true,
+        message: "Please verify the CAPTCHA",
+        type: "error",
+      });
+      return;
+    }
     
     setLoading(true);
 
@@ -137,11 +198,12 @@ const FloatingCTA = () => {
         }),
       });
 
-      const data = await response.json();
-
+      // Check if response is ok before parsing JSON
       if (!response.ok) {
-        throw new Error(data.error || 'Failed to send email');
+        const errorData = await response.json().catch(() => ({ error: 'Unknown error' }));
+        throw new Error(errorData.error || `Server error: ${response.status}`);
       }
+
 
       setToast({
         show: true,
@@ -160,14 +222,29 @@ const FloatingCTA = () => {
         description: "",
       });
 
+      // Reset CAPTCHA
+      if (recaptchaRef.current) {
+        recaptchaRef.current.reset();
+      }
+      setCaptchaVerified(false);
+
       // Close drawer after a short delay
       setTimeout(() => {
         setIsOpen(false);
       }, 1500);
     } catch (error) {
+      console.error('Form submission error:', error);
+      let errorMessage = "Failed to send email. Please try again.";
+      
+      if (error.message.includes('ERR_CONNECTION_REFUSED') || error.message.includes('Failed to fetch')) {
+        errorMessage = "Unable to connect to server. Please check your connection and try again.";
+      } else if (error.message) {
+        errorMessage = error.message;
+      }
+      
       setToast({
         show: true,
-        message: "Failed to send email: " + error.message,
+        message: errorMessage,
         type: "error",
       });
     } finally {
@@ -175,7 +252,7 @@ const FloatingCTA = () => {
     }
   };
 
-  // Close panel on escape key
+  // Close panel on escape key and reset CAPTCHA when closed
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === "Escape") {
@@ -188,6 +265,12 @@ const FloatingCTA = () => {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "unset";
+      // Reset CAPTCHA when modal closes
+      if (recaptchaRef.current) {
+        recaptchaRef.current.reset();
+      }
+      setCaptchaVerified(false);
+      setShouldLoadCaptcha(false);
     }
 
     return () => {
@@ -430,10 +513,27 @@ const FloatingCTA = () => {
             </div>
 
             {/* Submit Button - sticky footer */}
-            <div className="p-6 border-t border-gray-200 bg-white sticky bottom-0 z-40">
+            <div className="p-6 border-t border-gray-200 bg-white sticky bottom-0 z-40 space-y-4">
+              {/* CAPTCHA - Lazy loaded to reduce third-party cookies */}
+              {shouldLoadCaptcha && process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && 
+                process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY !== 'your_recaptcha_site_key_here' ? (
+                  <div className="flex justify-center">
+                    <ReCAPTCHA
+                      sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+                      onChange={handleCaptchaChange}
+                      ref={recaptchaRef}
+                    />
+                  </div>
+                ) : shouldLoadCaptcha && (!process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || 
+                    process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY === 'your_recaptcha_site_key_here') ? (
+                  <div className="text-xs text-gray-500 text-center p-2 bg-gray-50 rounded">
+                    reCAPTCHA is not configured. Please set NEXT_PUBLIC_RECAPTCHA_SITE_KEY in your .env.local file.
+                  </div>
+                ) : null}
+              
               <button
                 type="submit"
-                disabled={loading}
+                disabled={loading || !captchaVerified}
                 className="w-full bg-gradient-to-r from-teal-400 to-cyan-500 text-white font-semibold px-6 py-2 rounded-lg hover:brightness-110 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
               >
                 {loading ? (
