@@ -1,7 +1,8 @@
 import Image from "next/image";
+import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { CalendarDays, Clock } from "lucide-react";
-import { getPostBySlug, getAllPosts } from "../../utils/blogUtils";
+import { getPostBySlug } from "../../utils/blogUtils";
 import AuthorProfile from "../_components/AuthorProfile";
 import RelatedPosts from "../_components/RelatedPosts";
 import RelatedServices from "./_components/RelatedServices";
@@ -42,9 +43,10 @@ const coverPlaceholder =
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  const post = getPostBySlug(slug);
+  const post = await getPostBySlug(slug);
+  if (!post) return {};
   const url = `https://syncops.tech/blog/${slug}`;
-  const coverImage = post.coverImage || coverPlaceholder;
+  const coverImage = post.coverImage || post.image_url || coverPlaceholder;
   const publishedTime = post.date ? new Date(post.date).toISOString() : new Date().toISOString();
 
   return {
@@ -101,7 +103,8 @@ export async function generateMetadata({ params }) {
 
 export default async function BlogPost({ params }) {
   const { slug } = await params;
-  const post = getPostBySlug(slug);
+  const post = await getPostBySlug(slug);
+  if (!post) notFound();
   const readTime = Math.ceil(post.content.split(" ").length / 200);
   const publishedOn = post.date ? new Date(post.date) : new Date();
   const formattedDate = publishedOn.toLocaleDateString("en-US", {
@@ -109,7 +112,9 @@ export default async function BlogPost({ params }) {
     day: "numeric",
     year: "numeric",
   });
-  const coverImage = post.coverImage || coverPlaceholder;
+  const coverImage = post.coverImage || post.image_url || coverPlaceholder;
+  const imageWidth = post.image_width || 1600;
+  const imageHeight = post.image_height || 900;
   const excerptHighlight =
     post.excerpt ||
     "Explore expert-backed strategies, frameworks, and insights designed to keep your engineering team ahead.";
@@ -227,14 +232,15 @@ export default async function BlogPost({ params }) {
 
             {/* Cover Image */}
             <div className="rounded-lg overflow-hidden border border-gray-200 shadow-sm">
-              <div className="relative h-[200px] sm:h-[280px] md:h-[360px] bg-gray-100">
+              <div className="bg-gray-100">
                 <Image
                   src={coverImage}
                   alt={post.title}
-                  fill
+                  width={imageWidth}
+                  height={imageHeight}
                   priority
                   sizes="(min-width: 1024px) 960px, (min-width: 768px) 720px, 100vw"
-                  className="object-cover"
+                  className="h-auto max-h-[360px] w-full object-cover"
                 />
               </div>
             </div>
@@ -260,7 +266,11 @@ export default async function BlogPost({ params }) {
                 prose-blockquote:border-l-3 prose-blockquote:border-[#0fbab1] prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:text-gray-600 prose-blockquote:my-4 prose-blockquote:text-[15px] sm:prose-blockquote:text-base
                 prose-img:rounded-lg prose-img:shadow-sm prose-img:my-6
                 prose-hr:my-6 prose-hr:border-gray-200">
-                <MDXRemote source={post.content} components={mdxComponents} />
+                {/^\s*<[a-z][\s\S]*>/i.test(post.content || "") ? (
+                  <div dangerouslySetInnerHTML={{ __html: post.content }} />
+                ) : (
+                  <MDXRemote source={post.content} components={mdxComponents} />
+                )}
               </div>
 
               {/* Related Posts */}
@@ -290,11 +300,5 @@ export default async function BlogPost({ params }) {
     </article>
     </>
   );
-}
-export function generateStaticParams() {
-  const posts = getAllPosts();
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
 }
 

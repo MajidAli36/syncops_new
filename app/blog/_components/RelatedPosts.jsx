@@ -3,9 +3,12 @@ import SafeLink from "../../components/ui/SafeLink";
 import { ArrowRight, Clock, CalendarDays } from "lucide-react";
 import Image from "next/image";
 
-function RelatedPosts({ currentSlug }) {
-  const currentPost = getPostBySlug(currentSlug);
-  const allPosts = getAllPosts();
+async function RelatedPosts({ currentSlug }) {
+  const [currentPost, allPosts] = await Promise.all([
+    getPostBySlug(currentSlug),
+    getAllPosts(),
+  ]);
+  if (!currentPost) return null;
   
   // Find related posts based on category and tags
   const relatedPosts = allPosts
@@ -81,10 +84,10 @@ function RelatedPosts({ currentSlug }) {
               key={post.slug}
               className="bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md overflow-hidden flex flex-col transition-all duration-300 group"
             >
-              {post.coverImage && (
+              {(post.coverImage || post.image_url) && (
                 <div className="relative h-48 w-full overflow-hidden bg-gray-100">
                   <Image
-                    src={post.coverImage}
+                    src={post.coverImage || post.image_url}
                     alt={post.title}
                     fill
                     sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"

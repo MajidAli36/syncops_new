@@ -3,6 +3,8 @@ import { getAllPosts } from "../utils/blogUtils";
 import Blog from "./_components/Blog";
 import FinalCTA from "../components/FinalCTA";
 
+export const dynamic = "force-dynamic";
+
 export const metadata = {
   title: "Blog - Latest Insights on AI, Software Development & Technology | SyncOps",
   description: "Discover expert insights, tutorials, and industry trends from SyncOps. Stay updated with the latest in AI, software development, cloud technologies, cybersecurity, and more. Expert articles from our development team.",
@@ -61,8 +63,8 @@ export const metadata = {
   },
 };
 
-export default function BlogPage() {
-  const posts = getAllPosts();
+export default async function BlogPage() {
+  const posts = await getAllPosts();
   
   // Generate breadcrumb schema
   const breadcrumbSchema = {

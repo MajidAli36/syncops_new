@@ -534,10 +534,10 @@ export default function Blog({ posts }) {
                       <SafeLink href={`/blog/${post.slug || "default"}`} className="block h-full relative z-10 flex flex-col">
                         {/* Enhanced Cover Image */}
                         <div className="relative h-56 w-full overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 flex-shrink-0">
-                          {post.coverImage ? (
+                          {post.coverImage || post.image_url ? (
                             <>
                               <Image
-                                src={post.coverImage}
+                                src={post.coverImage || post.image_url}
                                 alt={post.title}
                                 fill
                                 sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
@@ -691,10 +691,10 @@ export default function Blog({ posts }) {
                         <SafeLink href={`/blog/${post.slug || "default"}`} className="block h-full relative z-10 flex flex-col">
                           {/* Enhanced Cover Image */}
                           <div className="relative h-56 w-full overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 flex-shrink-0">
-                            {post.coverImage ? (
+                            {post.coverImage || post.image_url ? (
                               <>
                                 <Image
-                                  src={post.coverImage}
+                                  src={post.coverImage || post.image_url}
                                   alt={post.title}
                                   fill
                                   sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"

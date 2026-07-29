@@ -2,7 +2,9 @@ import { caseStudiesData } from './case-studies/_data/caseStudies';
 import { servicesData } from './utils/servicesUtils';
 import { getAllPosts } from './utils/blogUtils';
 
-export default function sitemap() {
+export const dynamic = 'force-dynamic';
+
+export default async function sitemap() {
   const baseUrl = 'https://syncops.tech';
   
   // Static pages with images
@@ -227,7 +229,7 @@ export default function sitemap() {
     });
 
   // Blog posts with images
-  const allPosts = getAllPosts();
+  const allPosts = await getAllPosts();
   const blogRoutes = allPosts.map((post) => {
     const images = [];
     
