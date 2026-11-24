@@ -20,7 +20,7 @@ export const initialArticles = [
     excerpt:
       'Learn how to build and launch a successful AI SaaS product from Pakistan. From idea to market, discover the strategies, tools, and best practices for creating scalable AI software solutions.',
     coverImage:
-      'https://res.cloudinary.com/dfdzl01qj/image/upload/v1766148470/ai-build-syncops_t1gb7a.jpg',
+      'https://res.cloudinary.com/dfdzl01qj/image/upload/v1766148091/AI-system-syncops_gbyv7a.jpg',
     author: 'SyncOps',
     authorRole: 'Tech Innovators',
     category: 'AI',

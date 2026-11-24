@@ -1,3 +1,4 @@
 export default function BlogLayout({ children }) {
-  return <main>{children}</main>;
+  // Root layout already wraps pages in <main>; avoid nested mains for valid HTML/SEO.
+  return <>{children}</>;
 }

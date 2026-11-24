@@ -118,10 +118,7 @@ export default async function BlogPost({ params }) {
   const excerptHighlight =
     post.excerpt ||
     "Explore expert-backed strategies, frameworks, and insights designed to keep your engineering team ahead.";
-  const currentUrl =
-    typeof window !== "undefined"
-      ? window.location.href
-      : `https://syncops.tech/blog/${slug}`;
+  const currentUrl = `https://syncops.tech/blog/${slug}`;
 
   // Generate JSON-LD structured data
   const jsonLd = {

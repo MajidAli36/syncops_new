@@ -92,7 +92,7 @@ export default async function BlogPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
-      <main className="min-h-screen">
+      <div className="min-h-screen">
       {/* Hero Section */}
       <section data-gsap-section>
         <div data-gsap-stagger>
@@ -114,7 +114,7 @@ export default async function BlogPage() {
         </div>
       </section>
       
-    </main>
+    </div>
     </>
   );
 }

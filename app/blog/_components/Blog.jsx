@@ -5,6 +5,28 @@ import Image from "next/image";
 import SafeLink from "../../components/ui/SafeLink";
 import { FaSearch, FaBookmark, FaClock, FaFire, FaStar, FaFilter, FaSort, FaEye, FaBookOpen, FaArrowRight, FaMagic, FaCheckCircle } from 'react-icons/fa';
 
+const COVER_FALLBACK =
+  "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=1600&q=80";
+
+function BlogCoverImage({ src, alt, priority = false, loading }) {
+  const [failed, setFailed] = useState(false);
+  const imageSrc = !failed && src ? src : COVER_FALLBACK;
+
+  return (
+    <Image
+      src={imageSrc}
+      alt={alt}
+      fill
+      sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+      className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+      priority={priority}
+      loading={loading}
+      quality={85}
+      onError={() => setFailed(true)}
+    />
+  );
+}
+
 // Shimmer Loading Component
 const ShimmerCard = () => (
   <div className="group bg-white/5 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/10 relative">
@@ -225,13 +247,13 @@ export default function Blog({ posts }) {
             "@type": "Blog",
             "name": "SyncOps Blog",
             "description": "Latest insights on AI, software development & technology",
-            "url": "https://syncops.com/blog",
+            "url": "https://syncops.tech/blog",
             "publisher": {
               "@type": "Organization",
               "name": "SyncOps",
               "logo": {
                 "@type": "ImageObject",
-                "url": "https://syncops.com/logo.png"
+                "url": "https://syncops.tech/images/logo.png"
               }
             },
             "blogPost": postsWithCategories.map(post => ({
@@ -536,15 +558,11 @@ export default function Blog({ posts }) {
                         <div className="relative h-56 w-full overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 flex-shrink-0">
                           {post.coverImage || post.image_url ? (
                             <>
-                              <Image
+                              <BlogCoverImage
                                 src={post.coverImage || post.image_url}
                                 alt={post.title}
-                                fill
-                                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                                className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                                 priority={index < 6}
                                 loading={index < 6 ? "eager" : "lazy"}
-                                quality={85}
                               />
                               <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                             </>
@@ -693,14 +711,10 @@ export default function Blog({ posts }) {
                           <div className="relative h-56 w-full overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 flex-shrink-0">
                             {post.coverImage || post.image_url ? (
                               <>
-                                <Image
+                                <BlogCoverImage
                                   src={post.coverImage || post.image_url}
                                   alt={post.title}
-                                  fill
-                                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                                  className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                                   loading="lazy"
-                                  quality={85}
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                               </>

@@ -82,8 +82,18 @@ export async function generateMetadata({ params }) {
   };
 }
 
+function parseOfferPrice(startingAt) {
+  if (!startingAt || typeof startingAt !== 'string') return null;
+  const match = startingAt.replace(/,/g, '').match(/(\d+(?:\.\d+)?)/);
+  return match ? match[1] : null;
+}
+
 // Generate structured data (JSON-LD) for SEO
 function generateStructuredData(product, slug) {
+  const numericPrice = parseOfferPrice(product.pricing?.startingAt);
+  const ratingRaw = product.stats.find((s) => s.label === 'Rating')?.value || '4.5/5';
+  const [ratingValue, bestRating = '5'] = String(ratingRaw).split('/');
+
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
@@ -97,15 +107,16 @@ function generateStructuredData(product, slug) {
     "operatingSystem": "Web",
     "offers": {
       "@type": "Offer",
-      "price": product.pricing?.startingAt || "Contact for pricing",
-      "priceCurrency": "USD",
+      ...(numericPrice
+        ? { price: numericPrice, priceCurrency: "USD" }
+        : { priceCurrency: "USD", description: product.pricing?.description || "Contact for pricing" }),
       "availability": "https://schema.org/InStock",
       "url": `https://syncops.tech/products/${slug}`
     },
     "aggregateRating": {
       "@type": "AggregateRating",
-      "ratingValue": product.stats.find(s => s.label === 'Rating')?.value?.split('/')[0] || "4.5",
-      "bestRating": "10",
+      "ratingValue": ratingValue || "4.5",
+      "bestRating": bestRating || "5",
       "worstRating": "1"
     },
     "featureList": product.features,

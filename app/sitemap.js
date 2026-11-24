@@ -1,4 +1,5 @@
 import { caseStudiesData } from './case-studies/_data/caseStudies';
+import { productsData } from './products/_data/products';
 import { servicesData } from './utils/servicesUtils';
 import { getAllPosts } from './utils/blogUtils';
 
@@ -191,6 +192,42 @@ export default async function sitemap() {
       changeFrequency: 'monthly',
       priority: 0.8,
     },
+    {
+      url: `${baseUrl}/syncops-global-clients`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/ai-software-company-uk`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/ai-software-company-usa`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/ai-software-company-canada`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/ai-software-company-australia`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/ai-software-company-uae`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
   ];
 
   // Case studies
@@ -272,6 +309,28 @@ export default async function sitemap() {
     };
   });
 
-  return [...routes, ...caseStudyRoutes, ...blogRoutes, ...serviceRoutes];
+  // Products with images
+  const productRoutes = Object.keys(productsData).map((slug) => {
+    const product = productsData[slug];
+    const images = [];
+
+    if (product?.image) {
+      images.push({
+        url: product.image.startsWith('http') ? product.image : `${baseUrl}${product.image}`,
+        title: product.title,
+        alt: `${product.title} - SyncOps Products`,
+      });
+    }
+
+    return {
+      url: `${baseUrl}/products/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+      ...(images.length > 0 && { images }),
+    };
+  });
+
+  return [...routes, ...caseStudyRoutes, ...blogRoutes, ...serviceRoutes, ...productRoutes];
 }
 

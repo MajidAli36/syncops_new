@@ -4,6 +4,7 @@ import { ChevronDown, HelpCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { motionEasing, motionDurations } from '../../lib/motionConfig';
 import { generateFAQSchema } from '../utils/seoUtils';
+import { CONTACT } from '../utils/urls';
 
 const faqs = [
   {
@@ -139,7 +140,7 @@ export default function FAQ() {
               Get Expert Consultation
             </a>
             <a
-              href="mailto:hello@syncops.com"
+              href={CONTACT.EMAIL_LINK}
               className="btn-secondary inline-flex items-center justify-center"
             >
               Email Our Team

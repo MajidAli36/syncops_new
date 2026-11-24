@@ -1,0 +1,62 @@
+# SyncOps production Compose stack
+# Project name isolates this stack from Beautora (and any other apps).
+# App listens on container :3001 and is published only on loopback.
+
+name: syncops
+
+services:
+  syncops-web:
+    container_name: syncops-web
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        # Public build-time vars (inlined into the Next.js client bundle)
+        NEXT_PUBLIC_SUPABASE_URL: ${NEXT_PUBLIC_SUPABASE_URL}
+        NEXT_PUBLIC_SUPABASE_ANON_KEY: ${NEXT_PUBLIC_SUPABASE_ANON_KEY}
+        NEXT_PUBLIC_RECAPTCHA_SITE_KEY: ${NEXT_PUBLIC_RECAPTCHA_SITE_KEY:-}
+    image: syncops-web:latest
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      NODE_ENV: production
+      PORT: "3001"
+      HOSTNAME: "0.0.0.0"
+      NEXT_TELEMETRY_DISABLED: "1"
+    ports:
+      # Host loopback only — Nginx on the VPS will reverse-proxy here.
+      # Beautora uses host :3000; SyncOps uses :3001.
+      - "127.0.0.1:3001:3001"
+    networks:
+      - syncops-network
+    # Soft safety ceiling only (no CPU/RAM reservations) so Beautora and
+    # other workloads keep fair access to the 24 GB VPS.
+    mem_limit: 2g
+    security_opt:
+      - no-new-privileges:true
+    read_only: false
+    tmpfs:
+      - /tmp
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://127.0.0.1:3001/api/health').then((r)=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        ]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 40s
+
+networks:
+  syncops-network:
+    name: syncops-network
+    driver: bridge

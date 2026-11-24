@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Required for production Docker (copies a minimal runnable server into .next/standalone)
+  output: 'standalone',
   // Target modern browsers to reduce bundle size
   compiler: {
     // Remove console logs in production

@@ -32,6 +32,9 @@ export const ROUTES = {
   CEO: '/ceo',
   CTO: '/cto',
   CBDO: '/cbdo',
+  COO: '/coo',
+  CMO: '/cmo',
+  BDM: '/bdm',
   
   // Legal Pages
   PRIVACY_POLICY: '/privacy-policy',
@@ -204,6 +207,9 @@ export const STATIC_ROUTES = [
   ROUTES.CEO,
   ROUTES.CTO,
   ROUTES.CBDO,
+  ROUTES.COO,
+  ROUTES.CMO,
+  ROUTES.BDM,
   ROUTES.REFERRAL_PROGRAM,
   ROUTES.PRIVACY_POLICY,
   ROUTES.TERMS_OF_SERVICE,

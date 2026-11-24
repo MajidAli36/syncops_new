@@ -75,14 +75,6 @@ const homepageStructuredData = {
       }
     ]
   },
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": {
-      "@type": "EntryPoint",
-      "urlTemplate": "https://syncops.tech/search?q={search_term_string}"
-    },
-    "query-input": "required name=search_term_string"
-  },
   "mainEntity": {
     "@type": "ItemList",
     "name": "SyncOps Projects & Case Studies",
